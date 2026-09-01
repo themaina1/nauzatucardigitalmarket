@@ -1,0 +1,2579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NAUZA TU | Digital Motor Market Nairobi</title>
+
+<meta name="description"
+content="Nauza Tu Digital Motor Market — a smarter way to buy and sell quality cars in Nairobi, Kenya.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --black:#050607;
+    --dark:#0b0e12;
+    --panel:#11161c;
+    --panel2:#151b22;
+    --yellow:#ffd000;
+    --yellow2:#ffb800;
+    --white:#ffffff;
+    --muted:#9da5ae;
+    --border:#29313a;
+    --green:#25d366;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--black);
+    color:var(--white);
+    overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+select,
+input{
+    font-family:inherit;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    height:78px;
+    background:rgba(4,6,8,.97);
+    border-bottom:1px solid #1d232a;
+    display:flex;
+    align-items:center;
+    padding:0 4%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    min-width:245px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-mark{
+    width:58px;
+    height:38px;
+    position:relative;
+}
+
+.logo-mark:before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:12px;
+    width:53px;
+    height:17px;
+    border-top:5px solid var(--yellow);
+    border-radius:50%;
+    transform:skew(-25deg);
+}
+
+.logo-mark:after{
+    content:"";
+    position:absolute;
+    left:12px;
+    top:21px;
+    width:38px;
+    height:7px;
+    background:var(--yellow);
+    transform:skew(-25deg);
+}
+
+.logo-text strong{
+    display:block;
+    font-size:27px;
+    letter-spacing:1px;
+    line-height:25px;
+}
+
+.logo-text strong span{
+    color:var(--yellow);
+}
+
+.logo-text small{
+    display:block;
+    font-size:9px;
+    letter-spacing:3px;
+    color:#aeb5bd;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:27px;
+    flex:1;
+}
+
+nav a{
+    font-size:12px;
+    font-weight:bold;
+    color:#d6dbe0;
+    white-space:nowrap;
+    transition:.2s;
+    padding:30px 0 26px;
+    border-bottom:3px solid transparent;
+}
+
+nav a:hover,
+nav a.active{
+    color:var(--yellow);
+    border-bottom-color:var(--yellow);
+}
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.icon-btn{
+    width:43px;
+    height:39px;
+    border:1px solid #3b434d;
+    background:#101419;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.login-btn{
+    border:1px solid #59616a;
+    background:transparent;
+    color:white;
+    height:39px;
+    padding:0 16px;
+    border-radius:6px;
+    font-weight:bold;
+    font-size:11px;
+}
+
+.post-btn{
+    height:41px;
+    padding:0 18px;
+    background:var(--yellow);
+    border:none;
+    border-radius:6px;
+    font-weight:bold;
+    cursor:pointer;
+    color:#050607;
+}
+
+.mobile-menu{
+    display:none;
+    font-size:25px;
+    background:none;
+    border:none;
+    color:white;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:520px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    padding:60px 5%;
+    overflow:hidden;
+    background:
+        linear-gradient(90deg,
+        rgba(3,5,7,1) 0%,
+        rgba(3,5,7,.92) 35%,
+        rgba(3,5,7,.42) 70%,
+        rgba(3,5,7,.78) 100%),
+        radial-gradient(circle at 75% 50%,#263443 0%,#0b1118 38%,#030506 75%);
+}
+
+.hero:after{
+    content:"";
+    position:absolute;
+    right:-10%;
+    bottom:-40%;
+    width:650px;
+    height:650px;
+    border-radius:50%;
+    border:1px solid rgba(255,208,0,.14);
+    box-shadow:
+        0 0 0 70px rgba(255,208,0,.025),
+        0 0 0 140px rgba(255,208,0,.018);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:650px;
+}
+
+.location{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    color:var(--yellow);
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+.hero h1{
+    font-size:58px;
+    line-height:1.02;
+    letter-spacing:-2px;
+    margin-bottom:18px;
+}
+
+.hero h1 span{
+    color:var(--yellow);
+}
+
+.hero p{
+    color:#c4cbd2;
+    font-size:17px;
+    line-height:1.6;
+    max-width:590px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:12px;
+    margin-top:27px;
+}
+
+.primary-btn{
+    background:var(--yellow);
+    color:#050607;
+    border:none;
+    border-radius:5px;
+    padding:14px 23px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.secondary-btn{
+    background:rgba(255,255,255,.04);
+    border:1px solid #56606a;
+    color:white;
+    border-radius:5px;
+    padding:14px 23px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.hero-car{
+    position:absolute;
+    z-index:1;
+    right:5%;
+    bottom:20px;
+    width:48%;
+    max-width:720px;
+    height:340px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.car-silhouette{
+    width:90%;
+    height:170px;
+    background:
+        linear-gradient(165deg,#252c34 0%,#080a0c 55%,#161b20 100%);
+    border-radius:45% 55% 14% 14%;
+    transform:perspective(600px) rotateX(4deg);
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.9),
+        inset 0 0 30px rgba(255,255,255,.05);
+    position:relative;
+}
+
+.car-silhouette:before{
+    content:"";
+    position:absolute;
+    width:48%;
+    height:85px;
+    top:-58px;
+    left:28%;
+    background:#11161b;
+    clip-path:polygon(18% 100%,35% 0,78% 0,100% 100%);
+    border:2px solid #242c34;
+}
+
+.car-silhouette:after{
+    content:"";
+    position:absolute;
+    left:5%;
+    right:5%;
+    bottom:-30px;
+    height:62px;
+    border-radius:50%;
+    border-top:3px solid #080909;
+    border-bottom:3px solid #080909;
+    box-shadow:
+        -10px 0 0 16px #090b0d,
+        650px 0 0 16px #090b0d;
+}
+
+.hero-price{
+    position:absolute;
+    right:0;
+    top:35px;
+    width:230px;
+    padding:18px;
+    border:1px solid #39414a;
+    background:rgba(7,10,13,.92);
+    border-radius:8px;
+    z-index:3;
+}
+
+.hero-price small{
+    color:var(--yellow);
+    font-weight:bold;
+}
+
+.hero-price h3{
+    margin:10px 0 7px;
+    font-size:17px;
+}
+
+.hero-price p{
+    font-size:11px;
+    margin-bottom:10px;
+}
+
+.hero-price strong{
+    display:block;
+    color:var(--yellow);
+    font-size:22px;
+    margin-bottom:12px;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-wrap{
+    position:relative;
+    z-index:10;
+    margin:-35px 4% 0;
+    background:rgba(13,17,21,.97);
+    border:1px solid #39424b;
+    border-radius:9px;
+    padding:20px;
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
+}
+
+.search-title{
+    font-size:17px;
+    margin-bottom:14px;
+}
+
+.search-grid{
+    display:grid;
+    grid-template-columns:
+        1fr 1fr 1.05fr 1fr 1.05fr 1.05fr 1fr auto;
+    gap:9px;
+}
+
+.field{
+    background:#171c22;
+    border:1px solid #2e3740;
+    border-radius:5px;
+    padding:8px 11px;
+}
+
+.field label{
+    display:block;
+    font-size:9px;
+    text-transform:uppercase;
+    color:#9da5ad;
+    margin-bottom:5px;
+}
+
+.field select{
+    width:100%;
+    background:none;
+    border:none;
+    outline:none;
+    color:white;
+    font-size:12px;
+}
+
+.field select option{
+    background:#11161b;
+}
+
+.search-btn{
+    background:var(--yellow);
+    color:#050607;
+    border:none;
+    padding:0 19px;
+    border-radius:5px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.popular{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:14px;
+    flex-wrap:wrap;
+}
+
+.popular span{
+    font-size:11px;
+    color:#b9c0c7;
+}
+
+.popular button{
+    border:1px solid #343d46;
+    background:#1a2027;
+    color:#e5e8ea;
+    padding:7px 12px;
+    border-radius:20px;
+    font-size:10px;
+    cursor:pointer;
+}
+
+.popular button:hover{
+    border-color:var(--yellow);
+    color:var(--yellow);
+}
+
+/* =========================
+   ACTION BOXES
+========================= */
+
+.tools{
+    padding:25px 4% 10px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.tool{
+    min-height:120px;
+    border:1px solid #303943;
+    background:linear-gradient(135deg,#10151b,#0b0f13);
+    border-radius:7px;
+    padding:20px;
+    position:relative;
+    overflow:hidden;
+}
+
+.tool:hover{
+    transform:translateY(-3px);
+    transition:.2s;
+}
+
+.tool-icon{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.tool h3{
+    font-size:14px;
+    margin-bottom:5px;
+}
+
+.tool p{
+    color:#aeb5bc;
+    font-size:11px;
+    line-height:1.5;
+}
+
+.tool a{
+    position:absolute;
+    right:17px;
+    bottom:17px;
+    color:var(--yellow);
+    font-size:10px;
+    font-weight:bold;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+    padding:35px 4%;
+}
+
+.section-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:18px;
+}
+
+.section-title{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:20px;
+}
+
+.section-title:after{
+    content:"";
+    width:35px;
+    height:3px;
+    background:var(--yellow);
+}
+
+.view-all{
+    color:#cdd2d7;
+    font-size:11px;
+}
+
+.view-all:hover{
+    color:var(--yellow);
+}
+
+/* =========================
+   CARS
+========================= */
+
+.cars-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.car-card{
+    background:#10151a;
+    border:1px solid #2b343d;
+    border-radius:8px;
+    overflow:hidden;
+    position:relative;
+    transition:.25s;
+}
+
+.car-card:hover{
+    transform:translateY(-5px);
+    border-color:#5b626a;
+    box-shadow:0 15px 35px rgba(0,0,0,.4);
+}
+
+.car-image{
+    height:190px;
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(145deg,#26313a,#0d1115);
+}
+
+.car-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.car-card:hover .car-image img{
+    transform:scale(1.05);
+}
+
+.badge{
+    position:absolute;
+    top:10px;
+    left:10px;
+    background:var(--yellow);
+    color:#050607;
+    padding:6px 8px;
+    font-size:9px;
+    font-weight:bold;
+    border-radius:3px;
+}
+
+.heart{
+    position:absolute;
+    top:9px;
+    right:9px;
+    width:31px;
+    height:31px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.35);
+    background:rgba(0,0,0,.55);
+    color:white;
+    cursor:pointer;
+}
+
+.heart.saved{
+    color:var(--yellow);
+}
+
+.car-info{
+    padding:14px;
+}
+
+.car-info h3{
+    font-size:14px;
+    margin-bottom:7px;
+}
+
+.specs{
+    color:#aab2ba;
+    font-size:10px;
+    line-height:1.6;
+}
+
+.price{
+    color:var(--yellow);
+    font-size:18px;
+    font-weight:bold;
+    margin:10px 0;
+}
+
+.car-location{
+    color:#89929b;
+    font-size:10px;
+    margin-bottom:12px;
+}
+
+.card-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px;
+}
+
+.card-actions button{
+    height:33px;
+    border:1px solid #424b54;
+    background:#181e24;
+    color:white;
+    font-size:9px;
+    font-weight:bold;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+.card-actions button:first-child{
+    border-color:#646c74;
+}
+
+.card-actions button:last-child{
+    color:#25d366;
+}
+
+/* =========================
+   WHY US
+========================= */
+
+.why{
+    margin:20px 4% 40px;
+    background:
+        linear-gradient(100deg,#10161c,#0b1015);
+    border:1px solid #273039;
+    border-radius:9px;
+    padding:35px 30px;
+}
+
+.why-header{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.why-header h2{
+    font-size:27px;
+}
+
+.why-header h2 span{
+    color:var(--yellow);
+}
+
+.why-header p{
+    color:#9da5ad;
+    font-size:12px;
+    margin-top:8px;
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:15px;
+}
+
+.why-item{
+    text-align:center;
+    padding:10px;
+}
+
+.why-icon{
+    font-size:30px;
+    margin-bottom:12px;
+}
+
+.why-item h3{
+    font-size:12px;
+    margin-bottom:7px;
+}
+
+.why-item p{
+    color:#929aa2;
+    font-size:10px;
+    line-height:1.5;
+}
+
+/* =========================
+   HOW IT WORKS
+========================= */
+
+.how{
+    padding:20px 4% 60px;
+}
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.step{
+    border:1px solid #28313a;
+    background:#0e1318;
+    padding:25px;
+    border-radius:8px;
+    text-align:center;
+}
+
+.step-number{
+    width:42px;
+    height:42px;
+    margin:0 auto 14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--yellow);
+    color:#050607;
+    border-radius:50%;
+    font-weight:bold;
+}
+
+.step h3{
+    font-size:14px;
+    margin-bottom:7px;
+}
+
+.step p{
+    color:#929aa2;
+    font-size:11px;
+    line-height:1.5;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+    margin:0 4% 50px;
+    padding:40px;
+    border-radius:10px;
+    background:
+        linear-gradient(100deg,#191c20,#090b0d);
+    border:1px solid #3b4249;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.cta h2{
+    font-size:27px;
+    margin-bottom:8px;
+}
+
+.cta h2 span{
+    color:var(--yellow);
+}
+
+.cta p{
+    color:#a8afb6;
+    font-size:12px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    border-top:1px solid #252c33;
+    background:#080a0c;
+    padding:45px 4% 20px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1.5fr;
+    gap:40px;
+}
+
+.footer-brand p{
+    color:#8f979f;
+    font-size:11px;
+    line-height:1.7;
+    max-width:350px;
+    margin-top:15px;
+}
+
+.footer-col h3{
+    font-size:12px;
+    margin-bottom:15px;
+    color:white;
+}
+
+.footer-col a{
+    display:block;
+    color:#8f979f;
+    font-size:11px;
+    margin-bottom:11px;
+}
+
+.footer-col a:hover{
+    color:var(--yellow);
+}
+
+.footer-bottom{
+    border-top:1px solid #22282e;
+    margin-top:35px;
+    padding-top:18px;
+    display:flex;
+    justify-content:space-between;
+    color:#6f777f;
+    font-size:10px;
+}
+
+/* =========================
+   FLOATING BUTTONS
+========================= */
+
+.floating{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+    z-index:999;
+}
+
+.float-btn{
+    width:49px;
+    height:49px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:21px;
+    box-shadow:0 7px 20px rgba(0,0,0,.4);
+}
+
+.whatsapp{
+    background:var(--green);
+}
+
+.call{
+    background:#151a20;
+    border:1px solid #3d454e;
+}
+
+.top{
+    background:#242b33;
+    border:1px solid #3d454e;
+    cursor:pointer;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.78);
+    z-index:2000;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:600px;
+    background:#10151a;
+    border:1px solid #3a434c;
+    border-radius:10px;
+    padding:28px;
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    right:17px;
+    top:14px;
+    background:none;
+    border:none;
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.modal-box h2{
+    margin-bottom:8px;
+}
+
+.modal-box p{
+    color:#929aa2;
+    font-size:12px;
+    margin-bottom:20px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.form-group{
+    margin-bottom:10px;
+}
+
+.form-group label{
+    display:block;
+    color:#aeb5bd;
+    font-size:10px;
+    margin-bottom:6px;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+    height:40px;
+    background:#181e24;
+    border:1px solid #343d46;
+    border-radius:4px;
+    color:white;
+    padding:0 10px;
+    outline:none;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1200px){
+
+    nav{
+        gap:15px;
+    }
+
+    nav a{
+        font-size:10px;
+    }
+
+    .logo{
+        min-width:205px;
+    }
+
+    .search-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .search-btn{
+        height:44px;
+    }
+
+    .cars-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .why-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+}
+
+@media(max-width:900px){
+
+    header{
+        height:70px;
+    }
+
+    .mobile-menu{
+        display:block;
+        margin-left:auto;
+    }
+
+    nav{
+        display:none;
+        position:absolute;
+        top:70px;
+        left:0;
+        width:100%;
+        background:#080b0e;
+        flex-direction:column;
+        align-items:stretch;
+        padding:10px 5%;
+        gap:0;
+        border-bottom:1px solid #252c33;
+    }
+
+    nav.open{
+        display:flex;
+    }
+
+    nav a{
+        padding:14px 0;
+        border-bottom:1px solid #1d2329;
+    }
+
+    .header-actions{
+        display:none;
+    }
+
+    .hero{
+        min-height:560px;
+        padding:45px 6%;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .hero-car{
+        opacity:.32;
+        width:100%;
+        right:-15%;
+    }
+
+    .hero-price{
+        display:none;
+    }
+
+    .tools{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .cars-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .why-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .logo{
+        min-width:auto;
+    }
+
+    .logo-text strong{
+        font-size:22px;
+    }
+
+    .logo-text small{
+        font-size:7px;
+        letter-spacing:2px;
+    }
+
+    .logo-mark{
+        width:44px;
+    }
+
+    .hero{
+        min-height:510px;
+    }
+
+    .hero h1{
+        font-size:37px;
+    }
+
+    .hero p{
+        font-size:14px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        max-width:230px;
+    }
+
+    .search-wrap{
+        margin:-25px 3% 0;
+        padding:15px;
+    }
+
+    .search-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .search-btn{
+        grid-column:1/-1;
+    }
+
+    .tools{
+        grid-template-columns:1fr;
+        padding-left:3%;
+        padding-right:3%;
+    }
+
+    .section{
+        padding-left:3%;
+        padding-right:3%;
+    }
+
+    .cars-grid{
+        grid-template-columns:1fr;
+    }
+
+    .car-image{
+        height:220px;
+    }
+
+    .why{
+        margin-left:3%;
+        margin-right:3%;
+        padding:28px 17px;
+    }
+
+    .why-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+    .cta{
+        margin-left:3%;
+        margin-right:3%;
+        padding:28px 20px;
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+        gap:25px;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        gap:8px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .full{
+        grid-column:auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <a href="#" class="logo">
+
+        <div class="logo-mark"></div>
+
+        <div class="logo-text">
+            <strong>NAUZA <span>TU</span></strong>
+            <small>DIGITAL MOTOR MARKET</small>
+        </div>
+
+    </a>
+
+    <nav id="mainNav">
+
+        <a href="#" class="active">HOME</a>
+        <a href="#cars">CARS FOR SALE</a>
+        <a href="#match">CAR MATCH</a>
+        <a href="#compare">COMPARE</a>
+        <a href="#sell">SELL YOUR CAR</a>
+        <a href="#finance">FINANCING</a>
+        <a href="#resources">RESOURCES</a>
+        <a href="#about">ABOUT US</a>
+        <a href="#contact">CONTACT</a>
+
+    </nav>
+
+    <div class="header-actions">
+
+        <button class="icon-btn" onclick="showMessage('Your favourite cars will appear here.')">
+            ♡ 0
+        </button>
+
+        <button class="login-btn" onclick="openModal('loginModal')">
+            LOGIN / SIGN UP
+        </button>
+
+        <button class="post-btn" onclick="openModal('sellModal')">
+            ＋ POST YOUR CAR
+        </button>
+
+    </div>
+
+    <button class="mobile-menu" onclick="toggleMenu()">
+        ☰
+    </button>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="location">
+            ◉ NAIROBI, KENYA
+        </div>
+
+        <h1>
+            FIND. BUY. DRIVE.<br>
+            <span>THE NAUZA TU WAY.</span>
+        </h1>
+
+        <p>
+            Nairobi's digital motor market connecting serious buyers
+            with quality cars, trusted sellers and smarter ways to
+            find your next vehicle.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#cars" class="primary-btn">
+                EXPLORE CARS →
+            </a>
+
+            <button class="secondary-btn"
+                    onclick="openModal('sellModal')">
+                SELL YOUR CAR
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="hero-car">
+
+        <div class="car-silhouette"></div>
+
+        <div class="hero-price">
+
+            <small>FEATURED VEHICLE</small>
+
+            <h3>TOYOTA PRADO TX-L</h3>
+
+            <p>2019 | 2.8L Diesel | Automatic | 4WD</p>
+
+            <strong>KSh 5,450,000</strong>
+
+            <button class="primary-btn"
+                    onclick="showMessage('Vehicle details coming soon.')">
+                VIEW DETAILS →
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SEARCH ================= -->
+
+<section class="search-wrap">
+
+    <div class="search-title">
+        FIND YOUR PERFECT CAR
+    </div>
+
+    <div class="search-grid">
+
+        <div class="field">
+            <label>Make</label>
+            <select id="make">
+                <option value="">All Makes</option>
+                <option>Toyota</option>
+                <option>Honda</option>
+                <option>Nissan</option>
+                <option>Mercedes-Benz</option>
+                <option>BMW</option>
+                <option>Subaru</option>
+                <option>Mazda</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Model</label>
+            <select id="model">
+                <option value="">All Models</option>
+                <option>Prado</option>
+                <option>Harrier</option>
+                <option>Land Cruiser</option>
+                <option>X-Trail</option>
+                <option>Vezel</option>
+                <option>C180</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Price Range</label>
+            <select id="price">
+                <option value="">Any Price</option>
+                <option value="under2">Under KSh 2M</option>
+                <option value="2to3">KSh 2M - 3M</option>
+                <option value="3to5">KSh 3M - 5M</option>
+                <option value="over5">Above KSh 5M</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Year</label>
+            <select id="year">
+                <option value="">Any Year</option>
+                <option>2025+</option>
+                <option>2022 - 2024</option>
+                <option>2019 - 2021</option>
+                <option>2016 - 2018</option>
+                <option>2015 & Older</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Body Type</label>
+            <select id="body">
+                <option value="">All Body Types</option>
+                <option>SUV</option>
+                <option>Sedan</option>
+                <option>Hatchback</option>
+                <option>Pickup</option>
+                <option>Van</option>
+                <option>Wagon</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Fuel</label>
+            <select id="fuel">
+                <option value="">All Fuel Types</option>
+                <option>Petrol</option>
+                <option>Diesel</option>
+                <option>Hybrid</option>
+                <option>Electric</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Transmission</label>
+            <select id="transmission">
+                <option value="">All</option>
+                <option>Automatic</option>
+                <option>Manual</option>
+            </select>
+        </div>
+
+        <button class="search-btn" onclick="searchCars()">
+            🔍 SEARCH CARS
+        </button>
+
+    </div>
+
+    <div class="popular">
+
+        <span>Popular Searches:</span>
+
+        <button onclick="popularSearch('Toyota')">Toyota</button>
+        <button onclick="popularSearch('Prado')">Prado</button>
+        <button onclick="popularSearch('Harrier')">Harrier</button>
+        <button onclick="popularSearch('Land Cruiser')">Land Cruiser</button>
+        <button onclick="popularSearch('Nissan')">Nissan</button>
+        <button onclick="popularSearch('Mercedes-Benz')">Mercedes-Benz</button>
+        <button onclick="popularSearch('BMW')">BMW</button>
+        <button onclick="popularSearch('Subaru')">Subaru</button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TOOLS ================= -->
+
+<section class="tools" id="match">
+
+    <div class="tool">
+
+        <div class="tool-icon">✦</div>
+
+        <h3>CAR MATCH</h3>
+
+        <p>
+            Tell us what you need and discover vehicles
+            that match your budget and lifestyle.
+        </p>
+
+        <a href="#" onclick="openModal('matchModal')">
+            GET MATCHED →
+        </a>
+
+    </div>
+
+
+    <div class="tool" id="compare">
+
+        <div class="tool-icon">⚖</div>
+
+        <h3>COMPARE CARS</h3>
+
+        <p>
+            Put up to three vehicles side by side
+            before making your decision.
+        </p>
+
+        <a href="#" onclick="showMessage('Car comparison will be available here.')">
+            COMPARE NOW →
+        </a>
+
+    </div>
+
+
+    <div class="tool" id="sell">
+
+        <div class="tool-icon">🏷</div>
+
+        <h3>SELL YOUR CAR</h3>
+
+        <p>
+            List your vehicle and connect with serious
+            buyers looking for cars in Nairobi.
+        </p>
+
+        <a href="#" onclick="openModal('sellModal')">
+            SELL NOW →
+        </a>
+
+    </div>
+
+
+    <div class="tool" id="finance">
+
+        <div class="tool-icon">▣</div>
+
+        <h3>FINANCE CALCULATOR</h3>
+
+        <p>
+            Estimate your monthly vehicle repayment
+            before you buy.
+        </p>
+
+        <a href="#" onclick="openFinance()">
+            CALCULATE →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= NEW ARRIVALS ================= -->
+
+<section class="section" id="cars">
+
+    <div class="section-head">
+
+        <h2 class="section-title">
+            NEW ARRIVALS
+        </h2>
+
+        <a href="#" class="view-all">
+            VIEW ALL CARS →
+        </a>
+
+    </div>
+
+
+    <div class="cars-grid" id="carsGrid">
+
+        <!-- CAR 1 -->
+
+        <article class="car-card"
+                 data-make="Toyota"
+                 data-model="Harrier"
+                 data-price="2850000">
+
+            <div class="car-image">
+
+                <img
+                src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=900&q=80"
+                alt="Toyota Harrier">
+
+                <span class="badge">
+                    NEW ARRIVAL
+                </span>
+
+                <button class="heart"
+                        onclick="toggleHeart(this)">
+                    ♡
+                </button>
+
+            </div>
+
+            <div class="car-info">
+
+                <h3>Toyota Harrier Premium</h3>
+
+                <div class="specs">
+                    2018 | 2.0L Petrol | Automatic | 2WD
+                </div>
+
+                <div class="price">
+                    KSh 2,850,000
+                </div>
+
+                <div class="car-location">
+                    ◉ Nairobi
+                </div>
+
+                <div class="card-actions">
+
+                    <button onclick="showMessage('Toyota Harrier details selected.')">
+                        VIEW DETAILS
+                    </button>
+
+                    <button onclick="whatsapp('Toyota Harrier Premium')">
+                        ☎ WHATSAPP
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- CAR 2 -->
+
+        <article class="car-card"
+                 data-make="Toyota"
+                 data-model="Land Cruiser"
+                 data-price="10800000">
+
+            <div class="car-image">
+
+                <img
+                src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=900&q=80"
+                alt="Toyota Land Cruiser">
+
+                <span class="badge">
+                    HOT DEAL
+                </span>
+
+                <button class="heart"
+                        onclick="toggleHeart(this)">
+                    ♡
+                </button>
+
+            </div>
+
+            <div class="car-info">
+
+                <h3>Toyota Land Cruiser V8</h3>
+
+                <div class="specs">
+                    2020 | 4.5L Diesel | Automatic | 4WD
+                </div>
+
+                <div class="price">
+                    KSh 10,800,000
+                </div>
+
+                <div class="car-location">
+                    ◉ Nairobi
+                </div>
+
+                <div class="card-actions">
+
+                    <button onclick="showMessage('Land Cruiser details selected.')">
+                        VIEW DETAILS
+                    </button>
+
+                    <button onclick="whatsapp('Toyota Land Cruiser V8')">
+                        ☎ WHATSAPP
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- CAR 3 -->
+
+        <article class="car-card"
+                 data-make="Toyota"
+                 data-model="Prado"
+                 data-price="5450000">
+
+            <div class="car-image">
+
+                <img
+                src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=900&q=80"
+                alt="Toyota Prado">
+
+                <span class="badge">
+                    BEST VALUE
+                </span>
+
+                <button class="heart"
+                        onclick="toggleHeart(this)">
+                    ♡
+                </button>
+
+            </div>
+
+            <div class="car-info">
+
+                <h3>Toyota Prado TX-L</h3>
+
+                <div class="specs">
+                    2019 | 2.8L Diesel | Automatic | 4WD
+                </div>
+
+                <div class="price">
+                    KSh 5,450,000
+                </div>
+
+                <div class="car-location">
+                    ◉ Nairobi
+                </div>
+
+                <div class="card-actions">
+
+                    <button onclick="showMessage('Prado details selected.')">
+                        VIEW DETAILS
+                    </button>
+
+                    <button onclick="whatsapp('Toyota Prado TX-L')">
+                        ☎ WHATSAPP
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- CAR 4 -->
+
+        <article class="car-card"
+                 data-make="Mercedes-Benz"
+                 data-model="C180"
+                 data-price="2450000">
+
+            <div class="car-image">
+
+                <img
+                src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=900&q=80"
+                alt="Mercedes Benz C180">
+
+                <span class="badge">
+                    LOW MILEAGE
+                </span>
+
+                <button class="heart"
+                        onclick="toggleHeart(this)">
+                    ♡
+                </button>
+
+            </div>
+
+            <div class="car-info">
+
+                <h3>Mercedes-Benz C180</h3>
+
+                <div class="specs">
+                    2017 | 1.6L Petrol | Automatic | 2WD
+                </div>
+
+                <div class="price">
+                    KSh 2,450,000
+                </div>
+
+                <div class="car-location">
+                    ◉ Nairobi
+                </div>
+
+                <div class="card-actions">
+
+                    <button onclick="showMessage('Mercedes C180 details selected.')">
+                        VIEW DETAILS
+                    </button>
+
+                    <button onclick="whatsapp('Mercedes-Benz C180')">
+                        ☎ WHATSAPP
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- CAR 5 -->
+
+        <article class="car-card"
+                 data-make="Nissan"
+                 data-model="X-Trail"
+                 data-price="2190000">
+
+            <div class="car-image">
+
+                <img
+                src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=900&q=80"
+                alt="Nissan X Trail">
+
+                <span class="badge">
+                    NEW ARRIVAL
+                </span>
+
+                <button class="heart"
+                        onclick="toggleHeart(this)">
+                    ♡
+                </button>
+
+            </div>
+
+            <div class="car-info">
+
+                <h3>Nissan X-Trail</h3>
+
+                <div class="specs">
+                    2018 | 2.0L Petrol | Automatic | 4WD
+                </div>
+
+                <div class="price">
+                    KSh 2,190,000
+                </div>
+
+                <div class="car-location">
+                    ◉ Nairobi
+                </div>
+
+                <div class="card-actions">
+
+                    <button onclick="showMessage('Nissan X-Trail details selected.')">
+                        VIEW DETAILS
+                    </button>
+
+                    <button onclick="whatsapp('Nissan X-Trail')">
+                        ☎ WHATSAPP
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- CAR 6 -->
+
+        <article class="car-card"
+                 data-make="Honda"
+                 data-model="Vezel"
+                 data-price="2350000">
+
+            <div class="car-image">
+
+                <img
+                src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=80"
+                alt="Honda Vezel">
+
+                <span class="badge">
+                    HOT DEAL
+                </span>
+
+                <button class="heart"
+                        onclick="toggleHeart(this)">
+                    ♡
+                </button>
+
+            </div>
+
+            <div class="car-info">
+
+                <h3>Honda Vezel Hybrid</h3>
+
+                <div class="specs">
+                    2019 | 1.5L Hybrid | Automatic | 2WD
+                </div>
+
+                <div class="price">
+                    KSh 2,350,000
+                </div>
+
+                <div class="car-location">
+                    ◉ Nairobi
+                </div>
+
+                <div class="card-actions">
+
+                    <button onclick="showMessage('Honda Vezel details selected.')">
+                        VIEW DETAILS
+                    </button>
+
+                    <button onclick="whatsapp('Honda Vezel Hybrid')">
+                        ☎ WHATSAPP
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WHY NAUZA TU ================= -->
+
+<section class="why" id="about">
+
+    <div class="why-header">
+
+        <h2>
+            WHY BUY & SELL WITH <span>NAUZA TU?</span>
+        </h2>
+
+        <p>
+            Built around the way Nairobi's modern motor market works.
+        </p>
+
+    </div>
+
+
+    <div class="why-grid">
+
+        <div class="why-item">
+            <div class="why-icon">✓</div>
+            <h3>VERIFIED CARS</h3>
+            <p>
+                Vehicles can go through a structured
+                verification process before listing.
+            </p>
+        </div>
+
+        <div class="why-item">
+            <div class="why-icon">▤</div>
+            <h3>TRANSPARENT INFORMATION</h3>
+            <p>
+                Clear specifications, photographs,
+                pricing and vehicle information.
+            </p>
+        </div>
+
+        <div class="why-item">
+            <div class="why-icon">♧</div>
+            <h3>SERIOUS BUYERS</h3>
+            <p>
+                Connect sellers with people actively
+                searching for vehicles.
+            </p>
+        </div>
+
+        <div class="why-item">
+            <div class="why-icon">🔒</div>
+            <h3>SAFER DEALS</h3>
+            <p>
+                Helpful information and guidance designed
+                to make transactions more transparent.
+            </p>
+        </div>
+
+        <div class="why-item">
+            <div class="why-icon">◌</div>
+            <h3>BUYER SUPPORT</h3>
+            <p>
+                Assistance from vehicle discovery
+                through the buying process.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= HOW IT WORKS ================= -->
+
+<section class="how">
+
+    <div class="section-head">
+
+        <h2 class="section-title">
+            HOW NAUZA TU WORKS
+        </h2>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step">
+
+            <div class="step-number">1</div>
+
+            <h3>SEARCH</h3>
+
+            <p>
+                Search thousands of vehicle possibilities
+                using the filters that matter to you.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">2</div>
+
+            <h3>DISCOVER</h3>
+
+            <p>
+                Compare vehicles, study specifications
+                and find the right match for your needs.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">3</div>
+
+            <h3>CONNECT</h3>
+
+            <p>
+                Contact the seller, arrange a viewing
+                and move forward with your purchase.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta">
+
+    <div>
+
+        <h2>
+            HAVE A CAR TO <span>SELL?</span>
+        </h2>
+
+        <p>
+            Put your vehicle in front of serious Nairobi buyers.
+        </p>
+
+    </div>
+
+    <button class="primary-btn"
+            onclick="openModal('sellModal')">
+        POST YOUR CAR →
+    </button>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer id="contact">
+
+    <div class="footer-grid">
+
+        <div class="footer-brand">
+
+            <div class="logo">
+
+                <div class="logo-mark"></div>
+
+                <div class="logo-text">
+                    <strong>NAUZA <span>TU</span></strong>
+                    <small>DIGITAL MOTOR MARKET</small>
+                </div>
+
+            </div>
+
+            <p>
+                Nauza Tu is a digital motor market designed to
+                make buying and selling cars in Nairobi simpler,
+                smarter and more transparent.
+            </p>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h3>BUY A CAR</h3>
+
+            <a href="#cars">Cars for Sale</a>
+            <a href="#match">Car Match</a>
+            <a href="#compare">Compare Cars</a>
+            <a href="#finance">Financing</a>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h3>SELL A CAR</h3>
+
+            <a href="#sell">Post Your Car</a>
+            <a href="#">Seller Guide</a>
+            <a href="#">Pricing</a>
+            <a href="#">Seller Support</a>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h3>NAUZA TU</h3>
+
+            <a href="#about">About Us</a>
+            <a href="#">Resources</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Privacy Policy</a>
+            <a href="mailto:info@nauzatu.co.ke">
+                info@nauzatu.co.ke
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 Nauza Tu Digital Motor Market
+        </span>
+
+        <span>
+            Nairobi, Kenya
+        </span>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= FLOATING ================= -->
+
+<div class="floating">
+
+    <a class="float-btn whatsapp"
+       href="https://wa.me/254700000000"
+       target="_blank">
+        ☎
+    </a>
+
+    <a class="float-btn call"
+       href="tel:+254700000000">
+        ☎
+    </a>
+
+    <button class="float-btn top"
+            onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        ↑
+    </button>
+
+</div>
+
+
+<!-- ================= SELL MODAL ================= -->
+
+<div class="modal" id="sellModal">
+
+    <div class="modal-box">
+
+        <button class="close"
+                onclick="closeModal('sellModal')">
+            ×
+        </button>
+
+        <h2>SELL YOUR CAR</h2>
+
+        <p>
+            Tell us about the vehicle you want to list.
+        </p>
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label>MAKE</label>
+                <input placeholder="e.g. Toyota">
+            </div>
+
+            <div class="form-group">
+                <label>MODEL</label>
+                <input placeholder="e.g. Harrier">
+            </div>
+
+            <div class="form-group">
+                <label>YEAR</label>
+                <input type="number" placeholder="2020">
+            </div>
+
+            <div class="form-group">
+                <label>ASKING PRICE</label>
+                <input placeholder="KSh">
+            </div>
+
+            <div class="form-group">
+                <label>PHONE NUMBER</label>
+                <input placeholder="+254">
+            </div>
+
+            <div class="form-group">
+                <label>LOCATION</label>
+                <input placeholder="Nairobi">
+            </div>
+
+            <div class="form-group full">
+                <label>ADDITIONAL INFORMATION</label>
+                <input placeholder="Tell us about the vehicle">
+            </div>
+
+        </div>
+
+        <button class="primary-btn"
+                style="margin-top:15px;width:100%;"
+                onclick="submitForm('Your car listing request has been received.')">
+            CONTINUE
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= LOGIN MODAL ================= -->
+
+<div class="modal" id="loginModal">
+
+    <div class="modal-box">
+
+        <button class="close"
+                onclick="closeModal('loginModal')">
+            ×
+        </button>
+
+        <h2>WELCOME TO NAUZA TU</h2>
+
+        <p>
+            Login and manage your saved cars and listings.
+        </p>
+
+        <div class="form-group">
+            <label>EMAIL OR PHONE</label>
+            <input placeholder="Enter email or phone">
+        </div>
+
+        <div class="form-group">
+            <label>PASSWORD</label>
+            <input type="password" placeholder="Password">
+        </div>
+
+        <button class="primary-btn"
+                style="width:100%;margin-top:10px;"
+                onclick="submitForm('Login system will be connected in the next stage.')">
+            LOGIN
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= MATCH MODAL ================= -->
+
+<div class="modal" id="matchModal">
+
+    <div class="modal-box">
+
+        <button class="close"
+                onclick="closeModal('matchModal')">
+            ×
+        </button>
+
+        <h2>FIND MY CAR</h2>
+
+        <p>
+            Answer a few questions and Nauza Tu will help
+            you identify suitable vehicles.
+        </p>
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label>BUDGET</label>
+                <select>
+                    <option>Under KSh 2M</option>
+                    <option>KSh 2M - 3M</option>
+                    <option>KSh 3M - 5M</option>
+                    <option>Above KSh 5M</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>BODY TYPE</label>
+                <select>
+                    <option>SUV</option>
+                    <option>Sedan</option>
+                    <option>Hatchback</option>
+                    <option>Pickup</option>
+                    <option>Any</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>FUEL</label>
+                <select>
+                    <option>Any</option>
+                    <option>Petrol</option>
+                    <option>Diesel</option>
+                    <option>Hybrid</option>
+                    <option>Electric</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>TRANSMISSION</label>
+                <select>
+                    <option>Automatic</option>
+                    <option>Manual</option>
+                    <option>Any</option>
+                </select>
+            </div>
+
+        </div>
+
+        <button class="primary-btn"
+                style="width:100%;margin-top:15px;"
+                onclick="submitForm('Your Nauza Tu car matches will appear here.')">
+            FIND MY CAR →
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+function toggleMenu(){
+
+    document
+        .getElementById("mainNav")
+        .classList.toggle("open");
+
+}
+
+
+function openModal(id){
+
+    document
+        .getElementById(id)
+        .classList.add("show");
+
+}
+
+
+function closeModal(id){
+
+    document
+        .getElementById(id)
+        .classList.remove("show");
+
+}
+
+
+function submitForm(message){
+
+    closeAllModals();
+
+    showMessage(message);
+
+}
+
+
+function closeAllModals(){
+
+    document
+        .querySelectorAll(".modal")
+        .forEach(function(modal){
+
+            modal.classList.remove("show");
+
+        });
+
+}
+
+
+function showMessage(message){
+
+    alert(message);
+
+}
+
+
+function toggleHeart(button){
+
+    button.classList.toggle("saved");
+
+    if(button.classList.contains("saved")){
+
+        button.innerHTML="♥";
+
+    }else{
+
+        button.innerHTML="♡";
+
+    }
+
+}
+
+
+function whatsapp(vehicle){
+
+    const number="254700000000";
+
+    const message=
+        "Hello Nauza Tu, I am interested in the " +
+        vehicle +
+        " listed on your website.";
+
+    window.open(
+        "https://wa.me/" +
+        number +
+        "?text=" +
+        encodeURIComponent(message),
+        "_blank"
+    );
+
+}
+
+
+function popularSearch(value){
+
+    const make=document.getElementById("make");
+    const model=document.getElementById("model");
+
+    const makeOptions=
+        Array.from(make.options)
+        .map(option=>option.value);
+
+    const modelOptions=
+        Array.from(model.options)
+        .map(option=>option.value);
+
+    if(makeOptions.includes(value)){
+
+        make.value=value;
+
+    }
+
+    if(modelOptions.includes(value)){
+
+        model.value=value;
+
+    }
+
+    searchCars();
+
+}
+
+
+function searchCars(){
+
+    const make=
+        document.getElementById("make").value
+        .toLowerCase();
+
+    const model=
+        document.getElementById("model").value
+        .toLowerCase();
+
+    const cards=
+        document.querySelectorAll(".car-card");
+
+    let found=0;
+
+    cards.forEach(function(card){
+
+        const cardMake=
+            card.dataset.make.toLowerCase();
+
+        const cardModel=
+            card.dataset.model.toLowerCase();
+
+        let visible=true;
+
+        if(make && cardMake!==make){
+
+            visible=false;
+
+        }
+
+        if(model && cardModel!==model){
+
+            visible=false;
+
+        }
+
+        if(visible){
+
+            card.style.display="block";
+
+            found++;
+
+        }else{
+
+            card.style.display="none";
+
+        }
+
+    });
+
+    if(found===0){
+
+        showMessage(
+            "No matching vehicles found in the current inventory."
+        );
+
+    }
+
+    document
+        .getElementById("cars")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+function openFinance(){
+
+    const amount=
+        prompt(
+            "Enter vehicle price in KSh:",
+            "3000000"
+        );
+
+    if(!amount) return;
+
+    const deposit=
+        prompt(
+            "Enter deposit in KSh:",
+            "500000"
+        );
+
+    if(!deposit) return;
+
+    const months=
+        prompt(
+            "Loan period in months:",
+            "60"
+        );
+
+    if(!months) return;
+
+    const principal=
+        Number(amount)-Number(deposit);
+
+    const monthly=
+        principal/Number(months);
+
+    alert(
+        "Estimated monthly repayment before interest: KSh " +
+        Math.round(monthly).toLocaleString()
+    );
+
+}
+
+
+window.addEventListener("click",function(event){
+
+    if(event.target.classList.contains("modal")){
+
+        event.target.classList.remove("show");
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
