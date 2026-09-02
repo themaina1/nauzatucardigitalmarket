@@ -4,192 +4,149 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Car Match | NAUZA TU Digital Motor Market</title>
+<title>Car Match | NAUZA TU DIGITAL MOTOR MARKET</title>
 
 <meta name="description"
-content="Find the right car for your budget, lifestyle and driving needs in Kenya with the NAUZA TU Car Match tool.">
+content="Find the right car for your budget, lifestyle and driving needs with NAUZA TU Car Match.">
 
 <style>
-
 :root{
+    --yellow:#f5c400;
+    --yellow2:#ffd633;
     --black:#080808;
     --dark:#101010;
-    --dark2:#171717;
-    --card:#1c1c1c;
-    --yellow:#ffc400;
-    --yellow2:#ffda44;
-    --white:#ffffff;
-    --muted:#a7a7a7;
-    --line:#2b2b2b;
-    --green:#21c77a;
-    --red:#ff5b5b;
+    --dark2:#151515;
+    --dark3:#1d1d1d;
+    --border:#2b2b2b;
+    --text:#f5f5f5;
+    --muted:#999;
+    --green:#4bd17d;
 }
 
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
     background:var(--black);
-    color:var(--white);
+    color:var(--text);
+    font-family:Arial,Helvetica,sans-serif;
     line-height:1.5;
 }
 
 a{
-    color:inherit;
     text-decoration:none;
+    color:inherit;
 }
 
 button,
 select,
 input{
-    font:inherit;
+    font-family:inherit;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header{
     position:sticky;
     top:0;
     z-index:1000;
     background:rgba(8,8,8,.97);
-    border-bottom:1px solid var(--line);
+    border-bottom:1px solid var(--border);
     backdrop-filter:blur(12px);
 }
 
-.navbar{
+.nav{
     max-width:1250px;
-    margin:auto;
     min-height:76px;
+    margin:auto;
     padding:0 20px;
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    gap:20px;
 }
 
 .logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    flex-shrink:0;
-}
-
-.logo-mark{
-    width:43px;
-    height:43px;
-    background:var(--yellow);
-    color:#000;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    font-size:22px;
     font-weight:900;
-    font-size:20px;
-    border-radius:8px;
+    letter-spacing:-1px;
 }
 
-.logo-text strong{
-    display:block;
-    font-size:21px;
-    letter-spacing:1px;
-}
-
-.logo-text span{
-    display:block;
-    font-size:9px;
-    color:var(--muted);
-    letter-spacing:2px;
-}
-
-nav{
-    display:flex;
-    align-items:center;
-    gap:22px;
-}
-
-nav a{
-    color:#ddd;
-    font-size:13px;
-    font-weight:700;
-    transition:.2s;
-}
-
-nav a:hover,
-nav a.active{
+.logo span{
     color:var(--yellow);
 }
 
-.post-btn{
-    background:var(--yellow);
-    color:#000 !important;
-    padding:11px 16px;
-    border-radius:6px;
-    font-weight:900 !important;
+.logo small{
+    display:block;
+    color:#777;
+    font-size:8px;
+    letter-spacing:2px;
+    margin-top:-3px;
 }
 
-.menu-btn{
-    display:none;
-    background:none;
-    border:1px solid var(--line);
-    color:#fff;
-    padding:9px 12px;
-    border-radius:6px;
-    cursor:pointer;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-    min-height:500px;
-    position:relative;
-    overflow:hidden;
+.navlinks{
+    margin-left:auto;
     display:flex;
     align-items:center;
-    background:
-        linear-gradient(90deg,
-        rgba(0,0,0,.98) 0%,
-        rgba(0,0,0,.90) 40%,
-        rgba(0,0,0,.35) 100%),
-        url("https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg")
-        center/cover no-repeat;
+    gap:20px;
 }
 
-.hero-content{
-    max-width:1250px;
-    width:100%;
+.navlinks a{
+    color:#bbb;
+    font-size:13px;
+    font-weight:800;
+}
+
+.navlinks a:hover,
+.navlinks a.active{
+    color:var(--yellow);
+}
+
+.sell-btn{
+    background:var(--yellow);
+    color:#000 !important;
+    padding:11px 15px;
+    border-radius:5px;
+}
+
+.menu{
+    display:none;
+    margin-left:auto;
+    border:0;
+    background:none;
+    color:white;
+    font-size:25px;
+}
+
+/* HERO */
+
+.hero{
+    padding:75px 20px 65px;
+    background:
+        radial-gradient(circle at 75% 20%,rgba(245,196,0,.13),transparent 30%),
+        linear-gradient(180deg,#121212,#080808);
+    border-bottom:1px solid #191919;
+}
+
+.hero-inner{
+    max-width:1100px;
     margin:auto;
-    padding:80px 20px;
 }
 
 .eyebrow{
-    display:inline-block;
-    background:rgba(255,196,0,.12);
-    border:1px solid rgba(255,196,0,.4);
     color:var(--yellow);
-    padding:7px 12px;
-    border-radius:30px;
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:1.5px;
-    margin-bottom:20px;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:13px;
 }
 
 .hero h1{
-    max-width:700px;
-    font-size:clamp(42px,6vw,76px);
+    font-size:clamp(38px,6vw,64px);
     line-height:1;
-    letter-spacing:-3px;
+    letter-spacing:-2.5px;
+    max-width:800px;
     margin-bottom:20px;
 }
 
@@ -198,745 +155,574 @@ nav a.active{
 }
 
 .hero p{
-    max-width:650px;
-    color:#d1d1d1;
-    font-size:18px;
-    margin-bottom:30px;
+    max-width:680px;
+    color:#aaa;
+    font-size:17px;
 }
 
-.hero-buttons{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
+/* MAIN */
+
+.container{
+    max-width:1150px;
+    margin:auto;
+    padding:45px 20px 80px;
 }
 
-.btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    padding:14px 22px;
-    border-radius:6px;
-    border:1px solid var(--line);
-    font-weight:800;
-    cursor:pointer;
-}
-
-.btn-primary{
-    background:var(--yellow);
-    color:#000;
-    border-color:var(--yellow);
-}
-
-.btn-secondary{
-    background:rgba(255,255,255,.05);
-    color:#fff;
-}
-
-/* =========================
-   MATCH TOOL
-========================= */
-
-.match-wrap{
-    max-width:1050px;
-    margin:-65px auto 0;
-    position:relative;
-    z-index:10;
-    padding:0 20px;
-}
+/* MATCH BOX */
 
 .match-box{
-    background:#131313;
-    border:1px solid #303030;
+    background:var(--dark2);
+    border:1px solid var(--border);
     border-radius:14px;
-    box-shadow:0 20px 60px rgba(0,0,0,.55);
     overflow:hidden;
 }
 
 .progress{
     height:5px;
-    background:#272727;
+    background:#222;
 }
 
 .progress-bar{
+    width:20%;
     height:100%;
-    width:14.28%;
     background:var(--yellow);
     transition:.3s;
 }
 
-.match-top{
-    padding:28px 30px 18px;
-    border-bottom:1px solid var(--line);
-}
-
-.match-top h2{
-    font-size:25px;
-    margin-bottom:5px;
-}
-
-.match-top p{
-    color:var(--muted);
-    font-size:14px;
-}
-
-.question{
+.step{
     display:none;
-    padding:35px 30px 40px;
+    padding:35px;
 }
 
-.question.active{
+.step.active{
     display:block;
 }
 
-.question-number{
+.step-number{
     color:var(--yellow);
-    font-size:12px;
+    font-size:11px;
     font-weight:900;
-    letter-spacing:1px;
+    letter-spacing:2px;
+    text-transform:uppercase;
     margin-bottom:8px;
 }
 
-.question h3{
-    font-size:29px;
+.step h2{
+    font-size:27px;
     margin-bottom:8px;
 }
 
-.question-description{
-    color:var(--muted);
-    margin-bottom:25px;
+.step-intro{
+    color:#888;
+    font-size:13px;
+    margin-bottom:28px;
 }
 
-.options{
+/* OPTIONS */
+
+.option-grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(3,1fr);
     gap:12px;
 }
 
 .option{
-    border:1px solid #343434;
-    background:#1a1a1a;
-    border-radius:9px;
-    padding:18px;
-    cursor:pointer;
-    transition:.2s;
     position:relative;
 }
 
-.option:hover{
-    border-color:#777;
+.option input{
+    position:absolute;
+    opacity:0;
+}
+
+.option label{
+    display:block;
+    padding:20px;
+    background:#0d0d0d;
+    border:1px solid #292929;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.2s;
+    height:100%;
+}
+
+.option label:hover{
+    border-color:#555;
     transform:translateY(-2px);
 }
 
-.option.selected{
+.option input:checked + label{
     border-color:var(--yellow);
-    background:rgba(255,196,0,.08);
+    background:#171500;
+    box-shadow:0 0 0 1px var(--yellow);
+}
+
+.option-title{
+    font-size:15px;
+    font-weight:900;
+    margin-bottom:5px;
+}
+
+.option-description{
+    color:#777;
+    font-size:11px;
 }
 
 .option-icon{
-    font-size:25px;
-    margin-bottom:8px;
+    font-size:24px;
+    margin-bottom:10px;
 }
 
-.option strong{
-    display:block;
-    font-size:15px;
-}
+/* BUDGET */
 
-.option small{
-    display:block;
-    color:var(--muted);
-    font-size:12px;
-    margin-top:3px;
-}
-
-.option.selected:after{
-    content:"✓";
-    position:absolute;
-    top:12px;
-    right:14px;
-    color:var(--yellow);
-    font-weight:900;
-}
-
-.match-controls{
-    padding:18px 30px;
-    border-top:1px solid var(--line);
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-}
-
-.control-btn{
-    padding:12px 20px;
-    border-radius:6px;
-    border:1px solid var(--line);
-    background:#202020;
-    color:#fff;
-    cursor:pointer;
-    font-weight:800;
-}
-
-.control-btn.next{
-    background:var(--yellow);
-    color:#000;
-    border-color:var(--yellow);
-}
-
-.control-btn:disabled{
-    opacity:.35;
-    cursor:not-allowed;
-}
-
-/* =========================
-   TRUST STRIP
-========================= */
-
-.trust-strip{
-    max-width:1050px;
-    margin:25px auto 0;
-    padding:0 20px;
-}
-
-.trust-grid{
+.budget-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:12px;
 }
 
-.trust-card{
-    background:#111;
-    border:1px solid var(--line);
-    border-radius:9px;
-    padding:17px;
+.budget{
+    position:relative;
 }
 
-.trust-card strong{
+.budget input{
+    position:absolute;
+    opacity:0;
+}
+
+.budget label{
     display:block;
-    font-size:14px;
+    padding:22px 15px;
+    text-align:center;
+    background:#0d0d0d;
+    border:1px solid #292929;
+    border-radius:8px;
+    cursor:pointer;
 }
 
-.trust-card span{
-    color:var(--muted);
-    font-size:12px;
+.budget input:checked + label{
+    border-color:var(--yellow);
+    background:#171500;
 }
 
-/* =========================
-   RESULTS
-========================= */
+.budget strong{
+    display:block;
+    color:var(--yellow);
+    font-size:17px;
+    margin-bottom:4px;
+}
+
+.budget span{
+    color:#777;
+    font-size:11px;
+}
+
+/* BUTTONS */
+
+.step-actions{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    margin-top:35px;
+    padding-top:25px;
+    border-top:1px solid var(--border);
+}
+
+.btn{
+    border:1px solid #444;
+    background:#161616;
+    color:white;
+    padding:13px 23px;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:900;
+}
+
+.btn:hover{
+    border-color:var(--yellow);
+}
+
+.btn.primary{
+    background:var(--yellow);
+    color:#000;
+    border-color:var(--yellow);
+}
+
+/* RESULTS */
 
 .results{
     display:none;
-    max-width:1150px;
-    margin:65px auto;
-    padding:0 20px;
 }
 
-.results.show{
-    display:block;
+.results-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:20px;
+    margin-bottom:25px;
 }
 
-.results-heading{
-    text-align:center;
-    margin-bottom:35px;
+.results-header h2{
+    font-size:30px;
 }
 
-.results-heading .eyebrow{
-    margin-bottom:10px;
+.results-header p{
+    color:#888;
+    font-size:13px;
 }
 
-.results-heading h2{
-    font-size:40px;
-    margin-bottom:8px;
+.results-count{
+    color:var(--yellow);
+    font-size:12px;
+    font-weight:900;
 }
 
-.results-heading p{
-    color:var(--muted);
-}
-
-.result-grid{
+.match-card{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.car-card{
-    background:#151515;
-    border:1px solid var(--line);
-    border-radius:12px;
+    grid-template-columns:280px 1fr;
+    background:var(--dark2);
+    border:1px solid var(--border);
+    border-radius:11px;
     overflow:hidden;
-    transition:.25s;
+    margin-bottom:15px;
 }
 
-.car-card:hover{
-    transform:translateY(-5px);
-    border-color:#555;
-}
-
-.car-image{
-    height:220px;
-    position:relative;
-    overflow:hidden;
-    background:#222;
-}
-
-.car-image img{
+.match-image{
     width:100%;
     height:100%;
+    min-height:240px;
     object-fit:cover;
-    display:block;
 }
 
-.match-percent{
-    position:absolute;
-    top:12px;
-    right:12px;
-    background:var(--yellow);
-    color:#000;
-    padding:7px 10px;
-    border-radius:5px;
-    font-weight:900;
+.match-content{
+    padding:24px;
+}
+
+.match-top{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.match-content h3{
+    font-size:22px;
+    margin-bottom:4px;
+}
+
+.match-sub{
+    color:#777;
     font-size:12px;
 }
 
-.car-body{
-    padding:20px;
-}
-
-.car-category{
+.match-score{
+    min-width:65px;
+    height:65px;
+    border-radius:50%;
+    border:3px solid var(--yellow);
+    display:flex;
+    align-items:center;
+    justify-content:center;
     color:var(--yellow);
-    text-transform:uppercase;
-    letter-spacing:1px;
-    font-size:10px;
+    font-size:18px;
     font-weight:900;
 }
 
-.car-body h3{
-    font-size:22px;
-    margin:5px 0;
-}
-
-.car-price{
+.match-price{
+    color:var(--yellow);
     font-size:19px;
     font-weight:900;
     margin:12px 0;
 }
 
-.car-specs{
-    display:grid;
-    grid-template-columns:1fr 1fr;
+.match-specs{
+    display:flex;
+    flex-wrap:wrap;
     gap:7px;
     margin-bottom:15px;
 }
 
 .spec{
-    background:#1e1e1e;
-    padding:8px;
-    border-radius:5px;
-    font-size:11px;
+    background:#202020;
+    border:1px solid #303030;
+    padding:6px 9px;
+    border-radius:4px;
+    font-size:10px;
     color:#bbb;
 }
 
-.spec strong{
-    display:block;
-    color:#fff;
+.match-reason{
+    color:#999;
     font-size:12px;
+    margin-bottom:17px;
 }
 
-.car-reason{
-    border-top:1px solid var(--line);
-    padding-top:13px;
-    margin-top:10px;
-    color:#bbb;
-    font-size:12px;
+.match-reason strong{
+    color:#ddd;
 }
 
-.card-buttons{
+.match-actions{
     display:flex;
-    gap:8px;
-    margin-top:17px;
+    gap:9px;
+    flex-wrap:wrap;
 }
 
-.card-buttons a,
-.card-buttons button{
-    flex:1;
-    text-align:center;
-    padding:11px 7px;
-    border-radius:5px;
-    font-size:12px;
+.small-btn{
+    padding:9px 13px;
+    border-radius:4px;
+    background:#151515;
+    border:1px solid #393939;
+    color:#ddd;
+    font-size:11px;
     font-weight:800;
-    cursor:pointer;
 }
 
-.view-btn{
+.small-btn.primary{
     background:var(--yellow);
     color:#000;
-    border:1px solid var(--yellow);
+    border-color:var(--yellow);
 }
 
-.compare-btn{
-    background:#252525;
-    border:1px solid #3a3a3a;
-    color:#fff;
+/* SUMMARY */
+
+.match-summary{
+    margin-top:30px;
+    background:
+        radial-gradient(circle at 90% 10%,rgba(245,196,0,.1),transparent 35%),
+        #111;
+    border:1px solid var(--border);
+    border-radius:11px;
+    padding:25px;
 }
 
-/* =========================
-   WHY SECTION
-========================= */
-
-.why{
-    background:#101010;
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-    padding:70px 20px;
-    margin-top:70px;
-}
-
-.why-inner{
-    max-width:1100px;
-    margin:auto;
-}
-
-.section-heading{
-    text-align:center;
-    margin-bottom:40px;
-}
-
-.section-heading h2{
-    font-size:38px;
-    margin-bottom:10px;
-}
-
-.section-heading p{
-    color:var(--muted);
-    max-width:650px;
-    margin:auto;
-}
-
-.why-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.why-card{
-    background:#171717;
-    border:1px solid var(--line);
-    border-radius:10px;
-    padding:23px;
-}
-
-.why-icon{
-    font-size:28px;
-    margin-bottom:12px;
-}
-
-.why-card h3{
-    font-size:16px;
-    margin-bottom:7px;
-}
-
-.why-card p{
-    color:#aaa;
-    font-size:12px;
-}
-
-/* =========================
-   MARKET CATEGORIES
-========================= */
-
-.categories{
-    max-width:1150px;
-    margin:70px auto;
-    padding:0 20px;
-}
-
-.category-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.category{
-    min-height:150px;
-    border:1px solid var(--line);
-    border-radius:10px;
-    overflow:hidden;
-    position:relative;
-    background:#111;
-}
-
-.category img{
-    width:100%;
-    height:150px;
-    object-fit:cover;
-    opacity:.55;
-    transition:.3s;
-}
-
-.category:hover img{
-    transform:scale(1.05);
-    opacity:.75;
-}
-
-.category-info{
-    position:absolute;
-    inset:0;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-    padding:17px;
-    background:linear-gradient(transparent,rgba(0,0,0,.95));
-}
-
-.category-info strong{
-    font-size:16px;
-}
-
-.category-info span{
-    color:#bbb;
-    font-size:11px;
-}
-
-/* =========================
-   SAFETY
-========================= */
-
-.safety{
-    background:#0b0b0b;
-    padding:70px 20px;
-}
-
-.safety-inner{
-    max-width:950px;
-    margin:auto;
-}
-
-.safety-box{
-    border:1px solid #3c3212;
-    background:rgba(255,196,0,.04);
-    border-radius:12px;
-    padding:30px;
-}
-
-.safety-box h2{
-    color:var(--yellow);
-    margin-bottom:10px;
-}
-
-.safety-box p{
-    color:#bbb;
-    font-size:14px;
-}
-
-.safety-list{
-    margin-top:20px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-}
-
-.safety-list div{
-    background:#151515;
-    border:1px solid var(--line);
-    padding:13px;
-    border-radius:6px;
-    color:#ddd;
-    font-size:13px;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-    background:#050505;
-    border-top:1px solid var(--line);
-    padding:45px 20px 25px;
-}
-
-.footer-inner{
-    max-width:1150px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:2fr 1fr 1fr 1fr;
-    gap:30px;
-}
-
-.footer-brand p{
-    color:#888;
-    font-size:13px;
-    max-width:350px;
-    margin-top:12px;
-}
-
-.footer-col h4{
-    font-size:13px;
-    margin-bottom:13px;
-    color:var(--yellow);
-}
-
-.footer-col a{
-    display:block;
-    color:#888;
-    font-size:12px;
+.match-summary h2{
+    font-size:20px;
     margin-bottom:8px;
 }
 
-.footer-col a:hover{
-    color:#fff;
+.match-summary > p{
+    color:#888;
+    font-size:12px;
+    margin-bottom:20px;
 }
 
-.copyright{
-    max-width:1150px;
-    margin:35px auto 0;
-    padding-top:20px;
-    border-top:1px solid #1b1b1b;
-    color:#666;
+.summary-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.summary-card{
+    background:#0b0b0b;
+    border:1px solid #292929;
+    border-radius:7px;
+    padding:17px;
+}
+
+.summary-card span{
+    display:block;
+    color:#777;
+    font-size:10px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:6px;
+}
+
+.summary-card strong{
+    display:block;
+    font-size:16px;
+    margin-bottom:4px;
+}
+
+.summary-card p{
+    color:#888;
     font-size:11px;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* NOTICE */
 
-@media(max-width:900px){
+.notice{
+    margin-top:25px;
+    border-left:3px solid var(--yellow);
+    background:#111;
+    padding:15px 17px;
+    color:#888;
+    font-size:11px;
+}
 
-    nav{
+/* FOOTER */
+
+footer{
+    background:#060606;
+    border-top:1px solid var(--border);
+    padding:45px 20px;
+}
+
+.footer-inner{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.footer-brand{
+    max-width:370px;
+}
+
+.footer-brand h3{
+    font-size:20px;
+    margin-bottom:7px;
+}
+
+.footer-brand h3 span{
+    color:var(--yellow);
+}
+
+.footer-brand p{
+    color:#666;
+    font-size:12px;
+}
+
+.footer-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.footer-links a{
+    color:#777;
+    font-size:12px;
+}
+
+.footer-links a:hover{
+    color:var(--yellow);
+}
+
+.copyright{
+    max-width:1100px;
+    margin:28px auto 0;
+    padding-top:18px;
+    border-top:1px solid #171717;
+    color:#444;
+    font-size:10px;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .navlinks{
         display:none;
         position:absolute;
         top:76px;
         left:0;
-        right:0;
-        background:#0c0c0c;
-        border-bottom:1px solid var(--line);
+        width:100%;
+        padding:18px 20px;
+        background:#090909;
+        border-bottom:1px solid var(--border);
         flex-direction:column;
-        padding:20px;
         align-items:stretch;
     }
 
-    nav.open{
+    .navlinks.show{
         display:flex;
     }
 
-    nav a{
-        padding:12px;
-        border-bottom:1px solid #202020;
-    }
-
-    .menu-btn{
+    .menu{
         display:block;
     }
 
-    .options{
+    .option-grid,
+    .budget-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .match-card{
         grid-template-columns:1fr;
     }
 
-    .result-grid{
-        grid-template-columns:1fr 1fr;
+    .match-image{
+        height:220px;
+        min-height:0;
     }
 
-    .why-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .category-grid{
-        grid-template-columns:1fr 1fr;
+    .summary-grid{
+        grid-template-columns:1fr;
     }
 
     .footer-inner{
-        grid-template-columns:1fr 1fr;
+        flex-direction:column;
     }
 }
 
-@media(max-width:600px){
+@media(max-width:550px){
 
     .hero{
-        min-height:520px;
+        padding:50px 18px;
     }
 
-    .hero h1{
-        font-size:46px;
-        letter-spacing:-2px;
+    .container{
+        padding:30px 15px 60px;
     }
 
-    .hero p{
-        font-size:15px;
+    .step{
+        padding:22px;
     }
 
-    .match-wrap{
-        margin-top:-35px;
-    }
-
-    .match-top,
-    .question,
-    .match-controls{
-        padding-left:20px;
-        padding-right:20px;
-    }
-
-    .question h3{
-        font-size:24px;
-    }
-
-    .trust-grid{
+    .option-grid,
+    .budget-grid{
         grid-template-columns:1fr;
     }
 
-    .result-grid{
-        grid-template-columns:1fr;
+    .step-actions{
+        flex-direction:column-reverse;
     }
 
-    .why-grid{
-        grid-template-columns:1fr;
+    .step-actions .btn{
+        width:100%;
     }
 
-    .category-grid{
-        grid-template-columns:1fr;
+    .results-header{
+        flex-direction:column;
+        align-items:flex-start;
     }
 
-    .safety-list{
-        grid-template-columns:1fr;
+    .match-content{
+        padding:18px;
     }
 
-    .footer-inner{
-        grid-template-columns:1fr;
+    .match-top{
+        align-items:flex-start;
     }
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
 
-<div class="navbar">
+<div class="nav">
 
 <a href="index.html" class="logo">
-    <div class="logo-mark">NT</div>
-    <div class="logo-text">
-        <strong>NAUZA TU</strong>
-        <span>DIGITAL MOTOR MARKET</span>
-    </div>
+NAUZA <span>TU</span>
+<small>DIGITAL MOTOR MARKET</small>
 </a>
 
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
+<button class="menu" onclick="toggleMenu()">☰</button>
 
-<nav id="mainNav">
+<nav class="navlinks" id="navLinks">
 
-    <a href="index.html">HOME</a>
-    <a href="cars.html">CARS FOR SALE</a>
-    <a href="car-match.html" class="active">CAR MATCH</a>
-    <a href="compare.html">COMPARE</a>
-    <a href="sell.html">SELL YOUR CAR</a>
-    <a href="financing.html">FINANCING</a>
-    <a href="resources.html">RESOURCES</a>
-    <a href="login.html">LOGIN</a>
-    <a href="sell.html" class="post-btn">+ POST YOUR CAR</a>
+<a href="index.html">HOME</a>
+<a href="cars.html">CARS FOR SALE</a>
+<a href="car-match.html" class="active">CAR MATCH</a>
+<a href="compare.html">COMPARE</a>
+<a href="sell.html">SELL YOUR CAR</a>
+<a href="financing.html">FINANCING</a>
+<a href="resources.html">RESOURCES</a>
+<a href="login.html">LOGIN / SIGN UP</a>
+<a href="sell.html" class="sell-btn">+ POST YOUR CAR</a>
 
 </nav>
 
@@ -945,376 +731,409 @@ footer{
 </header>
 
 
-<!-- =========================
-     HERO
-========================= -->
-
 <section class="hero">
 
-<div class="hero-content">
+<div class="hero-inner">
 
-<span class="eyebrow">NAUZA TU SMART MATCH</span>
+<div class="eyebrow">NAUZA TU CAR MATCH</div>
 
 <h1>
-    Don't just search for a car.
-    <span>Find your car.</span>
+Tell us what you need.<br>
+<span>We'll find your match.</span>
 </h1>
 
 <p>
-    Tell us how you live, what you can afford and what you need your vehicle
-    to do. NAUZA TU will narrow down the cars that make sense for you.
+Forget scrolling through hundreds of cars that don't suit you.
+Answer a few questions and NAUZA TU will rank vehicles according
+to your budget, lifestyle and intended use.
 </p>
-
-<div class="hero-buttons">
-
-<a href="#match" class="btn btn-primary">
-    FIND MY CAR →
-</a>
-
-<a href="cars.html" class="btn btn-secondary">
-    BROWSE ALL CARS
-</a>
-
-</div>
 
 </div>
 
 </section>
 
 
-<!-- =========================
-     MATCH TOOL
-========================= -->
+<main class="container">
 
-<section id="match" class="match-wrap">
-
-<div class="match-box">
+<section class="match-box">
 
 <div class="progress">
-    <div class="progress-bar" id="progressBar"></div>
+<div class="progress-bar" id="progressBar"></div>
 </div>
 
-<div class="match-top">
 
-<h2>Build Your Car Match</h2>
+<!-- STEP 1 -->
 
-<p>
-Answer a few simple questions. There are no wrong answers.
+<div class="step active" id="step1">
+
+<div class="step-number">01 / 05</div>
+
+<h2>What will you mainly use the car for?</h2>
+
+<p class="step-intro">
+Choose the option that best describes your everyday driving.
 </p>
 
-</div>
+<div class="option-grid">
 
-
-<!-- QUESTION 1 -->
-
-<div class="question active" data-question="1">
-
-<div class="question-number">QUESTION 01 OF 07</div>
-
-<h3>What is your realistic car budget?</h3>
-
-<p class="question-description">
-Choose the amount you are comfortable spending on the vehicle itself.
-</p>
-
-<div class="options">
-
-<div class="option" data-value="budget-low">
-<div class="option-icon">💰</div>
-<strong>Below KSh 700K</strong>
-<small>Budget-conscious buying</small>
-</div>
-
-<div class="option" data-value="budget-mid">
-<div class="option-icon">💵</div>
-<strong>KSh 700K – 1.5M</strong>
-<small>Popular mid-market range</small>
-</div>
-
-<div class="option" data-value="budget-high">
-<div class="option-icon">💳</div>
-<strong>KSh 1.5M – 3M</strong>
-<small>Higher specification vehicles</small>
-</div>
-
-<div class="option" data-value="budget-premium">
-<div class="option-icon">💎</div>
-<strong>KSh 3M+</strong>
-<small>Premium & executive vehicles</small>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- QUESTION 2 -->
-
-<div class="question" data-question="2">
-
-<div class="question-number">QUESTION 02 OF 07</div>
-
-<h3>What will you mainly use the car for?</h3>
-
-<p class="question-description">
-Think about what the vehicle will do most days.
-</p>
-
-<div class="options">
-
-<div class="option" data-value="city">
+<div class="option">
+<input type="radio" name="use" id="city" value="city">
+<label for="city">
 <div class="option-icon">🏙️</div>
-<strong>Daily Nairobi Driving</strong>
-<small>Work, errands, traffic and parking</small>
+<div class="option-title">Nairobi & City Driving</div>
+<div class="option-description">
+Daily commuting, errands and urban traffic.
+</div>
+</label>
 </div>
 
-<div class="option" data-value="family">
+<div class="option">
+<input type="radio" name="use" id="family" value="family">
+<label for="family">
 <div class="option-icon">👨‍👩‍👧‍👦</div>
-<strong>Family</strong>
-<small>Children, shopping and family trips</small>
+<div class="option-title">Family</div>
+<div class="option-description">
+School runs, family trips and passenger comfort.
+</div>
+</label>
 </div>
 
-<div class="option" data-value="business">
+<div class="option">
+<input type="radio" name="use" id="business" value="business">
+<label for="business">
 <div class="option-icon">💼</div>
-<strong>Business / Work</strong>
-<small>Carrying goods or working with the vehicle</small>
+<div class="option-title">Business</div>
+<div class="option-description">
+Work, deliveries, commercial and frequent use.
+</div>
+</label>
 </div>
 
-<div class="option" data-value="travel">
+<div class="option">
+<input type="radio" name="use" id="travel" value="travel">
+<label for="travel">
 <div class="option-icon">🛣️</div>
-<strong>Long Distance / Travel</strong>
-<small>Highways, upcountry and road trips</small>
+<div class="option-title">Long Distance</div>
+<div class="option-description">
+Highway travel and regular inter-city trips.
+</div>
+</label>
 </div>
 
+<div class="option">
+<input type="radio" name="use" id="executive" value="executive">
+<label for="executive">
+<div class="option-icon">⭐</div>
+<div class="option-title">Executive / Premium</div>
+<div class="option-description">
+Comfort, appearance and premium features.
+</div>
+</label>
 </div>
 
-</div>
-
-
-<!-- QUESTION 3 -->
-
-<div class="question" data-question="3">
-
-<div class="question-number">QUESTION 03 OF 07</div>
-
-<h3>How many people do you normally carry?</h3>
-
-<p class="question-description">
-Choose your normal requirement rather than the maximum.
-</p>
-
-<div class="options">
-
-<div class="option" data-value="1-2">
-<div class="option-icon">👤</div>
-<strong>1–2 People</strong>
-<small>Mostly myself or one passenger</small>
-</div>
-
-<div class="option" data-value="3-5">
-<div class="option-icon">👥</div>
-<strong>3–5 People</strong>
-<small>Small family or passengers</small>
-</div>
-
-<div class="option" data-value="6-7">
-<div class="option-icon">👨‍👩‍👧</div>
-<strong>6–7 People</strong>
-<small>Larger family or group</small>
-</div>
-
-<div class="option" data-value="8+">
-<div class="option-icon">🚐</div>
-<strong>8+ People</strong>
-<small>Maximum passenger space</small>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- QUESTION 4 -->
-
-<div class="question" data-question="4">
-
-<div class="question-number">QUESTION 04 OF 07</div>
-
-<h3>What matters most about fuel?</h3>
-
-<p class="question-description">
-Fuel economy can make a major difference in Nairobi traffic.
-</p>
-
-<div class="options">
-
-<div class="option" data-value="economy">
-<div class="option-icon">⛽</div>
-<strong>Very Important</strong>
-<small>I want to keep running costs low</small>
-</div>
-
-<div class="option" data-value="balanced">
-<div class="option-icon">⚖️</div>
-<strong>Balanced</strong>
-<small>Economy and performance together</small>
-</div>
-
-<div class="option" data-value="performance">
-<div class="option-icon">🚀</div>
-<strong>Performance First</strong>
-<small>Power matters more than economy</small>
-</div>
-
-<div class="option" data-value="diesel">
-<div class="option-icon">🔧</div>
-<strong>Prefer Diesel</strong>
-<small>Torque and long-distance use</small>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- QUESTION 5 -->
-
-<div class="question" data-question="5">
-
-<div class="question-number">QUESTION 05 OF 07</div>
-
-<h3>Which driving setup do you prefer?</h3>
-
-<p class="question-description">
-Choose what fits your normal driving.
-</p>
-
-<div class="options">
-
-<div class="option" data-value="automatic">
-<div class="option-icon">⚙️</div>
-<strong>Automatic / CVT</strong>
-<small>Easy in Nairobi traffic</small>
-</div>
-
-<div class="option" data-value="manual">
-<div class="option-icon">🕹️</div>
-<strong>Manual</strong>
-<small>I prefer manual control</small>
-</div>
-
-<div class="option" data-value="either">
-<div class="option-icon">🔄</div>
-<strong>Either</strong>
-<small>I'm open to both</small>
-</div>
-
-<div class="option" data-value="hybrid">
-<div class="option-icon">🔋</div>
-<strong>Hybrid</strong>
-<small>Fuel-saving technology interests me</small>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- QUESTION 6 -->
-
-<div class="question" data-question="6">
-
-<div class="question-number">QUESTION 06 OF 07</div>
-
-<h3>Where will you drive most?</h3>
-
-<p class="question-description">
-This helps us distinguish city cars from tougher road vehicles.
-</p>
-
-<div class="options">
-
-<div class="option" data-value="nairobi">
-<div class="option-icon">🏙️</div>
-<strong>Nairobi / Urban</strong>
-<small>Tarmac and city traffic</small>
-</div>
-
-<div class="option" data-value="mixed">
-<div class="option-icon">🛣️</div>
-<strong>Mixed Roads</strong>
-<small>City plus rural/upcountry roads</small>
-</div>
-
-<div class="option" data-value="rough">
-<div class="option-icon">🌄</div>
-<strong>Rough / Rural Roads</strong>
-<small>Ground clearance matters</small>
-</div>
-
-<div class="option" data-value="offroad">
-<div class="option-icon">🏔️</div>
-<strong>Off-road / 4×4</strong>
-<small>I need serious capability</small>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- QUESTION 7 -->
-
-<div class="question" data-question="7">
-
-<div class="question-number">QUESTION 07 OF 07</div>
-
-<h3>What type of car attracts you?</h3>
-
-<p class="question-description">
-This is about preference — not a restriction.
-</p>
-
-<div class="options">
-
-<div class="option" data-value="compact">
+<div class="option">
+<input type="radio" name="use" id="mixed" value="mixed">
+<label for="mixed">
 <div class="option-icon">🚗</div>
-<strong>Small & Easy</strong>
-<small>Compact hatchback</small>
+<div class="option-title">A Bit of Everything</div>
+<div class="option-description">
+City, family, travel and general everyday use.
+</div>
+</label>
 </div>
 
-<div class="option" data-value="sedan">
-<div class="option-icon">🚘</div>
-<strong>Saloon / Sedan</strong>
-<small>Comfortable and balanced</small>
 </div>
 
-<div class="option" data-value="suv">
-<div class="option-icon">🚙</div>
-<strong>SUV / Crossover</strong>
-<small>Space and road presence</small>
-</div>
-
-<div class="option" data-value="mpv">
-<div class="option-icon">🚐</div>
-<strong>Family / MPV</strong>
-<small>Maximum passenger practicality</small>
-</div>
-
+<div class="step-actions">
+<div></div>
+<button class="btn primary" onclick="nextStep(1)">CONTINUE →</button>
 </div>
 
 </div>
 
 
-<div class="match-controls">
+<!-- STEP 2 -->
 
-<button class="control-btn" id="backBtn" onclick="previousQuestion()" disabled>
-← BACK
-</button>
+<div class="step" id="step2">
 
-<button class="control-btn next" id="nextBtn" onclick="nextQuestion()" disabled>
-NEXT →
-</button>
+<div class="step-number">02 / 05</div>
+
+<h2>What is your budget?</h2>
+
+<p class="step-intro">
+Choose the approximate amount you want to spend on the vehicle.
+</p>
+
+<div class="budget-grid">
+
+<div class="budget">
+<input type="radio" name="budget" id="b1" value="500000">
+<label for="b1">
+<strong>Under 500K</strong>
+<span>Entry level</span>
+</label>
+</div>
+
+<div class="budget">
+<input type="radio" name="budget" id="b2" value="800000">
+<label for="b2">
+<strong>500K – 800K</strong>
+<span>Affordable</span>
+</label>
+</div>
+
+<div class="budget">
+<input type="radio" name="budget" id="b3" value="1200000">
+<label for="b3">
+<strong>800K – 1.2M</strong>
+<span>Mid-range</span>
+</label>
+</div>
+
+<div class="budget">
+<input type="radio" name="budget" id="b4" value="1600000">
+<label for="b4">
+<strong>1.2M – 1.6M</strong>
+<span>Upper mid-range</span>
+</label>
+</div>
+
+<div class="budget">
+<input type="radio" name="budget" id="b5" value="2200000">
+<label for="b5">
+<strong>1.6M – 2.2M</strong>
+<span>Premium</span>
+</label>
+</div>
+
+<div class="budget">
+<input type="radio" name="budget" id="b6" value="3000000">
+<label for="b6">
+<strong>2.2M+</strong>
+<span>Premium+</span>
+</label>
+</div>
+
+</div>
+
+<div class="step-actions">
+
+<button class="btn" onclick="previousStep(2)">← BACK</button>
+
+<button class="btn primary" onclick="nextStep(2)">CONTINUE →</button>
+
+</div>
+
+</div>
+
+
+<!-- STEP 3 -->
+
+<div class="step" id="step3">
+
+<div class="step-number">03 / 05</div>
+
+<h2>How important is fuel economy?</h2>
+
+<p class="step-intro">
+Tell us how much fuel consumption matters to you.
+</p>
+
+<div class="option-grid">
+
+<div class="option">
+<input type="radio" name="economy" id="eco1" value="10">
+<label for="eco1">
+<div class="option-icon">⛽</div>
+<div class="option-title">Very Important</div>
+<div class="option-description">
+I want to minimise fuel costs.
+</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="economy" id="eco2" value="7">
+<label for="eco2">
+<div class="option-icon">⚖️</div>
+<div class="option-title">Fairly Important</div>
+<div class="option-description">
+Good economy matters, but isn't everything.
+</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="economy" id="eco3" value="4">
+<label for="eco3">
+<div class="option-icon">🚀</div>
+<div class="option-title">Not a Major Concern</div>
+<div class="option-description">
+Performance or space can come first.
+</div>
+</label>
+</div>
+
+</div>
+
+<div class="step-actions">
+
+<button class="btn" onclick="previousStep(3)">← BACK</button>
+
+<button class="btn primary" onclick="nextStep(3)">CONTINUE →</button>
+
+</div>
+
+</div>
+
+
+<!-- STEP 4 -->
+
+<div class="step" id="step4">
+
+<div class="step-number">04 / 05</div>
+
+<h2>How many people do you normally carry?</h2>
+
+<p class="step-intro">
+Think about your regular passengers, not the occasional trip.
+</p>
+
+<div class="option-grid">
+
+<div class="option">
+<input type="radio" name="people" id="p1" value="5">
+<label for="p1">
+<div class="option-icon">👤</div>
+<div class="option-title">1–2 People</div>
+<div class="option-description">
+Mostly driving alone or with one passenger.
+</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="people" id="p2" value="7">
+<label for="p2">
+<div class="option-icon">👥</div>
+<div class="option-title">3–5 People</div>
+<div class="option-description">
+Small family or regular passengers.
+</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="people" id="p3" value="10">
+<label for="p3">
+<div class="option-icon">👨‍👩‍👧‍👦</div>
+<div class="option-title">6+ People</div>
+<div class="option-description">
+I need serious passenger capacity.
+</div>
+</label>
+</div>
+
+</div>
+
+<div class="step-actions">
+
+<button class="btn" onclick="previousStep(4)">← BACK</button>
+
+<button class="btn primary" onclick="nextStep(4)">CONTINUE →</button>
+
+</div>
+
+</div>
+
+
+<!-- STEP 5 -->
+
+<div class="step" id="step5">
+
+<div class="step-number">05 / 05</div>
+
+<h2>What matters most to you?</h2>
+
+<p class="step-intro">
+Pick the factor you would least like to compromise on.
+</p>
+
+<div class="option-grid">
+
+<div class="option">
+<input type="radio" name="priority" id="pr1" value="value">
+<label for="pr1">
+<div class="option-icon">💰</div>
+<div class="option-title">Value for Money</div>
+<div class="option-description">
+I want the strongest overall deal.
+</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="priority" id="pr2" value="reliability">
+<label for="pr2">
+<div class="option-icon">🛠️</div>
+<div class="option-title">Reliability</div>
+<div class="option-description">
+I want a dependable everyday vehicle.
+</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="priority" id="pr3" value="economy">
+<label for="pr3">
+<div class="option-icon">⛽</div>
+<div class="option-title">Low Running Costs</div>
+<div class="option-description">
+Fuel and ownership costs matter most.
+</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="priority" id="pr4" value="space">
+<label for="pr4">
+<div class="option-icon">📦</div>
+<div class="option-title">Space</div>
+<div class="option-description">
+I need room for people or luggage.
+</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="priority" id="pr5" value="comfort">
+<label for="pr5">
+<div class="option-icon">⭐</div>
+<div class="option-title">Comfort</div>
+<div class="option-description">
+Ride quality and comfort come first.
+</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="priority" id="pr6" value="business">
+<label for="pr6">
+<div class="option-icon">💼</div>
+<div class="option-title">Business Use</div>
+<div class="option-description">
+I need a practical working vehicle.
+</div>
+</label>
+</div>
+
+</div>
+
+<div class="step-actions">
+
+<button class="btn" onclick="previousStep(5)">← BACK</button>
+
+<button class="btn primary" onclick="findMatches()">FIND MY CARS →</button>
 
 </div>
 
@@ -1323,312 +1142,60 @@ NEXT →
 </section>
 
 
-<!-- =========================
-     TRUST STRIP
-========================= -->
-
-<section class="trust-strip">
-
-<div class="trust-grid">
-
-<div class="trust-card">
-<strong>🎯 Needs-Based Matching</strong>
-<span>Recommendations are based on how you actually use a car.</span>
-</div>
-
-<div class="trust-card">
-<strong>🇰🇪 Kenya-Focused</strong>
-<span>Built around vehicles commonly found in the Kenyan market.</span>
-</div>
-
-<div class="trust-card">
-<strong>🔍 Buyer First</strong>
-<span>We help you shortlist before you start negotiating.</span>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     RESULTS
-========================= -->
+<!-- RESULTS -->
 
 <section class="results" id="results">
 
-<div class="results-heading">
+<div class="results-header">
 
-<span class="eyebrow">YOUR NAUZA TU MATCH</span>
+<div>
+<div class="eyebrow">YOUR NAUZA TU MATCH</div>
+<h2>Cars that fit your profile</h2>
+<p id="resultDescription"></p>
+</div>
 
-<h2>Cars Worth Looking At</h2>
+<div class="results-count" id="resultsCount"></div>
+
+</div>
+
+<div id="matchResults"></div>
+
+<div class="match-summary">
+
+<h2>Why these matches?</h2>
 
 <p>
-These are starting recommendations based on the answers you gave us.
-Always inspect and verify an actual vehicle before buying.
+NAUZA TU ranks vehicles according to the preferences you entered.
+The score is a matching score, not a mechanical inspection or guarantee.
 </p>
 
-</div>
-
-<div class="result-grid" id="resultGrid"></div>
-
-</section>
-
-
-<!-- =========================
-     WHY NAUZA TU
-========================= -->
-
-<section class="why">
-
-<div class="why-inner">
-
-<div class="section-heading">
-
-<h2>Why Car Match?</h2>
-
-<p>
-Most car websites ask what car you want.
-NAUZA TU starts by asking what you actually need.
-</p>
+<div class="summary-grid" id="summaryGrid"></div>
 
 </div>
 
-<div class="why-grid">
-
-<div class="why-card">
-
-<div class="why-icon">🧠</div>
-
-<h3>Think Beyond Make & Model</h3>
-
-<p>
-A popular car is not automatically the right car for your lifestyle.
-</p>
-
+<div class="notice">
+<strong>Important:</strong> Vehicle prices and specifications shown on this
+demonstration page are sample marketplace data. Always inspect the actual
+vehicle, verify ownership and documentation, and confirm the seller's
+details before making payment.
 </div>
 
-<div class="why-card">
+<div style="text-align:center;margin-top:25px;">
 
-<div class="why-icon">💰</div>
+<button class="btn" onclick="restartMatch()">
+← START A NEW MATCH
+</button>
 
-<h3>Respect Your Budget</h3>
-
-<p>
-The tool begins with what you can realistically afford.
-</p>
-
-</div>
-
-<div class="why-card">
-
-<div class="why-icon">🏙️</div>
-
-<h3>Built For Kenyan Roads</h3>
-
-<p>
-Your driving environment affects the type of vehicle you should consider.
-</p>
-
-</div>
-
-<div class="why-card">
-
-<div class="why-icon">🔎</div>
-
-<h3>Shortlist Smarter</h3>
-
-<p>
-Instead of looking at hundreds of cars, start with a focused shortlist.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     MARKET CATEGORIES
-========================= -->
-
-<section class="categories">
-
-<div class="section-heading">
-
-<h2>What Kenyans Drive</h2>
-
-<p>
-Explore vehicle categories before you start your search.
-</p>
-
-</div>
-
-<div class="category-grid">
-
-<a href="cars.html?category=compact" class="category">
-
-<img
-src="https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg"
-alt="Toyota Vitz in Nairobi">
-
-<div class="category-info">
-<strong>City & Compact</strong>
-<span>Vitz • Demio • Fit • Note</span>
-</div>
-
-</a>
-
-
-<a href="cars.html?category=sedan" class="category">
-
-<img
-src="https://pbs.twimg.com/media/HEp95QQXoAA7kuH.jpg"
-alt="Toyota Premio">
-
-<div class="category-info">
-<strong>Sedans</strong>
-<span>Premio • Axio • Corolla</span>
-</div>
-
-</a>
-
-
-<a href="cars.html?category=suv" class="category">
-
-<img
-src="https://d20plav1k4kerc.cloudfront.net/media/uploads/assessment/prescreeningimage/9a99003a-81ad-48f5-bf4b-c7d949e4e509.jpeg"
-alt="Toyota Harrier in Nairobi">
-
-<div class="category-info">
-<strong>SUVs & Crossovers</strong>
-<span>Harrier • X-Trail • RAV4</span>
-</div>
-
-</a>
-
-
-<a href="cars.html?category=family" class="category">
-
-<img
-src="https://d20plav1k4kerc.cloudfront.net/media/uploads/assessment/prescreeningimage/2fe2c5fc-dc9b-4a28-b766-265dce54f4b4.jpeg"
-alt="Toyota Noah">
-
-<div class="category-info">
-<strong>Family & MPV</strong>
-<span>Noah • Voxy • Serena</span>
-</div>
-
-</a>
-
-
-<a href="cars.html?category=hybrid" class="category">
-
-<img
-src="https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/vehicles/thumbnails/IMG-20250827-WA0172.jpg"
-alt="Hybrid and modern vehicle in Kenya">
-
-<div class="category-info">
-<strong>Hybrid</strong>
-<span>Vezel • Prius • Aqua</span>
-</div>
-
-</a>
-
-
-<a href="cars.html?category=work" class="category">
-
-<img
-src="https://www.motorhub.co.ke/assets/images/CarPhotos/Large_195475067cfea203b52f831f2a3ecddb_10122024032419.JPG"
-alt="Toyota Probox">
-
-<div class="category-info">
-<strong>Work & Business</strong>
-<span>Probox • Hilux • D-Max</span>
-</div>
-
-</a>
-
-
-<a href="cars.html?category=4x4" class="category">
-
-<img
-src="https://d20plav1k4kerc.cloudfront.net/media/uploads/assessment/prescreeningimage/9a99003a-81ad-48f5-bf4b-c7d949e4e509.jpeg"
-alt="SUV suitable for Kenyan roads">
-
-<div class="category-info">
-<strong>4×4 & Adventure</strong>
-<span>Prado • Land Cruiser • Hilux</span>
-</div>
-
-</a>
-
-
-<a href="cars.html?make=nissan" class="category">
-
-<img
-src="https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/vehicles/thumbnails/IMG-20250827-WA0172.jpg"
-alt="Nissan vehicle in Kenya">
-
-<div class="category-info">
-<strong>Nissan</strong>
-<span>X-Trail • Note • Serena</span>
-</div>
-
+<a href="cars.html" class="btn primary">
+BROWSE ALL CARS
 </a>
 
 </div>
 
 </section>
 
+</main>
 
-<!-- =========================
-     SAFETY
-========================= -->
-
-<section class="safety">
-
-<div class="safety-inner">
-
-<div class="safety-box">
-
-<h2>Before You Buy Any Car</h2>
-
-<p>
-NAUZA TU helps you discover and compare vehicles, but a recommendation
-is not a guarantee that a particular vehicle is mechanically sound or
-legally clear. Inspect the actual vehicle and verify the seller and documents.
-</p>
-
-<div class="safety-list">
-
-<div>✓ Inspect the vehicle physically</div>
-
-<div>✓ Check the chassis/VIN</div>
-
-<div>✓ Verify ownership documents</div>
-
-<div>✓ Confirm the seller's identity</div>
-
-<div>✓ Test drive before paying</div>
-
-<div>✓ Use a trusted mechanic</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
@@ -1636,70 +1203,30 @@ legally clear. Inspect the actual vehicle and verify the seller and documents.
 
 <div class="footer-brand">
 
-<div class="logo">
-
-<div class="logo-mark">NT</div>
-
-<div class="logo-text">
-
-<strong>NAUZA TU</strong>
-
-<span>DIGITAL MOTOR MARKET</span>
-
-</div>
-
-</div>
+<h3>NAUZA <span>TU</span></h3>
 
 <p>
-A Kenyan digital motor marketplace built to make buying and selling
-vehicles simpler, smarter and more transparent.
+DIGITAL MOTOR MARKET — helping Kenyan buyers
+make better vehicle decisions.
 </p>
 
 </div>
 
+<div class="footer-links">
 
-<div class="footer-col">
-
-<h4>BUY</h4>
-
-<a href="cars.html">Cars For Sale</a>
-<a href="car-match.html">Car Match</a>
-<a href="compare.html">Compare Cars</a>
-<a href="financing.html">Financing</a>
-
-</div>
-
-
-<div class="footer-col">
-
-<h4>SELL</h4>
-
+<a href="cars.html">Cars for Sale</a>
+<a href="compare.html">Compare</a>
 <a href="sell.html">Sell Your Car</a>
-<a href="sell.html">Post A Listing</a>
-<a href="login.html">Seller Login</a>
-<a href="resources.html">Seller Resources</a>
-
-</div>
-
-
-<div class="footer-col">
-
-<h4>NAUZA TU</h4>
-
-<a href="about.html">About Us</a>
+<a href="financing.html">Financing</a>
+<a href="resources.html">Resources</a>
 <a href="contact.html">Contact</a>
-<a href="resources.html">Buyer Guide</a>
-<a href="privacy.html">Privacy</a>
 
 </div>
 
 </div>
-
 
 <div class="copyright">
-
 © 2026 NAUZA TU DIGITAL MOTOR MARKET. All rights reserved.
-
 </div>
 
 </footer>
@@ -1707,589 +1234,730 @@ vehicles simpler, smarter and more transparent.
 
 <script>
 
-/* =========================
-   MOBILE MENU
-========================= */
-
-function toggleMenu(){
-
-    document
-        .getElementById("mainNav")
-        .classList
-        .toggle("open");
-
-}
-
-
-/* =========================
-   CAR MATCH ENGINE
-========================= */
-
-let currentQuestion = 1;
-
-const totalQuestions = 7;
-
-const answers = {};
-
-
-/* Select option */
-
-document.querySelectorAll(".option").forEach(option => {
-
-    option.addEventListener("click", function(){
-
-        const question =
-            this.closest(".question");
-
-        question
-            .querySelectorAll(".option")
-            .forEach(item => {
-
-                item.classList.remove("selected");
-
-            });
-
-        this.classList.add("selected");
-
-        const questionNumber =
-            question.dataset.question;
-
-        answers[questionNumber] =
-            this.dataset.value;
-
-        document.getElementById("nextBtn")
-            .disabled = false;
-
-    });
-
-});
-
-
-/* Show question */
-
-function showQuestion(number){
-
-    document.querySelectorAll(".question")
-        .forEach(question => {
-
-            question.classList.remove("active");
-
-        });
-
-    const current =
-        document.querySelector(
-            `.question[data-question="${number}"]`
-        );
-
-    current.classList.add("active");
-
-    document.getElementById("backBtn")
-        .disabled = number === 1;
-
-    document.getElementById("nextBtn")
-        .innerText =
-        number === totalQuestions
-        ? "SHOW MY MATCH →"
-        : "NEXT →";
-
-    document.getElementById("nextBtn")
-        .disabled = !answers[number];
-
-    const progress =
-        (number / totalQuestions) * 100;
-
-    document.getElementById("progressBar")
-        .style.width = progress + "%";
-
-}
-
-
-/* Next */
-
-function nextQuestion(){
-
-    if(!answers[currentQuestion]){
-        return;
-    }
-
-    if(currentQuestion < totalQuestions){
-
-        currentQuestion++;
-
-        showQuestion(currentQuestion);
-
-    }else{
-
-        generateResults();
-
-    }
-
-}
-
-
-/* Back */
-
-function previousQuestion(){
-
-    if(currentQuestion > 1){
-
-        currentQuestion--;
-
-        showQuestion(currentQuestion);
-
-    }
-
-}
-
-
-/* =========================
-   MATCHING ENGINE
-========================= */
-
-function calculateMatch(car){
-
-    let score = 0;
-
-    let max = 0;
-
-    const budget = answers["1"];
-    const usage = answers["2"];
-    const people = answers["3"];
-    const fuel = answers["4"];
-    const transmission = answers["5"];
-    const road = answers["6"];
-    const type = answers["7"];
-
-
-    /* Budget */
-
-    max += 20;
-
-    if(car.budget.includes(budget)){
-        score += 20;
-    }
-
-
-    /* Usage */
-
-    max += 15;
-
-    if(car.usage.includes(usage)){
-        score += 15;
-    }
-
-
-    /* Passengers */
-
-    max += 15;
-
-    if(car.people.includes(people)){
-        score += 15;
-    }
-
-
-    /* Fuel */
-
-    max += 15;
-
-    if(car.fuel.includes(fuel)){
-        score += 15;
-    }
-
-
-    /* Transmission */
-
-    max += 10;
-
-    if(car.transmission.includes(transmission)){
-        score += 10;
-    }
-
-
-    /* Roads */
-
-    max += 15;
-
-    if(car.road.includes(road)){
-        score += 15;
-    }
-
-
-    /* Body type */
-
-    max += 10;
-
-    if(car.type.includes(type)){
-        score += 10;
-    }
-
-
-    return Math.round((score / max) * 100);
-
-}
-
-
-/* =========================
-   VEHICLE DATABASE
-========================= */
-
-const cars = [
+/*
+=========================================================
+NAUZA TU CAR MATCH ENGINE
+=========================================================
+
+This is a front-end demonstration engine.
+
+In production:
+- vehicle data should come from the marketplace database
+- matching should happen against live listings
+- seller/listing status should come from the backend
+- finance figures should be generated from current finance terms
+=========================================================
+*/
+
+
+const vehicles = [
 
 {
+id:"vitz",
 name:"Toyota Vitz",
-category:"City & Compact",
-price:"KSh 550K – 900K",
+year:2019,
+price:780000,
+mileage:"78,000 km",
+engine:"1.0L",
+fuel:"Petrol",
+transmission:"Automatic",
+body:"Hatchback",
+city:10,
+family:5,
+business:5,
+travel:6,
+executive:3,
+economy:10,
+space:4,
+comfort:6,
+reliability:9,
+value:10,
 image:"https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg",
-
-budget:["budget-low","budget-mid"],
-usage:["city"],
-people:["1-2","3-5"],
-fuel:["economy","balanced","hybrid"],
-transmission:["automatic","either"],
-road:["nairobi"],
-type:["compact"],
-
-specs:[
-["Engine","1.0–1.3L"],
-["Fuel","Petrol"],
-["Gearbox","CVT/Auto"],
-["Best For","City"]
-],
-
-reason:"Excellent starting point for someone who spends most of the week navigating Nairobi and wants a compact, easy-to-run car."
-
+reason:"Excellent profile for city driving, fuel-conscious buyers and affordable everyday use."
 },
 
-
 {
+id:"probox",
 name:"Toyota Probox",
-category:"Work & Business",
-price:"KSh 650K – 1.5M+",
+year:2019,
+price:1430000,
+mileage:"91,000 km",
+engine:"1.5L",
+fuel:"Petrol",
+transmission:"Automatic",
+body:"Wagon",
+city:8,
+family:6,
+business:10,
+travel:7,
+executive:3,
+economy:8,
+space:9,
+comfort:6,
+reliability:9,
+value:9,
 image:"https://www.motorhub.co.ke/assets/images/CarPhotos/Large_195475067cfea203b52f831f2a3ecddb_10122024032419.JPG",
-
-budget:["budget-low","budget-mid","budget-high"],
-usage:["business","travel"],
-people:["1-2","3-5"],
-fuel:["economy","balanced"],
-transmission:["automatic","manual","either"],
-road:["nairobi","mixed","rough"],
-type:["compact"],
-
-specs:[
-["Engine","1.3–1.5L"],
-["Fuel","Petrol"],
-["Gearbox","Auto/Manual"],
-["Best For","Business"]
-],
-
-reason:"A practical Kenyan workhorse with useful cargo space and a reputation for everyday practicality."
-
+reason:"A highly practical option where cargo space, daily use and business practicality matter."
 },
 
-
 {
+id:"premio",
 name:"Toyota Premio",
-category:"Sedan",
-price:"KSh 700K – 1.4M+",
+year:2018,
+price:1180000,
+mileage:"83,000 km",
+engine:"1.8L",
+fuel:"Petrol",
+transmission:"Automatic",
+body:"Sedan",
+city:8,
+family:8,
+business:7,
+travel:9,
+executive:8,
+economy:7,
+space:7,
+comfort:9,
+reliability:9,
+value:9,
 image:"https://pbs.twimg.com/media/HEp95QQXoAA7kuH.jpg",
-
-budget:["budget-mid","budget-high"],
-usage:["city","family","travel"],
-people:["3-5"],
-fuel:["economy","balanced"],
-transmission:["automatic","either"],
-road:["nairobi","mixed"],
-type:["sedan"],
-
-specs:[
-["Engine","1.5–2.0L"],
-["Fuel","Petrol"],
-["Gearbox","CVT/Auto"],
-["Best For","Comfort"]
-],
-
-reason:"A strong option for buyers who want a comfortable saloon that works for Nairobi, family use and highway trips."
-
+reason:"A balanced sedan offering comfort, refinement and practicality for everyday and longer-distance driving."
 },
 
-
 {
-name:"Honda Vezel",
-category:"Hybrid Crossover",
-price:"KSh 1.2M – 2.0M+",
+id:"vezel",
+name:"Honda Vezel Hybrid",
+year:2018,
+price:1380000,
+mileage:"76,000 km",
+engine:"1.5L Hybrid",
+fuel:"Hybrid",
+transmission:"Automatic",
+body:"SUV / Crossover",
+city:9,
+family:8,
+business:6,
+travel:8,
+executive:7,
+economy:10,
+space:7,
+comfort:8,
+reliability:8,
+value:9,
 image:"https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/vehicles/thumbnails/IMG-20250827-WA0172.jpg",
-
-budget:["budget-mid","budget-high"],
-usage:["city","family","travel"],
-people:["3-5","6-7"],
-fuel:["economy","hybrid","balanced"],
-transmission:["automatic","hybrid"],
-road:["nairobi","mixed"],
-type:["suv"],
-
-specs:[
-["Engine","1.5L"],
-["Fuel","Hybrid/Petrol"],
-["Gearbox","Hybrid/CVT"],
-["Best For","Efficiency"]
-],
-
-reason:"Good for buyers looking for SUV-like practicality while keeping fuel economy high."
-
+reason:"A strong match for buyers wanting SUV practicality with an economy-focused hybrid profile."
 },
 
-
 {
-name:"Toyota Harrier",
-category:"SUV & Crossover",
-price:"KSh 1.8M – 3.5M+",
-image:"https://d20plav1k4kerc.cloudfront.net/media/uploads/assessment/prescreeningimage/9a99003a-81ad-48f5-bf4b-c7d949e4e509.jpeg",
-
-budget:["budget-high","budget-premium"],
-usage:["family","travel","city"],
-people:["3-5","6-7"],
-fuel:["balanced","performance"],
-transmission:["automatic","hybrid"],
-road:["nairobi","mixed"],
-type:["suv"],
-
-specs:[
-["Engine","2.0–2.5L"],
-["Fuel","Petrol/Hybrid"],
-["Gearbox","CVT/Auto"],
-["Best For","Premium SUV"]
-],
-
-reason:"A strong match when comfort, premium feel, passenger space and SUV practicality matter."
-
-},
-
-
-{
-name:"Toyota Noah",
-category:"Family & MPV",
-price:"KSh 1.2M – 3M+",
-image:"https://d20plav1k4kerc.cloudfront.net/media/uploads/assessment/prescreeningimage/2fe2c5fc-dc9b-4a28-b766-265dce54f4b4.jpeg",
-
-budget:["budget-mid","budget-high","budget-premium"],
-usage:["family","travel"],
-people:["6-7","8+"],
-fuel:["economy","balanced"],
-transmission:["automatic","hybrid","either"],
-road:["nairobi","mixed"],
-type:["mpv"],
-
-specs:[
-["Engine","1.8–2.0L"],
-["Fuel","Petrol/Hybrid"],
-["Gearbox","CVT/Auto"],
-["Best For","Families"]
-],
-
-reason:"One of the strongest choices when passenger space and family practicality are more important than a small footprint."
-
-},
-
-
-{
+id:"xtrail",
 name:"Nissan X-Trail",
-category:"SUV",
-price:"KSh 1.2M – 3M+",
+year:2019,
+price:1850000,
+mileage:"88,000 km",
+engine:"2.0L",
+fuel:"Petrol",
+transmission:"Automatic",
+body:"SUV",
+city:6,
+family:10,
+business:6,
+travel:9,
+executive:7,
+economy:6,
+space:10,
+comfort:9,
+reliability:8,
+value:7,
 image:"https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/vehicles/thumbnails/IMG-20250827-WA0172.jpg",
-
-budget:["budget-mid","budget-high","budget-premium"],
-usage:["family","travel","city"],
-people:["3-5","6-7"],
-fuel:["balanced","performance"],
-transmission:["automatic","either"],
-road:["nairobi","mixed","rough"],
-type:["suv"],
-
-specs:[
-["Engine","2.0–2.5L"],
-["Fuel","Petrol"],
-["Gearbox","CVT/Auto"],
-["Best For","Mixed Use"]
-],
-
-reason:"A versatile SUV option for buyers who mix city driving with longer trips and less predictable roads."
-
+reason:"Excellent for buyers prioritising passenger space, family practicality and longer-distance comfort."
 },
 
+{
+id:"noah",
+name:"Toyota Noah",
+year:2019,
+price:2050000,
+mileage:"84,000 km",
+engine:"2.0L",
+fuel:"Petrol",
+transmission:"Automatic",
+body:"MPV",
+city:5,
+family:10,
+business:8,
+travel:9,
+executive:6,
+economy:6,
+space:10,
+comfort:9,
+reliability:9,
+value:8,
+image:"https://d20plav1k4kerc.cloudfront.net/media/uploads/assessment/prescreeningimage/2fe2c5fc-dc9b-4a28-b766-265dce54f4b4.jpeg",
+reason:"Designed around passenger capacity and practicality, making it a strong family or group-travel choice."
+},
 
 {
-name:"Toyota Land Cruiser Prado",
-category:"4×4 & Premium",
-price:"KSh 4M+",
+id:"harrier",
+name:"Toyota Harrier",
+year:2017,
+price:2380000,
+mileage:"96,000 km",
+engine:"2.0L",
+fuel:"Petrol",
+transmission:"Automatic",
+body:"SUV",
+city:7,
+family:9,
+business:7,
+travel:9,
+executive:10,
+economy:6,
+space:8,
+comfort:10,
+reliability:9,
+value:7,
 image:"https://d20plav1k4kerc.cloudfront.net/media/uploads/assessment/prescreeningimage/9a99003a-81ad-48f5-bf4b-c7d949e4e509.jpeg",
-
-budget:["budget-premium"],
-usage:["travel","family","business"],
-people:["3-5","6-7"],
-fuel:["performance","diesel"],
-transmission:["automatic","either"],
-road:["mixed","rough","offroad"],
-type:["suv"],
-
-specs:[
-["Engine","2.8–4.0L+"],
-["Fuel","Diesel/Petrol"],
-["Gearbox","Auto"],
-["Best For","4×4"]
-],
-
-reason:"For buyers who genuinely need capability, ground clearance, long-distance comfort and serious 4×4 ability."
-
+reason:"The strongest choice in this sample for buyers who put premium comfort and executive appeal first."
 }
 
 ];
 
 
-/* =========================
-   GENERATE RESULTS
-========================= */
-
-function generateResults(){
-
-    const results =
-        cars.map(car => {
-
-            return {
-                ...car,
-                match:calculateMatch(car)
-            };
-
-        });
-
-    results.sort((a,b) => b.match - a.match);
-
-    const topResults =
-        results.slice(0,3);
-
-    const grid =
-        document.getElementById("resultGrid");
-
-    grid.innerHTML = "";
-
-    topResults.forEach(car => {
-
-        const specsHTML =
-            car.specs.map(spec => {
-
-                return `
-                <div class="spec">
-                    ${spec[0]}
-                    <strong>${spec[1]}</strong>
-                </div>
-                `;
-
-            }).join("");
-
-        grid.innerHTML += `
-
-        <article class="car-card">
-
-            <div class="car-image">
-
-                <img
-                    src="${car.image}"
-                    alt="${car.name}"
-                    onerror="this.style.display='none'"
-                >
-
-                <div class="match-percent">
-                    ${car.match}% MATCH
-                </div>
-
-            </div>
-
-            <div class="car-body">
-
-                <div class="car-category">
-                    ${car.category}
-                </div>
-
-                <h3>${car.name}</h3>
-
-                <div class="car-price">
-                    ${car.price}
-                </div>
-
-                <div class="car-specs">
-                    ${specsHTML}
-                </div>
-
-                <div class="car-reason">
-                    <strong>Why it matched:</strong><br>
-                    ${car.reason}
-                </div>
-
-                <div class="card-buttons">
-
-                    <a
-                        href="cars.html?search=${encodeURIComponent(car.name)}"
-                        class="view-btn"
-                    >
-                        VIEW CARS
-                    </a>
-
-                    <button
-                        class="compare-btn"
-                        onclick="addCompare('${car.name}')"
-                    >
-                        COMPARE
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-        `;
-
-    });
+let currentStep=1;
 
 
-    document
-        .getElementById("results")
-        .classList
-        .add("show");
+function toggleMenu(){
 
-    document
-        .getElementById("results")
-        .scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-        });
+document.getElementById("navLinks").classList.toggle("show");
 
 }
 
 
-/* =========================
-   COMPARE
-========================= */
+function selectedValue(name){
 
-function addCompare(car){
+const item=document.querySelector(`input[name="${name}"]:checked`);
 
-    localStorage.setItem(
-        "nauzaTuCompare",
-        car
-    );
-
-    alert(
-        car +
-        " has been added to your comparison shortlist."
-    );
+return item ? item.value : null;
 
 }
 
 
-/* =========================
-   INITIALIZE
-========================= */
+function validateStep(step){
 
-showQuestion(1);
+let value=null;
+
+if(step===1) value=selectedValue("use");
+
+if(step===2) value=selectedValue("budget");
+
+if(step===3) value=selectedValue("economy");
+
+if(step===4) value=selectedValue("people");
+
+if(!value){
+
+alert("Please select an option before continuing.");
+
+return false;
+
+}
+
+return true;
+
+}
+
+
+function showStep(step){
+
+document.querySelectorAll(".step").forEach(s=>{
+s.classList.remove("active");
+});
+
+document.getElementById("step"+step).classList.add("active");
+
+document.getElementById("progressBar").style.width=
+(step/5*100)+"%";
+
+currentStep=step;
+
+window.scrollTo({
+top:document.querySelector(".match-box").offsetTop-90,
+behavior:"smooth"
+});
+
+}
+
+
+function nextStep(step){
+
+if(!validateStep(step)) return;
+
+showStep(step+1);
+
+}
+
+
+function previousStep(step){
+
+showStep(step-1);
+
+}
+
+
+function scoreVehicle(vehicle,profile){
+
+let score=0;
+
+let maxScore=0;
+
+
+/* PRIMARY USE */
+
+if(profile.use==="city"){
+
+score+=vehicle.city*5;
+maxScore+=10*5;
+
+}
+
+else if(profile.use==="family"){
+
+score+=vehicle.family*5;
+maxScore+=10*5;
+
+}
+
+else if(profile.use==="business"){
+
+score+=vehicle.business*5;
+maxScore+=10*5;
+
+}
+
+else if(profile.use==="travel"){
+
+score+=vehicle.travel*5;
+maxScore+=10*5;
+
+}
+
+else if(profile.use==="executive"){
+
+score+=vehicle.executive*5;
+maxScore+=10*5;
+
+}
+
+else{
+
+score+=(
+vehicle.city+
+vehicle.family+
+vehicle.travel+
+vehicle.reliability
+)/4*5;
+
+maxScore+=10*5;
+
+}
+
+
+/* FUEL ECONOMY */
+
+const economyWeight=Number(profile.economy);
+
+score+=(vehicle.economy/10)*economyWeight;
+
+maxScore+=economyWeight;
+
+
+/* PASSENGERS */
+
+const people=Number(profile.people);
+
+if(people>=10){
+
+score+=(vehicle.space/10)*10;
+maxScore+=10;
+
+}else if(people>=7){
+
+score+=(vehicle.space/10)*7;
+maxScore+=7;
+
+}else{
+
+score+=((11-vehicle.space)/10)*5;
+maxScore+=5;
+
+}
+
+
+/* PRIORITY */
+
+let priorityScore=0;
+
+if(profile.priority==="value")
+priorityScore=vehicle.value;
+
+if(profile.priority==="reliability")
+priorityScore=vehicle.reliability;
+
+if(profile.priority==="economy")
+priorityScore=vehicle.economy;
+
+if(profile.priority==="space")
+priorityScore=vehicle.space;
+
+if(profile.priority==="comfort")
+priorityScore=vehicle.comfort;
+
+if(profile.priority==="business")
+priorityScore=vehicle.business;
+
+score+=priorityScore*2;
+
+maxScore+=20;
+
+
+return Math.round((score/maxScore)*100);
+
+}
+
+
+function getBudgetRange(value){
+
+value=Number(value);
+
+if(value===500000)
+return {min:0,max:500000,text:"Under KES 500,000"};
+
+if(value===800000)
+return {min:500000,max:800000,text:"KES 500,000 – 800,000"};
+
+if(value===1200000)
+return {min:800000,max:1200000,text:"KES 800,000 – 1.2M"};
+
+if(value===1600000)
+return {min:1200000,max:1600000,text:"KES 1.2M – 1.6M"};
+
+if(value===2200000)
+return {min:1600000,max:2200000,text:"KES 1.6M – 2.2M"};
+
+return {min:2200000,max:10000000,text:"KES 2.2M+"};
+
+}
+
+
+function findMatches(){
+
+const use=selectedValue("use");
+const budget=selectedValue("budget");
+const economy=selectedValue("economy");
+const people=selectedValue("people");
+const priority=selectedValue("priority");
+
+
+if(!use || !budget || !economy || !people || !priority){
+
+alert("Please complete all five questions.");
+
+return;
+
+}
+
+
+const profile={
+use,
+budget,
+economy,
+people,
+priority
+};
+
+
+const range=getBudgetRange(budget);
+
+
+let ranked=vehicles.map(vehicle=>{
+
+let score=scoreVehicle(vehicle,profile);
+
+let budgetBonus=0;
+
+
+/*
+Cars inside the selected budget receive a boost.
+Cars slightly above the budget are still allowed,
+because real marketplace buyers sometimes stretch
+their budget.
+*/
+
+if(vehicle.price>=range.min && vehicle.price<=range.max){
+
+budgetBonus=12;
+
+}
+
+else if(vehicle.price<=range.max*1.12){
+
+budgetBonus=5;
+
+}
+
+else{
+
+budgetBonus=-10;
+
+}
+
+
+return{
+vehicle,
+score:Math.max(1,Math.min(99,score+budgetBonus))
+};
+
+});
+
+
+ranked.sort((a,b)=>b.score-a.score);
+
+
+/*
+Keep strongest three matches.
+*/
+
+ranked=ranked.slice(0,3);
+
+
+renderResults(ranked,profile,range);
+
+}
+
+
+function renderResults(ranked,profile,range){
+
+document.querySelector(".match-box").style.display="none";
+
+const results=document.getElementById("results");
+
+results.style.display="block";
+
+document.getElementById("resultDescription").textContent=
+`${range.text} • ${getUseText(profile.use)} • matched to your priorities`;
+
+
+document.getElementById("resultsCount").textContent=
+`${ranked.length} MATCHES FOUND`;
+
+
+const container=document.getElementById("matchResults");
+
+container.innerHTML="";
+
+
+ranked.forEach((item,index)=>{
+
+const c=item.vehicle;
+
+const card=document.createElement("article");
+
+card.className="match-card";
+
+
+card.innerHTML=`
+
+<img
+class="match-image"
+src="${c.image}"
+alt="${c.name}"
+onerror="this.style.display='none'"
+>
+
+<div class="match-content">
+
+<div class="match-top">
+
+<div>
+
+<h3>${c.name}</h3>
+
+<div class="match-sub">
+${c.year} • ${c.body} • ${c.origin || "Marketplace listing"}
+</div>
+
+</div>
+
+<div class="match-score">
+${item.score}
+</div>
+
+</div>
+
+
+<div class="match-price">
+KES ${c.price.toLocaleString("en-KE")}
+</div>
+
+
+<div class="match-specs">
+
+<span class="spec">${c.mileage}</span>
+<span class="spec">${c.engine}</span>
+<span class="spec">${c.fuel}</span>
+<span class="spec">${c.transmission}</span>
+<span class="spec">${c.body}</span>
+
+</div>
+
+
+<div class="match-reason">
+
+<strong>
+${index===0 ? "BEST MATCH — " : ""}
+</strong>
+
+${c.reason}
+
+</div>
+
+
+<div class="match-actions">
+
+<a href="car-details.html?id=${c.id}"
+class="small-btn primary">
+VIEW VEHICLE
+</a>
+
+<a href="compare.html"
+class="small-btn">
+COMPARE
+</a>
+
+<a href="contact.html"
+class="small-btn">
+ASK ABOUT THIS CAR
+</a>
+
+</div>
+
+</div>
+`;
+
+
+container.appendChild(card);
+
+});
+
+
+renderSummary(ranked,profile,range);
+
+}
+
+
+function renderSummary(ranked,profile,range){
+
+const winner=ranked[0].vehicle;
+
+const summary=document.getElementById("summaryGrid");
+
+
+let priorityText="overall value";
+
+if(profile.priority==="reliability")
+priorityText="reliability";
+
+if(profile.priority==="economy")
+priorityText="running costs";
+
+if(profile.priority==="space")
+priorityText="space";
+
+if(profile.priority==="comfort")
+priorityText="comfort";
+
+if(profile.priority==="business")
+priorityText="business practicality";
+
+
+summary.innerHTML=`
+
+<div class="summary-card">
+
+<span>Your main use</span>
+
+<strong>${getUseText(profile.use)}</strong>
+
+<p>
+The ranking gives extra weight to vehicles
+that fit this type of driving.
+</p>
+
+</div>
+
+
+<div class="summary-card">
+
+<span>Your priority</span>
+
+<strong>${priorityText}</strong>
+
+<p>
+Vehicles scoring higher in this area
+received a stronger match.
+</p>
+
+</div>
+
+
+<div class="summary-card">
+
+<span>Your strongest match</span>
+
+<strong>${winner.name}</strong>
+
+<p>
+${winner.reason}
+</p>
+
+</div>
+
+`;
+
+}
+
+
+function getUseText(use){
+
+const map={
+
+city:"Nairobi & City Driving",
+family:"Family",
+business:"Business",
+travel:"Long Distance",
+executive:"Executive / Premium",
+mixed:"Mixed Everyday Use"
+
+};
+
+return map[use] || "Everyday Use";
+
+}
+
+
+function restartMatch(){
+
+document.querySelectorAll("input[type=radio]").forEach(input=>{
+input.checked=false;
+});
+
+document.getElementById("results").style.display="none";
+
+document.querySelector(".match-box").style.display="block";
+
+showStep(1);
+
+}
 
 </script>
 
