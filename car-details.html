@@ -1,0 +1,3759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Toyota Vitz | Nauza Tu Digital Motor Market</title>
+
+<meta name="description"
+content="View detailed vehicle information, pricing, specifications, financing and viewing options on Nauza Tu Digital Motor Market.">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --black:#050607;
+    --dark:#090c0f;
+    --panel:#10151a;
+    --panel2:#151b21;
+    --yellow:#ffd000;
+    --yellow2:#e9b900;
+    --white:#ffffff;
+    --muted:#8f99a2;
+    --muted2:#68727b;
+    --border:#2a343d;
+    --green:#25d366;
+    --red:#ef4444;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--black);
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+input,
+select,
+textarea{
+    font-family:inherit;
+}
+
+
+/* =====================================
+HEADER
+===================================== */
+
+header{
+
+    height:78px;
+
+    background:#050607;
+
+    border-bottom:1px solid #20272d;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:0 4%;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+}
+
+.logo{
+
+    min-width:245px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.logo-mark{
+
+    width:52px;
+
+    height:38px;
+
+    position:relative;
+
+}
+
+.logo-mark:before{
+
+    content:"";
+
+    position:absolute;
+
+    width:50px;
+
+    height:18px;
+
+    left:0;
+
+    top:7px;
+
+    border-top:5px solid var(--yellow);
+
+    border-radius:50%;
+
+    transform:skew(-25deg);
+
+}
+
+.logo-mark:after{
+
+    content:"";
+
+    position:absolute;
+
+    width:36px;
+
+    height:7px;
+
+    background:var(--yellow);
+
+    left:10px;
+
+    top:21px;
+
+    transform:skew(-25deg);
+
+}
+
+.logo-text strong{
+
+    display:block;
+
+    font-size:25px;
+
+    line-height:23px;
+
+    letter-spacing:1px;
+
+}
+
+.logo-text strong span{
+
+    color:var(--yellow);
+
+}
+
+.logo-text small{
+
+    color:#858f97;
+
+    font-size:8px;
+
+    letter-spacing:2.5px;
+
+}
+
+nav{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:22px;
+
+}
+
+nav a{
+
+    color:#c7cdd2;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    padding:30px 0 26px;
+
+    border-bottom:3px solid transparent;
+
+}
+
+nav a:hover,
+nav a.active{
+
+    color:var(--yellow);
+
+    border-bottom-color:var(--yellow);
+
+}
+
+.header-actions{
+
+    display:flex;
+
+    gap:8px;
+
+}
+
+.login{
+
+    height:38px;
+
+    padding:0 14px;
+
+    background:transparent;
+
+    border:1px solid #454e57;
+
+    border-radius:5px;
+
+    color:white;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+}
+
+.post{
+
+    height:38px;
+
+    padding:0 15px;
+
+    display:flex;
+
+    align-items:center;
+
+    background:var(--yellow);
+
+    color:#050607;
+
+    border-radius:5px;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+}
+
+
+/* =====================================
+BREADCRUMB
+===================================== */
+
+.breadcrumb{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:22px 4% 10px;
+
+    color:#727c84;
+
+    font-size:10px;
+
+}
+
+.breadcrumb span{
+
+    color:var(--yellow);
+
+}
+
+
+/* =====================================
+VEHICLE TOP
+===================================== */
+
+.vehicle-top{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:10px 4% 30px;
+
+}
+
+.vehicle-heading{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-end;
+
+    gap:30px;
+
+}
+
+.vehicle-heading h1{
+
+    font-size:38px;
+
+    margin-bottom:8px;
+
+}
+
+.vehicle-heading h1 span{
+
+    color:var(--yellow);
+
+}
+
+.vehicle-sub{
+
+    color:var(--muted);
+
+    font-size:11px;
+
+}
+
+.vehicle-price{
+
+    text-align:right;
+
+}
+
+.vehicle-price small{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    margin-bottom:4px;
+
+}
+
+.vehicle-price strong{
+
+    font-size:29px;
+
+    color:var(--yellow);
+
+}
+
+
+/* =====================================
+MAIN VEHICLE
+===================================== */
+
+.vehicle-main{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:0 4% 40px;
+
+}
+
+.vehicle-layout{
+
+    display:grid;
+
+    grid-template-columns:1.45fr .75fr;
+
+    gap:22px;
+
+}
+
+
+/* =====================================
+GALLERY
+===================================== */
+
+.gallery{
+
+    background:#0b0f13;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    overflow:hidden;
+
+}
+
+.main-photo{
+
+    height:480px;
+
+    position:relative;
+
+    background:#11171c;
+
+}
+
+.main-photo img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.photo-label{
+
+    position:absolute;
+
+    top:15px;
+
+    left:15px;
+
+    background:var(--yellow);
+
+    color:#050607;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    padding:7px 10px;
+
+    border-radius:3px;
+
+}
+
+.photo-counter{
+
+    position:absolute;
+
+    right:15px;
+
+    bottom:15px;
+
+    background:rgba(0,0,0,.75);
+
+    padding:8px 11px;
+
+    border-radius:4px;
+
+    font-size:10px;
+
+}
+
+.thumbnails{
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    gap:6px;
+
+    padding:8px;
+
+}
+
+.thumb{
+
+    height:75px;
+
+    border:2px solid transparent;
+
+    border-radius:4px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+}
+
+.thumb.active{
+
+    border-color:var(--yellow);
+
+}
+
+.thumb img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+
+/* =====================================
+SIDE BUY PANEL
+===================================== */
+
+.buy-panel{
+
+    background:#10151a;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    padding:22px;
+
+    height:max-content;
+
+    position:sticky;
+
+    top:100px;
+
+}
+
+.score{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding-bottom:18px;
+
+    border-bottom:1px solid #273038;
+
+}
+
+.score-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.score-number{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:50%;
+
+    border:4px solid var(--yellow);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:var(--yellow);
+
+    font-size:17px;
+
+    font-weight:bold;
+
+}
+
+.score h3{
+
+    font-size:12px;
+
+    margin-bottom:4px;
+
+}
+
+.score p{
+
+    color:var(--muted);
+
+    font-size:9px;
+
+}
+
+.verified{
+
+    color:#5ee394;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+}
+
+.quick-specs{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:1px;
+
+    margin:18px 0;
+
+    background:#273038;
+
+}
+
+.quick-spec{
+
+    background:#11171c;
+
+    padding:12px;
+
+}
+
+.quick-spec small{
+
+    display:block;
+
+    color:var(--muted2);
+
+    font-size:8px;
+
+    margin-bottom:5px;
+
+}
+
+.quick-spec strong{
+
+    font-size:10px;
+
+}
+
+.buy-button{
+
+    width:100%;
+
+    height:46px;
+
+    background:var(--yellow);
+
+    border:0;
+
+    border-radius:5px;
+
+    color:#050607;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:8px;
+
+}
+
+.whatsapp-button{
+
+    width:100%;
+
+    height:44px;
+
+    background:var(--green);
+
+    border:0;
+
+    border-radius:5px;
+
+    color:white;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+.secondary-buttons{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:7px;
+
+    margin-top:8px;
+
+}
+
+.secondary-buttons button{
+
+    height:38px;
+
+    background:#171d23;
+
+    border:1px solid #3b454e;
+
+    color:white;
+
+    border-radius:4px;
+
+    font-size:9px;
+
+    cursor:pointer;
+
+}
+
+.seller-box{
+
+    margin-top:18px;
+
+    padding-top:18px;
+
+    border-top:1px solid #273038;
+
+}
+
+.seller-box h3{
+
+    font-size:11px;
+
+    margin-bottom:10px;
+
+}
+
+.seller-name{
+
+    font-weight:bold;
+
+    font-size:12px;
+
+}
+
+.seller-location{
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    margin-top:4px;
+
+}
+
+
+/* =====================================
+CONTENT
+===================================== */
+
+.content{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:0 4% 50px;
+
+}
+
+.content-layout{
+
+    display:grid;
+
+    grid-template-columns:1.45fr .75fr;
+
+    gap:22px;
+
+}
+
+.section{
+
+    background:#10151a;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    padding:25px;
+
+    margin-bottom:18px;
+
+}
+
+.section h2{
+
+    font-size:16px;
+
+    margin-bottom:18px;
+
+}
+
+.section h2 span{
+
+    color:var(--yellow);
+
+}
+
+
+/* =====================================
+VEHICLE PASSPORT
+===================================== */
+
+.passport{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:1px;
+
+    background:#303942;
+
+}
+
+.passport-item{
+
+    background:#141a20;
+
+    padding:15px;
+
+}
+
+.passport-item small{
+
+    display:block;
+
+    color:#78838c;
+
+    font-size:8px;
+
+    margin-bottom:6px;
+
+}
+
+.passport-item strong{
+
+    font-size:11px;
+
+}
+
+
+/* =====================================
+CONDITION
+===================================== */
+
+.condition{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:15px;
+
+}
+
+.condition-item{
+
+    background:#151b21;
+
+    padding:15px;
+
+    border-radius:5px;
+
+}
+
+.condition-head{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:10px;
+
+    margin-bottom:9px;
+
+}
+
+.bar{
+
+    height:6px;
+
+    background:#29323a;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+}
+
+.bar span{
+
+    display:block;
+
+    height:100%;
+
+    background:var(--yellow);
+
+}
+
+
+/* =====================================
+FEATURES
+===================================== */
+
+.features{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:9px;
+
+}
+
+.feature{
+
+    background:#151b21;
+
+    padding:11px;
+
+    color:#b5bdc3;
+
+    font-size:9px;
+
+    border:1px solid #242d35;
+
+    border-radius:4px;
+
+}
+
+
+/* =====================================
+FINANCE
+===================================== */
+
+.finance{
+
+    background:
+        radial-gradient(
+            circle at 100% 0,
+            rgba(255,208,0,.12),
+            transparent 40%
+        ),
+        #10151a;
+
+}
+
+.finance h2{
+
+    margin-bottom:5px;
+
+}
+
+.finance-intro{
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    line-height:1.6;
+
+    margin-bottom:18px;
+
+}
+
+.finance-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:12px;
+
+}
+
+.finance label{
+
+    display:block;
+
+    color:#8d969e;
+
+    font-size:9px;
+
+    margin-bottom:5px;
+
+}
+
+.finance input{
+
+    width:100%;
+
+    height:40px;
+
+    background:#171d23;
+
+    border:1px solid #343e47;
+
+    color:white;
+
+    padding:0 10px;
+
+    border-radius:4px;
+
+}
+
+.monthly{
+
+    margin-top:15px;
+
+    background:#171d23;
+
+    border:1px solid #39434c;
+
+    padding:18px;
+
+    text-align:center;
+
+}
+
+.monthly small{
+
+    display:block;
+
+    color:#8b959d;
+
+    font-size:9px;
+
+}
+
+.monthly strong{
+
+    display:block;
+
+    color:var(--yellow);
+
+    font-size:25px;
+
+    margin-top:5px;
+
+}
+
+
+/* =====================================
+RIGHT SIDE BOXES
+===================================== */
+
+.mini-box{
+
+    background:#10151a;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    padding:20px;
+
+    margin-bottom:18px;
+
+}
+
+.mini-box h3{
+
+    font-size:12px;
+
+    margin-bottom:14px;
+
+}
+
+.mini-box p{
+
+    color:#8f99a2;
+
+    font-size:9px;
+
+    line-height:1.7;
+
+}
+
+.action{
+
+    width:100%;
+
+    height:42px;
+
+    background:#171d23;
+
+    border:1px solid #3c464f;
+
+    color:white;
+
+    border-radius:4px;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-top:8px;
+
+}
+
+.action:hover{
+
+    border-color:var(--yellow);
+
+    color:var(--yellow);
+
+}
+
+
+/* =====================================
+BUYER QUESTIONS
+===================================== */
+
+.questions{
+
+    display:grid;
+
+    gap:8px;
+
+}
+
+.question{
+
+    display:flex;
+
+    gap:10px;
+
+    padding:12px;
+
+    background:#151b21;
+
+    border-radius:4px;
+
+}
+
+.question-icon{
+
+    color:var(--yellow);
+
+    font-size:15px;
+
+}
+
+.question h4{
+
+    font-size:10px;
+
+    margin-bottom:4px;
+
+}
+
+.question p{
+
+    color:#818b94;
+
+    font-size:9px;
+
+    line-height:1.5;
+
+}
+
+
+/* =====================================
+SIMILAR CARS
+===================================== */
+
+.similar-section{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:0 4% 60px;
+
+}
+
+.similar-section h2{
+
+    font-size:20px;
+
+    margin-bottom:18px;
+
+}
+
+.similar-section h2 span{
+
+    color:var(--yellow);
+
+}
+
+.similar{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:14px;
+
+}
+
+.similar-card{
+
+    background:#10151a;
+
+    border:1px solid var(--border);
+
+    border-radius:7px;
+
+    overflow:hidden;
+
+}
+
+.similar-image{
+
+    height:150px;
+
+}
+
+.similar-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.similar-content{
+
+    padding:12px;
+
+}
+
+.similar-content h3{
+
+    font-size:11px;
+
+    margin-bottom:5px;
+
+}
+
+.similar-content p{
+
+    color:#7e8891;
+
+    font-size:8px;
+
+}
+
+.similar-price{
+
+    color:var(--yellow);
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    margin-top:8px;
+
+}
+
+
+/* =====================================
+CATEGORIES
+===================================== */
+
+.categories{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:0 4% 60px;
+
+}
+
+.categories h2{
+
+    font-size:20px;
+
+    margin-bottom:6px;
+
+}
+
+.categories-intro{
+
+    color:#7f8991;
+
+    font-size:10px;
+
+    margin-bottom:20px;
+
+}
+
+.category-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:14px;
+
+}
+
+.category{
+
+    height:190px;
+
+    border-radius:7px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    border:1px solid #2b343d;
+
+}
+
+.category img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.3s;
+
+}
+
+.category:hover img{
+
+    transform:scale(1.06);
+
+}
+
+.category-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            transparent 25%,
+            rgba(0,0,0,.9)
+        );
+
+    display:flex;
+
+    align-items:flex-end;
+
+    padding:15px;
+
+}
+
+.category-overlay h3{
+
+    font-size:14px;
+
+}
+
+.category-overlay p{
+
+    color:#a7afb5;
+
+    font-size:8px;
+
+    margin-top:4px;
+
+}
+
+
+/* =====================================
+FOOTER
+===================================== */
+
+footer{
+
+    background:#07090b;
+
+    border-top:1px solid #252d34;
+
+    padding:45px 4% 20px;
+
+}
+
+.footer-grid{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr 1fr 1fr;
+
+    gap:40px;
+
+}
+
+.footer-col h3{
+
+    font-size:10px;
+
+    margin-bottom:14px;
+
+}
+
+.footer-col a{
+
+    display:block;
+
+    color:#7f8991;
+
+    font-size:9px;
+
+    margin-bottom:10px;
+
+}
+
+.footer-col a:hover{
+
+    color:var(--yellow);
+
+}
+
+.footer-brand p{
+
+    max-width:360px;
+
+    color:#7e8890;
+
+    font-size:10px;
+
+    line-height:1.7;
+
+    margin-top:14px;
+
+}
+
+.footer-bottom{
+
+    max-width:1400px;
+
+    margin:35px auto 0;
+
+    padding-top:18px;
+
+    border-top:1px solid #222a30;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#5f6870;
+
+    font-size:8px;
+
+}
+
+
+/* =====================================
+FLOATING
+===================================== */
+
+.floating{
+
+    position:fixed;
+
+    right:18px;
+
+    bottom:18px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+    z-index:900;
+
+}
+
+.float{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.5);
+
+}
+
+.float-whatsapp{
+
+    background:var(--green);
+
+}
+
+.float-top{
+
+    background:#222a31;
+
+    border:1px solid #414a52;
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+
+/* =====================================
+MODAL
+===================================== */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.82);
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    z-index:2000;
+
+}
+
+.modal.open{
+
+    display:flex;
+
+}
+
+.modal-box{
+
+    width:100%;
+
+    max-width:480px;
+
+    background:#10151a;
+
+    border:1px solid #3b454e;
+
+    border-radius:8px;
+
+    padding:25px;
+
+}
+
+.modal-box h2{
+
+    font-size:19px;
+
+    margin-bottom:6px;
+
+}
+
+.modal-box h2 span{
+
+    color:var(--yellow);
+
+}
+
+.modal-box p{
+
+    color:#8a949c;
+
+    font-size:9px;
+
+    line-height:1.6;
+
+    margin-bottom:18px;
+
+}
+
+.modal-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:9px;
+
+}
+
+.modal-box input,
+.modal-box select,
+.modal-box textarea{
+
+    width:100%;
+
+    background:#171d23;
+
+    border:1px solid #353f48;
+
+    color:white;
+
+    padding:11px;
+
+    border-radius:4px;
+
+    font-size:9px;
+
+}
+
+.modal-box textarea{
+
+    min-height:80px;
+
+    margin-top:9px;
+
+    resize:vertical;
+
+}
+
+.modal-submit{
+
+    width:100%;
+
+    height:43px;
+
+    margin-top:10px;
+
+    background:var(--yellow);
+
+    border:0;
+
+    border-radius:4px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+.close{
+
+    float:right;
+
+    background:none;
+
+    border:0;
+
+    color:#9da5ac;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+}
+
+
+/* =====================================
+RESPONSIVE
+===================================== */
+
+@media(max-width:1100px){
+
+    nav{
+
+        gap:13px;
+
+    }
+
+    nav a{
+
+        font-size:8px;
+
+    }
+
+    .vehicle-layout,
+    .content-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .buy-panel{
+
+        position:static;
+
+    }
+
+    .similar{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .category-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:800px){
+
+    nav{
+
+        display:none;
+
+    }
+
+    .header-actions{
+
+        display:none;
+
+    }
+
+    .logo{
+
+        min-width:auto;
+
+    }
+
+    .vehicle-heading{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .vehicle-price{
+
+        text-align:left;
+
+    }
+
+    .main-photo{
+
+        height:330px;
+
+    }
+
+    .passport{
+
+        grid-template-columns:1fr 1fr;
+
+    }
+
+    .features{
+
+        grid-template-columns:1fr 1fr;
+
+    }
+
+}
+
+@media(max-width:550px){
+
+    .vehicle-heading h1{
+
+        font-size:29px;
+
+    }
+
+    .main-photo{
+
+        height:250px;
+
+    }
+
+    .thumbnails{
+
+        grid-template-columns:repeat(4,1fr);
+
+    }
+
+    .thumb{
+
+        height:55px;
+
+    }
+
+    .condition{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .features{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .finance-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .similar{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .category-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .category{
+
+        height:210px;
+
+    }
+
+    .footer-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .footer-bottom{
+
+        flex-direction:column;
+
+        gap:7px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+HEADER
+===================================== -->
+
+<header>
+
+<a href="index.html" class="logo">
+
+    <div class="logo-mark"></div>
+
+    <div class="logo-text">
+
+        <strong>
+            NAUZA <span>TU</span>
+        </strong>
+
+        <small>
+            DIGITAL MOTOR MARKET
+        </small>
+
+    </div>
+
+</a>
+
+
+<nav>
+
+    <a href="index.html">HOME</a>
+
+    <a href="cars.html" class="active">
+        CARS FOR SALE
+    </a>
+
+    <a href="car-match.html">
+        CAR MATCH
+    </a>
+
+    <a href="compare.html">
+        COMPARE
+    </a>
+
+    <a href="sell.html">
+        SELL YOUR CAR
+    </a>
+
+    <a href="financing.html">
+        FINANCING
+    </a>
+
+    <a href="resources.html">
+        RESOURCES
+    </a>
+
+</nav>
+
+
+<div class="header-actions">
+
+    <button class="login">
+        LOGIN / SIGN UP
+    </button>
+
+    <a href="sell.html" class="post">
+        + POST YOUR CAR
+    </a>
+
+</div>
+
+</header>
+
+
+<!-- =====================================
+BREADCRUMB
+===================================== -->
+
+<div class="breadcrumb">
+
+    Home /
+    <a href="cars.html"> Cars for Sale</a> /
+    <span> Toyota Vitz</span>
+
+</div>
+
+
+<!-- =====================================
+VEHICLE HEADING
+===================================== -->
+
+<section class="vehicle-top">
+
+<div class="vehicle-heading">
+
+<div>
+
+    <h1>
+        Toyota <span>Vitz</span>
+    </h1>
+
+    <p class="vehicle-sub">
+
+        2017 • 1.3L Petrol • Automatic • 2WD
+        &nbsp; | &nbsp;
+        Nairobi
+
+    </p>
+
+</div>
+
+
+<div class="vehicle-price">
+
+    <small>
+        ASKING PRICE
+    </small>
+
+    <strong>
+        KSh 1,210,000
+    </strong>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+VEHICLE MAIN
+===================================== -->
+
+<section class="vehicle-main">
+
+<div class="vehicle-layout">
+
+
+<!-- GALLERY -->
+
+<div class="gallery">
+
+    <div class="main-photo">
+
+        <img
+        id="mainImage"
+        src="https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg"
+        alt="Toyota Vitz Nairobi">
+
+        <span class="photo-label">
+            LOCAL MARKET EXAMPLE
+        </span>
+
+        <span class="photo-counter"
+              id="photoCounter">
+            1 / 5
+        </span>
+
+    </div>
+
+
+    <div class="thumbnails">
+
+        <div class="thumb active"
+             onclick="changePhoto(this,0)">
+
+            <img src="https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg">
+
+        </div>
+
+
+        <div class="thumb"
+             onclick="changePhoto(this,1)">
+
+            <img src="https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg">
+
+        </div>
+
+
+        <div class="thumb"
+             onclick="changePhoto(this,2)">
+
+            <img src="https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg">
+
+        </div>
+
+
+        <div class="thumb"
+             onclick="changePhoto(this,3)">
+
+            <img src="https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg">
+
+        </div>
+
+
+        <div class="thumb"
+             onclick="changePhoto(this,4)">
+
+            <img src="https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- BUY PANEL -->
+
+<aside class="buy-panel">
+
+
+<div class="score">
+
+<div class="score-left">
+
+    <div class="score-number">
+        86
+    </div>
+
+    <div>
+
+        <h3>
+            NAUZA TU SCORE
+        </h3>
+
+        <p>
+            Based on listing information
+        </p>
+
+    </div>
+
+</div>
+
+<div class="verified">
+    ✓ LISTING CHECKED
+</div>
+
+</div>
+
+
+<div class="quick-specs">
+
+
+<div class="quick-spec">
+
+    <small>
+        YEAR
+    </small>
+
+    <strong>
+        2017
+    </strong>
+
+</div>
+
+
+<div class="quick-spec">
+
+    <small>
+        MILEAGE
+    </small>
+
+    <strong>
+        110,000 KM
+    </strong>
+
+</div>
+
+
+<div class="quick-spec">
+
+    <small>
+        ENGINE
+    </small>
+
+    <strong>
+        1,300 CC
+    </strong>
+
+</div>
+
+
+<div class="quick-spec">
+
+    <small>
+        FUEL
+    </small>
+
+    <strong>
+        PETROL
+    </strong>
+
+</div>
+
+
+<div class="quick-spec">
+
+    <small>
+        TRANSMISSION
+    </small>
+
+    <strong>
+        AUTOMATIC
+    </strong>
+
+</div>
+
+
+<div class="quick-spec">
+
+    <small>
+        DRIVE
+    </small>
+
+    <strong>
+        2WD
+    </strong>
+
+</div>
+
+</div>
+
+
+<button class="buy-button"
+        onclick="openModal('view')">
+
+    BOOK A VIEWING
+
+</button>
+
+
+<button class="whatsapp-button"
+        onclick="whatsapp()">
+
+    WHATSAPP ABOUT THIS CAR
+
+</button>
+
+
+<div class="secondary-buttons">
+
+    <button onclick="openModal('test')">
+        REQUEST TEST DRIVE
+    </button>
+
+    <button onclick="openModal('offer')">
+        MAKE AN OFFER
+    </button>
+
+</div>
+
+
+<div class="seller-box">
+
+    <h3>
+        SELLER
+    </h3>
+
+    <div class="seller-name">
+        Nauza Tu Verified Seller
+    </div>
+
+    <div class="seller-location">
+        Nairobi, Kenya
+    </div>
+
+</div>
+
+</aside>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+DETAIL CONTENT
+===================================== -->
+
+<section class="content">
+
+<div class="content-layout">
+
+
+<div>
+
+
+<!-- VEHICLE PASSPORT -->
+
+<div class="section">
+
+<h2>
+    VEHICLE <span>PASSPORT</span>
+</h2>
+
+
+<div class="passport">
+
+
+<div class="passport-item">
+
+    <small>
+        MAKE
+    </small>
+
+    <strong>
+        Toyota
+    </strong>
+
+</div>
+
+
+<div class="passport-item">
+
+    <small>
+        MODEL
+    </small>
+
+    <strong>
+        Vitz
+    </strong>
+
+</div>
+
+
+<div class="passport-item">
+
+    <small>
+        YEAR
+    </small>
+
+    <strong>
+        2017
+    </strong>
+
+</div>
+
+
+<div class="passport-item">
+
+    <small>
+        BODY
+    </small>
+
+    <strong>
+        Hatchback
+    </strong>
+
+</div>
+
+
+<div class="passport-item">
+
+    <small>
+        ENGINE
+    </small>
+
+    <strong>
+        1,300 CC
+    </strong>
+
+</div>
+
+
+<div class="passport-item">
+
+    <small>
+        FUEL
+    </small>
+
+    <strong>
+        Petrol
+    </strong>
+
+</div>
+
+
+<div class="passport-item">
+
+    <small>
+        TRANSMISSION
+    </small>
+
+    <strong>
+        Automatic
+    </strong>
+
+</div>
+
+
+<div class="passport-item">
+
+    <small>
+        DRIVETRAIN
+    </small>
+
+    <strong>
+        2WD
+    </strong>
+
+</div>
+
+
+<div class="passport-item">
+
+    <small>
+        MILEAGE
+    </small>
+
+    <strong>
+        110,000 KM
+    </strong>
+
+</div>
+
+
+<div class="passport-item">
+
+    <small>
+        CONDITION
+    </small>
+
+    <strong>
+        Used
+    </strong>
+
+</div>
+
+
+<div class="passport-item">
+
+    <small>
+        LOCATION
+    </small>
+
+    <strong>
+        Nairobi
+    </strong>
+
+</div>
+
+
+<div class="passport-item">
+
+    <small>
+        STOCK ID
+    </small>
+
+    <strong>
+        NT-0017
+    </strong>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- CONDITION -->
+
+<div class="section">
+
+<h2>
+    CONDITION <span>SNAPSHOT</span>
+</h2>
+
+
+<div class="condition">
+
+
+<div class="condition-item">
+
+    <div class="condition-head">
+
+        <span>
+            Exterior
+        </span>
+
+        <strong>
+            90%
+        </strong>
+
+    </div>
+
+    <div class="bar">
+        <span style="width:90%"></span>
+    </div>
+
+</div>
+
+
+<div class="condition-item">
+
+    <div class="condition-head">
+
+        <span>
+            Interior
+        </span>
+
+        <strong>
+            87%
+        </strong>
+
+    </div>
+
+    <div class="bar">
+        <span style="width:87%"></span>
+    </div>
+
+</div>
+
+
+<div class="condition-item">
+
+    <div class="condition-head">
+
+        <span>
+            Mechanical
+        </span>
+
+        <strong>
+            84%
+        </strong>
+
+    </div>
+
+    <div class="bar">
+        <span style="width:84%"></span>
+    </div>
+
+</div>
+
+
+<div class="condition-item">
+
+    <div class="condition-head">
+
+        <span>
+            Value
+        </span>
+
+        <strong>
+            88%
+        </strong>
+
+    </div>
+
+    <div class="bar">
+        <span style="width:88%"></span>
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- FEATURES -->
+
+<div class="section">
+
+<h2>
+    KEY <span>FEATURES</span>
+</h2>
+
+
+<div class="features">
+
+    <div class="feature">
+        ✓ Push Start
+    </div>
+
+    <div class="feature">
+        ✓ Alloy Wheels
+    </div>
+
+    <div class="feature">
+        ✓ Reverse Camera
+    </div>
+
+    <div class="feature">
+        ✓ Air Conditioning
+    </div>
+
+    <div class="feature">
+        ✓ Power Windows
+    </div>
+
+    <div class="feature">
+        ✓ Central Locking
+    </div>
+
+    <div class="feature">
+        ✓ ABS
+    </div>
+
+    <div class="feature">
+        ✓ Airbags
+    </div>
+
+    <div class="feature">
+        ✓ Multifunction Steering
+    </div>
+
+    <div class="feature">
+        ✓ Keyless Entry
+    </div>
+
+    <div class="feature">
+        ✓ Electric Mirrors
+    </div>
+
+    <div class="feature">
+        ✓ Bluetooth
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- FINANCE -->
+
+<div class="section finance">
+
+<h2>
+    CAN YOU <span>AFFORD IT?</span>
+</h2>
+
+<p class="finance-intro">
+
+    Adjust the deposit and repayment period to get
+    an estimated monthly payment. Actual financing
+    depends on the lender and your application.
+
+</p>
+
+
+<div class="finance-grid">
+
+<div>
+
+    <label>
+        VEHICLE PRICE
+    </label>
+
+    <input
+    id="vehiclePrice"
+    type="number"
+    value="1210000"
+    oninput="calculateFinance()">
+
+</div>
+
+
+<div>
+
+    <label>
+        DEPOSIT
+    </label>
+
+    <input
+    id="deposit"
+    type="number"
+    value="484000"
+    oninput="calculateFinance()">
+
+</div>
+
+
+<div>
+
+    <label>
+        INTEREST RATE (%)
+    </label>
+
+    <input
+    id="interest"
+    type="number"
+    value="13"
+    oninput="calculateFinance()">
+
+</div>
+
+
+<div>
+
+    <label>
+        PERIOD (MONTHS)
+    </label>
+
+    <select
+    id="months"
+    onchange="calculateFinance()">
+
+        <option value="12">
+            12 months
+        </option>
+
+        <option value="24">
+            24 months
+        </option>
+
+        <option value="36" selected>
+            36 months
+        </option>
+
+        <option value="48">
+            48 months
+        </option>
+
+        <option value="60">
+            60 months
+        </option>
+
+    </select>
+
+</div>
+
+</div>
+
+
+<div class="monthly">
+
+    <small>
+        ESTIMATED MONTHLY PAYMENT
+    </small>
+
+    <strong id="monthlyPayment">
+        KSh 25,000
+    </strong>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- RIGHT COLUMN -->
+
+<aside>
+
+
+<div class="mini-box">
+
+<h3>
+    READY TO SEE IT?
+</h3>
+
+<p>
+    Tell us when you would like to view this
+    vehicle and the Nauza Tu team can arrange
+    the next step.
+</p>
+
+<button
+class="action"
+onclick="openModal('view')">
+
+    BOOK A VIEWING
+
+</button>
+
+<button
+class="action"
+onclick="openModal('test')">
+
+    REQUEST TEST DRIVE
+
+</button>
+
+</div>
+
+
+<div class="mini-box">
+
+<h3>
+    BEFORE YOU BUY
+</h3>
+
+<div class="questions">
+
+
+<div class="question">
+
+    <div class="question-icon">
+        ?
+    </div>
+
+    <div>
+
+        <h4>
+            Want an independent inspection?
+        </h4>
+
+        <p>
+            Ask for a pre-purchase inspection
+            before committing to the vehicle.
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="question">
+
+    <div class="question-icon">
+        ✓
+    </div>
+
+    <div>
+
+        <h4>
+            Confirm documentation
+        </h4>
+
+        <p>
+            Verify ownership and vehicle
+            documentation before payment.
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="question">
+
+    <div class="question-icon">
+        !
+    </div>
+
+    <div>
+
+        <h4>
+            Don't pay blindly
+        </h4>
+
+        <p>
+            Always view and verify the vehicle
+            before sending money to a seller.
+        </p>
+
+    </div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<div class="mini-box">
+
+<h3>
+    SHARE THIS VEHICLE
+</h3>
+
+<button
+class="action"
+onclick="shareVehicle()">
+
+    SHARE VEHICLE
+
+</button>
+
+</div>
+
+
+</aside>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+SIMILAR
+===================================== -->
+
+<section class="similar-section">
+
+<h2>
+    YOU MAY ALSO <span>LIKE</span>
+</h2>
+
+
+<div class="similar">
+
+
+<!-- VITZ -->
+
+<div class="similar-card">
+
+<div class="similar-image">
+
+<img
+src="https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg"
+alt="Toyota Vitz">
+
+</div>
+
+<div class="similar-content">
+
+<h3>
+Toyota Vitz
+</h3>
+
+<p>
+2017 • Automatic • 110,000 KM
+</p>
+
+<div class="similar-price">
+KSh 1,210,000
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PROBOX -->
+
+<div class="similar-card">
+
+<div class="similar-image">
+
+<img
+src="https://www.motorhub.co.ke/assets/images/CarPhotos/Large_195475067cfea203b52f831f2a3ecddb_10122024032419.JPG"
+alt="Toyota Probox">
+
+</div>
+
+<div class="similar-content">
+
+<h3>
+Toyota Probox
+</h3>
+
+<p>
+2017 • Automatic • 1,500 CC
+</p>
+
+<div class="similar-price">
+View Price
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PREMIO -->
+
+<div class="similar-card">
+
+<div class="similar-image">
+
+<img
+src="https://www.houseofcarskenya.com/wp-content/uploads/2018-toyota-premio.jpg"
+alt="Toyota Premio"
+onerror="this.src='https://pbs.twimg.com/media/HEp95QQXoAA7kuH.jpg'">
+
+</div>
+
+<div class="similar-content">
+
+<h3>
+Toyota Premio
+</h3>
+
+<p>
+Sedan • Automatic • Petrol
+</p>
+
+<div class="similar-price">
+View Price
+</div>
+
+</div>
+
+</div>
+
+
+<!-- VEZEL -->
+
+<div class="similar-card">
+
+<div class="similar-image">
+
+<img
+src="https://www.carlist.co.ke/usedcars/view/5505-Honda_Vezel_Hybrid.html"
+alt="Honda Vezel"
+onerror="this.src='https://esr.co.ke/car-details/honda-vezel-692f'">
+
+</div>
+
+<div class="similar-content">
+
+<h3>
+Honda Vezel Hybrid
+</h3>
+
+<p>
+Hybrid • Automatic • SUV
+</p>
+
+<div class="similar-price">
+View Price
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+KENYAN MARKET CATEGORIES
+===================================== -->
+
+<section class="categories">
+
+<h2>
+    SHOP BY <span style="color:#ffd000">
+        WHAT KENYANS DRIVE
+    </span>
+</h2>
+
+<p class="categories-intro">
+    Popular vehicle types and models found across
+    Nairobi's used-car market.
+</p>
+
+
+<div class="category-grid">
+
+
+<!-- SMALL CARS -->
+
+<div class="category">
+
+<img
+src="https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg"
+alt="Toyota Vitz Nairobi">
+
+<div class="category-overlay">
+
+<div>
+
+<h3>
+CITY & COMPACT
+</h3>
+
+<p>
+Vitz • Demio • Fit • Note
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SEDANS -->
+
+<div class="category">
+
+<img
+src="https://pbs.twimg.com/media/HEp95QQXoAA7kuH.jpg"
+alt="Toyota Premio Kenya">
+
+<div class="category-overlay">
+
+<div>
+
+<h3>
+SEDANS
+</h3>
+
+<p>
+Premio • Axio • Corolla • C-Class
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SUVS -->
+
+<div class="category">
+
+<img
+src="https://d20plav1k4kerc.cloudfront.net/media/uploads/assessment/prescreeningimage/9a99003a-81ad-48f5-bf4b-c7d949e4e509.jpeg"
+alt="Toyota Harrier Nairobi">
+
+<div class="category-overlay">
+
+<div>
+
+<h3>
+SUVs & CROSSOVERS
+</h3>
+
+<p>
+Harrier • X-Trail • RAV4 • CX-5
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- 4X4 -->
+
+<div class="category">
+
+<img
+src="https://storage.googleapis.com/havzrgdayyhgwmjyuiblog/toyota-land-cruiser-prado-kenya.html"
+alt="Toyota Prado Kenya">
+
+<div class="category-overlay">
+
+<div>
+
+<h3>
+4×4 & PREMIUM
+</h3>
+
+<p>
+Prado • Land Cruiser • Hilux
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- MPV -->
+
+<div class="category">
+
+<img
+src="https://d20plav1k4kerc.cloudfront.net/media/uploads/assessment/prescreeningimage/2fe2c5fc-dc9b-4a28-b766-265dce54f4b4.jpeg"
+alt="Toyota Noah Kenya">
+
+<div class="category-overlay">
+
+<div>
+
+<h3>
+FAMILY & MPV
+</h3>
+
+<p>
+Noah • Voxy • Serena
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- HYBRIDS -->
+
+<div class="category">
+
+<img
+src="https://www.carlist.co.ke/usedcars/view/5505-Honda_Vezel_Hybrid.html"
+alt="Honda Vezel Kenya">
+
+<div class="category-overlay">
+
+<div>
+
+<h3>
+HYBRIDS
+</h3>
+
+<p>
+Vezel • Prius • Aqua
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- WORKHORSES -->
+
+<div class="category">
+
+<img
+src="https://www.motorhub.co.ke/assets/images/CarPhotos/Large_195475067cfea203b52f831f2a3ecddb_10122024032419.JPG"
+alt="Toyota Probox Kenya">
+
+<div class="category-overlay">
+
+<div>
+
+<h3>
+WORK & BUSINESS
+</h3>
+
+<p>
+Probox • Hilux • D-Max
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- NISSAN -->
+
+<div class="category">
+
+<img
+src="https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/vehicles/thumbnails/IMG-20250827-WA0172.jpg"
+alt="Nissan X Trail Kenya">
+
+<div class="category-overlay">
+
+<div>
+
+<h3>
+NISSAN
+</h3>
+
+<p>
+X-Trail • Note • Serena • Juke
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+FOOTER
+===================================== -->
+
+<footer>
+
+<div class="footer-grid">
+
+
+<div class="footer-brand">
+
+<div class="logo">
+
+<div class="logo-mark"></div>
+
+<div class="logo-text">
+
+<strong>
+NAUZA <span>TU</span>
+</strong>
+
+<small>
+DIGITAL MOTOR MARKET
+</small>
+
+</div>
+
+</div>
+
+
+<p>
+
+Nauza Tu Digital Motor Market is being built
+to make buying and selling vehicles in Nairobi
+simpler, clearer and more trustworthy.
+
+</p>
+
+</div>
+
+
+<div class="footer-col">
+
+<h3>
+BUY
+</h3>
+
+<a href="cars.html">
+Cars for Sale
+</a>
+
+<a href="car-match.html">
+Car Match
+</a>
+
+<a href="compare.html">
+Compare
+</a>
+
+<a href="financing.html">
+Financing
+</a>
+
+</div>
+
+
+<div class="footer-col">
+
+<h3>
+SELL
+</h3>
+
+<a href="sell.html">
+Sell Your Car
+</a>
+
+<a href="#">
+Seller Guide
+</a>
+
+<a href="#">
+Listing Packages
+</a>
+
+</div>
+
+
+<div class="footer-col">
+
+<h3>
+COMPANY
+</h3>
+
+<a href="about.html">
+About Nauza Tu
+</a>
+
+<a href="resources.html">
+Resources
+</a>
+
+<a href="contact.html">
+Contact
+</a>
+
+</div>
+
+
+</div>
+
+
+<div class="footer-bottom">
+
+<span>
+© 2026 Nauza Tu Digital Motor Market
+</span>
+
+<span>
+Nairobi • Kenya
+</span>
+
+</div>
+
+</footer>
+
+
+<!-- =====================================
+FLOATING
+===================================== -->
+
+<div class="floating">
+
+<a
+class="float float-whatsapp"
+href="https://wa.me/254700000000"
+target="_blank">
+
+    ☎
+
+</a>
+
+
+<button
+class="float float-top"
+onclick="window.scrollTo({top:0,behavior:'smooth'})">
+
+    ↑
+
+</button>
+
+</div>
+
+
+<!-- =====================================
+MODAL
+===================================== -->
+
+<div class="modal"
+id="modal">
+
+<div class="modal-box">
+
+<button
+class="close"
+onclick="closeModal()">
+×
+</button>
+
+
+<h2>
+    <span id="modalTitle">
+        BOOK A VIEWING
+    </span>
+</h2>
+
+
+<p id="modalText">
+
+Tell us when you would like to view
+this Toyota Vitz.
+
+</p>
+
+
+<div class="modal-grid">
+
+<input
+placeholder="Your name">
+
+<input
+placeholder="Phone number">
+
+<input
+type="date">
+
+<input
+type="time">
+
+</div>
+
+
+<textarea
+placeholder="Message"></textarea>
+
+
+<button
+class="modal-submit"
+onclick="submitRequest()">
+
+SEND REQUEST
+
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================
+IMAGE GALLERY
+===================================== */
+
+const images=[
+
+"https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg",
+
+"https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg",
+
+"https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg",
+
+"https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg",
+
+"https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg"
+
+];
+
+
+function changePhoto(thumb,index){
+
+    document
+    .getElementById("mainImage")
+    .src=images[index];
+
+
+    document
+    .querySelectorAll(".thumb")
+    .forEach(
+        x=>x.classList.remove("active")
+    );
+
+
+    thumb.classList.add("active");
+
+
+    document
+    .getElementById("photoCounter")
+    .innerText=
+        (index+1)+" / "+images.length;
+
+}
+
+
+/* =====================================
+FINANCE CALCULATOR
+===================================== */
+
+function calculateFinance(){
+
+    const price=
+        Number(
+            document.getElementById(
+                "vehiclePrice"
+            ).value
+        ) || 0;
+
+
+    const deposit=
+        Number(
+            document.getElementById(
+                "deposit"
+            ).value
+        ) || 0;
+
+
+    const annualRate=
+        Number(
+            document.getElementById(
+                "interest"
+            ).value
+        ) || 0;
+
+
+    const months=
+        Number(
+            document.getElementById(
+                "months"
+            ).value
+        ) || 36;
+
+
+    const principal=
+        Math.max(
+            price-deposit,
+            0
+        );
+
+
+    const monthlyRate=
+        annualRate/100/12;
+
+
+    let payment=0;
+
+
+    if(principal>0){
+
+        if(monthlyRate===0){
+
+            payment=
+                principal/months;
+
+        }else{
+
+            payment=
+                principal*
+                monthlyRate*
+                Math.pow(
+                    1+monthlyRate,
+                    months
+                )/
+                (
+                    Math.pow(
+                        1+monthlyRate,
+                        months
+                    )-1
+                );
+
+        }
+
+    }
+
+
+    document
+    .getElementById(
+        "monthlyPayment"
+    )
+    .innerText=
+        "KSh "+
+        Math.round(payment)
+        .toLocaleString();
+
+}
+
+
+calculateFinance();
+
+
+/* =====================================
+MODALS
+===================================== */
+
+function openModal(type){
+
+    const title=
+        document.getElementById(
+            "modalTitle"
+        );
+
+    const text=
+        document.getElementById(
+            "modalText"
+        );
+
+
+    if(type==="view"){
+
+        title.innerText=
+            "BOOK A VIEWING";
+
+        text.innerText=
+            "Tell us when you would like to view this Toyota Vitz in Nairobi.";
+
+    }
+
+
+    if(type==="test"){
+
+        title.innerText=
+            "REQUEST TEST DRIVE";
+
+        text.innerText=
+            "Send your preferred date and time for a test drive.";
+
+    }
+
+
+    if(type==="offer"){
+
+        title.innerText=
+            "MAKE AN OFFER";
+
+        text.innerText=
+            "Tell us the amount you would like to offer for this vehicle.";
+
+    }
+
+
+    document
+    .getElementById("modal")
+    .classList.add("open");
+
+}
+
+
+function closeModal(){
+
+    document
+    .getElementById("modal")
+    .classList.remove("open");
+
+}
+
+
+function submitRequest(){
+
+    alert(
+        "Thank you. Your request will be connected to the Nauza Tu enquiry system."
+    );
+
+    closeModal();
+
+}
+
+
+/* =====================================
+WHATSAPP
+===================================== */
+
+function whatsapp(){
+
+    const number=
+        "254700000000";
+
+
+    const message=
+        "Hello Nauza Tu. I am interested in the Toyota Vitz listed at KSh 1,210,000. I would like more information.";
+
+    
+    window.open(
+
+        "https://wa.me/"+
+        number+
+        "?text="+
+        encodeURIComponent(message),
+
+        "_blank"
+
+    );
+
+}
+
+
+/* =====================================
+SHARE
+===================================== */
+
+function shareVehicle(){
+
+    if(
+        navigator.share
+    ){
+
+        navigator.share({
+
+            title:
+                "Toyota Vitz - Nauza Tu",
+
+            text:
+                "Check out this Toyota Vitz on Nauza Tu Digital Motor Market.",
+
+            url:
+                window.location.href
+
+        });
+
+    }else{
+
+        navigator.clipboard.writeText(
+            window.location.href
+        );
+
+        alert(
+            "Vehicle link copied."
+        );
+
+    }
+
+}
+
+
+/* =====================================
+ESCAPE MODAL
+===================================== */
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key==="Escape"){
+
+            closeModal();
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+</html>
