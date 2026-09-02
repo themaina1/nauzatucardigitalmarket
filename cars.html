@@ -4,12 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Cars for Sale | Nauza Tu Digital Motor Market</title>
+<title>Car Match | NAUZA TU Digital Motor Market</title>
 
 <meta name="description"
-content="Browse quality cars for sale in Nairobi on Nauza Tu Digital Motor Market. Search by make, model, price, year, body type, fuel and transmission.">
+content="Find the right car for your budget, lifestyle and driving needs in Kenya with the NAUZA TU Car Match tool.">
 
 <style>
+
+:root{
+    --black:#080808;
+    --dark:#101010;
+    --dark2:#171717;
+    --card:#1c1c1c;
+    --yellow:#ffc400;
+    --yellow2:#ffda44;
+    --white:#ffffff;
+    --muted:#a7a7a7;
+    --line:#2b2b2b;
+    --green:#21c77a;
+    --red:#ff5b5b;
+}
 
 *{
     margin:0;
@@ -17,28 +31,15 @@ content="Browse quality cars for sale in Nairobi on Nauza Tu Digital Motor Marke
     box-sizing:border-box;
 }
 
-:root{
-    --black:#050607;
-    --dark:#0a0d10;
-    --panel:#10151a;
-    --panel2:#151b21;
-    --yellow:#ffd000;
-    --yellow-dark:#e9b900;
-    --white:#fff;
-    --muted:#929ba4;
-    --border:#29323b;
-    --green:#25d366;
-    --red:#ff4d4d;
-}
-
 html{
     scroll-behavior:smooth;
 }
 
 body{
+    font-family:Arial, Helvetica, sans-serif;
     background:var(--black);
     color:var(--white);
-    font-family:Arial,Helvetica,sans-serif;
+    line-height:1.5;
 }
 
 a{
@@ -49,2669 +50,2246 @@ a{
 button,
 select,
 input{
-    font-family:inherit;
+    font:inherit;
 }
 
-/* =====================================
-HEADER
-===================================== */
+/* =========================
+   HEADER
+========================= */
 
 header{
-    height:78px;
-    background:#050607;
-    border-bottom:1px solid #20262c;
-    display:flex;
-    align-items:center;
-    padding:0 4%;
     position:sticky;
     top:0;
     z-index:1000;
+    background:rgba(8,8,8,.97);
+    border-bottom:1px solid var(--line);
+    backdrop-filter:blur(12px);
+}
+
+.navbar{
+    max-width:1250px;
+    margin:auto;
+    min-height:76px;
+    padding:0 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
 }
 
 .logo{
-    min-width:245px;
     display:flex;
     align-items:center;
     gap:10px;
+    flex-shrink:0;
 }
 
 .logo-mark{
-    width:52px;
-    height:38px;
-    position:relative;
-}
-
-.logo-mark:before{
-    content:"";
-    position:absolute;
-    width:50px;
-    height:18px;
-    left:0;
-    top:7px;
-    border-top:5px solid var(--yellow);
-    border-radius:50%;
-    transform:skew(-25deg);
-}
-
-.logo-mark:after{
-    content:"";
-    position:absolute;
-    width:36px;
-    height:7px;
+    width:43px;
+    height:43px;
     background:var(--yellow);
-    left:10px;
-    top:21px;
-    transform:skew(-25deg);
+    color:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    font-size:20px;
+    border-radius:8px;
 }
 
 .logo-text strong{
-    font-size:25px;
-    line-height:24px;
     display:block;
+    font-size:21px;
     letter-spacing:1px;
 }
 
-.logo-text strong span{
-    color:var(--yellow);
-}
-
-.logo-text small{
-    color:#929aa2;
-    font-size:8px;
-    letter-spacing:2.5px;
+.logo-text span{
+    display:block;
+    font-size:9px;
+    color:var(--muted);
+    letter-spacing:2px;
 }
 
 nav{
-    flex:1;
     display:flex;
-    justify-content:center;
-    gap:25px;
+    align-items:center;
+    gap:22px;
 }
 
 nav a{
-    font-size:11px;
-    font-weight:bold;
-    color:#cfd4d8;
-    padding:30px 0 26px;
-    border-bottom:3px solid transparent;
+    color:#ddd;
+    font-size:13px;
+    font-weight:700;
+    transition:.2s;
 }
 
 nav a:hover,
 nav a.active{
     color:var(--yellow);
-    border-bottom-color:var(--yellow);
 }
 
-.header-actions{
-    display:flex;
-    align-items:center;
-    gap:8px;
-}
-
-.header-icon{
-    width:42px;
-    height:38px;
-    border:1px solid #3a424a;
-    background:#101419;
-    color:white;
-    border-radius:5px;
-    cursor:pointer;
-}
-
-.login{
-    height:38px;
-    padding:0 14px;
-    border:1px solid #4b545d;
-    background:transparent;
-    color:white;
-    border-radius:5px;
-    font-size:10px;
-    font-weight:bold;
-}
-
-.post{
-    height:39px;
-    padding:0 17px;
-    border:0;
+.post-btn{
     background:var(--yellow);
-    color:#050607;
-    border-radius:5px;
-    font-weight:bold;
-    font-size:10px;
-    cursor:pointer;
+    color:#000 !important;
+    padding:11px 16px;
+    border-radius:6px;
+    font-weight:900 !important;
 }
 
-.mobile-menu{
+.menu-btn{
     display:none;
     background:none;
-    border:0;
-    color:white;
-    font-size:26px;
+    border:1px solid var(--line);
+    color:#fff;
+    padding:9px 12px;
+    border-radius:6px;
+    cursor:pointer;
 }
 
-/* =====================================
-PAGE HERO
-===================================== */
+/* =========================
+   HERO
+========================= */
 
-.page-hero{
+.hero{
+    min-height:500px;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
     background:
-        radial-gradient(
-            circle at 80% 20%,
-            rgba(255,208,0,.12),
-            transparent 35%
-        ),
-        linear-gradient(100deg,#080b0e,#101820,#07090b);
-    border-bottom:1px solid #222a31;
-    padding:45px 5%;
+        linear-gradient(90deg,
+        rgba(0,0,0,.98) 0%,
+        rgba(0,0,0,.90) 40%,
+        rgba(0,0,0,.35) 100%),
+        url("https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg")
+        center/cover no-repeat;
 }
 
-.breadcrumb{
-    color:#8e969e;
+.hero-content{
+    max-width:1250px;
+    width:100%;
+    margin:auto;
+    padding:80px 20px;
+}
+
+.eyebrow{
+    display:inline-block;
+    background:rgba(255,196,0,.12);
+    border:1px solid rgba(255,196,0,.4);
+    color:var(--yellow);
+    padding:7px 12px;
+    border-radius:30px;
     font-size:11px;
+    font-weight:800;
+    letter-spacing:1.5px;
     margin-bottom:20px;
 }
 
-.breadcrumb span{
+.hero h1{
+    max-width:700px;
+    font-size:clamp(42px,6vw,76px);
+    line-height:1;
+    letter-spacing:-3px;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
     color:var(--yellow);
 }
 
-.page-hero h1{
-    font-size:42px;
+.hero p{
+    max-width:650px;
+    color:#d1d1d1;
+    font-size:18px;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:14px 22px;
+    border-radius:6px;
+    border:1px solid var(--line);
+    font-weight:800;
+    cursor:pointer;
+}
+
+.btn-primary{
+    background:var(--yellow);
+    color:#000;
+    border-color:var(--yellow);
+}
+
+.btn-secondary{
+    background:rgba(255,255,255,.05);
+    color:#fff;
+}
+
+/* =========================
+   MATCH TOOL
+========================= */
+
+.match-wrap{
+    max-width:1050px;
+    margin:-65px auto 0;
+    position:relative;
+    z-index:10;
+    padding:0 20px;
+}
+
+.match-box{
+    background:#131313;
+    border:1px solid #303030;
+    border-radius:14px;
+    box-shadow:0 20px 60px rgba(0,0,0,.55);
+    overflow:hidden;
+}
+
+.progress{
+    height:5px;
+    background:#272727;
+}
+
+.progress-bar{
+    height:100%;
+    width:14.28%;
+    background:var(--yellow);
+    transition:.3s;
+}
+
+.match-top{
+    padding:28px 30px 18px;
+    border-bottom:1px solid var(--line);
+}
+
+.match-top h2{
+    font-size:25px;
+    margin-bottom:5px;
+}
+
+.match-top p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+.question{
+    display:none;
+    padding:35px 30px 40px;
+}
+
+.question.active{
+    display:block;
+}
+
+.question-number{
+    color:var(--yellow);
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:1px;
+    margin-bottom:8px;
+}
+
+.question h3{
+    font-size:29px;
+    margin-bottom:8px;
+}
+
+.question-description{
+    color:var(--muted);
+    margin-bottom:25px;
+}
+
+.options{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.option{
+    border:1px solid #343434;
+    background:#1a1a1a;
+    border-radius:9px;
+    padding:18px;
+    cursor:pointer;
+    transition:.2s;
+    position:relative;
+}
+
+.option:hover{
+    border-color:#777;
+    transform:translateY(-2px);
+}
+
+.option.selected{
+    border-color:var(--yellow);
+    background:rgba(255,196,0,.08);
+}
+
+.option-icon{
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.option strong{
+    display:block;
+    font-size:15px;
+}
+
+.option small{
+    display:block;
+    color:var(--muted);
+    font-size:12px;
+    margin-top:3px;
+}
+
+.option.selected:after{
+    content:"✓";
+    position:absolute;
+    top:12px;
+    right:14px;
+    color:var(--yellow);
+    font-weight:900;
+}
+
+.match-controls{
+    padding:18px 30px;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.control-btn{
+    padding:12px 20px;
+    border-radius:6px;
+    border:1px solid var(--line);
+    background:#202020;
+    color:#fff;
+    cursor:pointer;
+    font-weight:800;
+}
+
+.control-btn.next{
+    background:var(--yellow);
+    color:#000;
+    border-color:var(--yellow);
+}
+
+.control-btn:disabled{
+    opacity:.35;
+    cursor:not-allowed;
+}
+
+/* =========================
+   TRUST STRIP
+========================= */
+
+.trust-strip{
+    max-width:1050px;
+    margin:25px auto 0;
+    padding:0 20px;
+}
+
+.trust-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.trust-card{
+    background:#111;
+    border:1px solid var(--line);
+    border-radius:9px;
+    padding:17px;
+}
+
+.trust-card strong{
+    display:block;
+    font-size:14px;
+}
+
+.trust-card span{
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* =========================
+   RESULTS
+========================= */
+
+.results{
+    display:none;
+    max-width:1150px;
+    margin:65px auto;
+    padding:0 20px;
+}
+
+.results.show{
+    display:block;
+}
+
+.results-heading{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.results-heading .eyebrow{
     margin-bottom:10px;
 }
 
-.page-hero h1 span{
-    color:var(--yellow);
+.results-heading h2{
+    font-size:40px;
+    margin-bottom:8px;
 }
 
-.page-hero p{
-    max-width:700px;
-    color:#9ca5ad;
-    font-size:14px;
-    line-height:1.6;
+.results-heading p{
+    color:var(--muted);
 }
 
-/* =====================================
-MAIN
-===================================== */
-
-.main{
-    padding:30px 4%;
-}
-
-.layout{
-    display:grid;
-    grid-template-columns:265px 1fr;
-    gap:22px;
-}
-
-/* =====================================
-FILTER SIDEBAR
-===================================== */
-
-.filters{
-    background:#0d1217;
-    border:1px solid var(--border);
-    border-radius:8px;
-    padding:20px;
-    height:max-content;
-    position:sticky;
-    top:98px;
-}
-
-.filter-heading{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding-bottom:15px;
-    border-bottom:1px solid #273039;
-    margin-bottom:15px;
-}
-
-.filter-heading h2{
-    font-size:16px;
-}
-
-.clear{
-    border:0;
-    background:none;
-    color:var(--yellow);
-    font-size:10px;
-    cursor:pointer;
-}
-
-.filter-group{
-    padding:14px 0;
-    border-bottom:1px solid #202830;
-}
-
-.filter-group:last-child{
-    border-bottom:0;
-}
-
-.filter-group h3{
-    font-size:11px;
-    margin-bottom:9px;
-    color:#dfe3e6;
-}
-
-.filter-group select,
-.filter-group input{
-    width:100%;
-    height:38px;
-    background:#171d23;
-    border:1px solid #303943;
-    color:white;
-    border-radius:4px;
-    padding:0 9px;
-    font-size:11px;
-    outline:none;
-}
-
-.price-row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:6px;
-}
-
-.check{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    color:#9ea7af;
-    font-size:10px;
-    margin:8px 0;
-    cursor:pointer;
-}
-
-.check input{
-    width:auto;
-    height:auto;
-}
-
-.filter-button{
-    width:100%;
-    height:42px;
-    margin-top:17px;
-    border:0;
-    border-radius:5px;
-    background:var(--yellow);
-    color:#050607;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-/* =====================================
-RESULT AREA
-===================================== */
-
-.results-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:18px;
-}
-
-.result-count strong{
-    font-size:18px;
-}
-
-.result-count span{
-    color:#8f98a0;
-    font-size:11px;
-    margin-left:5px;
-}
-
-.sort{
-    display:flex;
-    align-items:center;
-    gap:8px;
-}
-
-.sort label{
-    color:#8f98a0;
-    font-size:10px;
-}
-
-.sort select{
-    background:#12181e;
-    border:1px solid #333c45;
-    color:white;
-    height:37px;
-    padding:0 10px;
-    border-radius:4px;
-    font-size:10px;
-}
-
-/* =====================================
-QUICK FILTERS
-===================================== */
-
-.quick-filters{
-    display:flex;
-    gap:7px;
-    overflow-x:auto;
-    margin-bottom:20px;
-    padding-bottom:3px;
-}
-
-.quick-filters button{
-    white-space:nowrap;
-    border:1px solid #333c45;
-    background:#141a20;
-    color:#bfc5ca;
-    padding:8px 12px;
-    border-radius:20px;
-    font-size:10px;
-    cursor:pointer;
-}
-
-.quick-filters button:hover,
-.quick-filters button.active{
-    border-color:var(--yellow);
-    color:var(--yellow);
-}
-
-/* =====================================
-CARS GRID
-===================================== */
-
-.cars{
+.result-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:15px;
+    gap:18px;
 }
 
-.car{
-    background:#10151a;
-    border:1px solid #2b343d;
-    border-radius:8px;
+.car-card{
+    background:#151515;
+    border:1px solid var(--line);
+    border-radius:12px;
     overflow:hidden;
     transition:.25s;
 }
 
-.car:hover{
-    transform:translateY(-4px);
-    border-color:#5b636b;
-    box-shadow:0 15px 35px rgba(0,0,0,.4);
+.car-card:hover{
+    transform:translateY(-5px);
+    border-color:#555;
 }
 
 .car-image{
-    height:190px;
-    background:
-        linear-gradient(145deg,#27313a,#0c1014);
+    height:220px;
     position:relative;
     overflow:hidden;
+    background:#222;
 }
 
 .car-image img{
     width:100%;
     height:100%;
     object-fit:cover;
-    transition:.35s;
+    display:block;
 }
 
-.car:hover img{
-    transform:scale(1.05);
-}
-
-.badge{
+.match-percent{
     position:absolute;
-    top:10px;
-    left:10px;
+    top:12px;
+    right:12px;
     background:var(--yellow);
-    color:#050607;
-    font-size:8px;
-    font-weight:bold;
-    padding:6px 8px;
-    border-radius:3px;
+    color:#000;
+    padding:7px 10px;
+    border-radius:5px;
+    font-weight:900;
+    font-size:12px;
 }
 
-.badge.red{
-    background:#e52d2d;
-    color:white;
+.car-body{
+    padding:20px;
 }
 
-.badge.blue{
-    background:#1976d2;
-    color:white;
-}
-
-.badge.green{
-    background:#1d9d5c;
-    color:white;
-}
-
-.favourite{
-    position:absolute;
-    top:9px;
-    right:9px;
-    width:32px;
-    height:32px;
-    border-radius:50%;
-    border:1px solid rgba(255,255,255,.35);
-    background:rgba(0,0,0,.6);
-    color:white;
-    cursor:pointer;
-}
-
-.favourite.saved{
+.car-category{
     color:var(--yellow);
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-size:10px;
+    font-weight:900;
 }
 
-.car-content{
-    padding:14px;
+.car-body h3{
+    font-size:22px;
+    margin:5px 0;
 }
 
-.car-content h3{
-    font-size:14px;
-    margin-bottom:7px;
+.car-price{
+    font-size:19px;
+    font-weight:900;
+    margin:12px 0;
+}
+
+.car-specs{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+    margin-bottom:15px;
 }
 
 .spec{
-    color:#929ba3;
-    font-size:9px;
-    line-height:1.6;
+    background:#1e1e1e;
+    padding:8px;
+    border-radius:5px;
+    font-size:11px;
+    color:#bbb;
 }
 
-.price{
-    color:var(--yellow);
-    font-size:18px;
-    font-weight:bold;
-    margin:10px 0;
+.spec strong{
+    display:block;
+    color:#fff;
+    font-size:12px;
 }
 
-.location{
-    color:#818a92;
-    font-size:9px;
-    margin-bottom:12px;
+.car-reason{
+    border-top:1px solid var(--line);
+    padding-top:13px;
+    margin-top:10px;
+    color:#bbb;
+    font-size:12px;
 }
 
-.car-buttons{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:6px;
-}
-
-.car-buttons button{
-    height:32px;
-    border:1px solid #414a53;
-    border-radius:4px;
-    background:#181e24;
-    color:white;
-    font-size:9px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.car-buttons button:last-child{
-    color:var(--green);
-}
-
-/* =====================================
-NO RESULTS
-===================================== */
-
-.no-results{
-    display:none;
-    text-align:center;
-    padding:70px 20px;
-    border:1px dashed #39424a;
-    border-radius:8px;
-    color:#8d969e;
-}
-
-.no-results h2{
-    color:white;
-    margin-bottom:8px;
-}
-
-/* =====================================
-PAGINATION
-===================================== */
-
-.pagination{
+.card-buttons{
     display:flex;
-    justify-content:center;
-    gap:6px;
-    margin-top:30px;
+    gap:8px;
+    margin-top:17px;
 }
 
-.pagination button{
-    width:38px;
-    height:38px;
-    border:1px solid #353e47;
-    background:#13191f;
-    color:#d5d9dc;
-    border-radius:4px;
+.card-buttons a,
+.card-buttons button{
+    flex:1;
+    text-align:center;
+    padding:11px 7px;
+    border-radius:5px;
+    font-size:12px;
+    font-weight:800;
     cursor:pointer;
 }
 
-.pagination button.active,
-.pagination button:hover{
+.view-btn{
     background:var(--yellow);
-    border-color:var(--yellow);
-    color:#050607;
+    color:#000;
+    border:1px solid var(--yellow);
 }
 
-/* =====================================
-TRUST STRIP
-===================================== */
-
-.trust{
-    margin:35px 0 0;
-    border-top:1px solid #252d35;
-    border-bottom:1px solid #252d35;
-    background:#0a0e12;
-    padding:25px 4%;
+.compare-btn{
+    background:#252525;
+    border:1px solid #3a3a3a;
+    color:#fff;
 }
 
-.trust-grid{
+/* =========================
+   WHY SECTION
+========================= */
+
+.why{
+    background:#101010;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:70px 20px;
+    margin-top:70px;
+}
+
+.why-inner{
+    max-width:1100px;
+    margin:auto;
+}
+
+.section-heading{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-heading h2{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.section-heading p{
+    color:var(--muted);
+    max-width:650px;
+    margin:auto;
+}
+
+.why-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:15px;
 }
 
-.trust-item{
-    display:flex;
-    gap:12px;
-    align-items:center;
+.why-card{
+    background:#171717;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:23px;
 }
 
-.trust-icon{
-    width:42px;
-    height:42px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border:1px solid #555d65;
-    border-radius:50%;
-    color:var(--yellow);
-    font-size:19px;
+.why-icon{
+    font-size:28px;
+    margin-bottom:12px;
 }
 
-.trust-item h3{
+.why-card h3{
+    font-size:16px;
+    margin-bottom:7px;
+}
+
+.why-card p{
+    color:#aaa;
+    font-size:12px;
+}
+
+/* =========================
+   MARKET CATEGORIES
+========================= */
+
+.categories{
+    max-width:1150px;
+    margin:70px auto;
+    padding:0 20px;
+}
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.category{
+    min-height:150px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+    position:relative;
+    background:#111;
+}
+
+.category img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+    opacity:.55;
+    transition:.3s;
+}
+
+.category:hover img{
+    transform:scale(1.05);
+    opacity:.75;
+}
+
+.category-info{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:17px;
+    background:linear-gradient(transparent,rgba(0,0,0,.95));
+}
+
+.category-info strong{
+    font-size:16px;
+}
+
+.category-info span{
+    color:#bbb;
     font-size:11px;
-    margin-bottom:4px;
 }
 
-.trust-item p{
-    color:#7f8992;
-    font-size:9px;
+/* =========================
+   SAFETY
+========================= */
+
+.safety{
+    background:#0b0b0b;
+    padding:70px 20px;
 }
 
-/* =====================================
-FOOTER
-===================================== */
+.safety-inner{
+    max-width:950px;
+    margin:auto;
+}
+
+.safety-box{
+    border:1px solid #3c3212;
+    background:rgba(255,196,0,.04);
+    border-radius:12px;
+    padding:30px;
+}
+
+.safety-box h2{
+    color:var(--yellow);
+    margin-bottom:10px;
+}
+
+.safety-box p{
+    color:#bbb;
+    font-size:14px;
+}
+
+.safety-list{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.safety-list div{
+    background:#151515;
+    border:1px solid var(--line);
+    padding:13px;
+    border-radius:6px;
+    color:#ddd;
+    font-size:13px;
+}
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
-    background:#07090b;
-    border-top:1px solid #242c33;
-    padding:45px 4% 20px;
+    background:#050505;
+    border-top:1px solid var(--line);
+    padding:45px 20px 25px;
 }
 
-.footer-grid{
+.footer-inner{
+    max-width:1150px;
+    margin:auto;
     display:grid;
-    grid-template-columns:2fr 1fr 1fr 1.5fr;
-    gap:40px;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:30px;
 }
 
 .footer-brand p{
+    color:#888;
+    font-size:13px;
     max-width:350px;
-    color:#818a92;
-    font-size:11px;
-    line-height:1.7;
-    margin-top:15px;
+    margin-top:12px;
 }
 
-.footer-col h3{
-    font-size:11px;
-    margin-bottom:15px;
+.footer-col h4{
+    font-size:13px;
+    margin-bottom:13px;
+    color:var(--yellow);
 }
 
 .footer-col a{
     display:block;
-    color:#858e97;
-    font-size:10px;
-    margin-bottom:11px;
+    color:#888;
+    font-size:12px;
+    margin-bottom:8px;
 }
 
 .footer-col a:hover{
-    color:var(--yellow);
+    color:#fff;
 }
 
-.footer-bottom{
-    margin-top:35px;
-    padding-top:18px;
-    border-top:1px solid #22292f;
-    display:flex;
-    justify-content:space-between;
-    color:#666f77;
-    font-size:9px;
+.copyright{
+    max-width:1150px;
+    margin:35px auto 0;
+    padding-top:20px;
+    border-top:1px solid #1b1b1b;
+    color:#666;
+    font-size:11px;
 }
 
-/* =====================================
-FLOATING
-===================================== */
+/* =========================
+   MOBILE
+========================= */
 
-.floating{
-    position:fixed;
-    right:18px;
-    bottom:18px;
-    z-index:900;
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-}
-
-.float{
-    width:48px;
-    height:48px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    box-shadow:0 7px 20px rgba(0,0,0,.45);
-}
-
-.whatsapp{
-    background:var(--green);
-}
-
-.call{
-    background:#171c22;
-    border:1px solid #404952;
-}
-
-.top{
-    background:#252d35;
-    border:1px solid #404952;
-    cursor:pointer;
-}
-
-/* =====================================
-MOBILE FILTER
-===================================== */
-
-.filter-mobile{
-    display:none;
-    width:100%;
-    height:43px;
-    background:#151b21;
-    color:white;
-    border:1px solid #39424b;
-    border-radius:5px;
-    margin-bottom:15px;
-    font-weight:bold;
-}
-
-/* =====================================
-RESPONSIVE
-===================================== */
-
-@media(max-width:1200px){
+@media(max-width:900px){
 
     nav{
-        gap:15px;
+        display:none;
+        position:absolute;
+        top:76px;
+        left:0;
+        right:0;
+        background:#0c0c0c;
+        border-bottom:1px solid var(--line);
+        flex-direction:column;
+        padding:20px;
+        align-items:stretch;
+    }
+
+    nav.open{
+        display:flex;
     }
 
     nav a{
-        font-size:9px;
+        padding:12px;
+        border-bottom:1px solid #202020;
     }
 
-    .cars{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-}
-
-@media(max-width:950px){
-
-    nav{
-        display:none;
-    }
-
-    .mobile-menu{
+    .menu-btn{
         display:block;
-        margin-left:auto;
     }
 
-    .header-actions{
-        display:none;
-    }
-
-    .logo{
-        min-width:auto;
-    }
-
-    .layout{
+    .options{
         grid-template-columns:1fr;
     }
 
-    .filters{
-        position:static;
-        display:none;
-    }
-
-    .filters.open{
-        display:block;
-    }
-
-    .filter-mobile{
-        display:block;
-    }
-
-}
-
-@media(max-width:650px){
-
-    .page-hero{
-        padding:35px 5%;
-    }
-
-    .page-hero h1{
-        font-size:32px;
-    }
-
-    .main{
-        padding:20px 3%;
-    }
-
-    .results-top{
-        align-items:flex-start;
-        flex-direction:column;
-        gap:12px;
-    }
-
-    .sort{
-        width:100%;
-    }
-
-    .sort select{
-        flex:1;
-    }
-
-    .cars{
-        grid-template-columns:1fr;
-    }
-
-    .car-image{
-        height:220px;
-    }
-
-    .trust{
-        padding-left:4%;
-        padding-right:4%;
-    }
-
-    .trust-grid{
+    .result-grid{
         grid-template-columns:1fr 1fr;
     }
 
-    .footer-grid{
+    .why-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .category-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .footer-inner{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .hero{
+        min-height:520px;
+    }
+
+    .hero h1{
+        font-size:46px;
+        letter-spacing:-2px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .match-wrap{
+        margin-top:-35px;
+    }
+
+    .match-top,
+    .question,
+    .match-controls{
+        padding-left:20px;
+        padding-right:20px;
+    }
+
+    .question h3{
+        font-size:24px;
+    }
+
+    .trust-grid{
         grid-template-columns:1fr;
-        gap:25px;
     }
 
-    .footer-bottom{
-        flex-direction:column;
-        gap:8px;
+    .result-grid{
+        grid-template-columns:1fr;
     }
 
+    .why-grid{
+        grid-template-columns:1fr;
+    }
+
+    .category-grid{
+        grid-template-columns:1fr;
+    }
+
+    .safety-list{
+        grid-template-columns:1fr;
+    }
+
+    .footer-inner{
+        grid-template-columns:1fr;
+    }
 }
 
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =====================================
-HEADER
-===================================== -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
+<div class="navbar">
+
 <a href="index.html" class="logo">
-
-    <div class="logo-mark"></div>
-
+    <div class="logo-mark">NT</div>
     <div class="logo-text">
-
-        <strong>
-            NAUZA <span>TU</span>
-        </strong>
-
-        <small>
-            DIGITAL MOTOR MARKET
-        </small>
-
+        <strong>NAUZA TU</strong>
+        <span>DIGITAL MOTOR MARKET</span>
     </div>
-
 </a>
 
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-<nav>
+<nav id="mainNav">
 
     <a href="index.html">HOME</a>
-
-    <a href="cars.html" class="active">
-        CARS FOR SALE
-    </a>
-
-    <a href="car-match.html">
-        CAR MATCH
-    </a>
-
-    <a href="compare.html">
-        COMPARE
-    </a>
-
-    <a href="sell.html">
-        SELL YOUR CAR
-    </a>
-
-    <a href="financing.html">
-        FINANCING
-    </a>
-
-    <a href="resources.html">
-        RESOURCES
-    </a>
-
-    <a href="about.html">
-        ABOUT US
-    </a>
-
-    <a href="contact.html">
-        CONTACT
-    </a>
+    <a href="cars.html">CARS FOR SALE</a>
+    <a href="car-match.html" class="active">CAR MATCH</a>
+    <a href="compare.html">COMPARE</a>
+    <a href="sell.html">SELL YOUR CAR</a>
+    <a href="financing.html">FINANCING</a>
+    <a href="resources.html">RESOURCES</a>
+    <a href="login.html">LOGIN</a>
+    <a href="sell.html" class="post-btn">+ POST YOUR CAR</a>
 
 </nav>
 
-
-<div class="header-actions">
-
-    <button class="header-icon"
-            onclick="alert('Your saved cars will appear here.')">
-        ♡ 0
-    </button>
-
-    <button class="login"
-            onclick="alert('Login system will be connected in the next stage.')">
-        LOGIN / SIGN UP
-    </button>
-
-    <a href="sell.html" class="post">
-        ＋ POST YOUR CAR
-    </a>
-
 </div>
-
-
-<button class="mobile-menu"
-        onclick="toggleMenu()">
-    ☰
-</button>
 
 </header>
 
 
-<!-- =====================================
-PAGE HERO
-===================================== -->
+<!-- =========================
+     HERO
+========================= -->
 
-<section class="page-hero">
+<section class="hero">
 
-    <div class="breadcrumb">
-        Home / <span>Cars for Sale</span>
-    </div>
+<div class="hero-content">
 
-    <h1>
-        FIND YOUR <span>NEXT CAR.</span>
-    </h1>
+<span class="eyebrow">NAUZA TU SMART MATCH</span>
 
-    <p>
-        Explore cars available through Nauza Tu Digital Motor Market.
-        Search by what matters to you, compare your options and connect
-        with sellers in Nairobi.
-    </p>
+<h1>
+    Don't just search for a car.
+    <span>Find your car.</span>
+</h1>
+
+<p>
+    Tell us how you live, what you can afford and what you need your vehicle
+    to do. NAUZA TU will narrow down the cars that make sense for you.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#match" class="btn btn-primary">
+    FIND MY CAR →
+</a>
+
+<a href="cars.html" class="btn btn-secondary">
+    BROWSE ALL CARS
+</a>
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- =====================================
-MAIN
-===================================== -->
+<!-- =========================
+     MATCH TOOL
+========================= -->
 
-<main class="main">
+<section id="match" class="match-wrap">
+
+<div class="match-box">
+
+<div class="progress">
+    <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div class="match-top">
+
+<h2>Build Your Car Match</h2>
+
+<p>
+Answer a few simple questions. There are no wrong answers.
+</p>
+
+</div>
 
 
-<button class="filter-mobile"
-        onclick="toggleFilters()">
-    ☰ FILTER & REFINE SEARCH
+<!-- QUESTION 1 -->
+
+<div class="question active" data-question="1">
+
+<div class="question-number">QUESTION 01 OF 07</div>
+
+<h3>What is your realistic car budget?</h3>
+
+<p class="question-description">
+Choose the amount you are comfortable spending on the vehicle itself.
+</p>
+
+<div class="options">
+
+<div class="option" data-value="budget-low">
+<div class="option-icon">💰</div>
+<strong>Below KSh 700K</strong>
+<small>Budget-conscious buying</small>
+</div>
+
+<div class="option" data-value="budget-mid">
+<div class="option-icon">💵</div>
+<strong>KSh 700K – 1.5M</strong>
+<small>Popular mid-market range</small>
+</div>
+
+<div class="option" data-value="budget-high">
+<div class="option-icon">💳</div>
+<strong>KSh 1.5M – 3M</strong>
+<small>Higher specification vehicles</small>
+</div>
+
+<div class="option" data-value="budget-premium">
+<div class="option-icon">💎</div>
+<strong>KSh 3M+</strong>
+<small>Premium & executive vehicles</small>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- QUESTION 2 -->
+
+<div class="question" data-question="2">
+
+<div class="question-number">QUESTION 02 OF 07</div>
+
+<h3>What will you mainly use the car for?</h3>
+
+<p class="question-description">
+Think about what the vehicle will do most days.
+</p>
+
+<div class="options">
+
+<div class="option" data-value="city">
+<div class="option-icon">🏙️</div>
+<strong>Daily Nairobi Driving</strong>
+<small>Work, errands, traffic and parking</small>
+</div>
+
+<div class="option" data-value="family">
+<div class="option-icon">👨‍👩‍👧‍👦</div>
+<strong>Family</strong>
+<small>Children, shopping and family trips</small>
+</div>
+
+<div class="option" data-value="business">
+<div class="option-icon">💼</div>
+<strong>Business / Work</strong>
+<small>Carrying goods or working with the vehicle</small>
+</div>
+
+<div class="option" data-value="travel">
+<div class="option-icon">🛣️</div>
+<strong>Long Distance / Travel</strong>
+<small>Highways, upcountry and road trips</small>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- QUESTION 3 -->
+
+<div class="question" data-question="3">
+
+<div class="question-number">QUESTION 03 OF 07</div>
+
+<h3>How many people do you normally carry?</h3>
+
+<p class="question-description">
+Choose your normal requirement rather than the maximum.
+</p>
+
+<div class="options">
+
+<div class="option" data-value="1-2">
+<div class="option-icon">👤</div>
+<strong>1–2 People</strong>
+<small>Mostly myself or one passenger</small>
+</div>
+
+<div class="option" data-value="3-5">
+<div class="option-icon">👥</div>
+<strong>3–5 People</strong>
+<small>Small family or passengers</small>
+</div>
+
+<div class="option" data-value="6-7">
+<div class="option-icon">👨‍👩‍👧</div>
+<strong>6–7 People</strong>
+<small>Larger family or group</small>
+</div>
+
+<div class="option" data-value="8+">
+<div class="option-icon">🚐</div>
+<strong>8+ People</strong>
+<small>Maximum passenger space</small>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- QUESTION 4 -->
+
+<div class="question" data-question="4">
+
+<div class="question-number">QUESTION 04 OF 07</div>
+
+<h3>What matters most about fuel?</h3>
+
+<p class="question-description">
+Fuel economy can make a major difference in Nairobi traffic.
+</p>
+
+<div class="options">
+
+<div class="option" data-value="economy">
+<div class="option-icon">⛽</div>
+<strong>Very Important</strong>
+<small>I want to keep running costs low</small>
+</div>
+
+<div class="option" data-value="balanced">
+<div class="option-icon">⚖️</div>
+<strong>Balanced</strong>
+<small>Economy and performance together</small>
+</div>
+
+<div class="option" data-value="performance">
+<div class="option-icon">🚀</div>
+<strong>Performance First</strong>
+<small>Power matters more than economy</small>
+</div>
+
+<div class="option" data-value="diesel">
+<div class="option-icon">🔧</div>
+<strong>Prefer Diesel</strong>
+<small>Torque and long-distance use</small>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- QUESTION 5 -->
+
+<div class="question" data-question="5">
+
+<div class="question-number">QUESTION 05 OF 07</div>
+
+<h3>Which driving setup do you prefer?</h3>
+
+<p class="question-description">
+Choose what fits your normal driving.
+</p>
+
+<div class="options">
+
+<div class="option" data-value="automatic">
+<div class="option-icon">⚙️</div>
+<strong>Automatic / CVT</strong>
+<small>Easy in Nairobi traffic</small>
+</div>
+
+<div class="option" data-value="manual">
+<div class="option-icon">🕹️</div>
+<strong>Manual</strong>
+<small>I prefer manual control</small>
+</div>
+
+<div class="option" data-value="either">
+<div class="option-icon">🔄</div>
+<strong>Either</strong>
+<small>I'm open to both</small>
+</div>
+
+<div class="option" data-value="hybrid">
+<div class="option-icon">🔋</div>
+<strong>Hybrid</strong>
+<small>Fuel-saving technology interests me</small>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- QUESTION 6 -->
+
+<div class="question" data-question="6">
+
+<div class="question-number">QUESTION 06 OF 07</div>
+
+<h3>Where will you drive most?</h3>
+
+<p class="question-description">
+This helps us distinguish city cars from tougher road vehicles.
+</p>
+
+<div class="options">
+
+<div class="option" data-value="nairobi">
+<div class="option-icon">🏙️</div>
+<strong>Nairobi / Urban</strong>
+<small>Tarmac and city traffic</small>
+</div>
+
+<div class="option" data-value="mixed">
+<div class="option-icon">🛣️</div>
+<strong>Mixed Roads</strong>
+<small>City plus rural/upcountry roads</small>
+</div>
+
+<div class="option" data-value="rough">
+<div class="option-icon">🌄</div>
+<strong>Rough / Rural Roads</strong>
+<small>Ground clearance matters</small>
+</div>
+
+<div class="option" data-value="offroad">
+<div class="option-icon">🏔️</div>
+<strong>Off-road / 4×4</strong>
+<small>I need serious capability</small>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- QUESTION 7 -->
+
+<div class="question" data-question="7">
+
+<div class="question-number">QUESTION 07 OF 07</div>
+
+<h3>What type of car attracts you?</h3>
+
+<p class="question-description">
+This is about preference — not a restriction.
+</p>
+
+<div class="options">
+
+<div class="option" data-value="compact">
+<div class="option-icon">🚗</div>
+<strong>Small & Easy</strong>
+<small>Compact hatchback</small>
+</div>
+
+<div class="option" data-value="sedan">
+<div class="option-icon">🚘</div>
+<strong>Saloon / Sedan</strong>
+<small>Comfortable and balanced</small>
+</div>
+
+<div class="option" data-value="suv">
+<div class="option-icon">🚙</div>
+<strong>SUV / Crossover</strong>
+<small>Space and road presence</small>
+</div>
+
+<div class="option" data-value="mpv">
+<div class="option-icon">🚐</div>
+<strong>Family / MPV</strong>
+<small>Maximum passenger practicality</small>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="match-controls">
+
+<button class="control-btn" id="backBtn" onclick="previousQuestion()" disabled>
+← BACK
 </button>
 
-
-<div class="layout">
-
-
-<!-- =====================================
-FILTERS
-===================================== -->
-
-<aside class="filters" id="filters">
-
-    <div class="filter-heading">
-
-        <h2>
-            FILTER CARS
-        </h2>
-
-        <button class="clear"
-                onclick="clearFilters()">
-            CLEAR ALL
-        </button>
-
-    </div>
-
-
-    <!-- MAKE -->
-
-    <div class="filter-group">
-
-        <h3>MAKE</h3>
-
-        <select id="filterMake">
-
-            <option value="">All Makes</option>
-
-            <option>Toyota</option>
-            <option>Nissan</option>
-            <option>Honda</option>
-            <option>Mercedes-Benz</option>
-            <option>BMW</option>
-            <option>Subaru</option>
-            <option>Mazda</option>
-            <option>Volkswagen</option>
-
-        </select>
-
-    </div>
-
-
-    <!-- MODEL -->
-
-    <div class="filter-group">
-
-        <h3>MODEL</h3>
-
-        <select id="filterModel">
-
-            <option value="">All Models</option>
-
-            <option>Prado</option>
-            <option>Harrier</option>
-            <option>Land Cruiser</option>
-            <option>X-Trail</option>
-            <option>Vezel</option>
-            <option>C180</option>
-            <option>Forester</option>
-            <option>Premio</option>
-
-        </select>
-
-    </div>
-
-
-    <!-- PRICE -->
-
-    <div class="filter-group">
-
-        <h3>PRICE RANGE</h3>
-
-        <div class="price-row">
-
-            <input
-                type="number"
-                id="minPrice"
-                placeholder="Min KSh"
-            >
-
-            <input
-                type="number"
-                id="maxPrice"
-                placeholder="Max KSh"
-            >
-
-        </div>
-
-    </div>
-
-
-    <!-- YEAR -->
-
-    <div class="filter-group">
-
-        <h3>YEAR</h3>
-
-        <div class="price-row">
-
-            <select id="minYear">
-
-                <option value="">From</option>
-
-                <option>2025</option>
-                <option>2024</option>
-                <option>2023</option>
-                <option>2022</option>
-                <option>2021</option>
-                <option>2020</option>
-                <option>2019</option>
-                <option>2018</option>
-                <option>2017</option>
-                <option>2016</option>
-
-            </select>
-
-
-            <select id="maxYear">
-
-                <option value="">To</option>
-
-                <option>2026</option>
-                <option>2025</option>
-                <option>2024</option>
-                <option>2023</option>
-                <option>2022</option>
-                <option>2021</option>
-                <option>2020</option>
-                <option>2019</option>
-                <option>2018</option>
-
-            </select>
-
-        </div>
-
-    </div>
-
-
-    <!-- BODY -->
-
-    <div class="filter-group">
-
-        <h3>BODY TYPE</h3>
-
-        <select id="filterBody">
-
-            <option value="">All Body Types</option>
-
-            <option>SUV</option>
-            <option>Sedan</option>
-            <option>Hatchback</option>
-            <option>Pickup</option>
-            <option>Van</option>
-            <option>Wagon</option>
-
-        </select>
-
-    </div>
-
-
-    <!-- FUEL -->
-
-    <div class="filter-group">
-
-        <h3>FUEL TYPE</h3>
-
-        <label class="check">
-            <input type="checkbox" value="Petrol" class="fuel">
-            Petrol
-        </label>
-
-        <label class="check">
-            <input type="checkbox" value="Diesel" class="fuel">
-            Diesel
-        </label>
-
-        <label class="check">
-            <input type="checkbox" value="Hybrid" class="fuel">
-            Hybrid
-        </label>
-
-        <label class="check">
-            <input type="checkbox" value="Electric" class="fuel">
-            Electric
-        </label>
-
-    </div>
-
-
-    <!-- TRANSMISSION -->
-
-    <div class="filter-group">
-
-        <h3>TRANSMISSION</h3>
-
-        <label class="check">
-            <input type="checkbox" value="Automatic" class="transmission">
-            Automatic
-        </label>
-
-        <label class="check">
-            <input type="checkbox" value="Manual" class="transmission">
-            Manual
-        </label>
-
-    </div>
-
-
-    <!-- DRIVE -->
-
-    <div class="filter-group">
-
-        <h3>DRIVETRAIN</h3>
-
-        <label class="check">
-            <input type="checkbox" value="4WD" class="drive">
-            4WD
-        </label>
-
-        <label class="check">
-            <input type="checkbox" value="2WD" class="drive">
-            2WD
-        </label>
-
-    </div>
-
-
-    <button class="filter-button"
-            onclick="applyFilters()">
-
-        APPLY FILTERS
-
-    </button>
-
-</aside>
-
-
-<!-- =====================================
-RESULTS
-===================================== -->
-
-<section class="results">
-
-
-<div class="results-top">
-
-    <div class="result-count">
-
-        <strong id="resultNumber">
-            8
-        </strong>
-
-        <span>
-            vehicles found
-        </span>
-
-    </div>
-
-
-    <div class="sort">
-
-        <label>
-            SORT BY
-        </label>
-
-        <select id="sort"
-                onchange="sortCars()">
-
-            <option value="newest">
-                Newest
-            </option>
-
-            <option value="low">
-                Price: Low to High
-            </option>
-
-            <option value="high">
-                Price: High to Low
-            </option>
-
-            <option value="mileage">
-                Lowest Mileage
-            </option>
-
-        </select>
-
-    </div>
-
-</div>
-
-
-<!-- QUICK FILTERS -->
-
-<div class="quick-filters">
-
-    <button class="active"
-            onclick="quickFilter('',this)">
-        ALL
-    </button>
-
-    <button onclick="quickFilter('SUV',this)">
-        SUVs
-    </button>
-
-    <button onclick="quickFilter('Sedan',this)">
-        SEDANS
-    </button>
-
-    <button onclick="quickFilter('Toyota',this)">
-        TOYOTA
-    </button>
-
-    <button onclick="quickFilter('Nissan',this)">
-        NISSAN
-    </button>
-
-    <button onclick="quickFilter('Mercedes-Benz',this)">
-        MERCEDES
-    </button>
-
-    <button onclick="quickFilter('Hybrid',this)">
-        HYBRID
-    </button>
-
-</div>
-
-
-<!-- =====================================
-CARS
-===================================== -->
-
-<div class="cars" id="cars">
-
-
-<!-- CAR 1 -->
-
-<article class="car"
-data-make="Toyota"
-data-model="Harrier"
-data-price="2850000"
-data-year="2018"
-data-body="SUV"
-data-fuel="Petrol"
-data-transmission="Automatic"
-data-drive="2WD"
-data-mileage="68000">
-
-<div class="car-image">
-
-<img
-src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=900&q=80"
-alt="Toyota Harrier">
-
-<span class="badge green">
-NEW ARRIVAL
-</span>
-
-<button class="favourite"
-onclick="favourite(this)">
-♡
-</button>
-
-</div>
-
-<div class="car-content">
-
-<h3>
-Toyota Harrier Premium
-</h3>
-
-<div class="spec">
-2018 | 2.0L Petrol | Automatic | 2WD
-</div>
-
-<div class="price">
-KSh 2,850,000
-</div>
-
-<div class="location">
-◉ Nairobi
-&nbsp; • &nbsp;
-68,000 KM
-</div>
-
-<div class="car-buttons">
-
-<button onclick="viewCar('Toyota Harrier Premium')">
-VIEW DETAILS
-</button>
-
-<button onclick="whatsapp('Toyota Harrier Premium')">
-☎ WHATSAPP
+<button class="control-btn next" id="nextBtn" onclick="nextQuestion()" disabled>
+NEXT →
 </button>
 
 </div>
 
 </div>
-
-</article>
-
-
-<!-- CAR 2 -->
-
-<article class="car"
-data-make="Toyota"
-data-model="Land Cruiser"
-data-price="10800000"
-data-year="2020"
-data-body="SUV"
-data-fuel="Diesel"
-data-transmission="Automatic"
-data-drive="4WD"
-data-mileage="54000">
-
-<div class="car-image">
-
-<img
-src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=900&q=80"
-alt="Toyota Land Cruiser">
-
-<span class="badge red">
-HOT DEAL
-</span>
-
-<button class="favourite"
-onclick="favourite(this)">
-♡
-</button>
-
-</div>
-
-<div class="car-content">
-
-<h3>
-Toyota Land Cruiser V8
-</h3>
-
-<div class="spec">
-2020 | 4.5L Diesel | Automatic | 4WD
-</div>
-
-<div class="price">
-KSh 10,800,000
-</div>
-
-<div class="location">
-◉ Nairobi
-&nbsp; • &nbsp;
-54,000 KM
-</div>
-
-<div class="car-buttons">
-
-<button onclick="viewCar('Toyota Land Cruiser V8')">
-VIEW DETAILS
-</button>
-
-<button onclick="whatsapp('Toyota Land Cruiser V8')">
-☎ WHATSAPP
-</button>
-
-</div>
-
-</div>
-
-</article>
-
-
-<!-- CAR 3 -->
-
-<article class="car"
-data-make="Toyota"
-data-model="Prado"
-data-price="5450000"
-data-year="2019"
-data-body="SUV"
-data-fuel="Diesel"
-data-transmission="Automatic"
-data-drive="4WD"
-data-mileage="76000">
-
-<div class="car-image">
-
-<img
-src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=900&q=80"
-alt="Toyota Prado">
-
-<span class="badge">
-BEST VALUE
-</span>
-
-<button class="favourite"
-onclick="favourite(this)">
-♡
-</button>
-
-</div>
-
-<div class="car-content">
-
-<h3>
-Toyota Prado TX-L
-</h3>
-
-<div class="spec">
-2019 | 2.8L Diesel | Automatic | 4WD
-</div>
-
-<div class="price">
-KSh 5,450,000
-</div>
-
-<div class="location">
-◉ Nairobi
-&nbsp; • &nbsp;
-76,000 KM
-</div>
-
-<div class="car-buttons">
-
-<button onclick="viewCar('Toyota Prado TX-L')">
-VIEW DETAILS
-</button>
-
-<button onclick="whatsapp('Toyota Prado TX-L')">
-☎ WHATSAPP
-</button>
-
-</div>
-
-</div>
-
-</article>
-
-
-<!-- CAR 4 -->
-
-<article class="car"
-data-make="Mercedes-Benz"
-data-model="C180"
-data-price="2450000"
-data-year="2017"
-data-body="Sedan"
-data-fuel="Petrol"
-data-transmission="Automatic"
-data-drive="2WD"
-data-mileage="42000">
-
-<div class="car-image">
-
-<img
-src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=900&q=80"
-alt="Mercedes Benz">
-
-<span class="badge">
-LOW MILEAGE
-</span>
-
-<button class="favourite"
-onclick="favourite(this)">
-♡
-</button>
-
-</div>
-
-<div class="car-content">
-
-<h3>
-Mercedes-Benz C180
-</h3>
-
-<div class="spec">
-2017 | 1.6L Petrol | Automatic | 2WD
-</div>
-
-<div class="price">
-KSh 2,450,000
-</div>
-
-<div class="location">
-◉ Nairobi
-&nbsp; • &nbsp;
-42,000 KM
-</div>
-
-<div class="car-buttons">
-
-<button onclick="viewCar('Mercedes-Benz C180')">
-VIEW DETAILS
-</button>
-
-<button onclick="whatsapp('Mercedes-Benz C180')">
-☎ WHATSAPP
-</button>
-
-</div>
-
-</div>
-
-</article>
-
-
-<!-- CAR 5 -->
-
-<article class="car"
-data-make="Nissan"
-data-model="X-Trail"
-data-price="2190000"
-data-year="2018"
-data-body="SUV"
-data-fuel="Petrol"
-data-transmission="Automatic"
-data-drive="4WD"
-data-mileage="59000">
-
-<div class="car-image">
-
-<img
-src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=900&q=80"
-alt="Nissan X Trail">
-
-<span class="badge green">
-NEW ARRIVAL
-</span>
-
-<button class="favourite"
-onclick="favourite(this)">
-♡
-</button>
-
-</div>
-
-<div class="car-content">
-
-<h3>
-Nissan X-Trail
-</h3>
-
-<div class="spec">
-2018 | 2.0L Petrol | Automatic | 4WD
-</div>
-
-<div class="price">
-KSh 2,190,000
-</div>
-
-<div class="location">
-◉ Nairobi
-&nbsp; • &nbsp;
-59,000 KM
-</div>
-
-<div class="car-buttons">
-
-<button onclick="viewCar('Nissan X-Trail')">
-VIEW DETAILS
-</button>
-
-<button onclick="whatsapp('Nissan X-Trail')">
-☎ WHATSAPP
-</button>
-
-</div>
-
-</div>
-
-</article>
-
-
-<!-- CAR 6 -->
-
-<article class="car"
-data-make="Honda"
-data-model="Vezel"
-data-price="2350000"
-data-year="2019"
-data-body="SUV"
-data-fuel="Hybrid"
-data-transmission="Automatic"
-data-drive="2WD"
-data-mileage="48000">
-
-<div class="car-image">
-
-<img
-src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=80"
-alt="Honda Vezel">
-
-<span class="badge blue">
-HYBRID
-</span>
-
-<button class="favourite"
-onclick="favourite(this)">
-♡
-</button>
-
-</div>
-
-<div class="car-content">
-
-<h3>
-Honda Vezel Hybrid
-</h3>
-
-<div class="spec">
-2019 | 1.5L Hybrid | Automatic | 2WD
-</div>
-
-<div class="price">
-KSh 2,350,000
-</div>
-
-<div class="location">
-◉ Nairobi
-&nbsp; • &nbsp;
-48,000 KM
-</div>
-
-<div class="car-buttons">
-
-<button onclick="viewCar('Honda Vezel Hybrid')">
-VIEW DETAILS
-</button>
-
-<button onclick="whatsapp('Honda Vezel Hybrid')">
-☎ WHATSAPP
-</button>
-
-</div>
-
-</div>
-
-</article>
-
-
-<!-- CAR 7 -->
-
-<article class="car"
-data-make="Subaru"
-data-model="Forester"
-data-price="2350000"
-data-year="2019"
-data-body="SUV"
-data-fuel="Petrol"
-data-transmission="Automatic"
-data-drive="4WD"
-data-mileage="61000">
-
-<div class="car-image">
-
-<img
-src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=900&q=80"
-alt="Subaru Forester">
-
-<span class="badge">
-FEATURED
-</span>
-
-<button class="favourite"
-onclick="favourite(this)">
-♡
-</button>
-
-</div>
-
-<div class="car-content">
-
-<h3>
-Subaru Forester
-</h3>
-
-<div class="spec">
-2019 | 2.0L Petrol | Automatic | 4WD
-</div>
-
-<div class="price">
-KSh 2,350,000
-</div>
-
-<div class="location">
-◉ Nairobi
-&nbsp; • &nbsp;
-61,000 KM
-</div>
-
-<div class="car-buttons">
-
-<button onclick="viewCar('Subaru Forester')">
-VIEW DETAILS
-</button>
-
-<button onclick="whatsapp('Subaru Forester')">
-☎ WHATSAPP
-</button>
-
-</div>
-
-</div>
-
-</article>
-
-
-<!-- CAR 8 -->
-
-<article class="car"
-data-make="Toyota"
-data-model="Premio"
-data-price="1950000"
-data-year="2017"
-data-body="Sedan"
-data-fuel="Petrol"
-data-transmission="Automatic"
-data-drive="2WD"
-data-mileage="57000">
-
-<div class="car-image">
-
-<img
-src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=900&q=80"
-alt="Toyota Premio">
-
-<span class="badge green">
-VALUE BUY
-</span>
-
-<button class="favourite"
-onclick="favourite(this)">
-♡
-</button>
-
-</div>
-
-<div class="car-content">
-
-<h3>
-Toyota Premio
-</h3>
-
-<div class="spec">
-2017 | 1.8L Petrol | Automatic | 2WD
-</div>
-
-<div class="price">
-KSh 1,950,000
-</div>
-
-<div class="location">
-◉ Nairobi
-&nbsp; • &nbsp;
-57,000 KM
-</div>
-
-<div class="car-buttons">
-
-<button onclick="viewCar('Toyota Premio')">
-VIEW DETAILS
-</button>
-
-<button onclick="whatsapp('Toyota Premio')">
-☎ WHATSAPP
-</button>
-
-</div>
-
-</div>
-
-</article>
-
-
-</div>
-
-
-<div class="no-results"
-     id="noResults">
-
-    <h2>
-        NO CARS FOUND
-    </h2>
-
-    <p>
-        Try changing your filters or search criteria.
-    </p>
-
-</div>
-
-
-<!-- PAGINATION -->
-
-<div class="pagination">
-
-    <button class="active">
-        1
-    </button>
-
-    <button>
-        2
-    </button>
-
-    <button>
-        3
-    </button>
-
-    <button>
-        →
-    </button>
-
-</div>
-
 
 </section>
 
-</div>
 
-</main>
+<!-- =========================
+     TRUST STRIP
+========================= -->
 
-
-<!-- =====================================
-TRUST
-===================================== -->
-
-<section class="trust">
+<section class="trust-strip">
 
 <div class="trust-grid">
 
-    <div class="trust-item">
+<div class="trust-card">
+<strong>🎯 Needs-Based Matching</strong>
+<span>Recommendations are based on how you actually use a car.</span>
+</div>
 
-        <div class="trust-icon">
-            ✓
-        </div>
+<div class="trust-card">
+<strong>🇰🇪 Kenya-Focused</strong>
+<span>Built around vehicles commonly found in the Kenyan market.</span>
+</div>
 
-        <div>
-
-            <h3>
-                VERIFIED LISTINGS
-            </h3>
-
-            <p>
-                Vehicle information checked before publishing.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="trust-item">
-
-        <div class="trust-icon">
-            ◈
-        </div>
-
-        <div>
-
-            <h3>
-                TRANSPARENT INFORMATION
-            </h3>
-
-            <p>
-                Clear prices and vehicle specifications.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="trust-item">
-
-        <div class="trust-icon">
-            ♡
-        </div>
-
-        <div>
-
-            <h3>
-                SAVE YOUR FAVOURITES
-            </h3>
-
-            <p>
-                Keep interesting cars together.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="trust-item">
-
-        <div class="trust-icon">
-            ☎
-        </div>
-
-        <div>
-
-            <h3>
-                DIRECT CONTACT
-            </h3>
-
-            <p>
-                Contact sellers quickly through WhatsApp.
-            </p>
-
-        </div>
-
-    </div>
+<div class="trust-card">
+<strong>🔍 Buyer First</strong>
+<span>We help you shortlist before you start negotiating.</span>
+</div>
 
 </div>
 
 </section>
 
 
-<!-- =====================================
-FOOTER
-===================================== -->
+<!-- =========================
+     RESULTS
+========================= -->
+
+<section class="results" id="results">
+
+<div class="results-heading">
+
+<span class="eyebrow">YOUR NAUZA TU MATCH</span>
+
+<h2>Cars Worth Looking At</h2>
+
+<p>
+These are starting recommendations based on the answers you gave us.
+Always inspect and verify an actual vehicle before buying.
+</p>
+
+</div>
+
+<div class="result-grid" id="resultGrid"></div>
+
+</section>
+
+
+<!-- =========================
+     WHY NAUZA TU
+========================= -->
+
+<section class="why">
+
+<div class="why-inner">
+
+<div class="section-heading">
+
+<h2>Why Car Match?</h2>
+
+<p>
+Most car websites ask what car you want.
+NAUZA TU starts by asking what you actually need.
+</p>
+
+</div>
+
+<div class="why-grid">
+
+<div class="why-card">
+
+<div class="why-icon">🧠</div>
+
+<h3>Think Beyond Make & Model</h3>
+
+<p>
+A popular car is not automatically the right car for your lifestyle.
+</p>
+
+</div>
+
+<div class="why-card">
+
+<div class="why-icon">💰</div>
+
+<h3>Respect Your Budget</h3>
+
+<p>
+The tool begins with what you can realistically afford.
+</p>
+
+</div>
+
+<div class="why-card">
+
+<div class="why-icon">🏙️</div>
+
+<h3>Built For Kenyan Roads</h3>
+
+<p>
+Your driving environment affects the type of vehicle you should consider.
+</p>
+
+</div>
+
+<div class="why-card">
+
+<div class="why-icon">🔎</div>
+
+<h3>Shortlist Smarter</h3>
+
+<p>
+Instead of looking at hundreds of cars, start with a focused shortlist.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     MARKET CATEGORIES
+========================= -->
+
+<section class="categories">
+
+<div class="section-heading">
+
+<h2>What Kenyans Drive</h2>
+
+<p>
+Explore vehicle categories before you start your search.
+</p>
+
+</div>
+
+<div class="category-grid">
+
+<a href="cars.html?category=compact" class="category">
+
+<img
+src="https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg"
+alt="Toyota Vitz in Nairobi">
+
+<div class="category-info">
+<strong>City & Compact</strong>
+<span>Vitz • Demio • Fit • Note</span>
+</div>
+
+</a>
+
+
+<a href="cars.html?category=sedan" class="category">
+
+<img
+src="https://pbs.twimg.com/media/HEp95QQXoAA7kuH.jpg"
+alt="Toyota Premio">
+
+<div class="category-info">
+<strong>Sedans</strong>
+<span>Premio • Axio • Corolla</span>
+</div>
+
+</a>
+
+
+<a href="cars.html?category=suv" class="category">
+
+<img
+src="https://d20plav1k4kerc.cloudfront.net/media/uploads/assessment/prescreeningimage/9a99003a-81ad-48f5-bf4b-c7d949e4e509.jpeg"
+alt="Toyota Harrier in Nairobi">
+
+<div class="category-info">
+<strong>SUVs & Crossovers</strong>
+<span>Harrier • X-Trail • RAV4</span>
+</div>
+
+</a>
+
+
+<a href="cars.html?category=family" class="category">
+
+<img
+src="https://d20plav1k4kerc.cloudfront.net/media/uploads/assessment/prescreeningimage/2fe2c5fc-dc9b-4a28-b766-265dce54f4b4.jpeg"
+alt="Toyota Noah">
+
+<div class="category-info">
+<strong>Family & MPV</strong>
+<span>Noah • Voxy • Serena</span>
+</div>
+
+</a>
+
+
+<a href="cars.html?category=hybrid" class="category">
+
+<img
+src="https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/vehicles/thumbnails/IMG-20250827-WA0172.jpg"
+alt="Hybrid and modern vehicle in Kenya">
+
+<div class="category-info">
+<strong>Hybrid</strong>
+<span>Vezel • Prius • Aqua</span>
+</div>
+
+</a>
+
+
+<a href="cars.html?category=work" class="category">
+
+<img
+src="https://www.motorhub.co.ke/assets/images/CarPhotos/Large_195475067cfea203b52f831f2a3ecddb_10122024032419.JPG"
+alt="Toyota Probox">
+
+<div class="category-info">
+<strong>Work & Business</strong>
+<span>Probox • Hilux • D-Max</span>
+</div>
+
+</a>
+
+
+<a href="cars.html?category=4x4" class="category">
+
+<img
+src="https://d20plav1k4kerc.cloudfront.net/media/uploads/assessment/prescreeningimage/9a99003a-81ad-48f5-bf4b-c7d949e4e509.jpeg"
+alt="SUV suitable for Kenyan roads">
+
+<div class="category-info">
+<strong>4×4 & Adventure</strong>
+<span>Prado • Land Cruiser • Hilux</span>
+</div>
+
+</a>
+
+
+<a href="cars.html?make=nissan" class="category">
+
+<img
+src="https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/vehicles/thumbnails/IMG-20250827-WA0172.jpg"
+alt="Nissan vehicle in Kenya">
+
+<div class="category-info">
+<strong>Nissan</strong>
+<span>X-Trail • Note • Serena</span>
+</div>
+
+</a>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     SAFETY
+========================= -->
+
+<section class="safety">
+
+<div class="safety-inner">
+
+<div class="safety-box">
+
+<h2>Before You Buy Any Car</h2>
+
+<p>
+NAUZA TU helps you discover and compare vehicles, but a recommendation
+is not a guarantee that a particular vehicle is mechanically sound or
+legally clear. Inspect the actual vehicle and verify the seller and documents.
+</p>
+
+<div class="safety-list">
+
+<div>✓ Inspect the vehicle physically</div>
+
+<div>✓ Check the chassis/VIN</div>
+
+<div>✓ Verify ownership documents</div>
+
+<div>✓ Confirm the seller's identity</div>
+
+<div>✓ Test drive before paying</div>
+
+<div>✓ Use a trusted mechanic</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-<div class="footer-grid">
-
+<div class="footer-inner">
 
 <div class="footer-brand">
 
-    <div class="logo">
+<div class="logo">
 
-        <div class="logo-mark"></div>
+<div class="logo-mark">NT</div>
 
-        <div class="logo-text">
+<div class="logo-text">
 
-            <strong>
-                NAUZA <span>TU</span>
-            </strong>
+<strong>NAUZA TU</strong>
 
-            <small>
-                DIGITAL MOTOR MARKET
-            </small>
+<span>DIGITAL MOTOR MARKET</span>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
-    <p>
-        A Nairobi-focused digital motor market built to make
-        discovering, comparing and connecting around cars
-        simpler and smarter.
-    </p>
+<p>
+A Kenyan digital motor marketplace built to make buying and selling
+vehicles simpler, smarter and more transparent.
+</p>
 
 </div>
 
 
 <div class="footer-col">
 
-    <h3>
-        BUY
-    </h3>
+<h4>BUY</h4>
 
-    <a href="cars.html">
-        Cars for Sale
-    </a>
-
-    <a href="car-match.html">
-        Car Match
-    </a>
-
-    <a href="compare.html">
-        Compare Cars
-    </a>
-
-    <a href="financing.html">
-        Financing
-    </a>
+<a href="cars.html">Cars For Sale</a>
+<a href="car-match.html">Car Match</a>
+<a href="compare.html">Compare Cars</a>
+<a href="financing.html">Financing</a>
 
 </div>
 
 
 <div class="footer-col">
 
-    <h3>
-        SELL
-    </h3>
+<h4>SELL</h4>
 
-    <a href="sell.html">
-        Sell Your Car
-    </a>
-
-    <a href="#">
-        Seller Guide
-    </a>
-
-    <a href="#">
-        Listing Packages
-    </a>
-
-    <a href="#">
-        Seller Support
-    </a>
+<a href="sell.html">Sell Your Car</a>
+<a href="sell.html">Post A Listing</a>
+<a href="login.html">Seller Login</a>
+<a href="resources.html">Seller Resources</a>
 
 </div>
 
 
 <div class="footer-col">
 
-    <h3>
-        NAUZA TU
-    </h3>
+<h4>NAUZA TU</h4>
 
-    <a href="about.html">
-        About Us
-    </a>
+<a href="about.html">About Us</a>
+<a href="contact.html">Contact</a>
+<a href="resources.html">Buyer Guide</a>
+<a href="privacy.html">Privacy</a>
 
-    <a href="resources.html">
-        Resources
-    </a>
-
-    <a href="contact.html">
-        Contact
-    </a>
-
-    <a href="#">
-        Privacy Policy
-    </a>
-
-    <a href="#">
-        Terms & Conditions
-    </a>
+</div>
 
 </div>
 
 
-</div>
+<div class="copyright">
 
-
-<div class="footer-bottom">
-
-    <span>
-        © 2026 Nauza Tu Digital Motor Market
-    </span>
-
-    <span>
-        Nairobi, Kenya
-    </span>
+© 2026 NAUZA TU DIGITAL MOTOR MARKET. All rights reserved.
 
 </div>
 
 </footer>
 
 
-<!-- =====================================
-FLOATING BUTTONS
-===================================== -->
-
-<div class="floating">
-
-<a
-class="float whatsapp"
-href="https://wa.me/254700000000"
-target="_blank">
-    ☎
-</a>
-
-<a
-class="float call"
-href="tel:+254700000000">
-    ☎
-</a>
-
-<button
-class="float top"
-onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    ↑
-</button>
-
-</div>
-
-
 <script>
 
-/* =====================================
-MOBILE MENU
-===================================== */
+/* =========================
+   MOBILE MENU
+========================= */
 
 function toggleMenu(){
 
-    alert(
-        "Mobile navigation will open here."
-    );
-
-}
-
-
-/* =====================================
-FILTER MOBILE
-===================================== */
-
-function toggleFilters(){
-
     document
-    .getElementById("filters")
-    .classList.toggle("open");
+        .getElementById("mainNav")
+        .classList
+        .toggle("open");
 
 }
 
 
-/* =====================================
-FAVOURITES
-===================================== */
+/* =========================
+   CAR MATCH ENGINE
+========================= */
 
-function favourite(button){
+let currentQuestion = 1;
 
-    button.classList.toggle("saved");
+const totalQuestions = 7;
 
-    if(
-        button.classList.contains("saved")
-    ){
+const answers = {};
 
-        button.innerHTML="♥";
+
+/* Select option */
+
+document.querySelectorAll(".option").forEach(option => {
+
+    option.addEventListener("click", function(){
+
+        const question =
+            this.closest(".question");
+
+        question
+            .querySelectorAll(".option")
+            .forEach(item => {
+
+                item.classList.remove("selected");
+
+            });
+
+        this.classList.add("selected");
+
+        const questionNumber =
+            question.dataset.question;
+
+        answers[questionNumber] =
+            this.dataset.value;
+
+        document.getElementById("nextBtn")
+            .disabled = false;
+
+    });
+
+});
+
+
+/* Show question */
+
+function showQuestion(number){
+
+    document.querySelectorAll(".question")
+        .forEach(question => {
+
+            question.classList.remove("active");
+
+        });
+
+    const current =
+        document.querySelector(
+            `.question[data-question="${number}"]`
+        );
+
+    current.classList.add("active");
+
+    document.getElementById("backBtn")
+        .disabled = number === 1;
+
+    document.getElementById("nextBtn")
+        .innerText =
+        number === totalQuestions
+        ? "SHOW MY MATCH →"
+        : "NEXT →";
+
+    document.getElementById("nextBtn")
+        .disabled = !answers[number];
+
+    const progress =
+        (number / totalQuestions) * 100;
+
+    document.getElementById("progressBar")
+        .style.width = progress + "%";
+
+}
+
+
+/* Next */
+
+function nextQuestion(){
+
+    if(!answers[currentQuestion]){
+        return;
+    }
+
+    if(currentQuestion < totalQuestions){
+
+        currentQuestion++;
+
+        showQuestion(currentQuestion);
 
     }else{
 
-        button.innerHTML="♡";
+        generateResults();
 
     }
 
 }
 
 
-/* =====================================
-VIEW CAR
-===================================== */
+/* Back */
 
-function viewCar(name){
+function previousQuestion(){
+
+    if(currentQuestion > 1){
+
+        currentQuestion--;
+
+        showQuestion(currentQuestion);
+
+    }
+
+}
+
+
+/* =========================
+   MATCHING ENGINE
+========================= */
+
+function calculateMatch(car){
+
+    let score = 0;
+
+    let max = 0;
+
+    const budget = answers["1"];
+    const usage = answers["2"];
+    const people = answers["3"];
+    const fuel = answers["4"];
+    const transmission = answers["5"];
+    const road = answers["6"];
+    const type = answers["7"];
+
+
+    /* Budget */
+
+    max += 20;
+
+    if(car.budget.includes(budget)){
+        score += 20;
+    }
+
+
+    /* Usage */
+
+    max += 15;
+
+    if(car.usage.includes(usage)){
+        score += 15;
+    }
+
+
+    /* Passengers */
+
+    max += 15;
+
+    if(car.people.includes(people)){
+        score += 15;
+    }
+
+
+    /* Fuel */
+
+    max += 15;
+
+    if(car.fuel.includes(fuel)){
+        score += 15;
+    }
+
+
+    /* Transmission */
+
+    max += 10;
+
+    if(car.transmission.includes(transmission)){
+        score += 10;
+    }
+
+
+    /* Roads */
+
+    max += 15;
+
+    if(car.road.includes(road)){
+        score += 15;
+    }
+
+
+    /* Body type */
+
+    max += 10;
+
+    if(car.type.includes(type)){
+        score += 10;
+    }
+
+
+    return Math.round((score / max) * 100);
+
+}
+
+
+/* =========================
+   VEHICLE DATABASE
+========================= */
+
+const cars = [
+
+{
+name:"Toyota Vitz",
+category:"City & Compact",
+price:"KSh 550K – 900K",
+image:"https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg",
+
+budget:["budget-low","budget-mid"],
+usage:["city"],
+people:["1-2","3-5"],
+fuel:["economy","balanced","hybrid"],
+transmission:["automatic","either"],
+road:["nairobi"],
+type:["compact"],
+
+specs:[
+["Engine","1.0–1.3L"],
+["Fuel","Petrol"],
+["Gearbox","CVT/Auto"],
+["Best For","City"]
+],
+
+reason:"Excellent starting point for someone who spends most of the week navigating Nairobi and wants a compact, easy-to-run car."
+
+},
+
+
+{
+name:"Toyota Probox",
+category:"Work & Business",
+price:"KSh 650K – 1.5M+",
+image:"https://www.motorhub.co.ke/assets/images/CarPhotos/Large_195475067cfea203b52f831f2a3ecddb_10122024032419.JPG",
+
+budget:["budget-low","budget-mid","budget-high"],
+usage:["business","travel"],
+people:["1-2","3-5"],
+fuel:["economy","balanced"],
+transmission:["automatic","manual","either"],
+road:["nairobi","mixed","rough"],
+type:["compact"],
+
+specs:[
+["Engine","1.3–1.5L"],
+["Fuel","Petrol"],
+["Gearbox","Auto/Manual"],
+["Best For","Business"]
+],
+
+reason:"A practical Kenyan workhorse with useful cargo space and a reputation for everyday practicality."
+
+},
+
+
+{
+name:"Toyota Premio",
+category:"Sedan",
+price:"KSh 700K – 1.4M+",
+image:"https://pbs.twimg.com/media/HEp95QQXoAA7kuH.jpg",
+
+budget:["budget-mid","budget-high"],
+usage:["city","family","travel"],
+people:["3-5"],
+fuel:["economy","balanced"],
+transmission:["automatic","either"],
+road:["nairobi","mixed"],
+type:["sedan"],
+
+specs:[
+["Engine","1.5–2.0L"],
+["Fuel","Petrol"],
+["Gearbox","CVT/Auto"],
+["Best For","Comfort"]
+],
+
+reason:"A strong option for buyers who want a comfortable saloon that works for Nairobi, family use and highway trips."
+
+},
+
+
+{
+name:"Honda Vezel",
+category:"Hybrid Crossover",
+price:"KSh 1.2M – 2.0M+",
+image:"https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/vehicles/thumbnails/IMG-20250827-WA0172.jpg",
+
+budget:["budget-mid","budget-high"],
+usage:["city","family","travel"],
+people:["3-5","6-7"],
+fuel:["economy","hybrid","balanced"],
+transmission:["automatic","hybrid"],
+road:["nairobi","mixed"],
+type:["suv"],
+
+specs:[
+["Engine","1.5L"],
+["Fuel","Hybrid/Petrol"],
+["Gearbox","Hybrid/CVT"],
+["Best For","Efficiency"]
+],
+
+reason:"Good for buyers looking for SUV-like practicality while keeping fuel economy high."
+
+},
+
+
+{
+name:"Toyota Harrier",
+category:"SUV & Crossover",
+price:"KSh 1.8M – 3.5M+",
+image:"https://d20plav1k4kerc.cloudfront.net/media/uploads/assessment/prescreeningimage/9a99003a-81ad-48f5-bf4b-c7d949e4e509.jpeg",
+
+budget:["budget-high","budget-premium"],
+usage:["family","travel","city"],
+people:["3-5","6-7"],
+fuel:["balanced","performance"],
+transmission:["automatic","hybrid"],
+road:["nairobi","mixed"],
+type:["suv"],
+
+specs:[
+["Engine","2.0–2.5L"],
+["Fuel","Petrol/Hybrid"],
+["Gearbox","CVT/Auto"],
+["Best For","Premium SUV"]
+],
+
+reason:"A strong match when comfort, premium feel, passenger space and SUV practicality matter."
+
+},
+
+
+{
+name:"Toyota Noah",
+category:"Family & MPV",
+price:"KSh 1.2M – 3M+",
+image:"https://d20plav1k4kerc.cloudfront.net/media/uploads/assessment/prescreeningimage/2fe2c5fc-dc9b-4a28-b766-265dce54f4b4.jpeg",
+
+budget:["budget-mid","budget-high","budget-premium"],
+usage:["family","travel"],
+people:["6-7","8+"],
+fuel:["economy","balanced"],
+transmission:["automatic","hybrid","either"],
+road:["nairobi","mixed"],
+type:["mpv"],
+
+specs:[
+["Engine","1.8–2.0L"],
+["Fuel","Petrol/Hybrid"],
+["Gearbox","CVT/Auto"],
+["Best For","Families"]
+],
+
+reason:"One of the strongest choices when passenger space and family practicality are more important than a small footprint."
+
+},
+
+
+{
+name:"Nissan X-Trail",
+category:"SUV",
+price:"KSh 1.2M – 3M+",
+image:"https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/vehicles/thumbnails/IMG-20250827-WA0172.jpg",
+
+budget:["budget-mid","budget-high","budget-premium"],
+usage:["family","travel","city"],
+people:["3-5","6-7"],
+fuel:["balanced","performance"],
+transmission:["automatic","either"],
+road:["nairobi","mixed","rough"],
+type:["suv"],
+
+specs:[
+["Engine","2.0–2.5L"],
+["Fuel","Petrol"],
+["Gearbox","CVT/Auto"],
+["Best For","Mixed Use"]
+],
+
+reason:"A versatile SUV option for buyers who mix city driving with longer trips and less predictable roads."
+
+},
+
+
+{
+name:"Toyota Land Cruiser Prado",
+category:"4×4 & Premium",
+price:"KSh 4M+",
+image:"https://d20plav1k4kerc.cloudfront.net/media/uploads/assessment/prescreeningimage/9a99003a-81ad-48f5-bf4b-c7d949e4e509.jpeg",
+
+budget:["budget-premium"],
+usage:["travel","family","business"],
+people:["3-5","6-7"],
+fuel:["performance","diesel"],
+transmission:["automatic","either"],
+road:["mixed","rough","offroad"],
+type:["suv"],
+
+specs:[
+["Engine","2.8–4.0L+"],
+["Fuel","Diesel/Petrol"],
+["Gearbox","Auto"],
+["Best For","4×4"]
+],
+
+reason:"For buyers who genuinely need capability, ground clearance, long-distance comfort and serious 4×4 ability."
+
+}
+
+];
+
+
+/* =========================
+   GENERATE RESULTS
+========================= */
+
+function generateResults(){
+
+    const results =
+        cars.map(car => {
+
+            return {
+                ...car,
+                match:calculateMatch(car)
+            };
+
+        });
+
+    results.sort((a,b) => b.match - a.match);
+
+    const topResults =
+        results.slice(0,3);
+
+    const grid =
+        document.getElementById("resultGrid");
+
+    grid.innerHTML = "";
+
+    topResults.forEach(car => {
+
+        const specsHTML =
+            car.specs.map(spec => {
+
+                return `
+                <div class="spec">
+                    ${spec[0]}
+                    <strong>${spec[1]}</strong>
+                </div>
+                `;
+
+            }).join("");
+
+        grid.innerHTML += `
+
+        <article class="car-card">
+
+            <div class="car-image">
+
+                <img
+                    src="${car.image}"
+                    alt="${car.name}"
+                    onerror="this.style.display='none'"
+                >
+
+                <div class="match-percent">
+                    ${car.match}% MATCH
+                </div>
+
+            </div>
+
+            <div class="car-body">
+
+                <div class="car-category">
+                    ${car.category}
+                </div>
+
+                <h3>${car.name}</h3>
+
+                <div class="car-price">
+                    ${car.price}
+                </div>
+
+                <div class="car-specs">
+                    ${specsHTML}
+                </div>
+
+                <div class="car-reason">
+                    <strong>Why it matched:</strong><br>
+                    ${car.reason}
+                </div>
+
+                <div class="card-buttons">
+
+                    <a
+                        href="cars.html?search=${encodeURIComponent(car.name)}"
+                        class="view-btn"
+                    >
+                        VIEW CARS
+                    </a>
+
+                    <button
+                        class="compare-btn"
+                        onclick="addCompare('${car.name}')"
+                    >
+                        COMPARE
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        `;
+
+    });
+
+
+    document
+        .getElementById("results")
+        .classList
+        .add("show");
+
+    document
+        .getElementById("results")
+        .scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+
+}
+
+
+/* =========================
+   COMPARE
+========================= */
+
+function addCompare(car){
+
+    localStorage.setItem(
+        "nauzaTuCompare",
+        car
+    );
 
     alert(
-        name +
-        "\n\nVehicle detail page will be connected next."
+        car +
+        " has been added to your comparison shortlist."
     );
 
 }
 
 
-/* =====================================
-WHATSAPP
-===================================== */
-
-function whatsapp(vehicle){
-
-    const number=
-        "254700000000";
-
-    const message=
-        "Hello Nauza Tu, I am interested in the " +
-        vehicle +
-        " listed on your website.";
-
-    window.open(
-        "https://wa.me/" +
-        number +
-        "?text=" +
-        encodeURIComponent(message),
-        "_blank"
-    );
-
-}
-
-
-/* =====================================
-FILTER
-===================================== */
-
-function applyFilters(){
-
-    const make=
-        document
-        .getElementById("filterMake")
-        .value
-        .toLowerCase();
-
-    const model=
-        document
-        .getElementById("filterModel")
-        .value
-        .toLowerCase();
-
-    const minPrice=
-        Number(
-            document
-            .getElementById("minPrice")
-            .value
-        ) || 0;
-
-    const maxPrice=
-        Number(
-            document
-            .getElementById("maxPrice")
-            .value
-        ) || Infinity;
-
-    const minYear=
-        Number(
-            document
-            .getElementById("minYear")
-            .value
-        ) || 0;
-
-    const maxYear=
-        Number(
-            document
-            .getElementById("maxYear")
-            .value
-        ) || Infinity;
-
-    const body=
-        document
-        .getElementById("filterBody")
-        .value
-        .toLowerCase();
-
-
-    const fuelSelected=
-        Array
-        .from(
-            document.querySelectorAll(".fuel:checked")
-        )
-        .map(
-            x=>x.value.toLowerCase()
-        );
-
-
-    const transmissionSelected=
-        Array
-        .from(
-            document.querySelectorAll(".transmission:checked")
-        )
-        .map(
-            x=>x.value.toLowerCase()
-        );
-
-
-    const driveSelected=
-        Array
-        .from(
-            document.querySelectorAll(".drive:checked")
-        )
-        .map(
-            x=>x.value.toLowerCase()
-        );
-
-
-    const cars=
-        document.querySelectorAll(".car");
-
-    let count=0;
-
-
-    cars.forEach(function(car){
-
-        const carMake=
-            car.dataset.make.toLowerCase();
-
-        const carModel=
-            car.dataset.model.toLowerCase();
-
-        const carPrice=
-            Number(car.dataset.price);
-
-        const carYear=
-            Number(car.dataset.year);
-
-        const carBody=
-            car.dataset.body.toLowerCase();
-
-        const carFuel=
-            car.dataset.fuel.toLowerCase();
-
-        const carTransmission=
-            car.dataset.transmission.toLowerCase();
-
-        const carDrive=
-            car.dataset.drive.toLowerCase();
-
-
-        let show=true;
-
-
-        if(
-            make &&
-            carMake!==make
-        ){
-
-            show=false;
-
-        }
-
-
-        if(
-            model &&
-            carModel!==model
-        ){
-
-            show=false;
-
-        }
-
-
-        if(
-            carPrice<minPrice ||
-            carPrice>maxPrice
-        ){
-
-            show=false;
-
-        }
-
-
-        if(
-            carYear<minYear ||
-            carYear>maxYear
-        ){
-
-            show=false;
-
-        }
-
-
-        if(
-            body &&
-            carBody!==body
-        ){
-
-            show=false;
-
-        }
-
-
-        if(
-            fuelSelected.length &&
-            !fuelSelected.includes(carFuel)
-        ){
-
-            show=false;
-
-        }
-
-
-        if(
-            transmissionSelected.length &&
-            !transmissionSelected.includes(
-                carTransmission
-            )
-        ){
-
-            show=false;
-
-        }
-
-
-        if(
-            driveSelected.length &&
-            !driveSelected.includes(carDrive)
-        ){
-
-            show=false;
-
-        }
-
-
-        if(show){
-
-            car.style.display="block";
-
-            count++;
-
-        }else{
-
-            car.style.display="none";
-
-        }
-
-    });
-
-
-    document
-    .getElementById("resultNumber")
-    .innerText=count;
-
-
-    document
-    .getElementById("noResults")
-    .style.display=
-        count===0
-        ? "block"
-        : "none";
-
-}
-
-
-/* =====================================
-CLEAR FILTERS
-===================================== */
-
-function clearFilters(){
-
-    document
-    .getElementById("filterMake")
-    .value="";
-
-    document
-    .getElementById("filterModel")
-    .value="";
-
-    document
-    .getElementById("minPrice")
-    .value="";
-
-    document
-    .getElementById("maxPrice")
-    .value="";
-
-    document
-    .getElementById("minYear")
-    .value="";
-
-    document
-    .getElementById("maxYear")
-    .value="";
-
-    document
-    .getElementById("filterBody")
-    .value="";
-
-
-    document
-    .querySelectorAll(
-        ".fuel,.transmission,.drive"
-    )
-    .forEach(
-        x=>x.checked=false
-    );
-
-
-    document
-    .querySelectorAll(".car")
-    .forEach(
-        x=>x.style.display="block"
-    );
-
-
-    document
-    .getElementById("resultNumber")
-    .innerText=
-        document.querySelectorAll(".car").length;
-
-
-    document
-    .getElementById("noResults")
-    .style.display="none";
-
-}
-
-
-/* =====================================
-QUICK FILTER
-===================================== */
-
-function quickFilter(value,button){
-
-    document
-    .querySelectorAll(".quick-filters button")
-    .forEach(
-        x=>x.classList.remove("active")
-    );
-
-    button.classList.add("active");
-
-
-    document
-    .querySelectorAll(".car")
-    .forEach(function(car){
-
-        if(!value){
-
-            car.style.display="block";
-
-            return;
-
-        }
-
-
-        const make=
-            car.dataset.make;
-
-        const body=
-            car.dataset.body;
-
-        const fuel=
-            car.dataset.fuel;
-
-
-        if(
-            make===value ||
-            body===value ||
-            fuel===value
-        ){
-
-            car.style.display="block";
-
-        }else{
-
-            car.style.display="none";
-
-        }
-
-    });
-
-
-    updateCount();
-
-}
-
-
-/* =====================================
-COUNT
-===================================== */
-
-function updateCount(){
-
-    const visible=
-        Array
-        .from(
-            document.querySelectorAll(".car")
-        )
-        .filter(
-            x=>x.style.display!=="none"
-        )
-        .length;
-
-
-    document
-    .getElementById("resultNumber")
-    .innerText=visible;
-
-}
-
-
-/* =====================================
-SORT
-===================================== */
-
-function sortCars(){
-
-    const type=
-        document
-        .getElementById("sort")
-        .value;
-
-    const container=
-        document
-        .getElementById("cars");
-
-    const cars=
-        Array
-        .from(
-            container.querySelectorAll(".car")
-        );
-
-
-    cars.sort(function(a,b){
-
-        if(type==="low"){
-
-            return (
-                Number(a.dataset.price) -
-                Number(b.dataset.price)
-            );
-
-        }
-
-
-        if(type==="high"){
-
-            return (
-                Number(b.dataset.price) -
-                Number(a.dataset.price)
-            );
-
-        }
-
-
-        if(type==="mileage"){
-
-            return (
-                Number(a.dataset.mileage) -
-                Number(b.dataset.mileage)
-            );
-
-        }
-
-
-        return (
-            Number(b.dataset.year) -
-            Number(a.dataset.year)
-        );
-
-    });
-
-
-    cars.forEach(
-        car=>container.appendChild(car)
-    );
-
-}
+/* =========================
+   INITIALIZE
+========================= */
+
+showQuestion(1);
 
 </script>
 
