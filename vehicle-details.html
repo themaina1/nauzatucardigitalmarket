@@ -1,59 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Vehicle Details | Nauza Tu Digital Motor Market</title>
+<title>Toyota Harrier 2019 | Nauza Tu Digital Motor Market</title>
 
 <meta name="description"
-content="View vehicle details, specifications, price, location and seller information on Nauza Tu Digital Motor Market.">
+content="Toyota Harrier 2019 for sale in Nairobi. View vehicle details and contact the seller through Nauza Tu Digital Motor Market.">
 
 <style>
-
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
     background:#f5f6f8;
-    color:#1f2937;
+    color:#222;
     line-height:1.6;
 }
-
-/* =========================
-   HEADER
-========================= */
 
 header{
     background:#111827;
     color:white;
-    position:sticky;
-    top:0;
-    z-index:1000;
-    box-shadow:0 3px 15px rgba(0,0,0,.18);
-}
-
-.navbar{
-    max-width:1250px;
-    margin:auto;
-    padding:15px 20px;
+    padding:15px 6%;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:20px;
+    flex-wrap:wrap;
 }
 
 .logo{
+    font-size:24px;
+    font-weight:bold;
     color:#f59e0b;
-    text-decoration:none;
-    font-size:23px;
-    font-weight:800;
-    white-space:nowrap;
 }
 
 .logo span{
@@ -62,105 +45,74 @@ header{
 
 nav{
     display:flex;
+    gap:18px;
     flex-wrap:wrap;
-    justify-content:flex-end;
-    gap:5px;
 }
 
 nav a{
     color:white;
     text-decoration:none;
-    padding:9px 12px;
-    border-radius:6px;
-    font-size:14px;
-    font-weight:700;
+    font-size:15px;
+    font-weight:600;
 }
 
-nav a:hover,
-nav a.active{
-    background:#f59e0b;
-    color:#111827;
+nav a:hover{
+    color:#f59e0b;
 }
-
-/* =========================
-   PAGE
-========================= */
 
 .container{
+    width:90%;
     max-width:1200px;
-    margin:35px auto;
-    padding:0 20px;
+    margin:30px auto;
 }
-
-/* =========================
-   BREADCRUMB
-========================= */
 
 .breadcrumb{
     margin-bottom:20px;
     font-size:14px;
-    color:#6b7280;
+    color:#666;
 }
 
 .breadcrumb a{
-    color:#b45309;
+    color:#d97706;
     text-decoration:none;
-    font-weight:700;
 }
 
-/* =========================
-   MAIN LISTING
-========================= */
+.vehicle-title{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    margin-bottom:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
 
-.listing{
+.vehicle-title h1{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.vehicle-title p{
+    color:#666;
+}
+
+.main-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:25px;
+}
+
+.card{
     background:white;
     border-radius:12px;
-    box-shadow:0 5px 25px rgba(0,0,0,.08);
-    overflow:hidden;
+    padding:22px;
+    box-shadow:0 2px 10px rgba(0,0,0,.06);
 }
 
-.listing-top{
-    padding:25px 30px;
-    border-bottom:1px solid #e5e7eb;
-}
-
-.badge{
-    display:inline-block;
-    background:#f59e0b;
-    color:#111827;
-    padding:6px 10px;
-    border-radius:5px;
-    font-size:12px;
-    font-weight:800;
-    margin-bottom:10px;
-}
-
-.listing-top h1{
-    font-size:32px;
-    color:#111827;
-    margin-bottom:5px;
-}
-
-.subtitle{
-    color:#6b7280;
-    font-size:15px;
-}
-
-/* =========================
-   PHOTO AREA
-========================= */
-
-.photo-section{
-    padding:25px 30px 0;
-}
-
-.main-photo{
+.main-image{
     width:100%;
-    height:520px;
+    height:430px;
     object-fit:cover;
-    display:block;
     border-radius:10px;
-    background:#e5e7eb;
+    display:block;
 }
 
 .thumbnails{
@@ -170,267 +122,179 @@ nav a.active{
     margin-top:12px;
 }
 
-.thumbnail{
-    height:100px;
+.thumbnails img{
     width:100%;
+    height:80px;
     object-fit:cover;
     border-radius:7px;
     cursor:pointer;
-    border:3px solid transparent;
-    background:#e5e7eb;
+    border:2px solid transparent;
 }
 
-.thumbnail:hover,
-.thumbnail.selected{
+.thumbnails img:hover{
     border-color:#f59e0b;
 }
 
-/* =========================
-   CONTENT GRID
-========================= */
-
-.content-grid{
-    display:grid;
-    grid-template-columns:1.6fr .9fr;
-    gap:30px;
-    padding:30px;
+.price{
+    font-size:30px;
+    font-weight:bold;
+    color:#d97706;
+    margin:15px 0;
 }
 
-.section{
-    margin-bottom:30px;
-}
-
-.section h2{
-    color:#111827;
-    font-size:23px;
-    border-bottom:2px solid #f59e0b;
-    padding-bottom:8px;
-    margin-bottom:18px;
-}
-
-/* =========================
-   PRICE
-========================= */
-
-.price-box{
-    background:#111827;
-    color:white;
-    border-radius:10px;
-    padding:25px;
+.location{
+    color:#555;
     margin-bottom:20px;
 }
 
-.price-label{
-    font-size:13px;
-    color:#d1d5db;
-    margin-bottom:4px;
-}
-
-.price{
-    color:#f59e0b;
-    font-size:30px;
-    font-weight:900;
-}
-
-/* =========================
-   SPECIFICATIONS
-========================= */
-
-.spec-grid{
+.specs{
     display:grid;
     grid-template-columns:1fr 1fr;
-    border:1px solid #e5e7eb;
-    border-radius:8px;
-    overflow:hidden;
+    gap:12px;
+    margin-top:20px;
 }
 
 .spec{
+    background:#f8fafc;
     padding:13px;
-    border-bottom:1px solid #e5e7eb;
+    border-radius:8px;
 }
 
-.spec:nth-child(odd){
-    background:#f9fafb;
-}
-
-.spec-name{
-    color:#6b7280;
+.spec strong{
+    display:block;
+    color:#555;
     font-size:13px;
 }
 
-.spec-value{
-    font-weight:800;
-    color:#111827;
+.spec span{
+    font-weight:bold;
 }
 
-/* =========================
-   DESCRIPTION
-========================= */
+h2{
+    margin-bottom:15px;
+}
 
 .description{
-    color:#4b5563;
-    white-space:pre-line;
+    margin-top:25px;
+    color:#444;
 }
 
-/* =========================
-   SELLER CARD
-========================= */
+.safety{
+    background:#fff7ed;
+    border-left:5px solid #f59e0b;
+    padding:15px;
+    margin-top:25px;
+    border-radius:7px;
+}
 
-.seller-card{
-    background:#f9fafb;
-    border:1px solid #e5e7eb;
+.seller{
+    margin-top:25px;
+}
+
+.seller-box{
+    background:#f8fafc;
+    padding:18px;
     border-radius:10px;
-    padding:22px;
-    position:sticky;
-    top:100px;
-}
-
-.seller-card h2{
-    margin-bottom:18px;
-    border-bottom:2px solid #f59e0b;
-    padding-bottom:8px;
 }
 
 .seller-name{
     font-size:20px;
-    font-weight:900;
-    color:#111827;
+    font-weight:bold;
     margin-bottom:5px;
 }
 
 .seller-type{
-    color:#6b7280;
-    font-size:13px;
-    margin-bottom:18px;
+    color:#666;
+    margin-bottom:15px;
 }
 
-.seller-detail{
-    margin-bottom:10px;
-    font-size:14px;
-}
-
-.contact-btn{
+.contact-number{
     display:block;
-    width:100%;
-    text-align:center;
+    margin:10px 0;
+    color:#111827;
+    font-weight:bold;
     text-decoration:none;
+}
+
+.contact-number:hover{
+    color:#d97706;
+}
+
+.buttons{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:18px;
+}
+
+.btn{
+    display:block;
+    text-align:center;
+    padding:13px;
+    border-radius:7px;
+    text-decoration:none;
+    font-weight:bold;
     border:none;
     cursor:pointer;
-    padding:14px;
-    border-radius:7px;
     font-size:15px;
-    font-weight:900;
-    margin-top:12px;
 }
 
-.call-btn{
+.btn-call{
     background:#111827;
     color:white;
 }
 
-.call-btn:hover{
-    background:#374151;
-}
-
-.whatsapp-btn{
-    background:#25D366;
+.btn-whatsapp{
+    background:#16a34a;
     color:white;
 }
 
-.whatsapp-btn:hover{
-    opacity:.9;
-}
-
-.enquiry-btn{
+.btn-enquiry{
     background:#f59e0b;
-    color:#111827;
+    color:#111;
 }
 
-.enquiry-btn:hover{
-    background:#d97706;
-    color:white;
-}
-
-/* =========================
-   SAFETY NOTICE
-========================= */
-
-.safety{
-    background:#fff7e6;
-    border-left:5px solid #f59e0b;
-    padding:18px;
-    border-radius:7px;
-    color:#4b5563;
-    font-size:13px;
-}
-
-.safety strong{
-    color:#111827;
-}
-
-/* =========================
-   ENQUIRY FORM
-========================= */
-
-.enquiry{
+.form-box{
     display:none;
     margin-top:20px;
-    background:white;
-    border:1px solid #e5e7eb;
-    border-radius:10px;
-    padding:20px;
 }
 
-.enquiry.show{
+.form-box.active{
     display:block;
 }
 
-.enquiry h3{
-    margin-bottom:15px;
-    color:#111827;
+form{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
 }
 
-.enquiry input,
-.enquiry textarea{
+input,
+textarea{
     width:100%;
     padding:12px;
-    margin-bottom:12px;
-    border:1px solid #d1d5db;
-    border-radius:6px;
-    font-size:14px;
+    border:1px solid #ddd;
+    border-radius:7px;
+    font-size:15px;
 }
 
-.enquiry textarea{
-    min-height:110px;
+textarea{
+    min-height:120px;
     resize:vertical;
 }
 
-.send-btn{
-    width:100%;
-    padding:13px;
-    border:none;
-    border-radius:6px;
-    background:#111827;
+.submit-btn{
+    background:#d97706;
     color:white;
-    font-weight:800;
+    border:none;
+    padding:13px;
+    border-radius:7px;
+    font-weight:bold;
     cursor:pointer;
 }
 
-.send-btn:hover{
-    background:#374151;
-}
-
-/* =========================
-   RELATED VEHICLES
-========================= */
-
 .related{
-    margin-top:35px;
-}
-
-.related h2{
-    color:#111827;
-    margin-bottom:20px;
+    margin-top:30px;
 }
 
 .related-grid{
@@ -443,12 +307,12 @@ nav a.active{
     background:white;
     border-radius:10px;
     overflow:hidden;
-    box-shadow:0 3px 15px rgba(0,0,0,.07);
+    box-shadow:0 2px 8px rgba(0,0,0,.06);
 }
 
 .related-card img{
     width:100%;
-    height:180px;
+    height:190px;
     object-fit:cover;
 }
 
@@ -457,954 +321,543 @@ nav a.active{
 }
 
 .related-info h3{
-    margin-bottom:4px;
-}
-
-.related-price{
-    font-weight:900;
-    margin:8px 0;
-}
-
-.related-link{
-    display:inline-block;
-    background:#f59e0b;
-    color:#111827;
-    text-decoration:none;
-    padding:8px 12px;
-    border-radius:5px;
-    font-size:13px;
-    font-weight:800;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-    margin-top:60px;
-    background:#111827;
-    color:white;
-    padding:45px 20px 20px;
-}
-
-.footer-inner{
-    max-width:1150px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:35px;
-}
-
-footer h3{
-    color:#f59e0b;
-    margin-bottom:12px;
-}
-
-footer p,
-footer a{
-    color:#d1d5db;
-    font-size:14px;
-    text-decoration:none;
-}
-
-footer p{
     margin-bottom:6px;
 }
 
-footer a:hover{
-    color:#f59e0b;
+.related-price{
+    color:#d97706;
+    font-weight:bold;
+    margin-top:8px;
 }
 
-.footer-bottom{
-    max-width:1150px;
-    margin:30px auto 0;
-    padding-top:20px;
-    border-top:1px solid #374151;
+footer{
+    background:#111827;
+    color:white;
     text-align:center;
-    color:#9ca3af;
-    font-size:13px;
+    padding:30px 15px;
+    margin-top:50px;
 }
 
-/* =========================
-   MOBILE
-========================= */
+footer p{
+    margin:5px 0;
+    color:#d1d5db;
+}
 
-@media(max-width:900px){
+@media(max-width:850px){
 
-    .navbar{
+    header{
         flex-direction:column;
+        gap:15px;
     }
 
     nav{
         justify-content:center;
     }
 
-    .content-grid{
+    .main-grid{
         grid-template-columns:1fr;
     }
 
-    .seller-card{
-        position:static;
+    .main-image{
+        height:300px;
     }
 
     .related-grid{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:1fr;
     }
-
 }
 
-@media(max-width:600px){
+@media(max-width:500px){
 
     .container{
-        padding:0 12px;
-        margin-top:20px;
+        width:94%;
     }
 
-    .listing-top{
-        padding:20px;
+    .vehicle-title h1{
+        font-size:25px;
     }
 
-    .listing-top h1{
-        font-size:26px;
+    .price{
+        font-size:25px;
     }
 
-    .photo-section{
-        padding:20px 20px 0;
-    }
-
-    .main-photo{
-        height:280px;
+    .specs{
+        grid-template-columns:1fr;
     }
 
     .thumbnails{
-        grid-template-columns:repeat(4,1fr);
+        grid-template-columns:repeat(3,1fr);
     }
 
-    .thumbnail{
-        height:65px;
+    .thumbnails img{
+        height:70px;
     }
-
-    .content-grid{
-        padding:20px;
-    }
-
-    .related-grid{
-        grid-template-columns:1fr;
-    }
-
-    .footer-inner{
-        grid-template-columns:1fr;
-        text-align:center;
-    }
-
 }
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
 
-<div class="navbar">
+    <div class="logo">
+        Nauza Tu <span>Digital Motor Market</span>
+    </div>
 
-<a href="index.html" class="logo">
-Nauza Tu <span>Digital Motor Market</span>
-</a>
-
-<nav>
-
-<a href="index.html">
-Home
-</a>
-
-<a href="vehicles.html" class="active">
-Vehicles
-</a>
-
-<a href="compare.html">
-Compare
-</a>
-
-<a href="sell.html">
-Sell Your Car
-</a>
-
-<a href="about.html">
-About
-</a>
-
-<a href="contact.html">
-Contact
-</a>
-
-</nav>
-
-</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="vehicles.html">Vehicles</a>
+        <a href="compare.html">Compare</a>
+        <a href="sell.html">Sell Your Car</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
 
 </header>
 
 
-<!-- =========================
-     MAIN
-========================= -->
+<div class="container">
 
-<main class="container">
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> /
+        <a href="vehicles.html">Vehicles</a> /
+        Toyota Harrier 2019
+    </div>
 
 
-<div class="breadcrumb">
+    <div class="vehicle-title">
 
-<a href="vehicles.html">
-Vehicles
-</a>
+        <h1>Toyota Harrier 2019</h1>
 
-&nbsp; / &nbsp;
+        <p>
+            SUV &nbsp; | &nbsp; Nairobi, Kenya &nbsp; | &nbsp; Used Vehicle
+        </p>
 
-Vehicle Details
+    </div>
+
+
+    <div class="main-grid">
+
+
+        <!-- LEFT SIDE -->
+
+        <div>
+
+            <div class="card">
+
+                <img
+                    id="mainVehicleImage"
+                    class="main-image"
+                    src="images/toyota-harrier.jpg"
+                    alt="Toyota Harrier 2019">
+
+                <div class="thumbnails">
+
+                    <img
+                        src="images/toyota-harrier.jpg"
+                        alt="Toyota Harrier"
+                        onclick="changeImage(this.src)">
+
+                    <img
+                        src="images/toyota-harrier-2.jpg"
+                        alt="Toyota Harrier side view"
+                        onclick="changeImage(this.src)">
+
+                    <img
+                        src="images/toyota-harrier-3.jpg"
+                        alt="Toyota Harrier rear view"
+                        onclick="changeImage(this.src)">
+
+                    <img
+                        src="images/toyota-harrier-4.jpg"
+                        alt="Toyota Harrier interior"
+                        onclick="changeImage(this.src)">
+
+                    <img
+                        src="images/toyota-harrier-5.jpg"
+                        alt="Toyota Harrier dashboard"
+                        onclick="changeImage(this.src)">
+
+                </div>
+
+            </div>
+
+
+            <div class="card description">
+
+                <h2>Vehicle Description</h2>
+
+                <p>
+                    Toyota Harrier 2019 available for sale in Nairobi.
+                    This vehicle is presented through Nauza Tu Digital Motor
+                    Market, a digital marketplace connecting vehicle sellers
+                    with potential buyers.
+                </p>
+
+                <p style="margin-top:12px;">
+                    Buyers are encouraged to inspect the vehicle personally
+                    and independently verify its ownership, documentation,
+                    mileage, mechanical condition and any outstanding
+                    obligations before making payment.
+                </p>
+
+            </div>
+
+
+            <div class="card" style="margin-top:25px;">
+
+                <h2>Vehicle Specifications</h2>
+
+                <div class="specs">
+
+                    <div class="spec">
+                        <strong>Make</strong>
+                        <span>Toyota</span>
+                    </div>
+
+                    <div class="spec">
+                        <strong>Model</strong>
+                        <span>Harrier</span>
+                    </div>
+
+                    <div class="spec">
+                        <strong>Year</strong>
+                        <span>2019</span>
+                    </div>
+
+                    <div class="spec">
+                        <strong>Category</strong>
+                        <span>SUV</span>
+                    </div>
+
+                    <div class="spec">
+                        <strong>Transmission</strong>
+                        <span>Automatic</span>
+                    </div>
+
+                    <div class="spec">
+                        <strong>Fuel</strong>
+                        <span>Petrol</span>
+                    </div>
+
+                    <div class="spec">
+                        <strong>Mileage</strong>
+                        <span>72,000 KM</span>
+                    </div>
+
+                    <div class="spec">
+                        <strong>Drive</strong>
+                        <span>2WD</span>
+                    </div>
+
+                    <div class="spec">
+                        <strong>Condition</strong>
+                        <span>Used</span>
+                    </div>
+
+                    <div class="spec">
+                        <strong>Location</strong>
+                        <span>Nairobi</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="safety">
+
+                <strong>Important Buyer Notice</strong>
+
+                <p style="margin-top:7px;">
+                    Nauza Tu Digital Motor Market does not own or sell this
+                    vehicle. We provide a digital marketplace where vehicle
+                    owners and sellers can advertise their vehicles to
+                    potential buyers. Always inspect the vehicle and verify
+                    all documents before making any payment.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+
+        <div>
+
+            <div class="card">
+
+                <div class="price">
+                    KES 2,850,000
+                </div>
+
+                <div class="location">
+                    📍 Nairobi, Kenya
+                </div>
+
+                <hr style="margin:15px 0;border:0;border-top:1px solid #eee;">
+
+
+                <div class="seller">
+
+                    <h2>Contact Seller</h2>
+
+                    <div class="seller-box">
+
+                        <div class="seller-name">
+                            Vehicle Seller
+                        </div>
+
+                        <div class="seller-type">
+                            Private Seller
+                        </div>
+
+
+                        <!-- PHONE NUMBERS -->
+
+                        <a
+                            class="contact-number"
+                            href="tel:+254722910913">
+                            📞 +254 722 910 913
+                        </a>
+
+                        <a
+                            class="contact-number"
+                            href="tel:+254724708032">
+                            📞 +254 724 708 032
+                        </a>
+
+
+                        <div class="buttons">
+
+                            <a
+                                class="btn btn-call"
+                                href="tel:+254722910913">
+                                Call Seller
+                            </a>
+
+
+                            <a
+                                class="btn btn-whatsapp"
+                                href="https://wa.me/254722910913"
+                                target="_blank">
+                                WhatsApp Seller
+                            </a>
+
+
+                            <button
+                                class="btn btn-enquiry"
+                                onclick="toggleEnquiry()">
+                                Send Enquiry
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ENQUIRY FORM -->
+
+                <div
+                    id="enquiryBox"
+                    class="form-box">
+
+                    <h2>Vehicle Enquiry</h2>
+
+                    <form
+                        action="https://formsubmit.co/nauzatu@gmail.com"
+                        method="POST">
+
+                        <input
+                            type="hidden"
+                            name="_subject"
+                            value="Toyota Harrier 2019 Enquiry">
+
+                        <input
+                            type="hidden"
+                            name="_captcha"
+                            value="false">
+
+                        <input
+                            type="hidden"
+                            name="_template"
+                            value="table">
+
+
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Your Name"
+                            required>
+
+
+                        <input
+                            type="tel"
+                            name="phone"
+                            placeholder="Your Phone Number"
+                            required>
+
+
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Your Email Address">
+
+
+                        <textarea
+                            name="message"
+                            placeholder="I am interested in the Toyota Harrier 2019..."
+                            required></textarea>
+
+
+                        <button
+                            type="submit"
+                            class="submit-btn">
+                            Send Enquiry
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- RELATED VEHICLES -->
+
+    <div class="related">
+
+        <h2>Other Vehicles You May Like</h2>
+
+        <div class="related-grid">
+
+
+            <div class="related-card">
+
+                <img
+                    src="images/mazda-cx5.jpg"
+                    alt="Mazda CX-5">
+
+                <div class="related-info">
+
+                    <h3>Mazda CX-5 2020</h3>
+
+                    <p>Nairobi • Automatic • Petrol</p>
+
+                    <div class="related-price">
+                        KES 2,350,000
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="related-card">
+
+                <img
+                    src="images/toyota-premio.jpg"
+                    alt="Toyota Premio">
+
+                <div class="related-info">
+
+                    <h3>Toyota Premio 2018</h3>
+
+                    <p>Nairobi • Automatic • Petrol</p>
+
+                    <div class="related-price">
+                        KES 1,450,000
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="related-card">
+
+                <img
+                    src="images/subaru-forester.jpg"
+                    alt="Subaru Forester">
+
+                <div class="related-info">
+
+                    <h3>Subaru Forester 2019</h3>
+
+                    <p>Kiambu • Automatic • Petrol</p>
+
+                    <div class="related-price">
+                        KES 1,950,000
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
-
-<div class="listing">
-
-
-<!-- LISTING TITLE -->
-
-<div class="listing-top">
-
-<span class="badge">
-FEATURED LISTING
-</span>
-
-<h1 id="vehicleTitle">
-Toyota Harrier
-</h1>
-
-<p class="subtitle" id="vehicleSubtitle">
-2019 • SUV • Nairobi
-</p>
-
-</div>
-
-
-<!-- PHOTOS -->
-
-<div class="photo-section">
-
-<img
-src="images/toyota-harrier.jpg"
-alt="Toyota Harrier"
-class="main-photo"
-id="mainPhoto"
-onerror="this.src='images/suv.jpg'"
->
-
-
-<div class="thumbnails">
-
-
-<img
-src="images/toyota-harrier.jpg"
-alt="Toyota Harrier photo 1"
-class="thumbnail selected"
-onclick="changePhoto(this)"
-onerror="this.style.display='none'"
->
-
-
-<img
-src="images/toyota-harrier-2.jpg"
-alt="Toyota Harrier photo 2"
-class="thumbnail"
-onclick="changePhoto(this)"
-onerror="this.style.display='none'"
->
-
-
-<img
-src="images/toyota-harrier-3.jpg"
-alt="Toyota Harrier photo 3"
-class="thumbnail"
-onclick="changePhoto(this)"
-onerror="this.style.display='none'"
->
-
-
-<img
-src="images/toyota-harrier-4.jpg"
-alt="Toyota Harrier photo 4"
-class="thumbnail"
-onclick="changePhoto(this)"
-onerror="this.style.display='none'"
->
-
-
-<img
-src="images/toyota-harrier-5.jpg"
-alt="Toyota Harrier photo 5"
-class="thumbnail"
-onclick="changePhoto(this)"
-onerror="this.style.display='none'"
->
-
-</div>
-
-</div>
-
-
-<!-- CONTENT -->
-
-<div class="content-grid">
-
-
-<!-- LEFT -->
-
-<div>
-
-
-<!-- PRICE -->
-
-<section class="section">
-
-<div class="price-box">
-
-<div class="price-label">
-ASKING PRICE
-</div>
-
-<div class="price" id="vehiclePrice">
-KES 2,850,000
-</div>
-
-</div>
-
-</section>
-
-
-<!-- SPECIFICATIONS -->
-
-<section class="section">
-
-<h2>
-Vehicle Specifications
-</h2>
-
-<div class="spec-grid">
-
-
-<div class="spec">
-
-<div class="spec-name">
-Make
-</div>
-
-<div class="spec-value">
-Toyota
-</div>
-
-</div>
-
-
-<div class="spec">
-
-<div class="spec-name">
-Model
-</div>
-
-<div class="spec-value">
-Harrier
-</div>
-
-</div>
-
-
-<div class="spec">
-
-<div class="spec-name">
-Year
-</div>
-
-<div class="spec-value">
-2019
-</div>
-
-</div>
-
-
-<div class="spec">
-
-<div class="spec-name">
-Category
-</div>
-
-<div class="spec-value">
-SUV
-</div>
-
-</div>
-
-
-<div class="spec">
-
-<div class="spec-name">
-Transmission
-</div>
-
-<div class="spec-value">
-Automatic
-</div>
-
-</div>
-
-
-<div class="spec">
-
-<div class="spec-name">
-Fuel
-</div>
-
-<div class="spec-value">
-Petrol
-</div>
-
-</div>
-
-
-<div class="spec">
-
-<div class="spec-name">
-Mileage
-</div>
-
-<div class="spec-value">
-72,000 KM
-</div>
-
-</div>
-
-
-<div class="spec">
-
-<div class="spec-name">
-Location
-</div>
-
-<div class="spec-value">
-Nairobi, Kenya
-</div>
-
-</div>
-
-
-<div class="spec">
-
-<div class="spec-name">
-Condition
-</div>
-
-<div class="spec-value">
-Used
-</div>
-
-</div>
-
-
-<div class="spec">
-
-<div class="spec-name">
-Drive
-</div>
-
-<div class="spec-value">
-2WD
-</div>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- DESCRIPTION -->
-
-<section class="section">
-
-<h2>
-Vehicle Description
-</h2>
-
-<p class="description">
-
-Well maintained Toyota Harrier advertised for sale in Nairobi.
-
-The vehicle is presented as a comfortable SUV suitable for
-daily driving, family use and long-distance travel.
-
-Potential buyers are encouraged to inspect the vehicle
-personally and verify all information and documentation
-before making any payment.
-
-</p>
-
-</section>
-
-
-<!-- SAFETY -->
-
-<section class="section">
-
-<div class="safety">
-
-<strong>
-Important Before You Buy
-</strong>
-
-<br><br>
-
-Nauza Tu Digital Motor Market is a marketplace and does
-not own this vehicle.
-
-The information on this listing is supplied by the seller
-and should be independently verified.
-
-Before paying for any vehicle, buyers should confirm:
-
-<br><br>
-
-• Vehicle ownership<br>
-• Logbook and registration details<br>
-• Chassis/VIN information<br>
-• Mileage<br>
-• Mechanical condition<br>
-• Accident history<br>
-• Importation information where applicable<br>
-• Outstanding loans, claims or encumbrances<br>
-• Seller identity
-
-<br><br>
-
-Never send money simply because a vehicle appears on
-Nauza Tu.
-
-</div>
-
-</section>
-
-
-</div>
-
-
-<!-- RIGHT / SELLER -->
-
-<aside>
-
-
-<div class="seller-card">
-
-<h2>
-Seller Information
-</h2>
-
-<div class="seller-name">
-Private Seller
-</div>
-
-<div class="seller-type">
-Vehicle advertised through Nauza Tu Digital Motor Market
-</div>
-
-
-<div class="seller-detail">
-📍 <strong>Location:</strong> Nairobi, Kenya
-</div>
-
-
-<div class="seller-detail">
-📞 <strong>Contact:</strong> Available on enquiry
-</div>
-
-
-<div class="seller-detail">
-🕒 <strong>Listing:</strong> Available
-</div>
-
-
-<a
-href="tel:+254700000000"
-class="contact-btn call-btn"
->
-CALL SELLER
-</a>
-
-
-<a
-href="https://wa.me/254700000000"
-class="contact-btn whatsapp-btn"
->
-WHATSAPP SELLER
-</a>
-
-
-<button
-class="contact-btn enquiry-btn"
-onclick="toggleEnquiry()"
->
-SEND ENQUIRY
-</button>
-
-
-<div
-class="enquiry"
-id="enquiryForm"
->
-
-<h3>
-Vehicle Enquiry
-</h3>
-
-
-<form
-action="https://formsubmit.co/nauzatu@gmail.com"
-method="POST"
->
-
-<input
-type="hidden"
-name="_subject"
-value="Vehicle Enquiry - Nauza Tu Digital Motor Market"
->
-
-
-<input
-type="hidden"
-name="_captcha"
-value="false"
->
-
-
-<input
-type="hidden"
-name="Vehicle"
-value="Toyota Harrier 2019"
->
-
-
-<input
-type="text"
-name="Name"
-placeholder="Your Name"
-required
->
-
-
-<input
-type="tel"
-name="Phone"
-placeholder="Your Phone Number"
-required
->
-
-
-<input
-type="email"
-name="Email"
-placeholder="Your Email"
->
-
-
-<textarea
-name="Message"
-placeholder="I am interested in this vehicle. Please contact me."
-required
-></textarea>
-
-
-<button
-type="submit"
-class="send-btn"
->
-SEND ENQUIRY
-</button>
-
-</form>
-
-</div>
-
-
-</div>
-
-</aside>
-
-
-</div>
-
-</div>
-
-
-<!-- RELATED -->
-
-<section class="related">
-
-<h2>
-You May Also Like
-</h2>
-
-
-<div class="related-grid">
-
-
-<div class="related-card">
-
-<img
-src="images/mazda-cx5.jpg"
-alt="Mazda CX-5"
-onerror="this.src='images/suv.jpg'"
->
-
-<div class="related-info">
-
-<h3>
-Mazda CX-5
-</h3>
-
-<p>
-2020 • SUV
-</p>
-
-<div class="related-price">
-KES 2,350,000
-</div>
-
-<a
-href="vehicle-details.html"
-class="related-link"
->
-View Vehicle
-</a>
-
-</div>
-
-</div>
-
-
-<div class="related-card">
-
-<img
-src="images/subaru-forester.jpg"
-alt="Subaru Forester"
-onerror="this.src='images/suv.jpg'"
->
-
-<div class="related-info">
-
-<h3>
-Subaru Forester
-</h3>
-
-<p>
-2019 • Station Wagon
-</p>
-
-<div class="related-price">
-KES 1,950,000
-</div>
-
-<a
-href="vehicle-details.html"
-class="related-link"
->
-View Vehicle
-</a>
-
-</div>
-
-</div>
-
-
-<div class="related-card">
-
-<img
-src="images/mitsubishi-pajero.jpg"
-alt="Mitsubishi Pajero"
-onerror="this.src='images/suv.jpg'"
->
-
-<div class="related-info">
-
-<h3>
-Mitsubishi Pajero
-</h3>
-
-<p>
-2017 • SUV
-</p>
-
-<div class="related-price">
-KES 3,250,000
-</div>
-
-<a
-href="vehicle-details.html"
-class="related-link"
->
-View Vehicle
-</a>
-
-</div>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-</main>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
-<div class="footer-inner">
+    <h3>Nauza Tu Digital Motor Market</h3>
 
+    <p>
+        Kenya's digital marketplace for vehicles.
+    </p>
 
-<div>
+    <p>
+        We connect vehicle sellers with potential buyers.
+    </p>
 
-<h3>
-Nauza Tu Digital Motor Market
-</h3>
-
-<p>
-A digital marketplace connecting vehicle sellers
-with potential buyers across Kenya.
-</p>
-
-</div>
-
-
-<div>
-
-<h3>
-Marketplace
-</h3>
-
-<p>
-<a href="vehicles.html">
-Browse Vehicles
-</a>
-</p>
-
-<p>
-<a href="compare.html">
-Compare Vehicles
-</a>
-</p>
-
-<p>
-<a href="sell.html">
-Sell Your Vehicle
-</a>
-</p>
-
-</div>
-
-
-<div>
-
-<h3>
-Information
-</h3>
-
-<p>
-<a href="about.html">
-About Nauza Tu
-</a>
-</p>
-
-<p>
-<a href="contact.html">
-Contact Us
-</a>
-</p>
-
-<p>
-<a href="index.html">
-Home
-</a>
-</p>
-
-</div>
-
-
-</div>
-
-
-<div class="footer-bottom">
-
-© 2026 Nauza Tu Digital Motor Market.
-All rights reserved.
-
-</div>
+    <p>
+        © 2026 Nauza Tu Digital Motor Market. All Rights Reserved.
+    </p>
 
 </footer>
 
 
 <script>
 
-/* =========================
-   CHANGE MAIN PHOTO
-========================= */
+function changeImage(image){
 
-function changePhoto(image){
-
-    const mainPhoto =
-        document.getElementById("mainPhoto");
-
-    mainPhoto.src = image.src;
-
-
-    document
-    .querySelectorAll(".thumbnail")
-    .forEach(function(item){
-
-        item.classList.remove("selected");
-
-    });
-
-
-    image.classList.add("selected");
+    document.getElementById("mainVehicleImage").src = image;
 
 }
 
 
-/* =========================
-   ENQUIRY FORM
-========================= */
-
 function toggleEnquiry(){
 
-    const form =
-        document.getElementById("enquiryForm");
+    const box = document.getElementById("enquiryBox");
 
-    form.classList.toggle("show");
+    if(box.classList.contains("active")){
+
+        box.classList.remove("active");
+
+    }else{
+
+        box.classList.add("active");
+
+        box.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+
+    }
 
 }
 
 </script>
-
 
 </body>
 </html>
