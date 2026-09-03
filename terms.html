@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Terms & Conditions | Nauza Tu Digital Motor Market</title>
 
 <meta name="description"
-content="Terms and Conditions governing the use of Nauza Tu Digital Motor Market.">
+content="Terms and Conditions for Nauza Tu Digital Motor Market, a Kenya-focused digital vehicle marketplace connecting buyers with vehicle advertisers.">
 
 <style>
 
@@ -20,153 +19,251 @@ content="Terms and Conditions governing the use of Nauza Tu Digital Motor Market
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#f5f7fa;
+    background:#f4f6f8;
     color:#222;
     line-height:1.7;
 }
 
 header{
     background:#111;
-    color:white;
-    padding:16px 5%;
+    color:#fff;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 8px rgba(0,0,0,.25);
 }
 
 .navbar{
     max-width:1200px;
     margin:auto;
+    padding:15px 20px;
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
     gap:20px;
 }
 
 .logo{
-    color:#ffcc00;
-    font-size:23px;
-    font-weight:bold;
+    color:#fff;
     text-decoration:none;
+    font-size:21px;
+    font-weight:800;
+    white-space:nowrap;
 }
 
 .logo span{
-    color:white;
+    color:#f4b400;
 }
 
 nav{
     display:flex;
     flex-wrap:wrap;
-    gap:7px;
+    gap:17px;
 }
 
 nav a{
-    color:white;
+    color:#fff;
     text-decoration:none;
-    padding:8px 11px;
-    border-radius:5px;
     font-size:14px;
+    font-weight:600;
 }
 
-nav a:hover{
-    background:#ffcc00;
-    color:#111;
+nav a:hover,
+nav a.active{
+    color:#f4b400;
 }
+
+
+/* HERO */
 
 .hero{
-    background:#111;
-    color:white;
-    text-align:center;
-    padding:65px 20px;
+    background:linear-gradient(135deg,#111,#292929);
+    color:#fff;
+    padding:55px 20px;
+}
+
+.hero-inner{
+    max-width:1200px;
+    margin:auto;
 }
 
 .hero h1{
     font-size:42px;
-    color:#ffcc00;
-    margin-bottom:10px;
-}
-
-.hero p{
-    color:#ddd;
-}
-
-.container{
-    max-width:1000px;
-    margin:45px auto;
-    padding:0 20px;
-}
-
-.card{
-    background:white;
-    padding:35px;
-    margin-bottom:25px;
-    border-radius:9px;
-    box-shadow:0 3px 15px rgba(0,0,0,.06);
-}
-
-h2{
-    margin-bottom:14px;
-    color:#111;
-}
-
-p{
-    margin-bottom:13px;
-}
-
-ul{
-    padding-left:25px;
-    margin-bottom:15px;
-}
-
-li{
     margin-bottom:8px;
 }
 
-.highlight{
-    background:#fff8d9;
-    border-left:5px solid #ffcc00;
-    padding:20px;
-    margin-bottom:25px;
+.hero p{
+    color:#ccc;
+    max-width:750px;
 }
 
-a{
-    color:#111;
-    font-weight:bold;
+
+/* CONTENT */
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:45px 20px;
 }
+
+.terms-card{
+    background:#fff;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.intro{
+    background:#fff8df;
+    border-left:5px solid #f4b400;
+    padding:20px;
+    margin-bottom:30px;
+    border-radius:7px;
+}
+
+.intro p{
+    font-size:14px;
+}
+
+.section{
+    margin-bottom:32px;
+}
+
+.section:last-child{
+    margin-bottom:0;
+}
+
+.section h2{
+    font-size:23px;
+    margin-bottom:10px;
+    color:#111;
+}
+
+.section h3{
+    font-size:17px;
+    margin:15px 0 7px;
+}
+
+.section p{
+    color:#555;
+    font-size:14px;
+    margin-bottom:10px;
+}
+
+.section ul{
+    padding-left:22px;
+    color:#555;
+    font-size:14px;
+}
+
+.section li{
+    margin-bottom:7px;
+}
+
+
+/* CONTACT */
+
+.contact-box{
+    background:#111;
+    color:#fff;
+    padding:25px;
+    border-radius:9px;
+    margin-top:35px;
+}
+
+.contact-box h2{
+    margin-bottom:8px;
+}
+
+.contact-box p{
+    color:#ccc;
+    font-size:14px;
+}
+
+.contact-box a{
+    color:#f4b400;
+    text-decoration:none;
+    font-weight:700;
+}
+
+.contact-line{
+    margin-top:8px;
+}
+
+
+/* FOOTER */
 
 footer{
     background:#111;
-    color:#ccc;
+    color:#bbb;
     padding:35px 20px;
-    text-align:center;
+}
+
+.footer-inner{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:30px;
+}
+
+footer h3{
+    color:#fff;
+    margin-bottom:10px;
+}
+
+footer p,
+footer a{
+    font-size:14px;
 }
 
 footer a{
-    color:#ffcc00;
+    display:block;
+    color:#bbb;
     text-decoration:none;
-    margin:0 8px;
+    margin:6px 0;
 }
+
+footer a:hover{
+    color:#f4b400;
+}
+
+.copyright{
+    max-width:1200px;
+    margin:25px auto 0;
+    border-top:1px solid #333;
+    padding-top:20px;
+    text-align:center;
+    font-size:13px;
+}
+
+
+/* MOBILE */
 
 @media(max-width:700px){
 
     .navbar{
         flex-direction:column;
-    }
-
-    nav{
-        justify-content:center;
+        align-items:flex-start;
     }
 
     .hero h1{
-        font-size:31px;
+        font-size:32px;
     }
 
-    .card{
-        padding:24px;
+    .terms-card{
+        padding:25px 20px;
+    }
+
+    .footer-inner{
+        grid-template-columns:1fr;
     }
 
 }
 
 </style>
-
 </head>
+
 
 <body>
 
@@ -182,10 +279,15 @@ Nauza Tu <span>Digital Motor Market</span>
 <nav>
 
 <a href="index.html">Home</a>
+
 <a href="vehicles.html">Vehicles</a>
+
 <a href="compare.html">Compare</a>
+
 <a href="sell.html">Sell / Advertise</a>
-<a href="about.html">About Us</a>
+
+<a href="about.html">About</a>
+
 <a href="contact.html">Contact</a>
 
 </nav>
@@ -195,460 +297,668 @@ Nauza Tu <span>Digital Motor Market</span>
 </header>
 
 
+<!-- HERO -->
+
 <section class="hero">
 
-<h1>Terms & Conditions</h1>
+<div class="hero-inner">
+
+<h1>
+Terms & Conditions
+</h1>
 
 <p>
-Rules governing use of the Nauza Tu Digital Motor Market.
+Terms governing the use of Nauza Tu Digital Motor Market
+and its vehicle advertising and marketplace services.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- CONTENT -->
+
+<main class="container">
+
+<div class="terms-card">
+
+
+<div class="intro">
+
+<p>
+<strong>Important:</strong>
+Nauza Tu Digital Motor Market is a digital marketplace and
+advertising platform. Nauza Tu does not own the vehicles
+advertised on this website and is not the seller of those vehicles.
+</p>
+
+</div>
+
+
+<!-- 1 -->
+
+<section class="section">
+
+<h2>
+1. About Nauza Tu
+</h2>
+
+<p>
+Nauza Tu Digital Motor Market ("Nauza Tu", "we", "us" or "our")
+operates an online platform through which vehicle owners, dealers
+and other advertisers may submit vehicle advertisements for
+potential buyers to discover.
+</p>
+
+<p>
+Our platform may provide vehicle listings, photographs,
+descriptions, specifications, prices, locations and contact or
+enquiry facilities.
+</p>
+
+<p>
+Nauza Tu's role is primarily to provide the digital marketplace
+and facilitate discovery and communication between buyers and
+vehicle advertisers.
 </p>
 
 </section>
 
 
-<main class="container">
+<!-- 2 -->
 
+<section class="section">
 
-<div class="highlight">
-
-<strong>Please read these terms carefully.</strong>
-
-By using the Nauza Tu website, browsing listings, submitting a vehicle
-for advertising or contacting a seller through the marketplace, you
-acknowledge these Terms & Conditions.
-
-</div>
-
-
-<div class="card">
-
-<h2>1. About Nauza Tu</h2>
+<h2>
+2. Marketplace Relationship
+</h2>
 
 <p>
-Nauza Tu Digital Motor Market is a digital marketplace intended to
-connect vehicle sellers, owners and dealers with potential buyers.
+Nauza Tu is not the owner, dealer, seller, importer, manufacturer
+or agent of every vehicle advertised on the platform.
 </p>
 
 <p>
-Nauza Tu does not own the vehicles advertised on the marketplace and
-does not represent itself as the owner of those vehicles.
+Unless expressly stated otherwise, the vehicle advertisement is
+submitted by an independent advertiser.
 </p>
 
 <p>
-Nauza Tu is not a vehicle dealership merely because a vehicle appears
-on the website.
+Any purchase, sale, payment, inspection, negotiation, transfer
+of ownership or other transaction is between the buyer and the
+relevant vehicle advertiser.
 </p>
 
-</div>
+</section>
 
 
-<div class="card">
+<!-- 3 -->
 
-<h2>2. No Vehicle Financing</h2>
+<section class="section">
 
-<p>
-Nauza Tu does not provide vehicle financing through this marketplace.
-</p>
-
-<p>
-Any financing arrangement a buyer may independently pursue is between
-the buyer and the relevant financial institution or financing provider.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>3. Vehicle Listings</h2>
+<h2>
+3. Vehicle Advertisements
+</h2>
 
 <p>
-Vehicle listings are submitted by sellers, owners, dealers or their
-authorised representatives.
+Advertisers are responsible for providing accurate and truthful
+information about vehicles they submit for advertising.
 </p>
 
 <p>
-Nauza Tu may review, edit, reject, suspend or remove a listing where
-appropriate.
+Information may include, but is not limited to:
+</p>
+
+<ul>
+
+<li>Vehicle make and model</li>
+
+<li>Year of manufacture or registration</li>
+
+<li>Asking price</li>
+
+<li>Mileage</li>
+
+<li>Engine information</li>
+
+<li>Transmission</li>
+
+<li>Fuel type</li>
+
+<li>Drive type</li>
+
+<li>Vehicle condition</li>
+
+<li>Location</li>
+
+<li>Photographs</li>
+
+<li>Ownership and documentation information</li>
+
+</ul>
+
+<p>
+Nauza Tu may review advertisements before publication and may
+reject, modify, suspend or remove a listing where appropriate.
+</p>
+
+</section>
+
+
+<!-- 4 -->
+
+<section class="section">
+
+<h2>
+4. No Guarantee of Vehicle Information
+</h2>
+
+<p>
+Although Nauza Tu may review submitted advertisements, we do not
+guarantee that every statement, photograph, specification, price,
+mileage figure, ownership claim or other information supplied by
+an advertiser is accurate, complete or current.
 </p>
 
 <p>
-A listing may contain information supplied by the seller and should
-not automatically be treated as a representation or warranty by
+Buyers must independently verify all material information before
+entering into a transaction.
+</p>
+
+</section>
+
+
+<!-- 5 -->
+
+<section class="section">
+
+<h2>
+5. Buyer Responsibility
+</h2>
+
+<p>
+Anyone considering purchasing a vehicle advertised through Nauza Tu
+is responsible for conducting appropriate due diligence.
+</p>
+
+<p>
+Buyers should consider independently verifying:
+</p>
+
+<ul>
+
+<li>The identity and authority of the seller</li>
+
+<li>Vehicle ownership</li>
+
+<li>Logbook and other ownership documents</li>
+
+<li>Vehicle identification details</li>
+
+<li>Mechanical condition</li>
+
+<li>Mileage</li>
+
+<li>Accident or damage history</li>
+
+<li>Service and maintenance history</li>
+
+<li>Outstanding obligations or restrictions</li>
+
+<li>Any other information relevant to the purchase</li>
+
+</ul>
+
+<p>
+Buyers should arrange an appropriate physical inspection and,
+where appropriate, obtain independent professional or mechanical
+advice before purchasing.
+</p>
+
+</section>
+
+
+<!-- 6 -->
+
+<section class="section">
+
+<h2>
+6. Payments and Transactions
+</h2>
+
+<p>
+Nauza Tu does not automatically become a party to a transaction
+between a buyer and a vehicle advertiser merely because the
+vehicle was discovered or advertised through the platform.
+</p>
+
+<p>
+Unless expressly stated otherwise, buyers should make payments
+only after independently verifying the seller, vehicle and
+transaction.
+</p>
+
+<p>
+Nauza Tu does not instruct buyers to send purchase money to
+unknown individuals or advertisers without appropriate verification.
+</p>
+
+</section>
+
+
+<!-- 7 -->
+
+<section class="section">
+
+<h2>
+7. Advertiser Responsibilities
+</h2>
+
+<p>
+By submitting a vehicle for advertising, an advertiser represents
+that they have the necessary authority to advertise the vehicle
+or are otherwise authorized to act on behalf of the relevant owner
+or business.
+</p>
+
+<p>
+Advertisers agree to:
+</p>
+
+<ul>
+
+<li>Provide truthful and reasonably accurate information</li>
+
+<li>Not knowingly submit fraudulent vehicle advertisements</li>
+
+<li>Not advertise vehicles they are not authorized to advertise</li>
+
+<li>Update or withdraw advertisements when necessary</li>
+
+<li>Respond honestly to potential buyers</li>
+
+<li>Comply with applicable Kenyan laws and regulations</li>
+
+</ul>
+
+</section>
+
+
+<!-- 8 -->
+
+<section class="section">
+
+<h2>
+8. Prohibited Listings and Conduct
+</h2>
+
+<p>
+Nauza Tu may reject or remove advertisements or suspend access
+where there are reasonable concerns about unlawful, fraudulent,
+misleading or abusive activity.
+</p>
+
+<p>
+Users must not use the platform to:
+</p>
+
+<ul>
+
+<li>Submit false or misleading vehicle information</li>
+
+<li>Advertise stolen or unlawfully obtained vehicles</li>
+
+<li>Impersonate another person or business</li>
+
+<li>Use another person's contact information without authorization</li>
+
+<li>Defraud or deliberately mislead potential buyers</li>
+
+<li>Harass other users</li>
+
+<li>Submit malicious or unlawful material</li>
+
+<li>Attempt to disrupt or damage the website</li>
+
+</ul>
+
+</section>
+
+
+<!-- 9 -->
+
+<section class="section">
+
+<h2>
+9. Listing Availability
+</h2>
+
+<p>
+Vehicle advertisements may be removed, sold, withdrawn, expired
+or otherwise become unavailable without prior notice.
+</p>
+
+<p>
+The presence of a vehicle on the website does not guarantee that
+the vehicle remains available for purchase.
+</p>
+
+</section>
+
+
+<!-- 10 -->
+
+<section class="section">
+
+<h2>
+10. Website Availability
+</h2>
+
+<p>
+We aim to keep Nauza Tu available and functional, but we do not
+guarantee uninterrupted access to the website.
+</p>
+
+<p>
+The website may occasionally be unavailable because of maintenance,
+technical problems, hosting issues, network failures or circumstances
+outside our reasonable control.
+</p>
+
+</section>
+
+
+<!-- 11 -->
+
+<section class="section">
+
+<h2>
+11. Third-Party Services and Links
+</h2>
+
+<p>
+The website may contain links, contact methods or services
+provided by third parties.
+</p>
+
+<p>
+Nauza Tu is not responsible for the availability, content,
+security, conduct or practices of independent third-party
+services or websites.
+</p>
+
+</section>
+
+
+<!-- 12 -->
+
+<section class="section">
+
+<h2>
+12. Limitation of Responsibility
+</h2>
+
+<p>
+To the extent permitted by applicable law, Nauza Tu is not
+responsible for losses, disputes, damage, fraud, misrepresentation,
+injury or other consequences arising directly from a transaction
+between a buyer and a vehicle advertiser.
+</p>
+
+<p>
+This includes disputes concerning vehicle ownership, condition,
+price, payment, documentation, delivery, warranties, defects,
+availability or failure to complete a transaction.
+</p>
+
+<p>
+Nothing in these Terms is intended to exclude or restrict any
+liability that cannot lawfully be excluded or restricted under
+applicable law.
+</p>
+
+</section>
+
+
+<!-- 13 -->
+
+<section class="section">
+
+<h2>
+13. Intellectual Property
+</h2>
+
+<p>
+Unless otherwise stated, the Nauza Tu website design, branding,
+logos, original text and platform content belong to Nauza Tu or
+are used with appropriate permission.
+</p>
+
+<p>
+Users must not copy, reproduce, modify, distribute or commercially
+exploit Nauza Tu's original website content without appropriate
+authorization.
+</p>
+
+</section>
+
+
+<!-- 14 -->
+
+<section class="section">
+
+<h2>
+14. Privacy
+</h2>
+
+<p>
+Information submitted through the website may be handled in
+accordance with our Privacy Policy.
+</p>
+
+<p>
+Please review the Privacy Policy to understand how information
+submitted through Nauza Tu may be collected and used.
+</p>
+
+</section>
+
+
+<!-- 15 -->
+
+<section class="section">
+
+<h2>
+15. Changes to These Terms
+</h2>
+
+<p>
+Nauza Tu may update these Terms and Conditions from time to time
+to reflect changes to the platform, services, business operations
+or applicable legal requirements.
+</p>
+
+<p>
+Updated terms will be published on this page.
+</p>
+
+</section>
+
+
+<!-- 16 -->
+
+<section class="section">
+
+<h2>
+16. Governing Law
+</h2>
+
+<p>
+These Terms are intended to operate in accordance with the laws
+of Kenya.
+</p>
+
+<p>
+Where a dispute cannot be resolved through appropriate communication
+or other lawful means, the relevant Kenyan courts may have
+jurisdiction subject to applicable law and court rules.
+</p>
+
+</section>
+
+
+<!-- 17 -->
+
+<section class="section">
+
+<h2>
+17. Contacting Nauza Tu
+</h2>
+
+<p>
+If you have a question about a vehicle listing, wish to report
+a listing, or have a question about these Terms, please contact
 Nauza Tu.
 </p>
 
-</div>
+</section>
 
 
-<div class="card">
+<div class="contact-box">
 
-<h2>4. Seller Responsibilities</h2>
-
-<p>
-Anyone submitting a vehicle for advertising agrees that:
-</p>
-
-<ul>
-
-<li>The information provided should be accurate and not deliberately
-misleading.</li>
-
-<li>They should have the authority to advertise the vehicle.</li>
-
-<li>They should not submit a vehicle they are not authorised to
-advertise.</li>
-
-<li>They should disclose material information that a reasonable buyer
-would need to know.</li>
-
-<li>They should not use the marketplace for fraudulent activity.</li>
-
-<li>They should respond honestly to potential buyers.</li>
-
-</ul>
-
-</div>
-
-
-<div class="card">
-
-<h2>5. Prohibited Listings</h2>
-
-<p>
-Nauza Tu may reject or remove listings involving:
-</p>
-
-<ul>
-
-<li>Fraudulent or stolen vehicles.</li>
-
-<li>False ownership claims.</li>
-
-<li>Misleading vehicle information.</li>
-
-<li>Fraudulent documents.</li>
-
-<li>Illegal transactions.</li>
-
-<li>Vehicles submitted without appropriate authority.</li>
-
-<li>Content that violates applicable law.</li>
-
-<li>Any other listing considered unsuitable for the marketplace.</li>
-
-</ul>
-
-</div>
-
-
-<div class="card">
-
-<h2>6. Buyer Responsibilities</h2>
-
-<p>
-Buyers are responsible for conducting their own due diligence before
-purchasing a vehicle.
-</p>
-
-<p>
-A buyer should independently consider checking:
-</p>
-
-<ul>
-
-<li>Vehicle ownership.</li>
-
-<li>Logbook and registration information.</li>
-
-<li>Vehicle identification details.</li>
-
-<li>Outstanding financial or legal obligations.</li>
-
-<li>Mechanical condition.</li>
-
-<li>Mileage.</li>
-
-<li>Accident history.</li>
-
-<li>Service history.</li>
-
-<li>Physical condition.</li>
-
-<li>Any other matter relevant to the purchase.</li>
-
-</ul>
-
-<p>
-Where appropriate, buyers should use qualified mechanics, relevant
-authorities and professional advisers before completing a transaction.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>7. No Guarantee of Vehicle Condition</h2>
-
-<p>
-Nauza Tu does not guarantee that an advertised vehicle is mechanically
-sound, accident-free, genuine, properly registered, free from
-outstanding obligations or suitable for a particular buyer.
-</p>
-
-<p>
-The buyer and seller are responsible for determining the actual
-condition and legal status of the vehicle.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>8. Transactions Between Buyers and Sellers</h2>
-
-<p>
-Nauza Tu is not automatically a party to a sale transaction between a
-buyer and seller.
-</p>
-
-<p>
-Price negotiations, inspection arrangements, deposits, payments,
-transfer of ownership, delivery and completion of a vehicle purchase
-are matters between the relevant parties unless a separate written
-agreement expressly states otherwise.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>9. Payments</h2>
-
-<p>
-Nauza Tu does not require buyers to make payment to Nauza Tu merely
-because a vehicle is advertised on the marketplace.
-</p>
-
-<p>
-Buyers should be cautious about requests for deposits or payments and
-should independently verify the identity and authority of the person
-requesting payment.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>10. Communication</h2>
-
-<p>
-Communication between buyers and sellers may take place by telephone,
-WhatsApp, email or other communication channels.
-</p>
-
-<p>
-Users are responsible for exercising caution when communicating with
-people they have not previously met.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>11. Accuracy of Marketplace Information</h2>
-
-<p>
-Nauza Tu attempts to maintain useful and accurate marketplace
-information but does not guarantee that every listing or piece of
-information will always be complete, current or error-free.
-</p>
-
-<p>
-Prices, availability, specifications and seller information may change.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>12. Listing Removal</h2>
-
-<p>
-Nauza Tu may remove, suspend or decline to publish a listing if it
-believes the listing may be misleading, fraudulent, inappropriate,
-inaccurate, unauthorised or otherwise unsuitable for the marketplace.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>13. Website Availability</h2>
-
-<p>
-We aim to keep the website available, but we do not guarantee that the
-website will operate continuously without interruption, technical
-errors or temporary unavailability.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>14. Intellectual Property</h2>
-
-<p>
-Unless otherwise indicated, website design, branding, original text
-and other materials created for Nauza Tu remain the property of their
-respective rights holders.
-</p>
-
-<p>
-Users should not reproduce or commercially exploit website materials
-without appropriate permission.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>15. Fraud and Suspicious Activity</h2>
-
-<p>
-Users should report suspected fraudulent listings, impersonation,
-misleading advertisements or suspicious payment requests to Nauza Tu.
-</p>
-
-<p>
-Contact:
-<a href="mailto:nauzatu@gmail.com">
-nauzatu@gmail.com
-</a>
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>16. Limitation of Responsibility</h2>
-
-<p>
-To the extent permitted by applicable law, Nauza Tu is not responsible
-for losses arising solely from a private transaction between a buyer
-and seller, including losses resulting from inaccurate seller
-information, vehicle defects, failure to transfer ownership, payment
-disputes or other matters outside Nauza Tu's control.
-</p>
-
-<p>
-Nothing in these terms is intended to exclude or restrict a legal
-right or responsibility that cannot lawfully be excluded or restricted.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>17. Applicable Law</h2>
-
-<p>
-These terms are intended for use in connection with the Nauza Tu
-marketplace in Kenya and are subject to applicable laws and legal
-requirements of Kenya.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>18. Changes to These Terms</h2>
-
-<p>
-Nauza Tu may update these Terms & Conditions as the marketplace
-develops or applicable requirements change.
-</p>
-
-<p>
-The latest version published on this page will apply to future use of
-the marketplace.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>19. Contact Us</h2>
-
-<p>
+<h2>
 Nauza Tu Digital Motor Market
-</p>
+</h2>
 
 <p>
 Nairobi, Kenya
 </p>
 
-<p>
-Email:
-<a href="mailto:nauzatu@gmail.com">
-nauzatu@gmail.com
-</a>
-</p>
-
-<p>
+<div class="contact-line">
 Phone:
 <a href="tel:+254722910913">
 +254 722 910 913
 </a>
-</p>
+</div>
 
-<p>
+<div class="contact-line">
 Phone:
 <a href="tel:+254724708032">
 +254 724 708 032
 </a>
-</p>
+</div>
+
+<div class="contact-line">
+Email:
+<a href="mailto:nauzatu@gmail.com">
+nauzatu@gmail.com
+</a>
+</div>
+
+<div class="contact-line">
+<a href="contact.html">
+Contact Nauza Tu →
+</a>
+</div>
 
 </div>
 
+
+</div>
 
 </main>
 
 
 <footer>
 
-<p>
-© 2026 Nauza Tu Digital Motor Market. All rights reserved.
-</p>
+<div class="footer-inner">
+
+
+<div>
+
+<h3>
+Nauza Tu Digital Motor Market
+</h3>
 
 <p>
-
-<a href="about.html">About Us</a>
-
-<a href="contact.html">Contact</a>
-
-<a href="sell.html">Sell / Advertise</a>
-
-<a href="privacy.html">Privacy Policy</a>
-
-<a href="terms.html">Terms & Conditions</a>
-
+A Kenyan digital marketplace helping buyers discover
+vehicles advertised by owners, sellers and dealers.
 </p>
+
+<p style="margin-top:10px;">
+Nairobi, Kenya
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+Marketplace
+</h3>
+
+<a href="vehicles.html">
+Browse Vehicles
+</a>
+
+<a href="compare.html">
+Compare Vehicles
+</a>
+
+<a href="sell.html">
+Sell / Advertise
+</a>
+
+<a href="contact.html">
+Contact Us
+</a>
+
+</div>
+
+
+<div>
+
+<h3>
+Information
+</h3>
+
+<a href="about.html">
+About Us
+</a>
+
+<a href="privacy.html">
+Privacy Policy
+</a>
+
+<a href="terms.html">
+Terms & Conditions
+</a>
+
+</div>
+
+
+</div>
+
+
+<div class="copyright">
+
+© <span id="year"></span>
+Nauza Tu Digital Motor Market.
+All rights reserved.
+
+</div>
 
 </footer>
+
+
+<script>
+
+document.getElementById("year").textContent =
+new Date().getFullYear();
+
+</script>
 
 
 </body>
