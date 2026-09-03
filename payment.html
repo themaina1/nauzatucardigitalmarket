@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vehicle Advertising Payment | Nauza Tu Digital Motor Market</title>
+
+<meta name="description"
+content="Pay for vehicle advertising and promotion on Nauza Tu Digital Motor Market.">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f6f8;
+    color:#1f2937;
+    line-height:1.6;
+}
+
+header{
+    background:#111827;
+    color:white;
+}
+
+.navbar{
+    max-width:1200px;
+    margin:auto;
+    padding:16px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+    color:#22c55e;
+}
+
+.logo span{
+    color:white;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+}
+
+nav a{
+    color:white;
+    font-size:14px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#22c55e;
+}
+
+.hero{
+    background:
+    linear-gradient(rgba(0,0,0,.68),rgba(0,0,0,.68)),
+    url("images/kenya-car-market.jpg") center/cover;
+    min-height:330px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    padding:40px 20px;
+}
+
+.hero-content{
+    max-width:800px;
+}
+
+.hero h1{
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.hero p{
+    font-size:18px;
+}
+
+.container{
+    max-width:900px;
+    margin:45px auto;
+    padding:0 20px;
+}
+
+.card{
+    background:white;
+    border-radius:14px;
+    padding:30px;
+    margin-bottom:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.card h2{
+    color:#111827;
+    margin-bottom:10px;
+}
+
+.intro{
+    color:#6b7280;
+    margin-bottom:25px;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+input,
+select{
+    width:100%;
+    padding:13px;
+    border:1px solid #d1d5db;
+    border-radius:7px;
+    font-size:15px;
+    background:white;
+}
+
+input:focus,
+select:focus{
+    outline:none;
+    border-color:#16a34a;
+}
+
+.summary{
+    background:#ecfdf5;
+    border:1px solid #bbf7d0;
+    border-radius:10px;
+    padding:22px;
+    margin:25px 0;
+}
+
+.summary h3{
+    color:#166534;
+    margin-bottom:10px;
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    padding:9px 0;
+    border-bottom:1px solid #d1fae5;
+}
+
+.summary-row:last-child{
+    border-bottom:none;
+}
+
+.total{
+    font-size:22px;
+    font-weight:bold;
+    color:#15803d;
+    margin-top:10px;
+}
+
+.mpesa{
+    background:#f9fafb;
+    border:1px solid #e5e7eb;
+    border-radius:10px;
+    padding:25px;
+    margin-top:25px;
+}
+
+.mpesa h3{
+    margin-bottom:10px;
+}
+
+.mpesa-number{
+    font-size:25px;
+    color:#16a34a;
+    font-weight:bold;
+    margin:15px 0;
+}
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:25px;
+}
+
+.step{
+    background:#f9fafb;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+}
+
+.number{
+    width:40px;
+    height:40px;
+    background:#16a34a;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 10px;
+    font-weight:bold;
+}
+
+.step h3{
+    font-size:16px;
+    margin-bottom:6px;
+}
+
+.step p{
+    font-size:14px;
+    color:#6b7280;
+}
+
+.notice{
+    background:#fff7ed;
+    border-left:5px solid #f97316;
+    padding:18px;
+    margin-top:25px;
+    border-radius:7px;
+    font-size:14px;
+}
+
+.submit{
+    width:100%;
+    background:#16a34a;
+    color:white;
+    border:none;
+    padding:15px;
+    border-radius:8px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:20px;
+}
+
+.submit:hover{
+    background:#15803d;
+}
+
+.back{
+    display:inline-block;
+    margin-top:18px;
+    color:#166534;
+    font-weight:bold;
+}
+
+.hidden{
+    display:none;
+}
+
+footer{
+    background:#111827;
+    color:#d1d5db;
+    margin-top:60px;
+    padding:35px 20px;
+}
+
+.footer-inner{
+    max-width:900px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:30px;
+}
+
+footer h3{
+    color:#22c55e;
+    margin-bottom:10px;
+}
+
+footer p,
+footer li{
+    font-size:14px;
+}
+
+footer ul{
+    list-style:none;
+}
+
+footer li{
+    margin:7px 0;
+}
+
+footer a{
+    color:#d1d5db;
+}
+
+footer a:hover{
+    color:#22c55e;
+}
+
+.copyright{
+    max-width:900px;
+    margin:25px auto 0;
+    padding-top:20px;
+    border-top:1px solid #374151;
+    text-align:center;
+    font-size:13px;
+    color:#9ca3af;
+}
+
+@media(max-width:700px){
+
+    .navbar{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    nav{
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+    .footer-inner{
+        grid-template-columns:1fr;
+    }
+
+    .summary-row{
+        flex-direction:column;
+        gap:3px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<header>
+
+<div class="navbar">
+
+<a href="index.html" class="logo">
+Nauza Tu <span>Digital Motor Market</span>
+</a>
+
+<nav>
+
+<a href="index.html">Home</a>
+<a href="vehicles.html">Vehicles</a>
+<a href="compare.html">Compare</a>
+<a href="sell.html">Sell / Advertise</a>
+<a href="pricing.html">Pricing</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>Advertising Payment</h1>
+
+<p>
+Complete your vehicle promotion payment request.
+</p>
+
+</div>
+
+</section>
+
+
+<main class="container">
+
+
+<section class="card">
+
+<h2>1. Select Your Advertising Package</h2>
+
+<p class="intro">
+Choose the package you want to use for your vehicle advertisement.
+</p>
+
+
+<div class="form-group">
+
+<label for="listingId">
+Vehicle Listing ID *
+</label>
+
+<input
+id="listingId"
+type="text"
+placeholder="Example: NT010"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="package">
+Advertising Package *
+</label>
+
+<select id="package" onchange="updateSummary()">
+
+<option value="">
+-- Select Package --
+</option>
+
+<option value="Free Listing|0|Standard Listing">
+Free Listing — KES 0
+</option>
+
+<option value="Quick Sale|500|7 Days">
+Quick Sale — KES 500 / 7 Days
+</option>
+
+<option value="Premium Listing|1500|30 Days">
+Premium Listing — KES 1,500 / 30 Days
+</option>
+
+<option value="Dealer Starter|3000|30 Days">
+Dealer Starter — KES 3,000 / Month
+</option>
+
+</select>
+
+</div>
+
+
+<div class="summary">
+
+<h3>Payment Summary</h3>
+
+
+<div class="summary-row">
+
+<span>
+Vehicle Listing
+</span>
+
+<strong id="summaryListing">
+Not entered
+</strong>
+
+</div>
+
+
+<div class="summary-row">
+
+<span>
+Package
+</span>
+
+<strong id="summaryPackage">
+Not selected
+</strong>
+
+</div>
+
+
+<div class="summary-row">
+
+<span>
+Duration
+</span>
+
+<strong id="summaryDuration">
+—
+</strong>
+
+</div>
+
+
+<div class="total">
+
+Amount:
+KES <span id="summaryAmount">0</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<h2>2. M-Pesa Payment</h2>
+
+<p class="intro">
+Use the official payment instructions supplied by Nauza Tu.
+</p>
+
+
+<div class="mpesa">
+
+<h3>
+M-Pesa Payment Instructions
+</h3>
+
+<p>
+For the current manual payment process, contact Nauza Tu
+for the applicable M-Pesa Till/PayBill/payment instructions
+before sending money.
+</p>
+
+
+<div class="mpesa-number">
++254 722 910 913
+</div>
+
+
+<p>
+<strong>Important:</strong>
+The number displayed above is Nauza Tu's contact number.
+It should not be assumed to be an M-Pesa Till or PayBill number.
+Use the actual payment instructions provided by Nauza Tu.
+</p>
+
+</div>
+
+
+<div class="notice">
+
+<strong>Security notice:</strong>
+
+<br><br>
+
+Never enter your M-Pesa PIN, bank PIN, password or OTP
+on this website.
+
+Nauza Tu will never ask you to provide your M-Pesa PIN.
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<h2>3. Submit Payment Confirmation</h2>
+
+<p class="intro">
+After completing payment, provide the transaction details below.
+Nauza Tu will verify the payment before activating the promotion.
+</p>
+
+
+<form
+action="https://formsubmit.co/nauzatu@gmail.com"
+method="POST"
+onsubmit="prepareForm()">
+
+
+<input
+type="hidden"
+name="_subject"
+value="Nauza Tu Advertising Payment Confirmation">
+
+
+<input
+type="hidden"
+name="_next"
+value="https://themaina1.github.io/nauza-tu-digital-motor-market/thankyou.html">
+
+
+<input
+type="hidden"
+name="_captcha"
+value="false">
+
+
+<input
+type="hidden"
+name="Vehicle Listing ID"
+id="hiddenListing">
+
+
+<input
+type="hidden"
+name="Advertising Package"
+id="hiddenPackage">
+
+
+<input
+type="hidden"
+name="Advertising Amount"
+id="hiddenAmount">
+
+
+<div class="form-group">
+
+<label for="name">
+Seller / Advertiser Name *
+</label>
+
+<input
+id="name"
+name="Seller Name"
+type="text"
+placeholder="Full name or business name"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="phone">
+Phone Number *
+</label>
+
+<input
+id="phone"
+name="Phone Number"
+type="tel"
+placeholder="+254..."
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="email">
+Email Address
+</label>
+
+<input
+id="email"
+name="Email"
+type="email"
+placeholder="your@email.com">
+
+</div>
+
+
+<div class="form-group">
+
+<label for="transaction">
+M-Pesa Transaction Code *
+</label>
+
+<input
+id="transaction"
+name="M-Pesa Transaction Code"
+type="text"
+placeholder="Example: QGH7XXXXXX"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="mpesaPhone">
+M-Pesa Phone Number Used *
+</label>
+
+<input
+id="mpesaPhone"
+name="M-Pesa Phone Number"
+type="tel"
+placeholder="+254..."
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="amountPaid">
+Amount Paid — KES *
+</label>
+
+<input
+id="amountPaid"
+name="Amount Paid"
+type="number"
+min="0"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="paymentDate">
+Payment Date *
+</label>
+
+<input
+id="paymentDate"
+name="Payment Date"
+type="date"
+required>
+
+</div>
+
+
+<button
+type="submit"
+class="submit"
+id="submitButton">
+
+Submit Payment Confirmation
+
+</button>
+
+
+</form>
+
+</section>
+
+
+<section class="card">
+
+<h2>What Happens After Payment?</h2>
+
+
+<div class="steps">
+
+
+<div class="step">
+
+<div class="number">
+1
+</div>
+
+<h3>Submit</h3>
+
+<p>
+You submit your M-Pesa transaction details.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="number">
+2
+</div>
+
+<h3>Verify</h3>
+
+<p>
+Nauza Tu verifies the payment against the transaction.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="number">
+3
+</div>
+
+<h3>Activate</h3>
+
+<p>
+The applicable promotion is activated after verification.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<h2>Important Marketplace Notice</h2>
+
+<div class="notice">
+
+Nauza Tu Digital Motor Market is a digital marketplace.
+
+Nauza Tu does not own, purchase or sell the vehicles
+advertised on this website.
+
+<br><br>
+
+Advertising fees are paid for marketplace advertising
+and promotion services. They are not payment for a vehicle.
+
+<br><br>
+
+Nauza Tu does not guarantee that a promoted vehicle will sell.
+
+<br><br>
+
+Buyers and sellers are responsible for independently
+verifying vehicle information and completing vehicle
+transactions safely.
+
+</div>
+
+
+<a
+href="promote.html"
+class="back">
+
+← Back to Promotion Packages
+
+</a>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+<div class="footer-inner">
+
+
+<div>
+
+<h3>
+Nauza Tu Digital Motor Market
+</h3>
+
+<p>
+A Kenya-focused digital marketplace connecting
+vehicle sellers with potential buyers.
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+Links
+</h3>
+
+<ul>
+
+<li>
+<a href="vehicles.html">
+Vehicles
+</a>
+</li>
+
+<li>
+<a href="sell.html">
+Sell / Advertise
+</a>
+</li>
+
+<li>
+<a href="pricing.html">
+Pricing
+</a>
+</li>
+
+<li>
+<a href="promote.html">
+Promote
+</a>
+</li>
+
+</ul>
+
+</div>
+
+
+<div>
+
+<h3>
+Contact
+</h3>
+
+<ul>
+
+<li>
++254 722 910 913
+</li>
+
+<li>
++254 724 708 032
+</li>
+
+<li>
+nauzatu@gmail.com
+</li>
+
+<li>
+Nairobi, Kenya
+</li>
+
+</ul>
+
+</div>
+
+
+</div>
+
+
+<div class="copyright">
+
+© 2026 Nauza Tu Digital Motor Market.
+All Rights Reserved.
+
+</div>
+
+</footer>
+
+
+<script>
+
+
+/* ==========================
+   READ URL PARAMETERS
+========================== */
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+
+const urlListing =
+params.get("listing");
+
+
+const urlPackage =
+params.get("package");
+
+
+if(urlListing){
+
+document.getElementById(
+"listingId"
+).value =
+urlListing;
+
+}
+
+
+if(urlPackage){
+
+const packageSelect =
+document.getElementById(
+"package"
+);
+
+for(let i=0;i<packageSelect.options.length;i++){
+
+if(
+packageSelect.options[i].value
+.toLowerCase()
+.startsWith(
+urlPackage.toLowerCase()
+)
+){
+
+packageSelect.selectedIndex=i;
+
+break;
+
+}
+
+}
+
+}
+
+
+updateSummary();
+
+
+/* ==========================
+   UPDATE SUMMARY
+========================== */
+
+function updateSummary(){
+
+const listing =
+document.getElementById(
+"listingId"
+).value.trim();
+
+
+const packageValue =
+document.getElementById(
+"package"
+).value;
+
+
+document.getElementById(
+"summaryListing"
+).textContent =
+listing ||
+"Not entered";
+
+
+if(!packageValue){
+
+document.getElementById(
+"summaryPackage"
+).textContent =
+"Not selected";
+
+document.getElementById(
+"summaryDuration"
+).textContent =
+"—";
+
+document.getElementById(
+"summaryAmount"
+).textContent =
+"0";
+
+return;
+
+}
+
+
+const parts =
+packageValue.split("|");
+
+
+const name =
+parts[0];
+
+const amount =
+Number(parts[1]);
+
+const duration =
+parts[2];
+
+
+document.getElementById(
+"summaryPackage"
+).textContent =
+name;
+
+
+document.getElementById(
+"summaryDuration"
+).textContent =
+duration;
+
+
+document.getElementById(
+"summaryAmount"
+).textContent =
+amount.toLocaleString();
+
+}
+
+
+/* ==========================
+   LISTING ID LIVE UPDATE
+========================== */
+
+document.getElementById(
+"listingId"
+).addEventListener(
+"input",
+updateSummary
+);
+
+
+/* ==========================
+   PREPARE FORM
+========================== */
+
+function prepareForm(){
+
+const listing =
+document.getElementById(
+"listingId"
+).value.trim();
+
+
+const packageValue =
+document.getElementById(
+"package"
+).value;
+
+
+if(!listing){
+
+alert(
+"Please enter the vehicle Listing ID."
+);
+
+return false;
+
+}
+
+
+if(!packageValue){
+
+alert(
+"Please select an advertising package."
+);
+
+return false;
+
+}
+
+
+const parts =
+packageValue.split("|");
+
+
+const packageName =
+parts[0];
+
+const amount =
+parts[1];
+
+
+document.getElementById(
+"hiddenListing"
+).value =
+listing;
+
+
+document.getElementById(
+"hiddenPackage"
+).value =
+packageName;
+
+
+document.getElementById(
+"hiddenAmount"
+).value =
+"KES " +
+Number(amount).toLocaleString();
+
+
+const button =
+document.getElementById(
+"submitButton"
+);
+
+
+button.disabled=true;
+
+button.textContent =
+"Submitting...";
+
+
+return true;
+
+}
+
+</script>
+
+</body>
+</html>
