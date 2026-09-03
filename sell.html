@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sell Your Car | Nauza Tu Digital Motor Market</title>
+<title>Sell Your Vehicle | Nauza Tu Digital Motor Market</title>
 
 <meta name="description"
-content="Advertise your vehicle on Nauza Tu Digital Motor Market and connect with potential buyers across Kenya.">
+content="Advertise your vehicle on Nauza Tu Digital Motor Market and connect with potential buyers in Kenya.">
 
 <style>
 
@@ -19,23 +19,24 @@ content="Advertise your vehicle on Nauza Tu Digital Motor Market and connect wit
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#f5f7fa;
+    background:#f4f6f8;
     color:#222;
     line-height:1.6;
 }
 
 header{
     background:#111;
-    color:white;
-    padding:15px 5%;
+    color:#fff;
     position:sticky;
     top:0;
     z-index:1000;
+    box-shadow:0 2px 8px rgba(0,0,0,.25);
 }
 
 .navbar{
     max-width:1200px;
     margin:auto;
+    padding:15px 20px;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -43,143 +44,178 @@ header{
 }
 
 .logo{
-    font-size:24px;
-    font-weight:bold;
-    color:#ffcc00;
+    color:#fff;
     text-decoration:none;
+    font-size:21px;
+    font-weight:800;
 }
 
 .logo span{
-    color:white;
+    color:#f4b400;
 }
 
 nav{
     display:flex;
     flex-wrap:wrap;
-    gap:8px;
+    gap:17px;
 }
 
 nav a{
-    color:white;
+    color:#fff;
     text-decoration:none;
-    padding:9px 12px;
-    border-radius:5px;
     font-size:14px;
+    font-weight:600;
 }
 
 nav a:hover,
 nav a.active{
-    background:#ffcc00;
-    color:#111;
+    color:#f4b400;
 }
 
 .hero{
-    background:
-        linear-gradient(rgba(0,0,0,.68),rgba(0,0,0,.68)),
-        url("images/kenya-car-market.jpg") center/cover;
-    min-height:360px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    background:linear-gradient(135deg,#111,#292929);
+    color:#fff;
     text-align:center;
-    color:white;
-    padding:40px 20px;
-}
-
-.hero-content{
-    max-width:850px;
+    padding:55px 20px;
 }
 
 .hero h1{
-    font-size:48px;
-    margin-bottom:15px;
+    font-size:38px;
+    margin-bottom:10px;
 }
 
 .hero p{
-    font-size:19px;
     max-width:700px;
     margin:auto;
+    color:#ddd;
 }
 
 .container{
-    max-width:1100px;
-    margin:50px auto;
-    padding:0 20px;
+    max-width:1000px;
+    margin:auto;
+    padding:35px 20px;
 }
 
-.notice{
-    background:#fff8d9;
-    border-left:5px solid #ffcc00;
-    padding:20px;
+.intro{
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    margin-bottom:25px;
+}
+
+.intro h2{
+    margin-bottom:10px;
+}
+
+.intro p{
+    color:#555;
+}
+
+/* PROCESS */
+
+.process{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
     margin-bottom:30px;
-    border-radius:6px;
 }
 
-.notice strong{
-    display:block;
-    margin-bottom:7px;
+.step{
+    background:#fff;
+    padding:20px 15px;
+    text-align:center;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,.06);
 }
+
+.step-number{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:#f4b400;
+    color:#111;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 10px;
+    font-weight:800;
+}
+
+.step h3{
+    font-size:15px;
+    margin-bottom:5px;
+}
+
+.step p{
+    color:#666;
+    font-size:12px;
+}
+
+/* FORM */
 
 .form-card{
-    background:white;
-    padding:35px;
-    border-radius:10px;
-    box-shadow:0 4px 18px rgba(0,0,0,.08);
+    background:#fff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
-.section-title{
-    margin-bottom:25px;
-    padding-bottom:12px;
-    border-bottom:2px solid #eee;
+.form-card h2{
+    margin-bottom:8px;
 }
 
-.section-title h2{
-    font-size:24px;
-    color:#111;
-}
-
-.section-title p{
+.section-description{
     color:#666;
+    margin-bottom:25px;
     font-size:14px;
+}
+
+.form-section{
+    border-top:1px solid #ddd;
+    padding-top:25px;
+    margin-top:30px;
+}
+
+.form-section h3{
+    margin-bottom:18px;
+    font-size:20px;
 }
 
 .form-grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
 }
 
 .form-group{
     display:flex;
     flex-direction:column;
+    gap:6px;
 }
 
 .form-group.full{
-    grid-column:1/-1;
+    grid-column:1 / -1;
 }
 
 label{
-    font-weight:bold;
-    margin-bottom:7px;
-    color:#333;
+    font-size:13px;
+    font-weight:700;
+}
+
+.required{
+    color:#c00;
 }
 
 input,
 select,
 textarea{
     width:100%;
-    padding:13px;
+    padding:12px;
     border:1px solid #ccc;
-    border-radius:5px;
-    font-size:15px;
+    border-radius:7px;
     font-family:inherit;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-    outline:none;
-    border-color:#111;
+    font-size:14px;
 }
 
 textarea{
@@ -187,169 +223,162 @@ textarea{
     resize:vertical;
 }
 
+input:focus,
+select:focus,
+textarea:focus{
+    outline:none;
+    border-color:#f4b400;
+}
+
 .help{
-    font-size:12px;
     color:#777;
-    margin-top:5px;
+    font-size:12px;
 }
 
-.required{
-    color:#d00;
-}
+/* PHOTOS */
 
-.checkbox-group{
-    background:#f8f9fa;
-    padding:18px;
-    border-radius:6px;
-    border:1px solid #ddd;
-}
-
-.checkbox-row{
-    display:flex;
-    align-items:flex-start;
-    gap:10px;
-    margin-bottom:13px;
-}
-
-.checkbox-row:last-child{
-    margin-bottom:0;
-}
-
-.checkbox-row input{
-    width:auto;
-    margin-top:5px;
-}
-
-.checkbox-row label{
-    font-weight:normal;
-    margin:0;
-}
-
-.submit-area{
-    text-align:center;
-    margin-top:35px;
-}
-
-.submit-btn{
-    background:#ffcc00;
-    color:#111;
-    border:none;
-    padding:15px 35px;
-    font-size:17px;
-    font-weight:bold;
-    border-radius:6px;
-    cursor:pointer;
-}
-
-.submit-btn:hover{
-    background:#e6b800;
-}
-
-.steps{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-    margin-top:45px;
-}
-
-.step{
-    background:white;
-    padding:25px;
+.photo-box{
+    background:#f7f7f7;
+    border:1px dashed #bbb;
+    padding:20px;
     border-radius:8px;
-    text-align:center;
-    box-shadow:0 3px 12px rgba(0,0,0,.06);
 }
 
-.step-number{
-    width:45px;
-    height:45px;
-    border-radius:50%;
-    background:#ffcc00;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin:0 auto 15px;
-    font-weight:bold;
-    font-size:20px;
-}
-
-.step h3{
+.photo-box h4{
     margin-bottom:8px;
 }
 
-.step p{
-    color:#666;
-    font-size:14px;
+.photo-box ul{
+    padding-left:20px;
+    color:#555;
+    font-size:13px;
 }
 
-.contact-box{
-    margin-top:40px;
-    background:#111;
-    color:white;
-    padding:30px;
-    border-radius:8px;
+.photo-box li{
+    margin:5px 0;
+}
+
+/* CHECKBOX */
+
+.confirmations{
+    margin-top:25px;
+}
+
+.check-row{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    margin:12px 0;
+    font-size:13px;
+    color:#444;
+}
+
+.check-row input{
+    width:18px;
+    height:18px;
+    margin-top:2px;
+    flex-shrink:0;
+}
+
+/* SUBMIT */
+
+.submit-area{
+    margin-top:30px;
     text-align:center;
 }
 
-.contact-box h2{
-    color:#ffcc00;
-    margin-bottom:10px;
+.submit-button{
+    border:none;
+    background:#111;
+    color:#fff;
+    padding:15px 35px;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:800;
+    cursor:pointer;
 }
 
-.contact-box a{
-    color:#ffcc00;
-    text-decoration:none;
+.submit-button:hover{
+    background:#333;
 }
+
+.submit-note{
+    margin-top:12px;
+    color:#777;
+    font-size:12px;
+}
+
+/* NOTICE */
+
+.notice{
+    margin-top:30px;
+    background:#fff8df;
+    border-left:5px solid #f4b400;
+    padding:20px;
+    border-radius:8px;
+}
+
+.notice h3{
+    margin-bottom:8px;
+}
+
+.notice p{
+    color:#555;
+    font-size:13px;
+}
+
+/* FOOTER */
 
 footer{
+    margin-top:50px;
     background:#111;
-    color:#ccc;
-    margin-top:60px;
+    color:#bbb;
     padding:35px 20px;
 }
 
 .footer-inner{
-    max-width:1100px;
+    max-width:1200px;
     margin:auto;
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:2fr 1fr 1fr;
     gap:30px;
 }
 
 footer h3{
-    color:#ffcc00;
-    margin-bottom:12px;
+    color:#fff;
+    margin-bottom:10px;
+}
+
+footer p{
+    font-size:14px;
 }
 
 footer a{
-    color:#ccc;
+    display:block;
+    color:#bbb;
     text-decoration:none;
+    font-size:14px;
+    margin:6px 0;
 }
 
-.footer-bottom{
-    text-align:center;
+footer a:hover{
+    color:#f4b400;
+}
+
+.copyright{
     border-top:1px solid #333;
     margin-top:25px;
     padding-top:20px;
+    text-align:center;
     font-size:13px;
 }
 
+/* MOBILE */
+
 @media(max-width:800px){
 
-    .navbar{
-        flex-direction:column;
-    }
-
-    nav{
-        justify-content:center;
-    }
-
-    .hero h1{
-        font-size:34px;
-    }
-
-    .hero p{
-        font-size:16px;
+    .process{
+        grid-template-columns:1fr 1fr;
     }
 
     .form-grid{
@@ -360,18 +389,35 @@ footer a{
         grid-column:auto;
     }
 
-    .steps{
+    .footer-inner{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .navbar{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .hero h1{
+        font-size:30px;
+    }
+
+    .process{
         grid-template-columns:1fr;
+    }
+
+    .form-card{
+        padding:20px;
     }
 
     .footer-inner{
         grid-template-columns:1fr;
-        text-align:center;
     }
 
-    .form-card{
-        padding:22px;
-    }
 }
 
 </style>
@@ -384,16 +430,18 @@ footer a{
 <div class="navbar">
 
 <a href="index.html" class="logo">
-    Nauza Tu <span>Digital Motor Market</span>
+Nauza Tu <span>Digital Motor Market</span>
 </a>
 
 <nav>
-    <a href="index.html">Home</a>
-    <a href="vehicles.html">Vehicles</a>
-    <a href="compare.html">Compare</a>
-    <a href="sell.html" class="active">Sell / Advertise</a>
-    <a href="about.html">About Us</a>
-    <a href="contact.html">Contact</a>
+
+<a href="index.html">Home</a>
+<a href="vehicles.html">Vehicles</a>
+<a href="compare.html">Compare</a>
+<a href="sell.html" class="active">Sell / Advertise</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+
 </nav>
 
 </div>
@@ -403,17 +451,12 @@ footer a{
 
 <section class="hero">
 
-<div class="hero-content">
-
-<h1>Sell or Advertise Your Vehicle</h1>
+<h1>Advertise Your Vehicle</h1>
 
 <p>
-List your car, SUV, pickup, van, truck or other vehicle on
-Nauza Tu Digital Motor Market and put it in front of potential
-buyers looking for vehicles in Kenya.
+Reach potential buyers through Nauza Tu Digital Motor Market,
+Kenya's digital vehicle marketplace.
 </p>
-
-</div>
 
 </section>
 
@@ -421,77 +464,154 @@ buyers looking for vehicles in Kenya.
 <main class="container">
 
 
-<div class="notice">
+<section class="intro">
 
-<strong>Important: Nauza Tu is a digital marketplace.</strong>
-
-Nauza Tu Digital Motor Market does not own the vehicles advertised
-on this website. Vehicles are offered by private sellers, vehicle
-owners and dealers.
-
-Your submission will be reviewed before it is published on the
-marketplace.
-
-</div>
-
-
-<div class="form-card">
-
-<div class="section-title">
-
-<h2>Vehicle Listing Application</h2>
+<h2>Put Your Vehicle in Front of Potential Buyers</h2>
 
 <p>
-Provide accurate information about the vehicle you want to advertise.
+Whether you are a private vehicle owner, dealer, importer or business,
+you can submit your vehicle for consideration on Nauza Tu.
+</p>
+
+<p style="margin-top:10px;">
+Your vehicle information will be reviewed before an approved listing
+is published on the marketplace.
+</p>
+
+</section>
+
+
+<section class="process">
+
+<div class="step">
+
+<div class="step-number">1</div>
+
+<h3>Submit Details</h3>
+
+<p>
+Provide accurate information about your vehicle.
 </p>
 
 </div>
 
 
-<form action="https://formsubmit.co/nauzatu@gmail.com"
-      method="POST">
+<div class="step">
 
-<input type="hidden"
-       name="_subject"
-       value="New Vehicle Listing Submission - Nauza Tu">
+<div class="step-number">2</div>
 
-<input type="hidden"
-       name="_captcha"
-       value="false">
+<h3>Review</h3>
 
-<input type="hidden"
-       name="_template"
-       value="table">
-
-<input type="hidden"
-       name="_next"
-       value="https://themaina1.github.io/nauza-tu-digital-motor-market/thankyou.html">
-
-
-<!-- SELLER INFORMATION -->
-
-<div class="section-title">
-
-<h2>1. Seller Information</h2>
-
-<p>Tell us who is offering the vehicle.</p>
+<p>
+Nauza Tu reviews the submitted information.
+</p>
 
 </div>
 
 
+<div class="step">
+
+<div class="step-number">3</div>
+
+<h3>Approval</h3>
+
+<p>
+Approved vehicles can be prepared for publication.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">4</div>
+
+<h3>Connect</h3>
+
+<p>
+Potential buyers can contact the advertiser.
+</p>
+
+</div>
+
+</section>
+
+
+<section class="form-card">
+
+<h2>Vehicle Advertisement Form</h2>
+
+<p class="section-description">
+Please provide as much accurate information as possible.
+Fields marked with <span class="required">*</span> are required.
+</p>
+
+
+<form
+action="https://formsubmit.co/nauzatu@gmail.com"
+method="POST"
+>
+
+<input
+type="hidden"
+name="_subject"
+value="New Vehicle Advertisement - Nauza Tu Digital Motor Market"
+>
+
+<input
+type="hidden"
+name="_next"
+value="https://themaina1.github.io/nauza-tu-digital-motor-market/thankyou.html"
+>
+
+<input
+type="hidden"
+name="_captcha"
+value="false"
+>
+
+
+<!-- SELLER INFORMATION -->
+
+<div class="form-section" style="border-top:none;padding-top:0;margin-top:0;">
+
+<h3>1. Seller / Advertiser Information</h3>
+
 <div class="form-grid">
+
 
 <div class="form-group">
 
 <label>
-Seller / Owner Name <span class="required">*</span>
+Full Name / Business Name <span class="required">*</span>
 </label>
 
 <input
 type="text"
-name="Seller Name"
+name="seller_name"
 required
-placeholder="Full name or business name">
+placeholder="Enter your name or business name"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Seller Type <span class="required">*</span>
+</label>
+
+<select name="seller_type" required>
+
+<option value="">Select seller type</option>
+<option>Private Seller</option>
+<option>Car Dealer</option>
+<option>Importer</option>
+<option>Company / Business</option>
+<option>Other</option>
+
+</select>
 
 </div>
 
@@ -504,9 +624,10 @@ Phone Number <span class="required">*</span>
 
 <input
 type="tel"
-name="Seller Phone"
+name="seller_phone"
 required
-placeholder="+254 7XX XXX XXX">
+placeholder="+254..."
+>
 
 </div>
 
@@ -519,8 +640,9 @@ WhatsApp Number
 
 <input
 type="tel"
-name="Seller WhatsApp"
-placeholder="+254 7XX XXX XXX">
+name="seller_whatsapp"
+placeholder="+254..."
+>
 
 </div>
 
@@ -528,36 +650,15 @@ placeholder="+254 7XX XXX XXX">
 <div class="form-group">
 
 <label>
-Email Address
+Email Address <span class="required">*</span>
 </label>
 
 <input
 type="email"
-name="Seller Email"
-placeholder="seller@example.com">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Seller Type <span class="required">*</span>
-</label>
-
-<select name="Seller Type" required>
-
-<option value="">Select seller type</option>
-
-<option>Private Owner</option>
-
-<option>Vehicle Dealer</option>
-
-<option>Company / Organisation</option>
-
-<option>Other</option>
-
-</select>
+name="seller_email"
+required
+placeholder="you@example.com"
+>
 
 </div>
 
@@ -568,32 +669,38 @@ Seller Type <span class="required">*</span>
 Vehicle Location <span class="required">*</span>
 </label>
 
-<input
-type="text"
-name="Vehicle Location"
-required
-placeholder="e.g. Nairobi, Mombasa, Kiambu">
+<select name="vehicle_location" required>
+
+<option value="">Select location</option>
+<option>Nairobi</option>
+<option>Mombasa</option>
+<option>Kisumu</option>
+<option>Nakuru</option>
+<option>Kiambu</option>
+<option>Machakos</option>
+<option>Thika</option>
+<option>Eldoret</option>
+<option>Nyeri</option>
+<option>Meru</option>
+<option>Other</option>
+
+</select>
 
 </div>
 
 </div>
 
-
-<br><br>
+</div>
 
 
 <!-- VEHICLE INFORMATION -->
 
-<div class="section-title">
+<div class="form-section">
 
-<h2>2. Vehicle Information</h2>
-
-<p>Give potential buyers the basic specifications of the vehicle.</p>
-
-</div>
-
+<h3>2. Vehicle Information</h3>
 
 <div class="form-grid">
+
 
 <div class="form-group">
 
@@ -603,9 +710,10 @@ Make <span class="required">*</span>
 
 <input
 type="text"
-name="Vehicle Make"
+name="vehicle_make"
 required
-placeholder="e.g. Toyota">
+placeholder="e.g. Toyota"
+>
 
 </div>
 
@@ -618,9 +726,10 @@ Model <span class="required">*</span>
 
 <input
 type="text"
-name="Vehicle Model"
+name="vehicle_model"
 required
-placeholder="e.g. Harrier">
+placeholder="e.g. Harrier"
+>
 
 </div>
 
@@ -631,7 +740,11 @@ placeholder="e.g. Harrier">
 Year <span class="required">*</span>
 </label>
 
-<select name="Vehicle Year" id="year" required>
+<select
+name="vehicle_year"
+id="vehicleYear"
+required
+>
 
 <option value="">Select year</option>
 
@@ -646,32 +759,16 @@ Year <span class="required">*</span>
 Category <span class="required">*</span>
 </label>
 
-<select name="Vehicle Category" required>
+<select name="vehicle_category" required>
 
 <option value="">Select category</option>
-
 <option>SUV</option>
-
 <option>Sedan</option>
-
 <option>Station Wagon</option>
-
 <option>Pickup</option>
-
 <option>Van</option>
-
 <option>Truck</option>
-
-<option>Minibus</option>
-
 <option>Bus</option>
-
-<option>Coupe</option>
-
-<option>Convertible</option>
-
-<option>Hatchback</option>
-
 <option>Other</option>
 
 </select>
@@ -685,16 +782,12 @@ Category <span class="required">*</span>
 Transmission <span class="required">*</span>
 </label>
 
-<select name="Transmission" required>
+<select name="transmission" required>
 
 <option value="">Select transmission</option>
-
 <option>Automatic</option>
-
 <option>Manual</option>
-
 <option>CVT</option>
-
 <option>Other</option>
 
 </select>
@@ -708,18 +801,13 @@ Transmission <span class="required">*</span>
 Fuel Type <span class="required">*</span>
 </label>
 
-<select name="Fuel Type" required>
+<select name="fuel" required>
 
 <option value="">Select fuel</option>
-
 <option>Petrol</option>
-
 <option>Diesel</option>
-
 <option>Hybrid</option>
-
 <option>Electric</option>
-
 <option>Other</option>
 
 </select>
@@ -730,14 +818,16 @@ Fuel Type <span class="required">*</span>
 <div class="form-group">
 
 <label>
-Mileage (KM)
+Mileage (KM) <span class="required">*</span>
 </label>
 
 <input
 type="number"
-name="Mileage"
+name="mileage"
+required
 min="0"
-placeholder="e.g. 72000">
+placeholder="e.g. 75000"
+>
 
 </div>
 
@@ -750,8 +840,9 @@ Engine Size
 
 <input
 type="text"
-name="Engine"
-placeholder="e.g. 2.0L">
+name="engine"
+placeholder="e.g. 2.0L"
+>
 
 </div>
 
@@ -762,16 +853,12 @@ placeholder="e.g. 2.0L">
 Drive Type
 </label>
 
-<select name="Drive Type">
+<select name="drive">
 
 <option value="">Select drive type</option>
-
 <option>2WD</option>
-
 <option>4WD</option>
-
 <option>AWD</option>
-
 <option>Other</option>
 
 </select>
@@ -785,17 +872,13 @@ Drive Type
 Condition <span class="required">*</span>
 </label>
 
-<select name="Condition" required>
+<select name="condition" required>
 
 <option value="">Select condition</option>
-
-<option>New</option>
-
 <option>Used</option>
-
-<option>Foreign Used</option>
-
-<option>Locally Used</option>
+<option>New</option>
+<option>Reconditioned</option>
+<option>Imported / Foreign Used</option>
 
 </select>
 
@@ -810,10 +893,11 @@ Asking Price (KES) <span class="required">*</span>
 
 <input
 type="number"
-name="Asking Price KES"
-min="0"
+name="asking_price"
 required
-placeholder="e.g. 2850000">
+min="0"
+placeholder="e.g. 2500000"
+>
 
 </div>
 
@@ -825,304 +909,182 @@ Vehicle Description <span class="required">*</span>
 </label>
 
 <textarea
-name="Vehicle Description"
+name="vehicle_description"
 required
-placeholder="Describe the vehicle, its condition, service history, features, ownership information and anything else a buyer should know."></textarea>
+placeholder="Describe the vehicle, features, service history, ownership information and anything else a potential buyer should know."
+></textarea>
 
-<p class="help">
-Please provide honest and accurate information. Avoid making
-claims that you cannot verify.
-</p>
+<span class="help">
+Do not include passwords, banking PINs or other sensitive personal information.
+</span>
+
+</div>
 
 </div>
 
 </div>
-
-
-<br><br>
 
 
 <!-- PHOTOS -->
 
-<div class="section-title">
+<div class="form-section">
 
-<h2>3. Vehicle Photos</h2>
+<h3>3. Vehicle Photos</h3>
 
-<p>
-Good photographs help potential buyers understand the vehicle.
+<div class="photo-box">
+
+<h4>Prepare Clear Photos of the Vehicle</h4>
+
+<p style="font-size:13px;color:#555;margin-bottom:10px;">
+Good photographs help potential buyers understand what is being advertised.
+</p>
+
+<ul>
+
+<li>Front view</li>
+
+<li>Rear view</li>
+
+<li>Both sides</li>
+
+<li>Interior</li>
+
+<li>Dashboard / instrument cluster</li>
+
+<li>Engine bay where appropriate</li>
+
+<li>Wheels and tyres</li>
+
+<li>Any visible damage or notable features</li>
+
+</ul>
+
+<p style="margin-top:12px;font-size:13px;color:#555;">
+
+After submission, Nauza Tu may contact you regarding photographs
+and additional information required for the listing.
+
 </p>
 
 </div>
 
-
-<div class="form-grid">
-
-<div class="form-group full">
-
-<label>
-Photo Information
-</label>
-
-<textarea
-name="Photo Information"
-placeholder="Tell us how many photos you have and any important photo details."></textarea>
-
-<p class="help">
-
-For the best listing, prepare clear photographs showing:
-front, rear, both sides, interior, dashboard, seats,
-engine bay and any important defects.
-
-</p>
-
-</div>
-
 </div>
 
 
-<br><br>
+<!-- CONFIRMATIONS -->
+
+<div class="form-section confirmations">
+
+<h3>4. Seller Confirmation</h3>
 
 
-<!-- CONTACT PREFERENCE -->
-
-<div class="section-title">
-
-<h2>4. Buyer Contact Preference</h2>
-
-<p>
-Tell us how you would like potential buyers to reach you.
-</p>
-
-</div>
-
-
-<div class="form-grid">
-
-<div class="form-group">
-
-<label>
-Preferred Contact Method <span class="required">*</span>
-</label>
-
-<select name="Preferred Contact" required>
-
-<option value="">Select preference</option>
-
-<option>Phone Call</option>
-
-<option>WhatsApp</option>
-
-<option>Phone & WhatsApp</option>
-
-<option>Contact Through Nauza Tu</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Preferred Viewing Arrangement
-</label>
-
-<input
-type="text"
-name="Viewing Arrangement"
-placeholder="e.g. By appointment">
-
-</div>
-
-</div>
-
-
-<br><br>
-
-
-<!-- SELLER DECLARATIONS -->
-
-<div class="section-title">
-
-<h2>5. Seller Confirmation</h2>
-
-<p>
-Please confirm the information you have submitted.
-</p>
-
-</div>
-
-
-<div class="checkbox-group">
-
-<div class="checkbox-row">
+<label class="check-row">
 
 <input
 type="checkbox"
-id="confirm1"
-name="Seller Confirmation - Accurate Information"
-value="Yes"
-required>
+name="information_accuracy"
+required
+>
 
-<label for="confirm1">
-
-I confirm that the information I have provided about the vehicle
-is accurate to the best of my knowledge.
+<span>
+I confirm that the information I have provided is accurate to the best
+of my knowledge.
+</span>
 
 </label>
 
-</div>
 
-
-<div class="checkbox-row">
+<label class="check-row">
 
 <input
 type="checkbox"
-id="confirm2"
-name="Seller Confirmation - Authority"
-value="Yes"
-required>
+name="authorized_to_advertise"
+required
+>
 
-<label for="confirm2">
-
-I confirm that I am the owner, authorised representative or otherwise
-authorised to advertise this vehicle.
+<span>
+I confirm that I am the owner or am authorized to advertise this vehicle.
+</span>
 
 </label>
 
-</div>
 
-
-<div class="checkbox-row">
+<label class="check-row">
 
 <input
 type="checkbox"
-id="confirm3"
-name="Seller Confirmation - Marketplace"
-value="Yes"
-required>
+name="marketplace_understanding"
+required
+>
 
-<label for="confirm3">
-
-I understand that Nauza Tu is a digital marketplace and does not
-own the vehicle being advertised.
+<span>
+I understand that Nauza Tu is a digital marketplace and does not own
+or sell the vehicle being advertised.
+</span>
 
 </label>
 
-</div>
 
-
-<div class="checkbox-row">
+<label class="check-row">
 
 <input
 type="checkbox"
-id="confirm4"
-name="Seller Confirmation - Review"
-value="Yes"
-required>
+name="review_understanding"
+required
+>
 
-<label for="confirm4">
-
-I understand that Nauza Tu may review the submission before the
-vehicle is published.
+<span>
+I understand that submission does not automatically guarantee publication
+and that Nauza Tu may review or decline a listing.
+</span>
 
 </label>
 
 </div>
 
-</div>
 
+<!-- SUBMIT -->
 
 <div class="submit-area">
 
-<button type="submit" class="submit-btn">
-Submit Vehicle for Review
+<button
+type="submit"
+class="submit-button"
+>
+Submit Vehicle Advertisement
 </button>
 
+<p class="submit-note">
+
+After submission, Nauza Tu will receive your information for review.
+We may contact you using the details provided.
+
+</p>
+
 </div>
+
 
 </form>
 
-</div>
+</section>
 
 
-<!-- HOW IT WORKS -->
+<section class="notice">
 
-<div class="steps">
-
-<div class="step">
-
-<div class="step-number">1</div>
-
-<h3>Submit</h3>
+<h3>Important Marketplace Notice</h3>
 
 <p>
-Send us your vehicle information and seller details through
-the listing form.
+Nauza Tu Digital Motor Market is an advertising and discovery platform.
+The vehicle remains the responsibility of the respective seller or advertiser.
+Nauza Tu does not own the vehicles advertised through the marketplace.
 </p>
 
-</div>
-
-
-<div class="step">
-
-<div class="step-number">2</div>
-
-<h3>Review</h3>
-
-<p>
-Nauza Tu reviews the submitted information before adding an
-approved vehicle to the marketplace.
+<p style="margin-top:10px;">
+Do not send original logbooks, identity documents, banking information,
+PINs, passwords or other sensitive documents through this form.
 </p>
 
-</div>
-
-
-<div class="step">
-
-<div class="step-number">3</div>
-
-<h3>Connect</h3>
-
-<p>
-Potential buyers can discover the listing and contact the seller
-using the contact arrangement provided.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="contact-box">
-
-<h2>Need Help Advertising Your Vehicle?</h2>
-
-<p>
-Call or WhatsApp Nauza Tu:
-</p>
-
-<p>
-<strong>
-<a href="tel:+254722910913">+254 722 910 913</a>
-</strong>
-</p>
-
-<p>
-<strong>
-<a href="tel:+254724708032">+254 724 708 032</a>
-</strong>
-</p>
-
-<p>
-Email:
-<a href="mailto:nauzatu@gmail.com">
-nauzatu@gmail.com
-</a>
-</p>
-
-</div>
-
+</section>
 
 </main>
 
@@ -1133,63 +1095,49 @@ nauzatu@gmail.com
 
 <div>
 
-<h3>Nauza Tu</h3>
+<h3>Nauza Tu Digital Motor Market</h3>
 
 <p>
-Nauza Tu Digital Motor Market is a vehicle marketplace
-connecting vehicle sellers with potential buyers in Kenya.
+A Kenyan digital marketplace connecting potential buyers with vehicle
+owners, sellers and dealers.
 </p>
 
-</div>
-
-
-<div>
-
-<h3>Quick Links</h3>
-
-<p><a href="index.html">Home</a></p>
-<p><a href="vehicles.html">Browse Vehicles</a></p>
-<p><a href="compare.html">Compare Vehicles</a></p>
-<p><a href="sell.html">Sell / Advertise</a></p>
-
-</div>
-
-
-<div>
-
-<h3>Contact</h3>
-
-<p>
+<p style="margin-top:10px;">
 Nairobi, Kenya
 </p>
 
-<p>
-<a href="tel:+254722910913">
-+254 722 910 913
-</a>
-</p>
+</div>
 
-<p>
-<a href="tel:+254724708032">
-+254 724 708 032
-</a>
-</p>
 
-<p>
-<a href="mailto:nauzatu@gmail.com">
-nauzatu@gmail.com
-</a>
-</p>
+<div>
+
+<h3>Marketplace</h3>
+
+<a href="vehicles.html">Browse Vehicles</a>
+<a href="compare.html">Compare Vehicles</a>
+<a href="sell.html">Sell / Advertise</a>
+<a href="contact.html">Contact Us</a>
+
+</div>
+
+
+<div>
+
+<h3>Information</h3>
+
+<a href="about.html">About Us</a>
+<a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms & Conditions</a>
 
 </div>
 
 </div>
 
 
-<div class="footer-bottom">
+<div class="copyright">
 
-© 2026 Nauza Tu Digital Motor Market.
-All rights reserved.
+© <span id="year"></span>
+Nauza Tu Digital Motor Market. All rights reserved.
 
 </div>
 
@@ -1198,15 +1146,24 @@ All rights reserved.
 
 <script>
 
-/* Generate vehicle years automatically */
+/* CURRENT YEAR */
 
-const yearSelect = document.getElementById("year");
+document.getElementById("year").textContent =
+new Date().getFullYear();
 
-const currentYear = new Date().getFullYear();
+
+/* VEHICLE YEARS */
+
+const yearSelect =
+document.getElementById("vehicleYear");
+
+const currentYear =
+new Date().getFullYear();
 
 for(let year = currentYear; year >= 1990; year--){
 
-    const option = document.createElement("option");
+    const option =
+    document.createElement("option");
 
     option.value = year;
     option.textContent = year;
