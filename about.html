@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Us | Nauza Tu Digital Motor Market</title>
+
+<meta name="description"
+content="Learn about Nauza Tu Digital Motor Market, a Kenyan digital marketplace connecting vehicle sellers with potential buyers.">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f6f8;
+    color:#222;
+    line-height:1.6;
+}
+
+/* HEADER */
+
+header{
+    background:#111827;
+    color:white;
+    padding:15px 6%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    color:#f59e0b;
+}
+
+.logo span{
+    color:white;
+}
+
+nav{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:15px;
+    font-weight:600;
+}
+
+nav a:hover{
+    color:#f59e0b;
+}
+
+/* HERO */
+
+.hero{
+    min-height:330px;
+
+    background:
+    linear-gradient(
+        rgba(17,24,39,.82),
+        rgba(17,24,39,.82)
+    ),
+    url("images/kenya-car-market.jpg") center/cover no-repeat;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+    color:white;
+
+    padding:40px 20px;
+}
+
+.hero-content{
+    max-width:850px;
+}
+
+.hero h1{
+    font-size:44px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:19px;
+    color:#e5e7eb;
+}
+
+/* CONTAINER */
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:45px auto;
+}
+
+/* INTRO */
+
+.intro{
+    background:white;
+    padding:35px;
+    border-radius:12px;
+    box-shadow:0 2px 12px rgba(0,0,0,.06);
+    margin-bottom:30px;
+}
+
+.intro h2{
+    color:#111827;
+    margin-bottom:15px;
+    font-size:30px;
+}
+
+.intro p{
+    color:#4b5563;
+    margin-bottom:14px;
+}
+
+/* GRID */
+
+.two-column{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+    margin-bottom:30px;
+}
+
+/* CARDS */
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 2px 12px rgba(0,0,0,.06);
+}
+
+.card h2{
+    color:#111827;
+    margin-bottom:15px;
+    font-size:27px;
+}
+
+.card p{
+    color:#4b5563;
+    margin-bottom:12px;
+}
+
+/* VALUES */
+
+.values{
+    margin-top:30px;
+}
+
+.values h2{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:30px;
+}
+
+.values-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.value-box{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+
+.value-icon{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.value-box h3{
+    margin-bottom:8px;
+    color:#111827;
+}
+
+.value-box p{
+    color:#666;
+    font-size:14px;
+}
+
+/* HOW IT WORKS */
+
+.how-it-works{
+    margin-top:40px;
+}
+
+.how-it-works h2{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:30px;
+}
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.step{
+    background:white;
+    padding:25px 20px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+
+.step-number{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#f59e0b;
+    color:#111827;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 12px;
+    font-weight:bold;
+    font-size:20px;
+}
+
+.step h3{
+    margin-bottom:8px;
+}
+
+.step p{
+    color:#666;
+    font-size:14px;
+}
+
+/* NOTICE */
+
+.notice{
+    margin-top:40px;
+    background:#fff7ed;
+    border-left:5px solid #f59e0b;
+    padding:25px;
+    border-radius:8px;
+}
+
+.notice h2{
+    color:#92400e;
+    margin-bottom:12px;
+}
+
+.notice p{
+    color:#4b5563;
+    margin-bottom:10px;
+}
+
+/* CTA */
+
+.cta{
+    margin-top:40px;
+    background:#111827;
+    color:white;
+    padding:40px 25px;
+    text-align:center;
+    border-radius:12px;
+}
+
+.cta h2{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.cta p{
+    color:#d1d5db;
+    max-width:700px;
+    margin:0 auto 22px;
+}
+
+.cta-buttons{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    padding:13px 25px;
+    border-radius:7px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.btn-primary{
+    background:#f59e0b;
+    color:#111827;
+}
+
+.btn-secondary{
+    background:white;
+    color:#111827;
+}
+
+.btn:hover{
+    opacity:.9;
+}
+
+/* FOOTER */
+
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:35px 15px;
+    margin-top:50px;
+    border-top:1px solid #374151;
+}
+
+footer h3{
+    color:#f59e0b;
+    margin-bottom:8px;
+}
+
+footer p{
+    color:#d1d5db;
+    margin:5px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .two-column{
+        grid-template-columns:1fr;
+    }
+
+    .values-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .steps{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:650px){
+
+    header{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav{
+        justify-content:center;
+        gap:12px;
+    }
+
+    .hero{
+        min-height:280px;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .container{
+        width:94%;
+        margin:30px auto;
+    }
+
+    .intro,
+    .card{
+        padding:22px;
+    }
+
+    .values-grid,
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        Nauza Tu <span>Digital Motor Market</span>
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+
+        <a href="vehicles.html">Vehicles</a>
+
+        <a href="compare.html">Compare</a>
+
+        <a href="sell.html">Sell Your Car</a>
+
+        <a href="about.html">About</a>
+
+        <a href="contact.html">Contact</a>
+
+    </nav>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>About Nauza Tu</h1>
+
+        <p>
+            A digital marketplace connecting vehicle sellers
+            with people looking for vehicles in Kenya.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- MAIN -->
+
+<div class="container">
+
+
+    <!-- INTRO -->
+
+    <section class="intro">
+
+        <h2>What Is Nauza Tu?</h2>
+
+        <p>
+            <strong>Nauza Tu Digital Motor Market</strong>
+            is a digital vehicle marketplace designed to make
+            it easier for people in Kenya to discover vehicles
+            available for sale.
+        </p>
+
+        <p>
+            Instead of operating as a traditional motor dealership,
+            Nauza Tu provides an online platform where vehicle
+            owners, private sellers and eligible motor dealers
+            can advertise vehicles and where potential buyers
+            can browse listings and contact sellers directly.
+        </p>
+
+        <p>
+            Our goal is to bring vehicle sellers and potential
+            buyers together through a simple, accessible and
+            convenient online marketplace.
+        </p>
+
+    </section>
+
+
+    <!-- TWO COLUMNS -->
+
+    <div class="two-column">
+
+
+        <div class="card">
+
+            <h2>Our Role</h2>
+
+            <p>
+                Nauza Tu provides the digital platform through
+                which vehicle sellers can showcase their vehicles.
+            </p>
+
+            <p>
+                Buyers can browse available listings, compare
+                vehicles and contact the respective seller when
+                they find a vehicle they are interested in.
+            </p>
+
+            <p>
+                The transaction and final agreement for the sale
+                of a vehicle is between the buyer and the seller.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>What We Do Not Do</h2>
+
+            <p>
+                Nauza Tu does <strong>not own the vehicles</strong>
+                advertised on the marketplace.
+            </p>
+
+            <p>
+                We do not present marketplace vehicles as our
+                own stock.
+            </p>
+
+            <p>
+                We do not provide vehicle financing as part of
+                the marketplace.
+            </p>
+
+            <p>
+                We do not replace the buyer's responsibility to
+                inspect and verify a vehicle before purchasing it.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- VALUES -->
+
+    <section class="values">
+
+        <h2>Our Marketplace Principles</h2>
+
+        <div class="values-grid">
+
+
+            <div class="value-box">
+
+                <div class="value-icon">
+                    🔎
+                </div>
+
+                <h3>Choice</h3>
+
+                <p>
+                    Give buyers access to different makes,
+                    models, categories and price ranges.
+                </p>
+
+            </div>
+
+
+            <div class="value-box">
+
+                <div class="value-icon">
+                    🤝
+                </div>
+
+                <h3>Connection</h3>
+
+                <p>
+                    Make it easier for buyers and vehicle
+                    sellers to find and communicate with
+                    each other.
+                </p>
+
+            </div>
+
+
+            <div class="value-box">
+
+                <div class="value-icon">
+                    📱
+                </div>
+
+                <h3>Convenience</h3>
+
+                <p>
+                    Provide a simple online platform for
+                    discovering vehicles from anywhere.
+                </p>
+
+            </div>
+
+
+            <div class="value-box">
+
+                <div class="value-icon">
+                    🇰🇪
+                </div>
+
+                <h3>Kenyan Market</h3>
+
+                <p>
+                    Focus on vehicles and buying and selling
+                    practices relevant to the Kenyan market.
+                </p>
+
+            </div>
+
+
+            <div class="value-box">
+
+                <div class="value-icon">
+                    📢
+                </div>
+
+                <h3>Visibility</h3>
+
+                <p>
+                    Help vehicle sellers put their vehicles
+                    in front of potential buyers online.
+                </p>
+
+            </div>
+
+
+            <div class="value-box">
+
+                <div class="value-icon">
+                    🛡️
+                </div>
+
+                <h3>Buyer Awareness</h3>
+
+                <p>
+                    Encourage buyers to verify vehicle
+                    information before completing a purchase.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+
+    <section class="how-it-works">
+
+        <h2>How Nauza Tu Works</h2>
+
+        <div class="steps">
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    1
+                </div>
+
+                <h3>Seller Advertises</h3>
+
+                <p>
+                    A vehicle owner or seller submits
+                    information about a vehicle for
+                    marketplace advertising.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    2
+                </div>
+
+                <h3>Vehicle Is Listed</h3>
+
+                <p>
+                    The vehicle information and photographs
+                    can be presented as a marketplace listing.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    3
+                </div>
+
+                <h3>Buyer Browses</h3>
+
+                <p>
+                    Potential buyers search and compare
+                    vehicles that interest them.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    4
+                </div>
+
+                <h3>Buyer Contacts Seller</h3>
+
+                <p>
+                    The interested buyer contacts the seller
+                    directly to discuss the vehicle and arrange
+                    inspection or other next steps.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- BUYER NOTICE -->
+
+    <section class="notice">
+
+        <h2>Important Buyer Notice</h2>
+
+        <p>
+            Nauza Tu is a marketplace and does not own the
+            vehicles advertised by sellers.
+        </p>
+
+        <p>
+            Before purchasing any vehicle, buyers should
+            independently verify the seller's identity,
+            ownership documents, vehicle registration details,
+            mileage, mechanical condition and any other relevant
+            information.
+        </p>
+
+        <p>
+            Buyers should inspect the vehicle personally or
+            through a qualified and trusted mechanic and should
+            take appropriate precautions before making payment.
+        </p>
+
+        <p>
+            Do not rely solely on photographs or information
+            contained in an online advertisement when deciding
+            whether to purchase a vehicle.
+        </p>
+
+    </section>
+
+
+    <!-- SELLER SECTION -->
+
+    <section class="two-column" style="margin-top:40px;">
+
+
+        <div class="card">
+
+            <h2>Are You Selling a Vehicle?</h2>
+
+            <p>
+                If you have a vehicle you would like to advertise,
+                Nauza Tu provides a platform for presenting your
+                vehicle to potential buyers.
+            </p>
+
+            <p>
+                Provide accurate information and clear photographs
+                so that potential buyers can understand what you
+                are offering.
+            </p>
+
+            <a
+                href="sell.html"
+                class="btn btn-primary">
+
+                Advertise Your Vehicle
+
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>Looking for a Vehicle?</h2>
+
+            <p>
+                Browse available vehicle listings and explore
+                different makes, models, categories and prices.
+            </p>
+
+            <p>
+                When you find a vehicle that interests you,
+                use the seller's contact information to make
+                an enquiry.
+            </p>
+
+            <a
+                href="vehicles.html"
+                class="btn btn-primary">
+
+                Browse Vehicles
+
+            </a>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="cta">
+
+        <h2>
+            Find Your Next Vehicle
+        </h2>
+
+        <p>
+            Browse the Nauza Tu marketplace or advertise your
+            vehicle to potential buyers.
+        </p>
+
+        <div class="cta-buttons">
+
+            <a
+                href="vehicles.html"
+                class="btn btn-primary">
+
+                Browse Vehicles
+
+            </a>
+
+            <a
+                href="sell.html"
+                class="btn btn-secondary">
+
+                Sell Your Car
+
+            </a>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h3>
+        Nauza Tu Digital Motor Market
+    </h3>
+
+    <p>
+        Kenya's digital marketplace for vehicles.
+    </p>
+
+    <p>
+        Connecting vehicle sellers with potential buyers.
+    </p>
+
+    <p>
+        📞 +254 722 910 913 &nbsp; | &nbsp;
+        +254 724 708 032
+    </p>
+
+    <p>
+        📧 nauzatu@gmail.com
+    </p>
+
+    <p style="margin-top:15px;">
+        © 2026 Nauza Tu Digital Motor Market.
+        All Rights Reserved.
+    </p>
+
+</footer>
+
+
+</body>
+</html>
