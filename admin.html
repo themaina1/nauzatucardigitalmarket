@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nauza Tu | Listing Manager</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f6f8;
+    color:#222;
+    line-height:1.6;
+}
+
+header{
+    background:#111;
+    color:white;
+    padding:18px 5%;
+}
+
+.header-inner{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.logo{
+    color:#ffcc00;
+    font-size:23px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:white;
+}
+
+.back{
+    color:white;
+    text-decoration:none;
+    padding:9px 14px;
+    border:1px solid #555;
+    border-radius:5px;
+}
+
+.container{
+    max-width:1100px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+.warning{
+    background:#fff4cc;
+    border-left:5px solid #ffcc00;
+    padding:20px;
+    margin-bottom:25px;
+    border-radius:5px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 4px 18px rgba(0,0,0,.08);
+    margin-bottom:25px;
+}
+
+h1{
+    margin-bottom:10px;
+}
+
+h2{
+    margin-bottom:20px;
+}
+
+.subtitle{
+    color:#666;
+    margin-bottom:25px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:6px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:15px;
+}
+
+textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+.buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:25px;
+}
+
+button{
+    border:none;
+    padding:13px 22px;
+    border-radius:5px;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.generate{
+    background:#ffcc00;
+    color:#111;
+}
+
+.copy{
+    background:#111;
+    color:white;
+}
+
+.clear{
+    background:#ddd;
+    color:#111;
+}
+
+button:hover{
+    opacity:.85;
+}
+
+.output{
+    width:100%;
+    min-height:500px;
+    font-family:monospace;
+    font-size:13px;
+    background:#111;
+    color:#eee;
+}
+
+.instructions{
+    background:#f8f9fa;
+    border:1px solid #ddd;
+    padding:20px;
+    border-radius:6px;
+}
+
+.instructions ol{
+    padding-left:22px;
+}
+
+.instructions li{
+    margin-bottom:9px;
+}
+
+.success{
+    display:none;
+    margin-top:15px;
+    background:#e7f7e7;
+    border-left:4px solid #2d8a42;
+    padding:12px;
+}
+
+@media(max-width:700px){
+
+    .header-inner{
+        flex-direction:column;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .full{
+        grid-column:auto;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<header>
+
+<div class="header-inner">
+
+<div class="logo">
+Nauza Tu <span>Listing Manager</span>
+</div>
+
+<a href="index.html" class="back">
+Back to Website
+</a>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+
+<div class="warning">
+
+<strong>ADMINISTRATIVE USE ONLY</strong>
+
+<p>
+
+This page is a listing preparation tool. It is not a secure
+online administrator login system. Do not place passwords,
+seller documents or other sensitive information here.
+
+Only publish vehicles that have been reviewed and approved.
+
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h1>Create Approved Vehicle Listing</h1>
+
+<p class="subtitle">
+
+Enter the information for an approved vehicle. The tool will
+generate the JavaScript entry that can be added to
+<strong>vehicles-data.js</strong>.
+
+</p>
+
+
+<div class="grid">
+
+
+<div>
+
+<label>Listing ID</label>
+
+<input
+id="id"
+placeholder="NT010">
+
+</div>
+
+
+<div>
+
+<label>Make</label>
+
+<input
+id="make"
+placeholder="Toyota">
+
+</div>
+
+
+<div>
+
+<label>Model</label>
+
+<input
+id="model"
+placeholder="RAV4">
+
+</div>
+
+
+<div>
+
+<label>Year</label>
+
+<input
+id="year"
+type="number"
+placeholder="2021">
+
+</div>
+
+
+<div>
+
+<label>Category</label>
+
+<select id="category">
+
+<option value="SUV">SUV</option>
+<option value="Sedan">Sedan</option>
+<option value="Station Wagon">Station Wagon</option>
+<option value="Pickup">Pickup</option>
+<option value="Van">Van</option>
+<option value="Truck">Truck</option>
+<option value="Minibus">Minibus</option>
+<option value="Bus">Bus</option>
+<option value="Coupe">Coupe</option>
+<option value="Hatchback">Hatchback</option>
+<option value="Convertible">Convertible</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Price (KES)</label>
+
+<input
+id="price"
+type="number"
+placeholder="2500000">
+
+</div>
+
+
+<div>
+
+<label>Location</label>
+
+<input
+id="location"
+placeholder="Nairobi">
+
+</div>
+
+
+<div>
+
+<label>Transmission</label>
+
+<select id="transmission">
+
+<option>Automatic</option>
+<option>Manual</option>
+<option>CVT</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Fuel</label>
+
+<select id="fuel">
+
+<option>Petrol</option>
+<option>Diesel</option>
+<option>Hybrid</option>
+<option>Electric</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Mileage (KM)</label>
+
+<input
+id="mileage"
+type="number"
+placeholder="65000">
+
+</div>
+
+
+<div>
+
+<label>Engine</label>
+
+<input
+id="engine"
+placeholder="2.0L">
+
+</div>
+
+
+<div>
+
+<label>Drive</label>
+
+<select id="drive">
+
+<option>2WD</option>
+<option>4WD</option>
+<option>AWD</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Condition</label>
+
+<select id="condition">
+
+<option>Used</option>
+<option>New</option>
+<option>Foreign Used</option>
+<option>Locally Used</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Main Image Filename</label>
+
+<input
+id="image"
+placeholder="images/toyota-rav4.jpg">
+
+</div>
+
+
+<div>
+
+<label>Seller Name</label>
+
+<input
+id="sellerName"
+placeholder="Private Seller">
+
+</div>
+
+
+<div>
+
+<label>Seller Type</label>
+
+<select id="sellerType">
+
+<option>Private Seller</option>
+<option>Vehicle Dealer</option>
+<option>Company / Organisation</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Seller Phone</label>
+
+<input
+id="sellerPhone"
+placeholder="+254 7XX XXX XXX">
+
+</div>
+
+
+<div>
+
+<label>Seller WhatsApp</label>
+
+<input
+id="sellerWhatsapp"
+placeholder="+254 7XX XXX XXX">
+
+</div>
+
+
+<div class="full">
+
+<label>Vehicle Description</label>
+
+<textarea
+id="description"
+placeholder="Enter the approved vehicle description..."></textarea>
+
+</div>
+
+
+</div>
+
+
+<div class="buttons">
+
+<button
+class="generate"
+onclick="generateListing()">
+Generate Listing Code
+</button>
+
+<button
+class="copy"
+onclick="copyCode()">
+Copy Code
+</button>
+
+<button
+class="clear"
+onclick="clearForm()">
+Clear
+</button>
+
+</div>
+
+
+<div id="success" class="success">
+Listing code copied successfully.
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>Generated Vehicle Entry</h2>
+
+<textarea
+id="output"
+class="output"
+readonly
+placeholder="Your vehicle listing code will appear here..."></textarea>
+
+</div>
+
+
+<div class="card">
+
+<h2>How to Add the Approved Vehicle</h2>
+
+<div class="instructions">
+
+<ol>
+
+<li>
+Review the seller's submission and confirm that the listing
+has been approved.
+</li>
+
+<li>
+Make sure the vehicle photographs have been received and
+uploaded into your website's <strong>images</strong> folder.
+</li>
+
+<li>
+Enter the approved vehicle information above.
+</li>
+
+<li>
+Click <strong>Generate Listing Code</strong>.
+</li>
+
+<li>
+Click <strong>Copy Code</strong>.
+</li>
+
+<li>
+Open <strong>vehicles-data.js</strong> in your GitHub repository.
+</li>
+
+<li>
+Add the generated vehicle object before the final
+<strong>];</strong>.
+</li>
+
+<li>
+Save and commit the change to GitHub.
+</li>
+
+<li>
+The approved vehicle will then appear on
+<strong>vehicles.html</strong>.
+</li>
+
+<li>
+The same vehicle will automatically become available on
+<strong>vehicle-details.html</strong> and
+<strong>compare.html</strong>, because those pages all use
+the central vehicle database.
+</li>
+
+</ol>
+
+</div>
+
+</div>
+
+
+</main>
+
+
+<script>
+
+function value(id){
+
+    return document.getElementById(id).value.trim();
+
+}
+
+
+function escapeText(text){
+
+    return text
+        .replace(/\\/g,"\\\\")
+        .replace(/"/g,'\\"')
+        .replace(/\r?\n/g," ");
+
+}
+
+
+function generateListing(){
+
+    const id = value("id");
+    const make = value("make");
+    const model = value("model");
+    const year = value("year");
+    const category = value("category");
+    const price = value("price");
+    const location = value("location");
+    const transmission = value("transmission");
+    const fuel = value("fuel");
+    const mileage = value("mileage");
+    const engine = value("engine");
+    const drive = value("drive");
+    const condition = value("condition");
+    const image = value("image");
+
+    const sellerName =
+        value("sellerName") || "Private Seller";
+
+    const sellerType =
+        value("sellerType") || "Private Seller";
+
+    const sellerPhone =
+        value("sellerPhone");
+
+    const sellerWhatsapp =
+        value("sellerWhatsapp");
+
+    const description =
+        value("description") ||
+        `${make} ${model} available in ${location}. Contact the seller for viewing and further information.`;
+
+
+
+    if(
+        !id ||
+        !make ||
+        !model ||
+        !year ||
+        !category ||
+        !price ||
+        !location ||
+        !image
+    ){
+
+        alert(
+            "Please complete Listing ID, Make, Model, Year, Category, Price, Location and Main Image."
+        );
+
+        return;
+
+    }
+
+
+    const publicContact =
+        !sellerPhone && !sellerWhatsapp;
+
+
+    const code = `    {
+        id: "${escapeText(id)}",
+        make: "${escapeText(make)}",
+        model: "${escapeText(model)}",
+        year: ${year},
+        category: "${escapeText(category)}",
+        price: ${price},
+        location: "${escapeText(location)}",
+        transmission: "${escapeText(transmission)}",
+        fuel: "${escapeText(fuel)}",
+        mileage: ${mileage || 0},
+        engine: "${escapeText(engine)}",
+        drive: "${escapeText(drive)}",
+        condition: "${escapeText(condition)}",
+        image: "${escapeText(image)}",
+        images: [
+            "${escapeText(image)}"
+        ],
+        description:
+            "${escapeText(description)}",
+        seller: {
+            name: "${escapeText(sellerName)}",
+            type: "${escapeText(sellerType)}",
+            phone: "${escapeText(sellerPhone)}",
+            whatsapp: "${escapeText(sellerWhatsapp)}",
+            publicContact: ${publicContact}
+        }
+    },`;
+
+
+    document.getElementById("output").value = code;
+
+}
+
+
+function copyCode(){
+
+    const output =
+        document.getElementById("output");
+
+    if(!output.value){
+
+        alert("Generate the listing code first.");
+
+        return;
+
+    }
+
+
+    navigator.clipboard.writeText(output.value)
+        .then(function(){
+
+            const success =
+                document.getElementById("success");
+
+            success.style.display = "block";
+
+            setTimeout(function(){
+
+                success.style.display = "none";
+
+            },3000);
+
+        })
+        .catch(function(){
+
+            output.select();
+
+            document.execCommand("copy");
+
+            alert("Listing code copied.");
+
+        });
+
+}
+
+
+function clearForm(){
+
+    document.querySelectorAll(
+        "input, textarea"
+    ).forEach(function(element){
+
+        element.value = "";
+
+    });
+
+    document.getElementById("output").value = "";
+
+}
+
+
+</script>
+
+
+</body>
+</html>
