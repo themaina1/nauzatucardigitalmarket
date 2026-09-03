@@ -1,47 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Vehicles for Sale in Kenya | Nauza Tu Digital Motor Market</title>
+<title>Vehicles for Sale | Nauza Tu Digital Motor Market</title>
 
 <meta name="description"
-content="Browse cars, SUVs, pickups, vans, trucks and other vehicles advertised for sale in Kenya on Nauza Tu Digital Motor Market.">
+content="Browse vehicles for sale in Kenya on Nauza Tu Digital Motor Market. Find SUVs, sedans, pickups, vans and trucks from sellers across Kenya.">
 
 <style>
 
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
     background:#f5f6f8;
-    color:#1f2937;
+    color:#222;
     line-height:1.6;
 }
 
-/* =========================
-   HEADER
-========================= */
-
 header{
-    background:#111827;
-    color:#fff;
+    background:#111;
+    color:white;
+    padding:15px 5%;
     position:sticky;
     top:0;
     z-index:1000;
-    box-shadow:0 3px 15px rgba(0,0,0,.2);
 }
 
 .navbar{
-    max-width:1250px;
+    max-width:1200px;
     margin:auto;
-    padding:15px 20px;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -49,229 +43,157 @@ header{
 }
 
 .logo{
+    color:#fff;
     text-decoration:none;
     font-size:23px;
-    font-weight:800;
-    color:#f59e0b;
-    white-space:nowrap;
+    font-weight:bold;
 }
 
 .logo span{
-    color:#fff;
+    color:#e63946;
 }
 
 nav{
     display:flex;
-    align-items:center;
-    justify-content:flex-end;
-    gap:5px;
+    gap:18px;
     flex-wrap:wrap;
+    justify-content:flex-end;
 }
 
 nav a{
-    color:#fff;
+    color:white;
     text-decoration:none;
-    padding:9px 12px;
-    border-radius:6px;
     font-size:14px;
-    font-weight:700;
+    font-weight:bold;
 }
 
-nav a:hover,
-nav a.active{
-    background:#f59e0b;
-    color:#111827;
+nav a:hover{
+    color:#e63946;
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
-    min-height:390px;
-
+    min-height:360px;
     background:
-    linear-gradient(
-        rgba(0,0,0,.63),
-        rgba(0,0,0,.63)
-    ),
-    url("images/kenya-car-market.jpg");
-
-    background-size:cover;
-    background-position:center;
+        linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
+        url("images/kenya-car-market.jpg") center/cover no-repeat;
 
     display:flex;
     align-items:center;
     justify-content:center;
-
     text-align:center;
-    color:#fff;
-
-    padding:60px 20px;
+    color:white;
+    padding:50px 20px;
 }
 
 .hero-content{
-    max-width:900px;
+    max-width:850px;
 }
 
 .hero h1{
-    font-size:48px;
-    line-height:1.15;
-    margin-bottom:18px;
+    font-size:46px;
+    margin-bottom:15px;
 }
 
 .hero p{
     font-size:19px;
-    max-width:750px;
+    max-width:700px;
     margin:auto;
-    color:#f3f4f6;
 }
 
-/* =========================
-   SEARCH AREA
-========================= */
+/* MAIN */
 
-.search-area{
-    max-width:1150px;
-    margin:-45px auto 40px;
+.container{
+    max-width:1200px;
+    margin:40px auto;
     padding:0 20px;
-    position:relative;
-    z-index:10;
 }
+
+/* SEARCH AREA */
 
 .search-box{
-    background:#fff;
-    border-radius:12px;
+    background:white;
     padding:25px;
-    box-shadow:0 8px 30px rgba(0,0,0,.15);
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+    margin-bottom:35px;
 }
 
 .search-box h2{
-    text-align:center;
     margin-bottom:18px;
-    color:#111827;
+    font-size:24px;
 }
 
-.search-row{
+.filters{
     display:grid;
-    grid-template-columns:2fr 1fr 1fr auto;
-    gap:12px;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:15px;
 }
 
-.search-row input,
-.search-row select{
+.filters input,
+.filters select{
     width:100%;
     padding:14px;
-    border:1px solid #d1d5db;
+    border:1px solid #ddd;
     border-radius:7px;
     font-size:15px;
-    background:#fff;
+    background:white;
 }
 
-.search-row input:focus,
-.search-row select:focus{
+.filters input:focus,
+.filters select:focus{
     outline:none;
-    border-color:#f59e0b;
+    border-color:#e63946;
 }
 
-.search-btn{
-    border:none;
-    background:#f59e0b;
-    color:#111827;
-    padding:14px 25px;
-    border-radius:7px;
-    font-weight:800;
-    cursor:pointer;
-}
-
-.search-btn:hover{
-    background:#d97706;
-    color:#fff;
-}
-
-/* =========================
-   MAIN
-========================= */
-
-.container{
-    max-width:1250px;
-    margin:auto;
-    padding:0 20px 60px;
-}
-
-/* =========================
-   CATEGORY BUTTONS
-========================= */
+/* CATEGORY BUTTONS */
 
 .categories{
-    margin-bottom:40px;
-}
-
-.categories h2{
-    text-align:center;
-    font-size:30px;
-    margin-bottom:25px;
-    color:#111827;
-}
-
-.category-grid{
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-    gap:12px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:20px;
 }
 
 .category-btn{
-    background:#fff;
-    border:1px solid #e5e7eb;
-    border-radius:9px;
-    padding:17px 10px;
-    text-align:center;
+    border:none;
+    padding:10px 17px;
+    border-radius:20px;
+    background:#eee;
     cursor:pointer;
-    font-weight:700;
-    color:#374151;
-    transition:.2s;
+    font-weight:bold;
 }
 
-.category-btn:hover,
+.category-btn:hover{
+    background:#ddd;
+}
+
 .category-btn.active{
-    background:#f59e0b;
-    color:#111827;
-    border-color:#f59e0b;
+    background:#e63946;
+    color:white;
 }
 
-.category-icon{
-    display:block;
-    font-size:25px;
-    margin-bottom:5px;
-}
+/* RESULTS */
 
-/* =========================
-   LISTING HEADER
-========================= */
-
-.listing-header{
+.results-header{
     display:flex;
-    align-items:center;
     justify-content:space-between;
-    gap:20px;
+    align-items:center;
+    gap:15px;
     margin-bottom:20px;
 }
 
-.listing-header h2{
-    font-size:29px;
-    color:#111827;
+.results-header h2{
+    font-size:26px;
 }
 
-.sort-select{
-    padding:11px 14px;
-    border:1px solid #d1d5db;
-    border-radius:7px;
-    background:#fff;
+#resultCount{
+    color:#666;
+    font-size:15px;
 }
 
-/* =========================
-   VEHICLE GRID
-========================= */
+/* VEHICLE GRID */
 
 .vehicle-grid{
     display:grid;
@@ -280,17 +202,16 @@ nav a.active{
 }
 
 .vehicle-card{
-    background:#fff;
+    background:white;
     border-radius:12px;
     overflow:hidden;
-    box-shadow:0 4px 18px rgba(0,0,0,.08);
-    transition:transform .2s, box-shadow .2s;
-    position:relative;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+    transition:.25s;
 }
 
 .vehicle-card:hover{
     transform:translateY(-4px);
-    box-shadow:0 9px 28px rgba(0,0,0,.14);
+    box-shadow:0 8px 22px rgba(0,0,0,.13);
 }
 
 .vehicle-image{
@@ -298,329 +219,273 @@ nav a.active{
     height:220px;
     object-fit:cover;
     display:block;
-    background:#e5e7eb;
-}
-
-.badge{
-    position:absolute;
-    top:12px;
-    left:12px;
-    background:#f59e0b;
-    color:#111827;
-    padding:6px 10px;
-    border-radius:5px;
-    font-size:12px;
-    font-weight:800;
+    background:#ddd;
 }
 
 .vehicle-info{
     padding:20px;
 }
 
-.vehicle-title{
+.vehicle-info h3{
     font-size:21px;
-    font-weight:800;
-    color:#111827;
     margin-bottom:5px;
 }
 
-.vehicle-year{
-    color:#6b7280;
+.vehicle-location{
+    color:#666;
     font-size:14px;
-    margin-bottom:12px;
+    margin-bottom:10px;
 }
 
 .price{
     font-size:23px;
-    font-weight:900;
-    color:#111827;
-    margin-bottom:12px;
-}
-
-.details{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-    padding:12px 0;
-    border-top:1px solid #e5e7eb;
-    border-bottom:1px solid #e5e7eb;
-    margin-bottom:14px;
-}
-
-.detail{
-    font-size:13px;
-    color:#4b5563;
-}
-
-.location{
-    font-size:13px;
-    color:#6b7280;
+    font-weight:bold;
+    color:#e63946;
     margin-bottom:15px;
 }
 
-.card-buttons{
+.specs{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:8px;
+    margin-bottom:18px;
+}
+
+.spec{
+    background:#f5f5f5;
+    padding:8px;
+    border-radius:5px;
+    font-size:13px;
+}
+
+.spec strong{
+    display:block;
+    color:#333;
+}
+
+.vehicle-buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
 }
 
 .btn{
-    display:block;
+    display:inline-block;
     text-align:center;
-    text-decoration:none;
-    padding:11px 8px;
+    padding:11px 10px;
     border-radius:6px;
-    font-size:13px;
-    font-weight:800;
-}
-
-.btn-primary{
-    background:#111827;
-    color:#fff;
-}
-
-.btn-primary:hover{
-    background:#374151;
-}
-
-.btn-secondary{
-    background:#f59e0b;
-    color:#111827;
-}
-
-.btn-secondary:hover{
-    background:#d97706;
-    color:#fff;
-}
-
-/* =========================
-   NO RESULTS
-========================= */
-
-.no-results{
-    display:none;
-    background:#fff;
-    padding:50px 20px;
-    border-radius:10px;
-    text-align:center;
-    margin-top:20px;
-}
-
-.no-results h3{
-    font-size:24px;
-    margin-bottom:8px;
-}
-
-/* =========================
-   SELL BANNER
-========================= */
-
-.sell-banner{
-    margin-top:55px;
-    background:#111827;
-    color:#fff;
-    border-radius:12px;
-    padding:40px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:30px;
-}
-
-.sell-banner h2{
-    color:#f59e0b;
-    margin-bottom:8px;
-    font-size:28px;
-}
-
-.sell-banner p{
-    color:#d1d5db;
-}
-
-.sell-btn{
-    background:#f59e0b;
-    color:#111827;
     text-decoration:none;
-    padding:14px 25px;
-    border-radius:7px;
-    font-weight:900;
-    white-space:nowrap;
-}
-
-.sell-btn:hover{
-    background:#d97706;
-    color:#fff;
-}
-
-/* =========================
-   DISCLAIMER
-========================= */
-
-.marketplace-notice{
-    margin-top:35px;
-    background:#fff7e6;
-    border-left:5px solid #f59e0b;
-    padding:20px;
-    border-radius:7px;
-    color:#4b5563;
+    font-weight:bold;
     font-size:14px;
 }
 
-.marketplace-notice strong{
-    color:#111827;
+.btn-details{
+    background:#111;
+    color:white;
 }
 
-/* =========================
-   FOOTER
-========================= */
+.btn-details:hover{
+    background:#333;
+}
+
+.btn-contact{
+    background:#e63946;
+    color:white;
+}
+
+.btn-contact:hover{
+    background:#c92f3b;
+}
+
+/* NO RESULTS */
+
+.no-results{
+    display:none;
+    background:white;
+    padding:50px 20px;
+    text-align:center;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,.07);
+}
+
+.no-results h3{
+    margin-bottom:10px;
+    font-size:24px;
+}
+
+.no-results p{
+    color:#666;
+}
+
+/* NOTICE */
+
+.marketplace-notice{
+    margin-top:45px;
+    background:#fff8e6;
+    border-left:5px solid #f0ad00;
+    padding:20px;
+    border-radius:7px;
+}
+
+.marketplace-notice h3{
+    margin-bottom:8px;
+}
+
+.marketplace-notice p{
+    color:#555;
+}
+
+/* SELL CTA */
+
+.sell-cta{
+    margin-top:35px;
+    background:#111;
+    color:white;
+    padding:35px;
+    border-radius:12px;
+    text-align:center;
+}
+
+.sell-cta h2{
+    margin-bottom:10px;
+}
+
+.sell-cta p{
+    color:#ddd;
+    margin-bottom:20px;
+}
+
+.sell-btn{
+    display:inline-block;
+    background:#e63946;
+    color:white;
+    padding:13px 24px;
+    border-radius:7px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.sell-btn:hover{
+    background:#c92f3b;
+}
+
+/* FOOTER */
 
 footer{
-    background:#111827;
-    color:#fff;
-    padding:45px 20px 20px;
+    margin-top:60px;
+    background:#111;
+    color:white;
+    padding:40px 20px 20px;
 }
 
-.footer-inner{
-    max-width:1150px;
+.footer-container{
+    max-width:1200px;
     margin:auto;
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:2fr 1fr 1fr;
     gap:35px;
 }
 
 footer h3{
-    color:#f59e0b;
     margin-bottom:12px;
 }
 
-footer p{
-    color:#d1d5db;
+footer p,
+footer li{
+    color:#ccc;
     font-size:14px;
-    margin-bottom:6px;
+}
+
+footer ul{
+    list-style:none;
+}
+
+footer li{
+    margin-bottom:7px;
 }
 
 footer a{
-    color:#d1d5db;
+    color:#ccc;
     text-decoration:none;
 }
 
 footer a:hover{
-    color:#f59e0b;
+    color:white;
 }
 
-.footer-bottom{
-    max-width:1150px;
+.copyright{
+    max-width:1200px;
     margin:30px auto 0;
     padding-top:20px;
-    border-top:1px solid #374151;
+    border-top:1px solid #333;
     text-align:center;
-    color:#9ca3af;
+    color:#aaa;
     font-size:13px;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* MOBILE */
 
-@media(max-width:1050px){
-
-    .category-grid{
-        grid-template-columns:repeat(3,1fr);
-    }
+@media(max-width:900px){
 
     .vehicle-grid{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .search-row{
+    .filters{
         grid-template-columns:1fr 1fr;
     }
 
-    .search-btn{
-        width:100%;
+    .footer-container{
+        grid-template-columns:1fr 1fr;
     }
+
 }
 
-@media(max-width:800px){
+@media(max-width:650px){
 
     .navbar{
         flex-direction:column;
+        align-items:flex-start;
     }
 
     nav{
-        justify-content:center;
-    }
-
-    .hero{
-        min-height:330px;
+        justify-content:flex-start;
+        gap:12px;
     }
 
     .hero h1{
-        font-size:37px;
+        font-size:34px;
     }
 
     .hero p{
         font-size:16px;
     }
 
-    .sell-banner{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .footer-inner{
+    .filters{
         grid-template-columns:1fr;
-        text-align:center;
-    }
-}
-
-@media(max-width:600px){
-
-    .search-area{
-        margin-top:-25px;
-    }
-
-    .search-row{
-        grid-template-columns:1fr;
-    }
-
-    .category-grid{
-        grid-template-columns:repeat(2,1fr);
     }
 
     .vehicle-grid{
         grid-template-columns:1fr;
     }
 
-    .listing-header{
+    .results-header{
         flex-direction:column;
         align-items:flex-start;
     }
 
-    .sort-select{
-        width:100%;
+    .footer-container{
+        grid-template-columns:1fr;
     }
 
-    .hero h1{
-        font-size:31px;
-    }
-
-    .sell-banner{
-        padding:28px 20px;
-    }
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =========================
-     HEADER
-========================= -->
+<!-- HEADER -->
 
 <header>
 
@@ -632,29 +497,17 @@ Nauza Tu <span>Digital Motor Market</span>
 
 <nav>
 
-<a href="index.html">
-Home
-</a>
+<a href="index.html">Home</a>
 
-<a href="vehicles.html" class="active">
-Vehicles
-</a>
+<a href="vehicles.html">Vehicles</a>
 
-<a href="compare.html">
-Compare
-</a>
+<a href="compare.html">Compare</a>
 
-<a href="sell.html">
-Sell Your Car
-</a>
+<a href="sell.html">Sell Your Car</a>
 
-<a href="about.html">
-About
-</a>
+<a href="about.html">About</a>
 
-<a href="contact.html">
-Contact
-</a>
+<a href="contact.html">Contact</a>
 
 </nav>
 
@@ -663,22 +516,17 @@ Contact
 </header>
 
 
-<!-- =========================
-     HERO
-========================= -->
+<!-- HERO -->
 
 <section class="hero">
 
 <div class="hero-content">
 
-<h1>
-Find Your Next Vehicle in Kenya
-</h1>
+<h1>Vehicles for Sale in Kenya</h1>
 
 <p>
-Browse vehicles advertised by owners and sellers across Kenya.
-Search by make, category, price and location to find a vehicle
-that suits you.
+Browse vehicles listed on Nauza Tu Digital Motor Market.
+Find cars, SUVs, pickups, vans and trucks from sellers across Kenya.
 </p>
 
 </div>
@@ -686,186 +534,108 @@ that suits you.
 </section>
 
 
-<!-- =========================
-     SEARCH
-========================= -->
+<!-- MAIN -->
 
-<section class="search-area">
+<main class="container">
 
-<div class="search-box">
 
-<h2>
-Search Vehicles
-</h2>
+<!-- SEARCH -->
 
-<div class="search-row">
+<section class="search-box">
+
+<h2>Find Your Vehicle</h2>
+
+<div class="filters">
 
 <input
 type="text"
 id="searchInput"
-placeholder="Search make or model e.g. Toyota Harrier"
+placeholder="Search make or model..."
 >
 
 <select id="categoryFilter">
 
-<option value="all">
-All Categories
-</option>
+<option value="all">All Categories</option>
 
-<option value="sedan">
-Sedan
-</option>
+<option value="SUV">SUVs</option>
 
-<option value="hatchback">
-Hatchback
-</option>
+<option value="Sedan">Sedans</option>
 
-<option value="station wagon">
-Station Wagon
-</option>
+<option value="Station Wagon">Station Wagons</option>
 
-<option value="suv">
-SUV
-</option>
+<option value="Pickup">Pickups</option>
 
-<option value="pickup">
-Pickup
-</option>
+<option value="Van">Vans</option>
 
-<option value="van">
-Van
-</option>
-
-<option value="minibus">
-Minibus
-</option>
-
-<option value="truck">
-Truck
-</option>
-
-<option value="bus">
-Bus
-</option>
-
-<option value="coupe">
-Coupe
-</option>
+<option value="Truck">Trucks</option>
 
 </select>
 
 
 <select id="priceFilter">
 
-<option value="all">
-Any Price
-</option>
+<option value="all">Any Price</option>
 
-<option value="under1m">
-Under KES 1M
-</option>
+<option value="1500000">Below KES 1.5M</option>
 
-<option value="1m-2m">
-KES 1M – 2M
-</option>
+<option value="2000000">Below KES 2M</option>
 
-<option value="2m-4m">
-KES 2M – 4M
-</option>
+<option value="2500000">Below KES 2.5M</option>
 
-<option value="4m-7m">
-KES 4M – 7M
-</option>
+<option value="3000000">Below KES 3M</option>
 
-<option value="over7m">
-Above KES 7M
-</option>
+<option value="4000000">Below KES 4M</option>
+
+<option value="5000000">Below KES 5M</option>
 
 </select>
 
 
-<button
-class="search-btn"
-onclick="filterVehicles()"
->
-SEARCH
-</button>
+<select id="sortFilter">
+
+<option value="newest">Newest First</option>
+
+<option value="price-low">Price: Low to High</option>
+
+<option value="price-high">Price: High to Low</option>
+
+<option value="mileage-low">Lowest Mileage</option>
+
+<option value="year-new">Newest Vehicle</option>
+
+</select>
 
 </div>
 
-</div>
 
-</section>
+<div class="categories">
 
-
-<!-- =========================
-     MAIN
-========================= -->
-
-<main class="container">
-
-
-<!-- CATEGORIES -->
-
-<section class="categories">
-
-<h2>
-Browse By Category
-</h2>
-
-<div class="category-grid">
-
-<button class="category-btn active"
-onclick="categoryButton('all',this)">
-
-<span class="category-icon">🚗</span>
+<button class="category-btn active" data-category="all">
 All Vehicles
-
 </button>
 
-
-<button class="category-btn"
-onclick="categoryButton('sedan',this)">
-
-<span class="category-icon">🚘</span>
-Sedans
-
-</button>
-
-
-<button class="category-btn"
-onclick="categoryButton('suv',this)">
-
-<span class="category-icon">🚙</span>
+<button class="category-btn" data-category="SUV">
 SUVs
-
 </button>
 
+<button class="category-btn" data-category="Sedan">
+Sedans
+</button>
 
-<button class="category-btn"
-onclick="categoryButton('pickup',this)">
+<button class="category-btn" data-category="Station Wagon">
+Station Wagons
+</button>
 
-<span class="category-icon">🛻</span>
+<button class="category-btn" data-category="Pickup">
 Pickups
-
 </button>
 
-
-<button class="category-btn"
-onclick="categoryButton('van',this)">
-
-<span class="category-icon">🚐</span>
+<button class="category-btn" data-category="Van">
 Vans
-
 </button>
 
-
-<button class="category-btn"
-onclick="categoryButton('truck',this)">
-
-<span class="category-icon">🚚</span>
+<button class="category-btn" data-category="Truck">
 Trucks
-
 </button>
 
 </div>
@@ -873,782 +643,25 @@ Trucks
 </section>
 
 
-<!-- LISTING HEADER -->
+<!-- RESULTS -->
 
-<div class="listing-header">
+<section>
 
-<h2>
-Vehicles For Sale
-</h2>
+<div class="results-header">
 
-<select
-class="sort-select"
-id="sortSelect"
-onchange="sortVehicles()"
->
+<h2>Available Vehicles</h2>
 
-<option value="featured">
-Featured Listings
-</option>
+<div id="resultCount"></div>
 
-<option value="low">
-Price: Low to High
-</option>
-
-<option value="high">
-Price: High to Low
-</option>
-
-<option value="newest">
-Newest Year
-</option>
-
-</select>
-
-</div>
-
-
-<!-- VEHICLES -->
-
-<section class="vehicle-grid" id="vehicleGrid">
-
-
-<!-- VEHICLE 1 -->
-
-<article
-class="vehicle-card"
-data-category="suv"
-data-make="toyota"
-data-model="harrier"
-data-price="2850000"
-data-year="2019"
->
-
-<span class="badge">
-FEATURED
-</span>
-
-<img
-class="vehicle-image"
-src="images/toyota-harrier.jpg"
-alt="Toyota Harrier SUV"
-onerror="this.src='images/suv.jpg'"
->
-
-<div class="vehicle-info">
-
-<h3 class="vehicle-title">
-Toyota Harrier
-</h3>
-
-<div class="vehicle-year">
-2019 • SUV
-</div>
-
-<div class="price">
-KES 2,850,000
-</div>
-
-<div class="details">
-
-<div class="detail">
-⚙ Automatic
-</div>
-
-<div class="detail">
-⛽ Petrol
-</div>
-
-<div class="detail">
-📍 Nairobi
-</div>
-
-<div class="detail">
-📏 72,000 KM
-</div>
-
-</div>
-
-<div class="location">
-Seller: Private Seller
-</div>
-
-<div class="card-buttons">
-
-<a
-href="contact.html"
-class="btn btn-primary"
->
-Contact Seller
-</a>
-
-<a
-href="#"
-class="btn btn-secondary"
-onclick="showVehicle('Toyota Harrier','2019','KES 2,850,000')"
->
-View Details
-</a>
-
-</div>
-
-</div>
-
-</article>
-
-
-<!-- VEHICLE 2 -->
-
-<article
-class="vehicle-card"
-data-category="suv"
-data-make="mazda"
-data-model="cx-5"
-data-price="2350000"
-data-year="2020"
->
-
-<img
-class="vehicle-image"
-src="images/mazda-cx5.jpg"
-alt="Mazda CX-5 SUV"
-onerror="this.src='images/suv.jpg'"
->
-
-<div class="vehicle-info">
-
-<h3 class="vehicle-title">
-Mazda CX-5
-</h3>
-
-<div class="vehicle-year">
-2020 • SUV
-</div>
-
-<div class="price">
-KES 2,350,000
-</div>
-
-<div class="details">
-
-<div class="detail">
-⚙ Automatic
-</div>
-
-<div class="detail">
-⛽ Petrol
-</div>
-
-<div class="detail">
-📍 Nairobi
-</div>
-
-<div class="detail">
-📏 65,000 KM
-</div>
-
-</div>
-
-<div class="location">
-Seller: Private Seller
-</div>
-
-<div class="card-buttons">
-
-<a
-href="contact.html"
-class="btn btn-primary"
->
-Contact Seller
-</a>
-
-<a
-href="#"
-class="btn btn-secondary"
-onclick="showVehicle('Mazda CX-5','2020','KES 2,350,000')"
->
-View Details
-</a>
-
-</div>
-
-</div>
-
-</article>
-
-
-<!-- VEHICLE 3 -->
-
-<article
-class="vehicle-card"
-data-category="sedan"
-data-make="toyota"
-data-model="premio"
-data-price="1450000"
-data-year="2018"
->
-
-<img
-class="vehicle-image"
-src="images/toyota-premio.jpg"
-alt="Toyota Premio Sedan"
-onerror="this.src='images/sedan.jpg'"
->
-
-<div class="vehicle-info">
-
-<h3 class="vehicle-title">
-Toyota Premio
-</h3>
-
-<div class="vehicle-year">
-2018 • Sedan
-</div>
-
-<div class="price">
-KES 1,450,000
-</div>
-
-<div class="details">
-
-<div class="detail">
-⚙ Automatic
-</div>
-
-<div class="detail">
-⛽ Petrol
-</div>
-
-<div class="detail">
-📍 Nairobi
-</div>
-
-<div class="detail">
-📏 88,000 KM
-</div>
-
-</div>
-
-<div class="location">
-Seller: Private Seller
-</div>
-
-<div class="card-buttons">
-
-<a
-href="contact.html"
-class="btn btn-primary"
->
-Contact Seller
-</a>
-
-<a
-href="#"
-class="btn btn-secondary"
-onclick="showVehicle('Toyota Premio','2018','KES 1,450,000')"
->
-View Details
-</a>
-
-</div>
-
-</div>
-
-</article>
-
-
-<!-- VEHICLE 4 -->
-
-<article
-class="vehicle-card"
-data-category="station wagon"
-data-make="subaru"
-data-model="forester"
-data-price="1950000"
-data-year="2019"
->
-
-<img
-class="vehicle-image"
-src="images/subaru-forester.jpg"
-alt="Subaru Forester"
-onerror="this.src='images/suv.jpg'"
->
-
-<div class="vehicle-info">
-
-<h3 class="vehicle-title">
-Subaru Forester
-</h3>
-
-<div class="vehicle-year">
-2019 • Station Wagon
-</div>
-
-<div class="price">
-KES 1,950,000
-</div>
-
-<div class="details">
-
-<div class="detail">
-⚙ Automatic
-</div>
-
-<div class="detail">
-⛽ Petrol
-</div>
-
-<div class="detail">
-📍 Kiambu
-</div>
-
-<div class="detail">
-📏 81,000 KM
-</div>
-
-</div>
-
-<div class="location">
-Seller: Private Seller
-</div>
-
-<div class="card-buttons">
-
-<a
-href="contact.html"
-class="btn btn-primary"
->
-Contact Seller
-</a>
-
-<a
-href="#"
-class="btn btn-secondary"
-onclick="showVehicle('Subaru Forester','2019','KES 1,950,000')"
->
-View Details
-</a>
-
-</div>
-
-</div>
-
-</article>
-
-
-<!-- VEHICLE 5 -->
-
-<article
-class="vehicle-card"
-data-category="pickup"
-data-make="toyota"
-data-model="hilux"
-data-price="3850000"
-data-year="2020"
->
-
-<img
-class="vehicle-image"
-src="images/toyota-hilux.jpg"
-alt="Toyota Hilux Pickup"
-onerror="this.src='images/pickup.jpg'"
->
-
-<div class="vehicle-info">
-
-<h3 class="vehicle-title">
-Toyota Hilux
-</h3>
-
-<div class="vehicle-year">
-2020 • Pickup
-</div>
-
-<div class="price">
-KES 3,850,000
-</div>
-
-<div class="details">
-
-<div class="detail">
-⚙ Manual
-</div>
-
-<div class="detail">
-⛽ Diesel
-</div>
-
-<div class="detail">
-📍 Nairobi
-</div>
-
-<div class="detail">
-📏 91,000 KM
-</div>
-
-</div>
-
-<div class="location">
-Seller: Private Seller
-</div>
-
-<div class="card-buttons">
-
-<a
-href="contact.html"
-class="btn btn-primary"
->
-Contact Seller
-</a>
-
-<a
-href="#"
-class="btn btn-secondary"
-onclick="showVehicle('Toyota Hilux','2020','KES 3,850,000')"
->
-View Details
-</a>
-
-</div>
-
-</div>
-
-</article>
-
-
-<!-- VEHICLE 6 -->
-
-<article
-class="vehicle-card"
-data-category="sedan"
-data-make="nissan"
-data-model="x-trail"
-data-price="1750000"
-data-year="2019"
->
-
-<img
-class="vehicle-image"
-src="images/nissan-xtrail.jpg"
-alt="Nissan X-Trail"
-onerror="this.src='images/suv.jpg'"
->
-
-<div class="vehicle-info">
-
-<h3 class="vehicle-title">
-Nissan X-Trail
-</h3>
-
-<div class="vehicle-year">
-2019 • SUV
-</div>
-
-<div class="price">
-KES 1,750,000
-</div>
-
-<div class="details">
-
-<div class="detail">
-⚙ Automatic
-</div>
-
-<div class="detail">
-⛽ Petrol
-</div>
-
-<div class="detail">
-📍 Nakuru
-</div>
-
-<div class="detail">
-📏 76,000 KM
-</div>
-
-</div>
-
-<div class="location">
-Seller: Private Seller
-</div>
-
-<div class="card-buttons">
-
-<a
-href="contact.html"
-class="btn btn-primary"
->
-Contact Seller
-</a>
-
-<a
-href="#"
-class="btn btn-secondary"
-onclick="showVehicle('Nissan X-Trail','2019','KES 1,750,000')"
->
-View Details
-</a>
-
-</div>
-
-</div>
-
-</article>
-
-
-<!-- VEHICLE 7 -->
-
-<article
-class="vehicle-card"
-data-category="van"
-data-make="toyota"
-data-model="hiace"
-data-price="3650000"
-data-year="2018"
->
-
-<img
-class="vehicle-image"
-src="images/toyota-hiace.jpg"
-alt="Toyota Hiace Van"
-onerror="this.src='images/van.jpg'"
->
-
-<div class="vehicle-info">
-
-<h3 class="vehicle-title">
-Toyota Hiace
-</h3>
-
-<div class="vehicle-year">
-2018 • Van
-</div>
-
-<div class="price">
-KES 3,650,000
-</div>
-
-<div class="details">
-
-<div class="detail">
-⚙ Manual
-</div>
-
-<div class="detail">
-⛽ Diesel
-</div>
-
-<div class="detail">
-📍 Nairobi
-</div>
-
-<div class="detail">
-📏 124,000 KM
-</div>
-
 </div>
-
-<div class="location">
-Seller: Private Seller
-</div>
-
-<div class="card-buttons">
-
-<a
-href="contact.html"
-class="btn btn-primary"
->
-Contact Seller
-</a>
-
-<a
-href="#"
-class="btn btn-secondary"
-onclick="showVehicle('Toyota Hiace','2018','KES 3,650,000')"
->
-View Details
-</a>
-
-</div>
-
-</div>
-
-</article>
-
-
-<!-- VEHICLE 8 -->
-
-<article
-class="vehicle-card"
-data-category="suv"
-data-make="mitsubishi"
-data-model="pajero"
-data-price="3250000"
-data-year="2017"
->
-
-<img
-class="vehicle-image"
-src="images/mitsubishi-pajero.jpg"
-alt="Mitsubishi Pajero SUV"
-onerror="this.src='images/suv.jpg'"
->
-
-<div class="vehicle-info">
-
-<h3 class="vehicle-title">
-Mitsubishi Pajero
-</h3>
-
-<div class="vehicle-year">
-2017 • SUV
-</div>
-
-<div class="price">
-KES 3,250,000
-</div>
-
-<div class="details">
-
-<div class="detail">
-⚙ Automatic
-</div>
-
-<div class="detail">
-⛽ Diesel
-</div>
-
-<div class="detail">
-📍 Mombasa
-</div>
-
-<div class="detail">
-📏 106,000 KM
-</div>
-
-</div>
-
-<div class="location">
-Seller: Private Seller
-</div>
-
-<div class="card-buttons">
-
-<a
-href="contact.html"
-class="btn btn-primary"
->
-Contact Seller
-</a>
-
-<a
-href="#"
-class="btn btn-secondary"
-onclick="showVehicle('Mitsubishi Pajero','2017','KES 3,250,000')"
->
-View Details
-</a>
-
-</div>
-
-</div>
-
-</article>
-
-
-<!-- VEHICLE 9 -->
-
-<article
-class="vehicle-card"
-data-category="pickup"
-data-make="ford"
-data-model="ranger"
-data-price="4200000"
-data-year="2021"
->
-
-<img
-class="vehicle-image"
-src="images/ford-ranger.jpg"
-alt="Ford Ranger Pickup"
-onerror="this.src='images/pickup.jpg'"
->
-
-<div class="vehicle-info">
-
-<h3 class="vehicle-title">
-Ford Ranger
-</h3>
-
-<div class="vehicle-year">
-2021 • Pickup
-</div>
-
-<div class="price">
-KES 4,200,000
-</div>
-
-<div class="details">
-
-<div class="detail">
-⚙ Automatic
-</div>
-
-<div class="detail">
-⛽ Diesel
-</div>
-
-<div class="detail">
-📍 Nairobi
-</div>
-
-<div class="detail">
-📏 58,000 KM
-</div>
-
-</div>
-
-<div class="location">
-Seller: Private Seller
-</div>
-
-<div class="card-buttons">
-
-<a
-href="contact.html"
-class="btn btn-primary"
->
-Contact Seller
-</a>
-
-<a
-href="#"
-class="btn btn-secondary"
-onclick="showVehicle('Ford Ranger','2021','KES 4,200,000')"
->
-View Details
-</a>
-
-</div>
-
-</div>
-
-</article>
 
-</section>
 
+<div id="vehicleGrid" class="vehicle-grid"></div>
 
-<!-- NO RESULTS -->
 
-<div
-class="no-results"
-id="noResults"
->
+<div id="noResults" class="no-results">
 
-<h3>
-No vehicles found
-</h3>
+<h3>No vehicles found</h3>
 
 <p>
 Try changing your search or filter options.
@@ -1656,103 +669,68 @@ Try changing your search or filter options.
 
 </div>
 
-
-<!-- SELL BANNER -->
-
-<section class="sell-banner">
-
-<div>
-
-<h2>
-Have a Vehicle to Sell?
-</h2>
-
-<p>
-Advertise your vehicle on Nauza Tu and connect with
-potential buyers looking for vehicles in Kenya.
-</p>
-
-</div>
-
-<a
-href="sell.html"
-class="sell-btn"
->
-LIST YOUR VEHICLE
-</a>
-
 </section>
 
 
 <!-- MARKETPLACE NOTICE -->
 
-<div class="marketplace-notice">
+<section class="marketplace-notice">
 
-<strong>
-Marketplace Disclaimer:
-</strong>
+<h3>Important Marketplace Notice</h3>
 
-Nauza Tu Digital Motor Market is a digital marketplace.
-The vehicles displayed on this page are advertisements
-from third-party owners, dealers or sellers.
+<p>
+Nauza Tu Digital Motor Market is a digital marketplace connecting
+vehicle sellers with potential buyers. Nauza Tu does not own or
+stock the vehicles displayed on this website.
+</p>
 
-Nauza Tu does not own these vehicles and is not the seller
-of the vehicles displayed here. Buyers should independently
-verify the vehicle's ownership, documentation, mileage,
-mechanical condition, accident history and other details
-before making a purchase or payment.
+<p>
+Vehicle information is provided by sellers and should be independently
+verified before any purchase. Buyers should confirm ownership,
+logbook and documentation, vehicle condition, mileage, accident history
+and any outstanding obligations before completing a transaction.
+</p>
 
-</div>
+</section>
 
+
+<!-- SELL CTA -->
+
+<section class="sell-cta">
+
+<h2>Have a Vehicle to Sell?</h2>
+
+<p>
+Advertise your vehicle on Nauza Tu Digital Motor Market and allow
+potential buyers to discover it.
+</p>
+
+<a href="sell.html" class="sell-btn">
+Advertise Your Vehicle
+</a>
+
+</section>
 
 </main>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- FOOTER -->
 
 <footer>
 
-<div class="footer-inner">
-
-
-<div>
-
-<h3>
-Nauza Tu Digital Motor Market
-</h3>
-
-<p>
-A digital marketplace connecting vehicle sellers
-with potential buyers across Kenya.
-</p>
-
-</div>
-
+<div class="footer-container">
 
 <div>
 
-<h3>
-Marketplace
-</h3>
+<h3>Nauza Tu Digital Motor Market</h3>
 
 <p>
-<a href="vehicles.html">
-Browse Vehicles
-</a>
+A Kenyan digital marketplace connecting vehicle sellers
+with potential buyers.
 </p>
 
-<p>
-<a href="compare.html">
-Compare Vehicles
-</a>
-</p>
-
-<p>
-<a href="sell.html">
-Sell Your Vehicle
-</a>
+<p style="margin-top:10px;">
+We do not own the vehicles advertised on this platform.
 </p>
 
 </div>
@@ -1760,284 +738,405 @@ Sell Your Vehicle
 
 <div>
 
-<h3>
-Information
-</h3>
+<h3>Quick Links</h3>
 
-<p>
-<a href="about.html">
-About Nauza Tu
-</a>
-</p>
+<ul>
 
-<p>
-<a href="contact.html">
-Contact Us
-</a>
-</p>
+<li><a href="index.html">Home</a></li>
 
-<p>
-<a href="index.html">
-Home
-</a>
-</p>
+<li><a href="vehicles.html">Vehicles</a></li>
+
+<li><a href="compare.html">Compare Vehicles</a></li>
+
+<li><a href="sell.html">Sell Your Car</a></li>
+
+<li><a href="about.html">About Us</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
 
 </div>
 
 
+<div>
+
+<h3>Contact</h3>
+
+<ul>
+
+<li>
+<a href="tel:+254722910913">
++254 722 910 913
+</a>
+</li>
+
+<li>
+<a href="tel:+254724708032">
++254 724 708 032
+</a>
+</li>
+
+<li>
+<a href="mailto:nauzatu@gmail.com">
+nauzatu@gmail.com
+</a>
+</li>
+
+<li>Nairobi, Kenya</li>
+
+</ul>
+
+</div>
+
 </div>
 
 
-<div class="footer-bottom">
+<div class="copyright">
 
-© 2026 Nauza Tu Digital Motor Market.
-All rights reserved.
+© <span id="year"></span> Nauza Tu Digital Motor Market.
+All Rights Reserved.
 
 </div>
 
 </footer>
 
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
+<!-- VEHICLE DATABASE -->
+
+<script src="vehicles-data.js"></script>
+
+
+<!-- PAGE SCRIPT -->
 
 <script>
 
-/* =========================
-   SEARCH & FILTER
-========================= */
+const vehicleGrid = document.getElementById("vehicleGrid");
+const searchInput = document.getElementById("searchInput");
+const categoryFilter = document.getElementById("categoryFilter");
+const priceFilter = document.getElementById("priceFilter");
+const sortFilter = document.getElementById("sortFilter");
+const resultCount = document.getElementById("resultCount");
+const noResults = document.getElementById("noResults");
+
+const categoryButtons =
+document.querySelectorAll(".category-btn");
+
+
+/* FORMAT PRICE */
+
+function formatPrice(price){
+
+    return new Intl.NumberFormat("en-KE",{
+        style:"currency",
+        currency:"KES",
+        maximumFractionDigits:0
+    }).format(price);
+
+}
+
+
+/* FORMAT MILEAGE */
+
+function formatMileage(mileage){
+
+    return new Intl.NumberFormat("en-KE").format(mileage) + " KM";
+
+}
+
+
+/* DISPLAY VEHICLES */
+
+function displayVehicles(list){
+
+    vehicleGrid.innerHTML = "";
+
+    resultCount.textContent =
+        list.length +
+        (list.length === 1 ? " vehicle found" : " vehicles found");
+
+
+    if(list.length === 0){
+
+        noResults.style.display = "block";
+
+        return;
+
+    }
+
+    noResults.style.display = "none";
+
+
+    list.forEach(vehicle => {
+
+        const card = document.createElement("article");
+
+        card.className = "vehicle-card";
+
+
+        card.innerHTML = `
+
+            <img
+                class="vehicle-image"
+                src="${vehicle.image}"
+                alt="${vehicle.year} ${vehicle.make} ${vehicle.model}"
+                onerror="this.src='images/suv.jpg';"
+            >
+
+            <div class="vehicle-info">
+
+                <h3>
+                    ${vehicle.make} ${vehicle.model}
+                </h3>
+
+                <div class="vehicle-location">
+                    📍 ${vehicle.location}
+                </div>
+
+                <div class="price">
+                    ${formatPrice(vehicle.price)}
+                </div>
+
+                <div class="specs">
+
+                    <div class="spec">
+                        <strong>Year</strong>
+                        ${vehicle.year}
+                    </div>
+
+                    <div class="spec">
+                        <strong>Category</strong>
+                        ${vehicle.category}
+                    </div>
+
+                    <div class="spec">
+                        <strong>Transmission</strong>
+                        ${vehicle.transmission}
+                    </div>
+
+                    <div class="spec">
+                        <strong>Fuel</strong>
+                        ${vehicle.fuel}
+                    </div>
+
+                    <div class="spec">
+                        <strong>Mileage</strong>
+                        ${formatMileage(vehicle.mileage)}
+                    </div>
+
+                    <div class="spec">
+                        <strong>Drive</strong>
+                        ${vehicle.drive}
+                    </div>
+
+                </div>
+
+
+                <div class="vehicle-buttons">
+
+                    <a
+                        class="btn btn-details"
+                        href="vehicle-details.html?id=${encodeURIComponent(vehicle.id)}"
+                    >
+                        View Details
+                    </a>
+
+                    <a
+                        class="btn btn-contact"
+                        href="contact.html?vehicle=${encodeURIComponent(
+                            vehicle.make + " " + vehicle.model + " " + vehicle.year
+                        )}"
+                    >
+                        Contact Seller
+                    </a>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        vehicleGrid.appendChild(card);
+
+    });
+
+}
+
+
+/* FILTER + SORT */
 
 function filterVehicles(){
 
     const search =
-        document
-        .getElementById("searchInput")
-        .value
-        .toLowerCase()
-        .trim();
+        searchInput.value.trim().toLowerCase();
 
     const category =
-        document
-        .getElementById("categoryFilter")
-        .value
-        .toLowerCase();
+        categoryFilter.value;
 
-    const price =
-        document
-        .getElementById("priceFilter")
-        .value;
+    const maxPrice =
+        priceFilter.value;
 
-    const cards =
-        document.querySelectorAll(".vehicle-card");
-
-    let visible = 0;
+    const sort =
+        sortFilter.value;
 
 
-    cards.forEach(card => {
-
-        const make =
-            card.dataset.make.toLowerCase();
-
-        const model =
-            card.dataset.model.toLowerCase();
-
-        const cardCategory =
-            card.dataset.category.toLowerCase();
-
-        const cardPrice =
-            Number(card.dataset.price);
+    let filtered =
+        vehicles.filter(vehicle => {
 
 
-        const searchMatch =
-            search === "" ||
-            make.includes(search) ||
-            model.includes(search);
+            const searchableText =
+                (
+                    vehicle.make +
+                    " " +
+                    vehicle.model +
+                    " " +
+                    vehicle.category +
+                    " " +
+                    vehicle.location
+                ).toLowerCase();
 
 
-        const categoryMatch =
-            category === "all" ||
-            cardCategory === category;
+            const matchesSearch =
+                searchableText.includes(search);
 
 
-        let priceMatch = true;
+            const matchesCategory =
+                category === "all" ||
+                vehicle.category === category;
 
 
-        if(price === "under1m"){
-            priceMatch = cardPrice < 1000000;
-        }
-
-        else if(price === "1m-2m"){
-            priceMatch =
-                cardPrice >= 1000000 &&
-                cardPrice <= 2000000;
-        }
-
-        else if(price === "2m-4m"){
-            priceMatch =
-                cardPrice > 2000000 &&
-                cardPrice <= 4000000;
-        }
-
-        else if(price === "4m-7m"){
-            priceMatch =
-                cardPrice > 4000000 &&
-                cardPrice <= 7000000;
-        }
-
-        else if(price === "over7m"){
-            priceMatch =
-                cardPrice > 7000000;
-        }
+            const matchesPrice =
+                maxPrice === "all" ||
+                vehicle.price <= Number(maxPrice);
 
 
-        if(
-            searchMatch &&
-            categoryMatch &&
-            priceMatch
-        ){
+            return (
+                matchesSearch &&
+                matchesCategory &&
+                matchesPrice
+            );
 
-            card.style.display = "";
-
-            visible++;
-
-        }else{
-
-            card.style.display = "none";
-
-        }
-
-    });
+        });
 
 
-    document
-    .getElementById("noResults")
-    .style.display =
-        visible === 0
-        ? "block"
-        : "none";
+    /* SORT */
+
+    if(sort === "price-low"){
+
+        filtered.sort((a,b) =>
+            a.price - b.price
+        );
+
+    }
+
+    else if(sort === "price-high"){
+
+        filtered.sort((a,b) =>
+            b.price - a.price
+        );
+
+    }
+
+    else if(sort === "mileage-low"){
+
+        filtered.sort((a,b) =>
+            a.mileage - b.mileage
+        );
+
+    }
+
+    else if(sort === "year-new"){
+
+        filtered.sort((a,b) =>
+            b.year - a.year
+        );
+
+    }
+
+    else{
+
+        filtered.sort((a,b) =>
+            b.year - a.year
+        );
+
+    }
+
+
+    displayVehicles(filtered);
+
 }
 
 
-/* =========================
-   CATEGORY BUTTON
-========================= */
+/* SEARCH */
 
-function categoryButton(category,button){
-
-    document
-    .querySelectorAll(".category-btn")
-    .forEach(btn => {
-        btn.classList.remove("active");
-    });
-
-    button.classList.add("active");
-
-    document
-    .getElementById("categoryFilter")
-    .value = category;
-
-    filterVehicles();
-}
-
-
-/* =========================
-   LIVE SEARCH
-========================= */
-
-document
-.getElementById("searchInput")
-.addEventListener(
+searchInput.addEventListener(
     "input",
     filterVehicles
 );
 
-document
-.getElementById("categoryFilter")
-.addEventListener(
-    "change",
-    filterVehicles
-);
 
-document
-.getElementById("priceFilter")
-.addEventListener(
+/* CATEGORY FILTER */
+
+categoryFilter.addEventListener(
     "change",
     filterVehicles
 );
 
 
-/* =========================
-   SORT VEHICLES
-========================= */
+/* PRICE FILTER */
 
-function sortVehicles(){
+priceFilter.addEventListener(
+    "change",
+    filterVehicles
+);
 
-    const grid =
-        document.getElementById("vehicleGrid");
 
-    const cards =
-        Array.from(
-            grid.querySelectorAll(".vehicle-card")
+/* SORT */
+
+sortFilter.addEventListener(
+    "change",
+    filterVehicles
+);
+
+
+/* CATEGORY BUTTONS */
+
+categoryButtons.forEach(button => {
+
+    button.addEventListener("click",function(){
+
+        categoryButtons.forEach(btn =>
+            btn.classList.remove("active")
         );
 
-    const sort =
-        document
-        .getElementById("sortSelect")
-        .value;
+        this.classList.add("active");
 
 
-    cards.sort((a,b) => {
+        const selectedCategory =
+            this.dataset.category;
 
-        if(sort === "low"){
 
-            return Number(a.dataset.price)
-                 - Number(b.dataset.price);
+        categoryFilter.value =
+            selectedCategory;
 
-        }
 
-        if(sort === "high"){
-
-            return Number(b.dataset.price)
-                 - Number(a.dataset.price);
-
-        }
-
-        if(sort === "newest"){
-
-            return Number(b.dataset.year)
-                 - Number(a.dataset.year);
-
-        }
-
-        return 0;
+        filterVehicles();
 
     });
 
-
-    cards.forEach(card => {
-        grid.appendChild(card);
-    });
-
-}
+});
 
 
-/* =========================
-   VEHICLE DETAILS
-========================= */
+/* CURRENT YEAR */
 
-function showVehicle(name,year,price){
+document.getElementById("year").textContent =
+    new Date().getFullYear();
 
-    alert(
-        name +
-        "\n\nYear: " +
-        year +
-        "\nPrice: " +
-        price +
-        "\n\nVehicle details and seller contact information will appear here."
-    );
 
-}
+/* INITIAL DISPLAY */
+
+displayVehicles(vehicles);
 
 </script>
 
