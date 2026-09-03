@@ -1,18 +1,20 @@
-
 /*
 ===========================================================
 NAUZA TU DIGITAL MOTOR MARKET
 VEHICLE LISTINGS DATABASE
 ===========================================================
 
+Nauza Tu is a digital marketplace.
+
+Nauza Tu does NOT own the vehicles listed here.
+The seller provides the vehicle information.
+
 IMPORTANT:
-This file contains APPROVED/PUBLISHED marketplace listings.
-
-Nauza Tu does not own these vehicles.
-The seller is responsible for the accuracy of the information.
-
-To add a new approved vehicle, copy one vehicle object
-and change its information.
+- seller.phone = actual seller's phone number
+- seller.whatsapp = actual seller's WhatsApp number
+- If a seller does not want their number displayed publicly,
+  use publicContact: true and enquiries will go through
+  Nauza Tu.
 
 ===========================================================
 */
@@ -34,13 +36,10 @@ const vehicles = [
 
         transmission: "Automatic",
         fuel: "Petrol",
-
         mileage: 72000,
 
         engine: "2.0L",
-
         drive: "2WD",
-
         condition: "Used",
 
         image: "images/toyota-harrier.jpg",
@@ -59,11 +58,19 @@ const vehicles = [
             "72,000 KM. Contact the seller for viewing and further information.",
 
         seller: {
-            name: "Vehicle Seller",
+
+            name: "Private Seller",
+
             type: "Private Seller",
-            phone: "+254722910913",
-            whatsapp: "+254722910913"
+
+            phone: "",
+
+            whatsapp: "",
+
+            publicContact: false
+
         }
+
     },
 
 
@@ -82,13 +89,10 @@ const vehicles = [
 
         transmission: "Automatic",
         fuel: "Petrol",
-
         mileage: 65000,
 
         engine: "2.0L",
-
         drive: "2WD",
-
         condition: "Used",
 
         image: "images/mazda-cx5.jpg",
@@ -102,11 +106,19 @@ const vehicles = [
             "Automatic transmission with petrol engine.",
 
         seller: {
-            name: "Vehicle Seller",
+
+            name: "Private Seller",
+
             type: "Private Seller",
-            phone: "+254724708032",
-            whatsapp: "+254724708032"
+
+            phone: "",
+
+            whatsapp: "",
+
+            publicContact: false
+
         }
+
     },
 
 
@@ -125,13 +137,10 @@ const vehicles = [
 
         transmission: "Automatic",
         fuel: "Petrol",
-
         mileage: 88000,
 
         engine: "1.8L",
-
         drive: "2WD",
-
         condition: "Used",
 
         image: "images/toyota-premio.jpg",
@@ -145,11 +154,19 @@ const vehicles = [
             "Automatic petrol sedan suitable for everyday driving.",
 
         seller: {
-            name: "Vehicle Seller",
+
+            name: "Private Seller",
+
             type: "Private Seller",
-            phone: "+254722910913",
-            whatsapp: "+254722910913"
+
+            phone: "",
+
+            whatsapp: "",
+
+            publicContact: false
+
         }
+
     },
 
 
@@ -168,13 +185,10 @@ const vehicles = [
 
         transmission: "Automatic",
         fuel: "Petrol",
-
         mileage: 81000,
 
         engine: "2.0L",
-
         drive: "AWD",
-
         condition: "Used",
 
         image: "images/subaru-forester.jpg",
@@ -188,11 +202,19 @@ const vehicles = [
             "Automatic petrol vehicle with all-wheel drive.",
 
         seller: {
-            name: "Vehicle Seller",
+
+            name: "Private Seller",
+
             type: "Private Seller",
-            phone: "+254724708032",
-            whatsapp: "+254724708032"
+
+            phone: "",
+
+            whatsapp: "",
+
+            publicContact: false
+
         }
+
     },
 
 
@@ -211,13 +233,10 @@ const vehicles = [
 
         transmission: "Manual",
         fuel: "Diesel",
-
         mileage: 91000,
 
         engine: "2.4L",
-
         drive: "4WD",
-
         condition: "Used",
 
         image: "images/toyota-hilux.jpg",
@@ -231,11 +250,19 @@ const vehicles = [
             "Diesel engine with manual transmission and 4WD.",
 
         seller: {
-            name: "Vehicle Seller",
+
+            name: "Private Seller",
+
             type: "Private Seller",
-            phone: "+254722910913",
-            whatsapp: "+254722910913"
+
+            phone: "",
+
+            whatsapp: "",
+
+            publicContact: false
+
         }
+
     },
 
 
@@ -254,13 +281,10 @@ const vehicles = [
 
         transmission: "Automatic",
         fuel: "Petrol",
-
         mileage: 76000,
 
         engine: "2.0L",
-
         drive: "2WD",
-
         condition: "Used",
 
         image: "images/nissan-xtrail.jpg",
@@ -274,11 +298,19 @@ const vehicles = [
             "Automatic petrol vehicle.",
 
         seller: {
-            name: "Vehicle Seller",
+
+            name: "Private Seller",
+
             type: "Private Seller",
-            phone: "+254724708032",
-            whatsapp: "+254724708032"
+
+            phone: "",
+
+            whatsapp: "",
+
+            publicContact: false
+
         }
+
     },
 
 
@@ -297,13 +329,10 @@ const vehicles = [
 
         transmission: "Manual",
         fuel: "Diesel",
-
         mileage: 124000,
 
         engine: "2.8L",
-
         drive: "2WD",
-
         condition: "Used",
 
         image: "images/toyota-hiace.jpg",
@@ -317,11 +346,19 @@ const vehicles = [
             "Diesel engine and manual transmission.",
 
         seller: {
-            name: "Vehicle Seller",
+
+            name: "Private Seller",
+
             type: "Private Seller",
-            phone: "+254722910913",
-            whatsapp: "+254722910913"
+
+            phone: "",
+
+            whatsapp: "",
+
+            publicContact: false
+
         }
+
     },
 
 
@@ -340,13 +377,10 @@ const vehicles = [
 
         transmission: "Automatic",
         fuel: "Diesel",
-
         mileage: 106000,
 
         engine: "3.2L",
-
         drive: "4WD",
-
         condition: "Used",
 
         image: "images/mitsubishi-pajero.jpg",
@@ -360,11 +394,19 @@ const vehicles = [
             "Automatic diesel SUV with 4WD.",
 
         seller: {
-            name: "Vehicle Seller",
+
+            name: "Private Seller",
+
             type: "Private Seller",
-            phone: "+254724708032",
-            whatsapp: "+254724708032"
+
+            phone: "",
+
+            whatsapp: "",
+
+            publicContact: false
+
         }
+
     },
 
 
@@ -383,13 +425,10 @@ const vehicles = [
 
         transmission: "Automatic",
         fuel: "Diesel",
-
         mileage: 58000,
 
         engine: "2.0L",
-
         drive: "4WD",
-
         condition: "Used",
 
         image: "images/ford-ranger.jpg",
@@ -403,11 +442,19 @@ const vehicles = [
             "Automatic diesel pickup with 4WD.",
 
         seller: {
-            name: "Vehicle Seller",
+
+            name: "Private Seller",
+
             type: "Private Seller",
-            phone: "+254722910913",
-            whatsapp: "+254722910913"
+
+            phone: "",
+
+            whatsapp: "",
+
+            publicContact: false
+
         }
+
     }
 
 ];
