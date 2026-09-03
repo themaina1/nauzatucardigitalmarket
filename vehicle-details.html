@@ -8,7 +8,7 @@
 <title>Vehicle Details | Nauza Tu Digital Motor Market</title>
 
 <meta name="description"
-content="View vehicle details and contact the seller through Nauza Tu Digital Motor Market.">
+content="View vehicle details and contact Nauza Tu Digital Motor Market about vehicles listed for sale in Kenya.">
 
 <style>
 
@@ -97,7 +97,7 @@ nav a:hover{
     padding:0 20px;
 }
 
-/* VEHICLE TITLE */
+/* VEHICLE HEADING */
 
 .vehicle-heading{
     background:white;
@@ -115,7 +115,7 @@ nav a:hover{
     color:#666;
 }
 
-/* MAIN CONTENT */
+/* VEHICLE LAYOUT */
 
 .vehicle-layout{
     display:grid;
@@ -152,6 +152,7 @@ nav a:hover{
     border-radius:6px;
     cursor:pointer;
     border:2px solid transparent;
+    flex-shrink:0;
 }
 
 .thumbnail:hover{
@@ -229,11 +230,17 @@ nav a:hover{
     grid-column:1 / -1;
 }
 
+.btn-marketplace{
+    background:#e63946;
+    color:white;
+    grid-column:1 / -1;
+}
+
 .btn:hover{
     opacity:.88;
 }
 
-/* SELLER */
+/* SELLER BOX */
 
 .seller-box{
     background:#f8f8f8;
@@ -247,7 +254,7 @@ nav a:hover{
 }
 
 .seller-box p{
-    margin:5px 0;
+    margin:6px 0;
     color:#555;
 }
 
@@ -255,6 +262,24 @@ nav a:hover{
     color:#e63946;
     text-decoration:none;
     font-weight:bold;
+}
+
+.marketplace-contact{
+    background:#fff;
+    border:1px solid #ddd;
+    margin-top:15px;
+    padding:15px;
+    border-radius:7px;
+}
+
+.marketplace-contact strong{
+    display:block;
+    margin-bottom:5px;
+}
+
+.marketplace-contact a{
+    display:block;
+    margin-top:4px;
 }
 
 /* DESCRIPTION */
@@ -461,7 +486,8 @@ footer a:hover{
         grid-template-columns:1fr;
     }
 
-    .btn-enquiry{
+    .btn-enquiry,
+    .btn-marketplace{
         grid-column:auto;
     }
 
@@ -495,15 +521,10 @@ Nauza Tu <span>Digital Motor Market</span>
 <nav>
 
 <a href="index.html">Home</a>
-
 <a href="vehicles.html">Vehicles</a>
-
 <a href="compare.html">Compare</a>
-
 <a href="sell.html">Sell Your Car</a>
-
 <a href="about.html">About</a>
-
 <a href="contact.html">Contact</a>
 
 </nav>
@@ -565,29 +586,12 @@ Nauza Tu does not own or stock the vehicles advertised.
 
 <ul>
 
-<li>
-<a href="index.html">Home</a>
-</li>
-
-<li>
-<a href="vehicles.html">Vehicles</a>
-</li>
-
-<li>
-<a href="compare.html">Compare Vehicles</a>
-</li>
-
-<li>
-<a href="sell.html">Sell Your Car</a>
-</li>
-
-<li>
-<a href="about.html">About Us</a>
-</li>
-
-<li>
-<a href="contact.html">Contact</a>
-</li>
+<li><a href="index.html">Home</a></li>
+<li><a href="vehicles.html">Vehicles</a></li>
+<li><a href="compare.html">Compare Vehicles</a></li>
+<li><a href="sell.html">Sell Your Car</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="contact.html">Contact</a></li>
 
 </ul>
 
@@ -596,7 +600,7 @@ Nauza Tu does not own or stock the vehicles advertised.
 
 <div>
 
-<h3>Contact</h3>
+<h3>Contact Nauza Tu</h3>
 
 <ul>
 
@@ -645,24 +649,27 @@ All Rights Reserved.
 
 <script>
 
-/* GET VEHICLE ID FROM URL */
+/* GET VEHICLE ID */
 
-const params = new URLSearchParams(
-    window.location.search
-);
+const params =
+new URLSearchParams(window.location.search);
 
-const vehicleId = params.get("id");
+const vehicleId =
+params.get("id");
 
 
 /* FIND VEHICLE */
 
-const vehicle = vehicles.find(
-    item => item.id === vehicleId
+const vehicle =
+vehicles.find(item =>
+    item.id === vehicleId
 );
 
 
 const container =
-    document.getElementById("vehicleContainer");
+document.getElementById(
+    "vehicleContainer"
+);
 
 
 /* FORMAT PRICE */
@@ -670,9 +677,13 @@ const container =
 function formatPrice(price){
 
     return new Intl.NumberFormat("en-KE",{
+
         style:"currency",
+
         currency:"KES",
+
         maximumFractionDigits:0
+
     }).format(price);
 
 }
@@ -688,7 +699,19 @@ function formatMileage(mileage){
 }
 
 
-/* SHOW NOT FOUND */
+/* MARKETPLACE CONTACT */
+
+const marketplacePhone1 =
+"+254722910913";
+
+const marketplacePhone2 =
+"+254724708032";
+
+const marketplaceEmail =
+"nauzatu@gmail.com";
+
+
+/* VEHICLE NOT FOUND */
 
 if(!vehicle){
 
@@ -717,7 +740,7 @@ if(!vehicle){
 }
 
 
-/* DISPLAY VEHICLE */
+/* VEHICLE FOUND */
 
 else{
 
@@ -738,37 +761,15 @@ else{
         vehicle.model;
 
 
-    const whatsappNumber =
-        vehicle.seller.whatsapp
-            .replace(/\D/g,"");
-
-
-    const phoneNumber =
-        vehicle.seller.phone
-            .replace(/\D/g,"");
-
-
-    const enquiryText =
-        encodeURIComponent(
-            "Hello Nauza Tu, I am interested in the " +
-            vehicle.year +
-            " " +
-            vehicle.make +
-            " " +
-            vehicle.model +
-            " listed for " +
-            formatPrice(vehicle.price) +
-            ". Please provide more information."
-        );
-
-
     /* GALLERY */
 
-    let galleryImages =
+    const galleryImages =
         vehicle.images &&
         vehicle.images.length
-            ? vehicle.images
-            : [vehicle.image];
+        ?
+        vehicle.images
+        :
+        [vehicle.image];
 
 
     let thumbnails = "";
@@ -780,17 +781,173 @@ else{
             thumbnails += `
 
                 <img
+
                     src="${image}"
-                    class="thumbnail ${index === 0 ? "active" : ""}"
+
+                    class="thumbnail ${
+                        index === 0
+                        ? "active"
+                        : ""
+                    }"
+
                     alt="${vehicle.make} ${vehicle.model}"
-                    onclick="changeImage(this,'${image}')"
-                    onerror="this.style.display='none';"
+
+                    onclick="
+                        changeImage(
+                            this,
+                            '${image}'
+                        )
+                    "
+
+                    onerror="
+                        this.style.display='none';
+                    "
+
                 >
 
             `;
 
         }
     );
+
+
+    /* SELLER CONTACT LOGIC */
+
+    const sellerHasPhone =
+        vehicle.seller &&
+        vehicle.seller.phone &&
+        vehicle.seller.phone.trim() !== "";
+
+
+    const sellerHasWhatsApp =
+        vehicle.seller &&
+        vehicle.seller.whatsapp &&
+        vehicle.seller.whatsapp.trim() !== "";
+
+
+    let actionButtons = "";
+
+
+    if(sellerHasPhone){
+
+        const phone =
+            vehicle.seller.phone
+            .replace(/\D/g,"");
+
+
+        actionButtons += `
+
+            <a
+                href="tel:${phone}"
+                class="btn btn-call"
+            >
+                📞 Call Seller
+            </a>
+
+        `;
+
+    }
+    else{
+
+        actionButtons += `
+
+            <a
+                href="tel:${marketplacePhone1}"
+                class="btn btn-call"
+            >
+                📞 Contact Nauza Tu
+            </a>
+
+        `;
+
+    }
+
+
+    if(sellerHasWhatsApp){
+
+        const whatsapp =
+            vehicle.seller.whatsapp
+            .replace(/\D/g,"");
+
+
+        const message =
+            encodeURIComponent(
+                "Hello, I am interested in the " +
+                vehicle.year +
+                " " +
+                vehicle.make +
+                " " +
+                vehicle.model +
+                " listed on Nauza Tu."
+            );
+
+
+        actionButtons += `
+
+            <a
+                href="https://wa.me/${whatsapp}?text=${message}"
+                class="btn btn-whatsapp"
+                target="_blank"
+                rel="noopener"
+            >
+                WhatsApp Seller
+            </a>
+
+        `;
+
+    }
+    else{
+
+        const message =
+            encodeURIComponent(
+                "Hello Nauza Tu, I am interested in the " +
+                vehicle.year +
+                " " +
+                vehicle.make +
+                " " +
+                vehicle.model +
+                " listed for " +
+                formatPrice(vehicle.price) +
+                "."
+            );
+
+
+        actionButtons += `
+
+            <a
+                href="https://wa.me/254722910913?text=${message}"
+                class="btn btn-whatsapp"
+                target="_blank"
+                rel="noopener"
+            >
+                WhatsApp Nauza Tu
+            </a>
+
+        `;
+
+    }
+
+
+    const enquiryVehicle =
+        encodeURIComponent(
+            vehicle.year +
+            " " +
+            vehicle.make +
+            " " +
+            vehicle.model
+        );
+
+
+    actionButtons += `
+
+        <a
+            href="contact.html?vehicle=${enquiryVehicle}"
+            class="btn btn-enquiry"
+        >
+            Send Vehicle Enquiry
+        </a>
+
+    `;
 
 
     /* RELATED VEHICLES */
@@ -815,9 +972,15 @@ else{
                 <div class="related-card">
 
                     <img
+
                         src="${related.image}"
+
                         alt="${related.year} ${related.make} ${related.model}"
-                        onerror="this.src='images/suv.jpg';"
+
+                        onerror="
+                            this.src='images/suv.jpg';
+                        "
+
                     >
 
                     <div class="related-info">
@@ -838,10 +1001,14 @@ else{
                         </div>
 
                         <a
+
                             href="vehicle-details.html?id=${encodeURIComponent(related.id)}"
+
                             class="related-btn"
+
                         >
                             View Details
+
                         </a>
 
                     </div>
@@ -854,24 +1021,117 @@ else{
     );
 
 
-    /* MAIN HTML */
+    /* SELLER INFORMATION */
+
+    let sellerInformation = "";
+
+
+    if(sellerHasPhone || sellerHasWhatsApp){
+
+        sellerInformation = `
+
+            <div class="seller-box">
+
+                <h3>Seller Information</h3>
+
+                <p>
+                    <strong>Name:</strong>
+                    ${vehicle.seller.name}
+                </p>
+
+                <p>
+                    <strong>Seller Type:</strong>
+                    ${vehicle.seller.type}
+                </p>
+
+                ${
+                    sellerHasPhone
+                    ?
+                    `
+                    <p>
+                        <strong>Phone:</strong>
+
+                        <a href="tel:${vehicle.seller.phone}">
+                            ${vehicle.seller.phone}
+                        </a>
+                    </p>
+                    `
+                    :
+                    ""
+                }
+
+            </div>
+
+        `;
+
+    }
+    else{
+
+        sellerInformation = `
+
+            <div class="seller-box">
+
+                <h3>Seller Information</h3>
+
+                <p>
+                    This seller's personal contact details
+                    are not publicly displayed.
+                </p>
+
+                <p>
+                    Contact Nauza Tu and quote the listing ID
+                    to enquire about this vehicle.
+                </p>
+
+                <div class="marketplace-contact">
+
+                    <strong>
+                        Nauza Tu Digital Motor Market
+                    </strong>
+
+                    <a href="tel:${marketplacePhone1}">
+                        📞 ${marketplacePhone1}
+                    </a>
+
+                    <a href="tel:${marketplacePhone2}">
+                        📞 ${marketplacePhone2}
+                    </a>
+
+                    <a href="mailto:${marketplaceEmail}">
+                        ✉ ${marketplaceEmail}
+                    </a>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* MAIN CONTENT */
 
     container.innerHTML = `
 
         <div class="vehicle-heading">
 
             <h1>
+
                 ${vehicle.year}
                 ${vehicle.make}
                 ${vehicle.model}
+
             </h1>
 
             <p>
+
                 ${vehicle.category}
                 •
                 ${vehicle.condition}
                 •
                 📍 ${vehicle.location}
+
             </p>
 
         </div>
@@ -885,12 +1145,21 @@ else{
             <div>
 
                 <img
+
                     id="mainVehicleImage"
+
                     class="main-image"
+
                     src="${vehicle.image}"
+
                     alt="${vehicle.year} ${vehicle.make} ${vehicle.model}"
-                    onerror="this.src='images/suv.jpg';"
+
+                    onerror="
+                        this.src='images/suv.jpg';
+                    "
+
                 >
+
 
                 <div class="thumbnails">
 
@@ -913,6 +1182,7 @@ else{
 
 
                 <div class="details-grid">
+
 
                     <div class="detail">
 
@@ -1050,62 +1320,12 @@ else{
 
                 <div class="action-buttons">
 
-                    <a
-                        href="tel:${phoneNumber}"
-                        class="btn btn-call"
-                    >
-                        📞 Call Seller
-                    </a>
-
-
-                    <a
-                        href="https://wa.me/${whatsappNumber}?text=${enquiryText}"
-                        class="btn btn-whatsapp"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        WhatsApp
-                    </a>
-
-
-                    <a
-                        href="contact.html?vehicle=${encodeURIComponent(
-                            vehicle.year +
-                            " " +
-                            vehicle.make +
-                            " " +
-                            vehicle.model
-                        )}"
-                        class="btn btn-enquiry"
-                    >
-                        Send Enquiry
-                    </a>
+                    ${actionButtons}
 
                 </div>
 
 
-                <div class="seller-box">
-
-                    <h3>Seller Information</h3>
-
-                    <p>
-                        <strong>Name:</strong>
-                        ${vehicle.seller.name}
-                    </p>
-
-                    <p>
-                        <strong>Seller Type:</strong>
-                        ${vehicle.seller.type}
-                    </p>
-
-                    <p>
-                        <strong>Phone:</strong>
-                        <a href="tel:${phoneNumber}">
-                            ${vehicle.seller.phone}
-                        </a>
-                    </p>
-
-                </div>
+                ${sellerInformation}
 
             </div>
 
@@ -1116,7 +1336,9 @@ else{
 
         <section class="section">
 
-            <h2>Vehicle Description</h2>
+            <h2>
+                Vehicle Description
+            </h2>
 
             <p>
                 ${vehicle.description}
@@ -1131,35 +1353,39 @@ else{
 
             <div class="notice">
 
-                <h3>Important Buyer Notice</h3>
+                <h3>
+                    Important Buyer Notice
+                </h3>
 
                 <p>
-                    Nauza Tu Digital Motor Market is a digital
-                    marketplace and does not own the vehicle
-                    advertised on this page.
+                    Nauza Tu Digital Motor Market is a
+                    digital marketplace and does not own
+                    the vehicle advertised on this page.
                 </p>
 
                 <p>
-                    Vehicle information is supplied by the seller.
-                    Buyers should independently verify ownership,
-                    logbook and documentation, mileage, mechanical
-                    condition, accident history and any outstanding
-                    obligations before making payment or completing
-                    a purchase.
+                    Vehicle information is supplied by the
+                    seller and should be independently verified.
                 </p>
 
                 <p>
-                    Arrange a physical inspection and use appropriate
-                    independent verification before committing to a
-                    transaction.
+                    Buyers should confirm ownership, logbook
+                    and documentation, mileage, mechanical
+                    condition, accident history and any
+                    outstanding obligations before making
+                    payment or completing a purchase.
+                </p>
+
+                <p>
+                    Arrange a physical inspection and use
+                    appropriate independent verification
+                    before committing to a transaction.
                 </p>
 
             </div>
 
         </section>
 
-
-        <!-- RELATED -->
 
         ${
             relatedVehicles.length
@@ -1190,7 +1416,7 @@ else{
 }
 
 
-/* CHANGE MAIN IMAGE */
+/* CHANGE IMAGE */
 
 function changeImage(element,image){
 
@@ -1209,9 +1435,11 @@ function changeImage(element,image){
 
     document
         .querySelectorAll(".thumbnail")
-        .forEach(img =>
-            img.classList.remove("active")
-        );
+        .forEach(img => {
+
+            img.classList.remove("active");
+
+        });
 
 
     element.classList.add("active");
@@ -1219,7 +1447,7 @@ function changeImage(element,image){
 }
 
 
-/* YEAR */
+/* FOOTER YEAR */
 
 document.getElementById("year").textContent =
     new Date().getFullYear();
