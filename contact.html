@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Contact Us | Nauza Tu Digital Motor Market</title>
+<title>Contact Nauza Tu | Digital Motor Market Kenya</title>
 
 <meta name="description"
-content="Contact Nauza Tu Digital Motor Market in Kenya. Get in touch about buying, selling, or advertising vehicles on our digital marketplace.">
+content="Contact Nauza Tu Digital Motor Market in Kenya. Make a vehicle enquiry, ask about an advertisement, contact the marketplace, or advertise your vehicle.">
 
 <style>
 
@@ -19,221 +19,218 @@ content="Contact Nauza Tu Digital Motor Market in Kenya. Get in touch about buyi
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#f5f6f8;
+    background:#f4f6f8;
     color:#222;
     line-height:1.6;
 }
 
-/* HEADER */
-
 header{
-    background:#111827;
-    color:white;
-    padding:15px 6%;
+    background:#111;
+    color:#fff;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 8px rgba(0,0,0,.25);
+}
+
+.navbar{
+    max-width:1200px;
+    margin:auto;
+    padding:15px 20px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    flex-wrap:wrap;
+    gap:20px;
 }
 
 .logo{
-    font-size:24px;
-    font-weight:bold;
-    color:#f59e0b;
+    color:#fff;
+    text-decoration:none;
+    font-size:21px;
+    font-weight:800;
+    white-space:nowrap;
 }
 
 .logo span{
-    color:white;
+    color:#f4b400;
 }
 
 nav{
     display:flex;
-    gap:18px;
     flex-wrap:wrap;
+    gap:17px;
 }
 
 nav a{
-    color:white;
+    color:#fff;
     text-decoration:none;
-    font-size:15px;
+    font-size:14px;
     font-weight:600;
 }
 
-nav a:hover{
-    color:#f59e0b;
+nav a:hover,
+nav a.active{
+    color:#f4b400;
 }
+
 
 /* HERO */
 
 .hero{
-    background:
-    linear-gradient(rgba(17,24,39,.82),rgba(17,24,39,.82)),
-    url("images/kenya-car-market.jpg") center/cover no-repeat;
-
-    min-height:300px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
+    background:linear-gradient(135deg,#111,#292929);
+    color:#fff;
     text-align:center;
-    color:white;
-
-    padding:40px 20px;
+    padding:55px 20px;
 }
 
 .hero h1{
-    font-size:42px;
-    margin-bottom:12px;
+    font-size:38px;
+    margin-bottom:10px;
 }
 
 .hero p{
-    font-size:18px;
-    max-width:750px;
+    max-width:720px;
     margin:auto;
-    color:#e5e7eb;
+    color:#ddd;
 }
+
 
 /* CONTAINER */
 
 .container{
-    width:90%;
-    max-width:1200px;
-    margin:40px auto;
+    max-width:1100px;
+    margin:auto;
+    padding:35px 20px;
 }
 
-/* CONTACT GRID */
+
+/* INTRO */
+
+.intro{
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    margin-bottom:25px;
+}
+
+.intro h2{
+    margin-bottom:10px;
+}
+
+.intro p{
+    color:#555;
+}
+
+
+/* CONTACT CARDS */
 
 .contact-grid{
     display:grid;
-    grid-template-columns:1fr 1.4fr;
-    gap:30px;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-bottom:30px;
 }
 
-/* CARDS */
-
-.card{
-    background:white;
-    padding:28px;
+.contact-card{
+    background:#fff;
+    padding:25px;
     border-radius:12px;
-    box-shadow:0 2px 12px rgba(0,0,0,.07);
-}
-
-.card h2{
-    margin-bottom:15px;
-    color:#111827;
-}
-
-/* CONTACT DETAILS */
-
-.contact-item{
-    padding:18px 0;
-    border-bottom:1px solid #eee;
-}
-
-.contact-item:last-child{
-    border-bottom:none;
-}
-
-.contact-item h3{
-    margin-bottom:5px;
-    color:#374151;
-}
-
-.contact-item p{
-    color:#666;
-}
-
-.contact-link{
-    display:inline-block;
-    margin-top:5px;
-    color:#d97706;
-    font-weight:bold;
-    text-decoration:none;
-    font-size:17px;
-}
-
-.contact-link:hover{
-    text-decoration:underline;
-}
-
-/* BUTTONS */
-
-.buttons{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    margin-top:15px;
-}
-
-.btn{
-    display:block;
-    width:100%;
     text-align:center;
-    padding:13px;
-    border-radius:7px;
+    box-shadow:0 3px 12px rgba(0,0,0,.07);
+}
+
+.contact-icon{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.contact-card h3{
+    margin-bottom:7px;
+}
+
+.contact-card p{
+    color:#666;
+    font-size:14px;
+}
+
+.contact-card a{
+    display:inline-block;
+    margin-top:10px;
+    color:#111;
+    font-weight:800;
     text-decoration:none;
-    font-weight:bold;
-    transition:.2s;
+    word-break:break-word;
 }
 
-.btn-call{
-    background:#111827;
-    color:white;
+.contact-card a:hover{
+    color:#c58e00;
 }
 
-.btn-call:hover{
-    background:#1f2937;
+
+/* MAIN CONTACT AREA */
+
+.main-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    gap:25px;
+    align-items:start;
 }
 
-.btn-whatsapp{
-    background:#16a34a;
-    color:white;
-}
-
-.btn-whatsapp:hover{
-    background:#15803d;
-}
-
-.btn-email{
-    background:#f59e0b;
-    color:#111827;
-}
-
-.btn-email:hover{
-    background:#d97706;
-}
 
 /* FORM */
 
-form{
+.form-card{
+    background:#fff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.form-card h2{
+    margin-bottom:7px;
+}
+
+.form-description{
+    color:#666;
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:17px;
+}
+
+.form-group{
     display:flex;
     flex-direction:column;
-    gap:14px;
+    gap:6px;
+}
+
+.form-group.full{
+    grid-column:1 / -1;
 }
 
 label{
-    font-weight:bold;
-    font-size:14px;
-    color:#374151;
+    font-size:13px;
+    font-weight:700;
+}
+
+.required{
+    color:#c00;
 }
 
 input,
 select,
 textarea{
     width:100%;
-    padding:13px;
-    border:1px solid #d1d5db;
+    padding:12px;
+    border:1px solid #ccc;
     border-radius:7px;
-    font-size:15px;
     font-family:inherit;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-    outline:none;
-    border-color:#f59e0b;
+    font-size:14px;
 }
 
 textarea{
@@ -241,147 +238,254 @@ textarea{
     resize:vertical;
 }
 
-.submit-btn{
-    background:#d97706;
-    color:white;
+input:focus,
+select:focus,
+textarea:focus{
+    outline:none;
+    border-color:#f4b400;
+}
+
+.help{
+    color:#777;
+    font-size:12px;
+}
+
+
+/* SUBMIT */
+
+.submit-area{
+    margin-top:22px;
+}
+
+.submit-button{
+    width:100%;
     border:none;
+    background:#111;
+    color:#fff;
     padding:14px;
-    border-radius:7px;
-    font-size:16px;
-    font-weight:bold;
+    border-radius:8px;
+    font-size:15px;
+    font-weight:800;
     cursor:pointer;
 }
 
-.submit-btn:hover{
-    background:#b45309;
+.submit-button:hover{
+    background:#333;
 }
+
+
+/* SIDEBAR */
+
+.sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.info-box{
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,.07);
+}
+
+.info-box h2{
+    margin-bottom:12px;
+    font-size:20px;
+}
+
+.info-box p{
+    color:#555;
+    font-size:14px;
+}
+
+.info-box ul{
+    padding-left:20px;
+    margin-top:10px;
+}
+
+.info-box li{
+    margin:7px 0;
+    color:#555;
+    font-size:14px;
+}
+
+
+/* DIRECT CONTACT */
+
+.direct-contact{
+    background:#111;
+    color:#fff;
+}
+
+.direct-contact h2{
+    color:#fff;
+}
+
+.direct-contact p{
+    color:#ddd;
+    margin-bottom:10px;
+}
+
+.direct-link{
+    display:block;
+    color:#f4b400;
+    text-decoration:none;
+    font-weight:700;
+    margin:8px 0;
+}
+
+.direct-link:hover{
+    color:#fff;
+}
+
+
+/* WHATSAPP */
+
+.whatsapp-button{
+    display:block;
+    background:#f4b400;
+    color:#111;
+    text-align:center;
+    padding:13px;
+    border-radius:7px;
+    text-decoration:none;
+    font-weight:800;
+    margin-top:15px;
+}
+
+.whatsapp-button:hover{
+    background:#d99e00;
+}
+
 
 /* MARKETPLACE NOTICE */
 
 .notice{
     margin-top:30px;
-    background:#fff7ed;
-    border-left:5px solid #f59e0b;
+    background:#fff8df;
+    border-left:5px solid #f4b400;
     padding:22px;
     border-radius:8px;
 }
 
-.notice h2{
-    margin-bottom:8px;
-    color:#92400e;
+.notice h3{
+    margin-bottom:9px;
 }
 
 .notice p{
-    color:#4b5563;
-}
-
-/* WHY CONTACT */
-
-.info-section{
-    margin-top:30px;
-}
-
-.info-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.info-box{
-    background:white;
-    padding:25px;
-    border-radius:10px;
-    text-align:center;
-    box-shadow:0 2px 10px rgba(0,0,0,.06);
-}
-
-.info-box .icon{
-    font-size:35px;
-    margin-bottom:10px;
-}
-
-.info-box h3{
+    color:#555;
+    font-size:13px;
     margin-bottom:8px;
 }
 
-.info-box p{
-    color:#666;
-    font-size:14px;
+.notice p:last-child{
+    margin-bottom:0;
 }
+
 
 /* FOOTER */
 
 footer{
-    background:#111827;
-    color:white;
-    text-align:center;
-    padding:35px 15px;
     margin-top:50px;
+    background:#111;
+    color:#bbb;
+    padding:35px 20px;
+}
+
+.footer-inner{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:30px;
 }
 
 footer h3{
-    color:#f59e0b;
-    margin-bottom:8px;
+    color:#fff;
+    margin-bottom:10px;
 }
 
 footer p{
-    color:#d1d5db;
-    margin:5px 0;
+    font-size:14px;
 }
+
+footer a{
+    display:block;
+    color:#bbb;
+    text-decoration:none;
+    font-size:14px;
+    margin:6px 0;
+}
+
+footer a:hover{
+    color:#f4b400;
+}
+
+.copyright{
+    border-top:1px solid #333;
+    margin-top:25px;
+    padding-top:20px;
+    text-align:center;
+    font-size:13px;
+}
+
 
 /* MOBILE */
 
 @media(max-width:850px){
 
-    header{
-        flex-direction:column;
-        gap:15px;
+    .contact-grid{
+        grid-template-columns:1fr 1fr;
     }
 
-    nav{
-        justify-content:center;
+    .main-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-inner{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .navbar{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .hero h1{
+        font-size:30px;
     }
 
     .contact-grid{
         grid-template-columns:1fr;
     }
 
-    .info-grid{
+    .form-grid{
         grid-template-columns:1fr;
     }
 
-    .hero h1{
-        font-size:32px;
+    .form-group.full{
+        grid-column:auto;
     }
 
-}
-
-@media(max-width:500px){
-
-    .container{
-        width:94%;
-    }
-
-    .hero{
-        min-height:260px;
-    }
-
-    .hero h1{
-        font-size:28px;
-    }
-
-    .hero p{
-        font-size:16px;
-    }
-
-    .card{
+    .form-card{
         padding:20px;
+    }
+
+    .footer-inner{
+        grid-template-columns:1fr;
     }
 
 }
 
 </style>
 </head>
+
 
 <body>
 
@@ -390,445 +494,735 @@ footer p{
 
 <header>
 
-    <div class="logo">
-        Nauza Tu <span>Digital Motor Market</span>
-    </div>
+<div class="navbar">
 
-    <nav>
+<a href="index.html" class="logo">
+Nauza Tu <span>Digital Motor Market</span>
+</a>
 
-        <a href="index.html">Home</a>
+<nav>
 
-        <a href="vehicles.html">Vehicles</a>
+<a href="index.html">Home</a>
 
-        <a href="compare.html">Compare</a>
+<a href="vehicles.html">Vehicles</a>
 
-        <a href="sell.html">Sell Your Car</a>
+<a href="compare.html">Compare</a>
 
-        <a href="about.html">About</a>
+<a href="sell.html">Sell / Advertise</a>
 
-        <a href="contact.html">Contact</a>
+<a href="about.html">About</a>
 
-    </nav>
+<a href="contact.html" class="active">Contact</a>
+
+</nav>
+
+</div>
 
 </header>
+
 
 
 <!-- HERO -->
 
 <section class="hero">
 
-    <div>
+<h1>Contact Nauza Tu</h1>
 
-        <h1>Contact Nauza Tu</h1>
-
-        <p>
-            Looking to buy a vehicle, advertise your vehicle,
-            or simply have a question? Get in touch with us.
-        </p>
-
-    </div>
+<p>
+Have a question about a vehicle advertisement, want to contact the marketplace,
+or need help with an enquiry? We are here to help.
+</p>
 
 </section>
 
 
-<!-- MAIN CONTENT -->
 
-<div class="container">
+<main class="container">
 
-    <div class="contact-grid">
 
+<!-- INTRO -->
 
-        <!-- CONTACT INFORMATION -->
+<section class="intro">
 
-        <div class="card">
+<h2>How Can We Help?</h2>
 
-            <h2>Get In Touch</h2>
+<p>
+Nauza Tu Digital Motor Market connects potential buyers with people and
+businesses advertising vehicles. If you are interested in a particular
+vehicle, please include its listing ID in your message so that we can
+identify the advertisement quickly.
+</p>
 
-            <p style="color:#666;margin-bottom:10px;">
-                You can contact Nauza Tu Digital Motor Market
-                directly using any of the options below.
-            </p>
+</section>
 
 
-            <div class="contact-item">
 
-                <h3>📞 Phone</h3>
+<!-- CONTACT CARDS -->
 
-                <a
-                    class="contact-link"
-                    href="tel:+254722910913">
+<section class="contact-grid">
 
-                    +254 722 910 913
 
-                </a>
+<div class="contact-card">
 
-                <br>
+<div class="contact-icon">📞</div>
 
-                <a
-                    class="contact-link"
-                    href="tel:+254724708032">
+<h3>Call Us</h3>
 
-                    +254 724 708 032
+<p>
+For general marketplace enquiries.
+</p>
 
-                </a>
+<a href="tel:+254722910913">
++254 722 910 913
+</a>
 
-            </div>
-
-
-            <div class="contact-item">
-
-                <h3>💬 WhatsApp</h3>
-
-                <p>
-                    Chat with us directly on WhatsApp.
-                </p>
-
-                <div class="buttons">
-
-                    <a
-                        class="btn btn-whatsapp"
-                        href="https://wa.me/254722910913"
-                        target="_blank">
-
-                        WhatsApp +254 722 910 913
-
-                    </a>
-
-                    <a
-                        class="btn btn-whatsapp"
-                        href="https://wa.me/254724708032"
-                        target="_blank">
-
-                        WhatsApp +254 724 708 032
-
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="contact-item">
-
-                <h3>📧 Email</h3>
-
-                <a
-                    class="contact-link"
-                    href="mailto:nauzatu@gmail.com">
-
-                    nauzatu@gmail.com
-
-                </a>
-
-            </div>
-
-
-            <div class="contact-item">
-
-                <h3>📍 Location</h3>
-
-                <p>
-                    Nairobi, Kenya
-                </p>
-
-            </div>
-
-
-            <div class="buttons">
-
-                <a
-                    class="btn btn-call"
-                    href="tel:+254722910913">
-
-                    📞 Call Us
-
-                </a>
-
-                <a
-                    class="btn btn-email"
-                    href="mailto:nauzatu@gmail.com">
-
-                    ✉️ Email Us
-
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <!-- CONTACT FORM -->
-
-        <div class="card">
-
-            <h2>Send Us a Message</h2>
-
-            <p style="color:#666;margin-bottom:20px;">
-
-                Use the form below for vehicle enquiries,
-                advertising enquiries, or general questions.
-
-            </p>
-
-
-            <form
-                action="https://formsubmit.co/nauzatu@gmail.com"
-                method="POST">
-
-
-                <input
-                    type="hidden"
-                    name="_subject"
-                    value="Nauza Tu Website Enquiry">
-
-
-                <input
-                    type="hidden"
-                    name="_captcha"
-                    value="false">
-
-
-                <input
-                    type="hidden"
-                    name="_template"
-                    value="table">
-
-
-                <label>
-                    Your Name
-                </label>
-
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="Enter your full name"
-                    required>
-
-
-                <label>
-                    Phone Number
-                </label>
-
-                <input
-                    type="tel"
-                    name="phone"
-                    placeholder="e.g. 0722 123 456"
-                    required>
-
-
-                <label>
-                    Email Address
-                </label>
-
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Your email address">
-
-
-                <label>
-                    Enquiry Type
-                </label>
-
-                <select
-                    name="enquiry_type"
-                    required>
-
-                    <option value="">
-                        Select enquiry type
-                    </option>
-
-                    <option value="Buying a vehicle">
-                        I want to buy a vehicle
-                    </option>
-
-                    <option value="Selling a vehicle">
-                        I want to sell/advertise a vehicle
-                    </option>
-
-                    <option value="Vehicle listing enquiry">
-                        Vehicle listing enquiry
-                    </option>
-
-                    <option value="General enquiry">
-                        General enquiry
-                    </option>
-
-                    <option value="Other">
-                        Other
-                    </option>
-
-                </select>
-
-
-                <label>
-                    Vehicle / Subject
-                </label>
-
-                <input
-                    type="text"
-                    name="vehicle"
-                    placeholder="e.g. Toyota Harrier 2019">
-
-
-                <label>
-                    Your Message
-                </label>
-
-                <textarea
-                    name="message"
-                    placeholder="Write your message here..."
-                    required></textarea>
-
-
-                <button
-                    type="submit"
-                    class="submit-btn">
-
-                    Send Message
-
-                </button>
-
-            </form>
-
-        </div>
-
-    </div>
-
-
-    <!-- MARKETPLACE NOTICE -->
-
-    <div class="notice">
-
-        <h2>Important About Nauza Tu</h2>
-
-        <p>
-
-            Nauza Tu Digital Motor Market is a digital marketplace.
-            We do not own the vehicles advertised on this platform
-            and we are not the seller of vehicles listed by vehicle
-            owners or dealers.
-
-        </p>
-
-        <p style="margin-top:10px;">
-
-            Our role is to provide a platform where sellers can
-            advertise vehicles and potential buyers can discover
-            vehicles and contact sellers.
-
-        </p>
-
-        <p style="margin-top:10px;">
-
-            Buyers should independently inspect vehicles, verify
-            ownership and documentation, confirm the vehicle's
-            condition and verify all information provided by the
-            seller before making any payment.
-
-        </p>
-
-    </div>
-
-
-    <!-- SERVICES -->
-
-    <section class="info-section">
-
-        <h2 style="text-align:center;margin-bottom:20px;">
-            How We Can Help
-        </h2>
-
-
-        <div class="info-grid">
-
-
-            <div class="info-box">
-
-                <div class="icon">
-                    🚗
-                </div>
-
-                <h3>Looking for a Vehicle?</h3>
-
-                <p>
-                    Browse vehicles advertised on Nauza Tu
-                    and contact the seller directly.
-                </p>
-
-            </div>
-
-
-            <div class="info-box">
-
-                <div class="icon">
-                    📢
-                </div>
-
-                <h3>Want to Advertise?</h3>
-
-                <p>
-                    List your vehicle on our marketplace
-                    and make it visible to potential buyers.
-                </p>
-
-            </div>
-
-
-            <div class="info-box">
-
-                <div class="icon">
-                    🤝
-                </div>
-
-                <h3>Need Assistance?</h3>
-
-                <p>
-                    Contact us if you have questions about
-                    using the Nauza Tu marketplace.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </section>
+<a href="tel:+254724708032">
++254 724 708 032
+</a>
 
 </div>
+
+
+
+<div class="contact-card">
+
+<div class="contact-icon">💬</div>
+
+<h3>WhatsApp</h3>
+
+<p>
+Send us a message through WhatsApp.
+</p>
+
+<a
+href="https://wa.me/254722910913?text=Hello%20Nauza%20Tu%20Digital%20Motor%20Market"
+target="_blank"
+rel="noopener"
+>
+Chat on WhatsApp
+</a>
+
+</div>
+
+
+
+<div class="contact-card">
+
+<div class="contact-icon">✉️</div>
+
+<h3>Email</h3>
+
+<p>
+Send us a detailed marketplace enquiry.
+</p>
+
+<a href="mailto:nauzatu@gmail.com">
+nauzatu@gmail.com
+</a>
+
+</div>
+
+
+</section>
+
+
+
+<!-- MAIN AREA -->
+
+<section class="main-grid">
+
+
+<!-- FORM -->
+
+<div class="form-card">
+
+<h2>Send an Enquiry</h2>
+
+<p class="form-description">
+
+Use this form for vehicle enquiries, advertisement questions,
+seller enquiries or general marketplace communication.
+
+</p>
+
+
+<form
+action="https://formsubmit.co/nauzatu@gmail.com"
+method="POST"
+>
+
+
+<input
+type="hidden"
+name="_subject"
+value="Nauza Tu Marketplace Enquiry"
+>
+
+<input
+type="hidden"
+name="_next"
+value="https://themaina1.github.io/nauza-tu-digital-motor-market/thankyou.html"
+>
+
+<input
+type="hidden"
+name="_captcha"
+value="false"
+>
+
+
+<div class="form-grid">
+
+
+<!-- NAME -->
+
+<div class="form-group">
+
+<label>
+Your Name <span class="required">*</span>
+</label>
+
+<input
+type="text"
+name="name"
+required
+placeholder="Enter your full name"
+>
+
+</div>
+
+
+
+<!-- PHONE -->
+
+<div class="form-group">
+
+<label>
+Phone Number <span class="required">*</span>
+</label>
+
+<input
+type="tel"
+name="phone"
+required
+placeholder="+254..."
+>
+
+</div>
+
+
+
+<!-- EMAIL -->
+
+<div class="form-group">
+
+<label>
+Email Address <span class="required">*</span>
+</label>
+
+<input
+type="email"
+name="email"
+required
+placeholder="you@example.com"
+>
+
+</div>
+
+
+
+<!-- ENQUIRY TYPE -->
+
+<div class="form-group">
+
+<label>
+Enquiry Type <span class="required">*</span>
+</label>
+
+<select
+name="enquiry_type"
+id="enquiryType"
+required
+>
+
+<option value="">
+Select enquiry type
+</option>
+
+<option value="Vehicle Enquiry">
+Vehicle Enquiry
+</option>
+
+<option value="Seller / Advertiser Enquiry">
+Seller / Advertiser Enquiry
+</option>
+
+<option value="Advertisement Question">
+Advertisement Question
+</option>
+
+<option value="General Marketplace Enquiry">
+General Marketplace Enquiry
+</option>
+
+<option value="Report a Listing">
+Report a Listing
+</option>
+
+<option value="Other">
+Other
+</option>
+
+</select>
+
+</div>
+
+
+
+<!-- LISTING ID -->
+
+<div
+class="form-group"
+id="listingGroup"
+>
+
+<label>
+Vehicle / Listing ID
+</label>
+
+<input
+type="text"
+name="listing_id"
+id="listingId"
+placeholder="e.g. NT001"
+>
+
+<span class="help">
+If your enquiry concerns a particular vehicle, enter its listing ID.
+</span>
+
+</div>
+
+
+
+<!-- VEHICLE -->
+
+<div
+class="form-group"
+id="vehicleGroup"
+>
+
+<label>
+Vehicle
+</label>
+
+<input
+type="text"
+name="vehicle_reference"
+id="vehicleReference"
+placeholder="e.g. Toyota Harrier 2019"
+>
+
+</div>
+
+
+
+<!-- MESSAGE -->
+
+<div class="form-group full">
+
+<label>
+Your Message <span class="required">*</span>
+</label>
+
+<textarea
+name="message"
+id="message"
+required
+placeholder="Tell us how we can help..."
+></textarea>
+
+</div>
+
+
+</div>
+
+
+<div class="submit-area">
+
+<button
+type="submit"
+class="submit-button"
+>
+Send Enquiry
+</button>
+
+</div>
+
+
+</form>
+
+</div>
+
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+
+<div class="info-box direct-contact">
+
+<h2>Direct Contact</h2>
+
+<p>
+For general marketplace assistance:
+</p>
+
+<a
+class="direct-link"
+href="tel:+254722910913"
+>
+📞 +254 722 910 913
+</a>
+
+<a
+class="direct-link"
+href="tel:+254724708032"
+>
+📞 +254 724 708 032
+</a>
+
+<a
+class="direct-link"
+href="mailto:nauzatu@gmail.com"
+>
+✉️ nauzatu@gmail.com
+</a>
+
+<a
+class="whatsapp-button"
+href="https://wa.me/254722910913?text=Hello%20Nauza%20Tu%20Digital%20Motor%20Market"
+target="_blank"
+rel="noopener"
+>
+Message Us on WhatsApp
+</a>
+
+</div>
+
+
+
+<div class="info-box">
+
+<h2>Interested in a Vehicle?</h2>
+
+<p>
+When contacting us about a vehicle, provide the listing ID shown
+on the vehicle's details page.
+</p>
+
+<ul>
+
+<li>Vehicle make and model</li>
+
+<li>Listing ID</li>
+
+<li>Vehicle location</li>
+
+<li>Your preferred contact method</li>
+
+<li>Your specific question</li>
+
+</ul>
+
+</div>
+
+
+
+<div class="info-box">
+
+<h2>Want to Advertise?</h2>
+
+<p>
+If you own or are authorized to advertise a vehicle, you can submit
+your vehicle through our dedicated advertising form.
+</p>
+
+<a
+href="sell.html"
+class="whatsapp-button"
+>
+Advertise Your Vehicle
+</a>
+
+</div>
+
+
+</aside>
+
+
+</section>
+
+
+
+<!-- MARKETPLACE NOTICE -->
+
+<section class="notice">
+
+<h3>Important Marketplace Notice</h3>
+
+<p>
+Nauza Tu Digital Motor Market is a digital marketplace and advertising
+platform. We connect potential buyers with vehicle sellers and advertisers.
+</p>
+
+<p>
+Nauza Tu does not own the vehicles advertised on this website and is not
+the seller of those vehicles. Vehicle enquiries may be forwarded to or
+handled in connection with the respective advertiser.
+</p>
+
+<p>
+Before purchasing any vehicle, buyers should independently verify ownership,
+documentation, vehicle condition, mileage, accident history, outstanding
+obligations and other relevant details. Never send payment solely because
+a vehicle appears on this website.
+</p>
+
+</section>
+
+
+</main>
+
 
 
 <!-- FOOTER -->
 
 <footer>
 
-    <h3>
-        Nauza Tu Digital Motor Market
-    </h3>
+<div class="footer-inner">
 
-    <p>
-        Kenya's digital marketplace for vehicles.
-    </p>
 
-    <p>
-        Connecting vehicle sellers with potential buyers.
-    </p>
+<div>
 
-    <p>
-        📞 +254 722 910 913 &nbsp; | &nbsp;
-        +254 724 708 032
-    </p>
+<h3>Nauza Tu Digital Motor Market</h3>
 
-    <p>
-        📧 nauzatu@gmail.com
-    </p>
+<p>
+A Kenyan digital marketplace helping buyers discover vehicles
+advertised by owners, sellers and dealers.
+</p>
 
-    <p style="margin-top:15px;">
-        © 2026 Nauza Tu Digital Motor Market.
-        All Rights Reserved.
-    </p>
+<p style="margin-top:10px;">
+Nairobi, Kenya
+</p>
+
+</div>
+
+
+
+<div>
+
+<h3>Marketplace</h3>
+
+<a href="vehicles.html">
+Browse Vehicles
+</a>
+
+<a href="compare.html">
+Compare Vehicles
+</a>
+
+<a href="sell.html">
+Sell / Advertise
+</a>
+
+<a href="contact.html">
+Contact Us
+</a>
+
+</div>
+
+
+
+<div>
+
+<h3>Information</h3>
+
+<a href="about.html">
+About Us
+</a>
+
+<a href="privacy.html">
+Privacy Policy
+</a>
+
+<a href="terms.html">
+Terms & Conditions
+</a>
+
+</div>
+
+
+</div>
+
+
+<div class="copyright">
+
+© <span id="year"></span>
+Nauza Tu Digital Motor Market.
+All rights reserved.
+
+</div>
 
 </footer>
+
+
+
+<script>
+
+/* ============================================
+   CURRENT YEAR
+============================================ */
+
+document.getElementById("year").textContent =
+new Date().getFullYear();
+
+
+
+/* ============================================
+   READ VEHICLE FROM URL
+============================================ */
+
+const params =
+new URLSearchParams(window.location.search);
+
+const vehicleId =
+params.get("vehicle");
+
+
+
+/* ============================================
+   LOAD VEHICLE INFORMATION
+============================================ */
+
+if(vehicleId){
+
+    document.getElementById("listingId").value =
+        vehicleId;
+
+    /*
+       If vehicles-data.js exists, attempt to
+       identify the vehicle automatically.
+    */
+
+    const script =
+        document.createElement("script");
+
+    script.src = "vehicles-data.js";
+
+    script.onload = function(){
+
+        if(typeof vehicles !== "undefined"){
+
+            const vehicle =
+                vehicles.find(
+                    item => item.id === vehicleId
+                );
+
+            if(vehicle){
+
+                document.getElementById(
+                    "vehicleReference"
+                ).value =
+                    vehicle.make +
+                    " " +
+                    vehicle.model +
+                    " " +
+                    vehicle.year;
+
+                document.getElementById(
+                    "message"
+                ).value =
+                    "I am interested in the " +
+                    vehicle.make +
+                    " " +
+                    vehicle.model +
+                    " (" +
+                    vehicle.year +
+                    "), Listing ID " +
+                    vehicle.id +
+                    ". Please provide information on how I can contact the seller.";
+
+            }
+
+        }
+
+    };
+
+    document.body.appendChild(script);
+
+}
+
+
+
+/* ============================================
+   ENQUIRY TYPE
+============================================ */
+
+const enquiryType =
+document.getElementById("enquiryType");
+
+const listingGroup =
+document.getElementById("listingGroup");
+
+const vehicleGroup =
+document.getElementById("vehicleGroup");
+
+
+function updateEnquiryFields(){
+
+    const type =
+        enquiryType.value;
+
+    if(
+        type === "Vehicle Enquiry" ||
+        type === "Advertisement Question" ||
+        type === "Report a Listing"
+    ){
+
+        listingGroup.style.display =
+            "flex";
+
+        vehicleGroup.style.display =
+            "flex";
+
+    }
+
+    else{
+
+        listingGroup.style.display =
+            "none";
+
+        vehicleGroup.style.display =
+            "none";
+
+    }
+
+}
+
+
+enquiryType.addEventListener(
+    "change",
+    updateEnquiryFields
+);
+
+
+/* Initial state */
+
+updateEnquiryFields();
+
+</script>
 
 
 </body>
