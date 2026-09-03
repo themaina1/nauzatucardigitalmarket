@@ -4,37 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compare Cars | NAUZA TU DIGITAL MOTOR MARKET</title>
+<title>Car Match | NAUZA TU Digital Motor Market</title>
 
 <meta name="description"
-content="Compare cars side by side on NAUZA TU Digital Motor Market. Compare prices, mileage, specifications, running profile and suitability for Nairobi driving, family use and business.">
+content="Tell NAUZA TU what you need from a car and discover vehicles that match your budget, lifestyle and driving needs.">
 
 <style>
-:root{
-    --yellow:#f5c400;
-    --yellow2:#ffd633;
-    --black:#080808;
-    --dark:#101010;
-    --dark2:#151515;
-    --dark3:#1d1d1d;
-    --border:#2b2b2b;
-    --text:#f5f5f5;
-    --muted:#a7a7a7;
-    --green:#49d17d;
-    --red:#ff6262;
-}
-
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:var(--black);
-    color:var(--text);
-    line-height:1.5;
+    background:#080808;
+    color:#f5f5f5;
+    line-height:1.6;
 }
 
 a{
@@ -43,8 +33,19 @@ a{
 }
 
 button,
+input,
 select{
-    font-family:inherit;
+    font:inherit;
+}
+
+:root{
+    --yellow:#ffd400;
+    --yellow-dark:#e5bd00;
+    --dark:#080808;
+    --panel:#111111;
+    --panel2:#171717;
+    --border:#292929;
+    --muted:#a8a8a8;
 }
 
 /* HEADER */
@@ -55,58 +56,59 @@ header{
     z-index:1000;
     background:rgba(8,8,8,.97);
     border-bottom:1px solid var(--border);
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(10px);
 }
 
-.nav{
-    max-width:1250px;
+.navbar{
+    max-width:1400px;
     margin:auto;
     min-height:76px;
-    padding:0 20px;
+    padding:0 24px;
     display:flex;
     align-items:center;
-    gap:28px;
+    justify-content:space-between;
+    gap:25px;
 }
 
 .logo{
-    font-size:22px;
     font-weight:900;
-    letter-spacing:-1px;
+    letter-spacing:1px;
+    line-height:1;
     white-space:nowrap;
 }
 
-.logo span{
+.logo-main{
     color:var(--yellow);
+    font-size:25px;
 }
 
-.logo small{
+.logo-sub{
     display:block;
-    font-size:8px;
-    letter-spacing:2px;
-    color:#999;
-    margin-top:-3px;
+    color:#fff;
+    font-size:9px;
+    letter-spacing:3px;
+    margin-top:5px;
 }
 
-.navlinks{
-    margin-left:auto;
+.nav-links{
     display:flex;
     align-items:center;
     gap:20px;
 }
 
-.navlinks a{
+.nav-links a{
+    color:#ddd;
     font-size:13px;
     font-weight:700;
-    color:#ccc;
     transition:.2s;
 }
 
-.navlinks a:hover,
-.navlinks a.active{
+.nav-links a:hover,
+.nav-links a.active{
     color:var(--yellow);
 }
 
-.sell-btn{
+.post-btn{
     background:var(--yellow);
     color:#000 !important;
     padding:11px 16px;
@@ -114,45 +116,51 @@ header{
     font-weight:900 !important;
 }
 
-.menu{
+.mobile-menu{
     display:none;
-    background:none;
-    border:0;
-    color:white;
-    font-size:25px;
+    font-size:26px;
     cursor:pointer;
 }
 
 /* HERO */
 
 .hero{
+    min-height:430px;
+    display:flex;
+    align-items:center;
     background:
-        radial-gradient(circle at 80% 20%,rgba(245,196,0,.12),transparent 30%),
-        linear-gradient(180deg,#111 0%,#080808 100%);
-    padding:70px 20px 55px;
-    border-bottom:1px solid #191919;
+        radial-gradient(circle at 75% 35%,rgba(255,212,0,.12),transparent 30%),
+        linear-gradient(135deg,#080808,#111);
+    border-bottom:1px solid var(--border);
 }
 
 .hero-inner{
+    width:100%;
     max-width:1100px;
     margin:auto;
+    padding:70px 24px;
+    text-align:center;
 }
 
-.eyebrow{
+.hero-label{
+    display:inline-block;
+    border:1px solid #4b4300;
+    background:#171400;
     color:var(--yellow);
-    font-size:12px;
-    font-weight:900;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    margin-bottom:12px;
+    padding:7px 14px;
+    border-radius:30px;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1.5px;
+    margin-bottom:20px;
 }
 
 .hero h1{
-    font-size:clamp(36px,6vw,62px);
-    line-height:1;
+    font-size:clamp(38px,6vw,68px);
+    line-height:1.05;
+    max-width:850px;
+    margin:auto;
     letter-spacing:-2px;
-    max-width:800px;
-    margin-bottom:18px;
 }
 
 .hero h1 span{
@@ -160,505 +168,565 @@ header{
 }
 
 .hero p{
-    max-width:720px;
+    max-width:650px;
+    margin:22px auto 0;
     color:#aaa;
     font-size:17px;
 }
 
-/* MAIN */
+/* PROGRESS */
 
-.container{
-    max-width:1250px;
-    margin:auto;
-    padding:45px 20px 80px;
+.match-wrapper{
+    max-width:1050px;
+    margin:60px auto;
+    padding:0 24px;
 }
 
-/* SELECTOR */
-
-.selector{
-    background:var(--dark2);
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:25px;
+.progress-area{
     margin-bottom:35px;
 }
 
-.selector-top{
+.progress-top{
     display:flex;
     justify-content:space-between;
-    gap:20px;
-    align-items:center;
-    margin-bottom:20px;
+    color:#aaa;
+    font-size:12px;
+    margin-bottom:10px;
 }
 
-.selector h2{
-    font-size:22px;
+.progress-bar{
+    height:6px;
+    background:#242424;
+    border-radius:10px;
+    overflow:hidden;
 }
 
-.selector-top p{
-    color:#888;
-    font-size:13px;
+.progress-fill{
+    width:20%;
+    height:100%;
+    background:var(--yellow);
+    transition:.3s;
 }
 
-.select-grid{
+/* QUESTION CARD */
+
+.match-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:42px;
+}
+
+.step{
+    display:none;
+}
+
+.step.active{
+    display:block;
+}
+
+.step-number{
+    color:var(--yellow);
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:10px;
+}
+
+.step h2{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.step-intro{
+    color:#999;
+    margin-bottom:30px;
+}
+
+/* OPTION GRID */
+
+.option-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+}
+
+.option{
+    position:relative;
+}
+
+.option input{
+    position:absolute;
+    opacity:0;
+}
+
+.option label{
+    display:block;
+    border:1px solid var(--border);
+    background:#151515;
+    border-radius:9px;
+    padding:22px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.option label:hover{
+    border-color:#665900;
+    transform:translateY(-2px);
+}
+
+.option input:checked + label{
+    border-color:var(--yellow);
+    background:#1c1908;
+    box-shadow:0 0 0 1px var(--yellow);
+}
+
+.option-title{
+    font-weight:800;
+    font-size:16px;
+}
+
+.option-description{
+    color:#8e8e8e;
+    font-size:12px;
+    margin-top:4px;
+}
+
+/* BUDGET */
+
+.budget-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:15px;
+    gap:14px;
 }
 
-.vehicle-selector{
-    background:#0b0b0b;
+.budget-option{
+    position:relative;
+}
+
+.budget-option input{
+    position:absolute;
+    opacity:0;
+}
+
+.budget-option label{
+    display:block;
+    text-align:center;
+    padding:24px 12px;
+    background:#151515;
     border:1px solid var(--border);
     border-radius:9px;
-    padding:15px;
-}
-
-.vehicle-selector label{
-    display:block;
-    color:#777;
-    font-size:11px;
+    cursor:pointer;
     font-weight:800;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    margin-bottom:8px;
 }
 
-.vehicle-selector select{
-    width:100%;
-    background:#171717;
-    color:white;
-    border:1px solid #333;
-    padding:13px;
-    border-radius:5px;
-    outline:none;
-}
-
-.vehicle-selector select:focus{
+.budget-option input:checked + label{
     border-color:var(--yellow);
+    background:#1c1908;
 }
 
-/* COMPARISON */
+/* SLIDERS */
 
-.compare-area{
-    overflow-x:auto;
-    padding-bottom:10px;
+.range-box{
+    background:#151515;
+    border:1px solid var(--border);
+    padding:24px;
+    border-radius:9px;
+    margin-top:20px;
 }
 
-.compare-table{
-    min-width:850px;
+.range-header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+}
+
+.range-header strong{
+    color:var(--yellow);
+}
+
+input[type="range"]{
+    width:100%;
+    accent-color:var(--yellow);
+}
+
+/* NAV BUTTONS */
+
+.step-buttons{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin-top:35px;
+}
+
+.btn{
+    border:none;
+    border-radius:6px;
+    padding:13px 22px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.btn-primary{
+    background:var(--yellow);
+    color:#000;
+}
+
+.btn-primary:hover{
+    background:var(--yellow-dark);
+}
+
+.btn-secondary{
+    background:#222;
+    color:#fff;
+    border:1px solid var(--border);
+}
+
+.btn-secondary:hover{
+    border-color:#555;
+}
+
+/* RESULT */
+
+.results{
+    display:none;
+}
+
+.results.active{
+    display:block;
+}
+
+.result-header{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.result-header .small{
+    color:var(--yellow);
+    font-size:12px;
+    letter-spacing:2px;
+    font-weight:900;
+}
+
+.result-header h2{
+    font-size:40px;
+    margin:8px 0;
+}
+
+.result-header p{
+    color:#999;
+}
+
+.match-result{
+    display:grid;
+    grid-template-columns:150px 1fr auto;
+    gap:25px;
+    align-items:center;
+    background:#121212;
     border:1px solid var(--border);
     border-radius:12px;
+    padding:20px;
+    margin-bottom:16px;
+    transition:.2s;
+}
+
+.match-result:hover{
+    border-color:#555;
+    transform:translateY(-2px);
+}
+
+.result-image{
+    width:150px;
+    height:105px;
+    border-radius:8px;
     overflow:hidden;
-    background:var(--dark2);
+    background:#222;
 }
 
-.compare-row{
-    display:grid;
-    grid-template-columns:190px repeat(3,1fr);
-    border-bottom:1px solid var(--border);
-}
-
-.compare-row:last-child{
-    border-bottom:0;
-}
-
-.compare-row > div{
-    padding:18px;
-    border-right:1px solid var(--border);
-}
-
-.compare-row > div:last-child{
-    border-right:0;
-}
-
-.label-cell{
-    background:#0d0d0d;
-    color:#858585;
-    font-size:12px;
-    font-weight:900;
-    text-transform:uppercase;
-    letter-spacing:.7px;
-}
-
-.vehicle-head{
-    padding:0 !important;
-    background:#111;
-}
-
-.vehicle-image{
+.result-image img{
     width:100%;
-    height:180px;
+    height:100%;
     object-fit:cover;
-    display:block;
 }
 
-.vehicle-head-info{
-    padding:16px;
-}
-
-.vehicle-head-info h3{
-    font-size:19px;
-    margin-bottom:5px;
-}
-
-.vehicle-head-info p{
-    color:#888;
-    font-size:12px;
-}
-
-.price{
-    color:var(--yellow);
+.result-info h3{
     font-size:20px;
-    font-weight:900;
-    margin-top:8px;
 }
 
-.spec{
-    font-size:15px;
-    font-weight:700;
-}
-
-.spec small{
-    display:block;
-    color:#777;
-    font-size:10px;
-    font-weight:500;
-    margin-top:2px;
-}
-
-.score{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.score-number{
-    width:52px;
-    height:52px;
-    border:3px solid var(--yellow);
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:var(--yellow);
-    font-size:17px;
-    font-weight:900;
-}
-
-.score-text{
+.result-meta{
+    color:#999;
     font-size:12px;
-    color:#aaa;
+    margin:5px 0 10px;
 }
 
-.passport{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    padding:7px 10px;
-    border-radius:4px;
-    background:#1b261e;
-    color:var(--green);
-    font-size:11px;
-    font-weight:900;
-}
-
-.passport.partial{
-    background:#292416;
-    color:var(--yellow);
-}
-
-.tag-list{
+.match-reasons{
     display:flex;
     flex-wrap:wrap;
     gap:6px;
 }
 
-.tag{
-    background:#202020;
+.reason{
     border:1px solid #333;
-    padding:5px 8px;
-    border-radius:4px;
+    background:#191919;
+    color:#ccc;
+    border-radius:20px;
+    padding:4px 9px;
     font-size:10px;
-    color:#bbb;
 }
 
-/* WINNER */
-
-.winner-row{
-    background:#111;
+.score{
+    text-align:center;
+    min-width:80px;
 }
 
-.winner{
-    border:1px solid #3b3200;
-    background:linear-gradient(135deg,#191600,#111);
-    border-radius:8px;
-    padding:16px;
-}
-
-.winner strong{
+.score-number{
+    font-size:30px;
+    font-weight:900;
     color:var(--yellow);
-    display:block;
-    margin-bottom:4px;
 }
 
-.winner p{
-    color:#aaa;
-    font-size:12px;
+.score-label{
+    font-size:9px;
+    color:#888;
+    letter-spacing:1px;
 }
 
-/* VERDICT */
-
-.verdict{
-    margin-top:35px;
-    background:
-        radial-gradient(circle at 90% 10%,rgba(245,196,0,.11),transparent 30%),
-        var(--dark2);
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:30px;
+.result-actions{
+    margin-top:10px;
 }
 
-.verdict-title{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin-bottom:22px;
-}
-
-.verdict-title span{
+.view-btn{
+    display:inline-block;
     background:var(--yellow);
     color:#000;
-    width:38px;
-    height:38px;
+    padding:8px 13px;
+    border-radius:5px;
+    font-size:11px;
+    font-weight:900;
+}
+
+/* WHY MATCH */
+
+.why-match{
+    margin-top:65px;
+}
+
+.why-match h2{
+    text-align:center;
+    font-size:30px;
+    margin-bottom:30px;
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.why-card{
+    background:#111;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:25px;
+}
+
+.why-icon{
+    width:42px;
+    height:42px;
     border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
+    background:#1c1908;
+    color:var(--yellow);
     font-weight:900;
+    margin-bottom:15px;
 }
 
-.verdict-title h2{
-    font-size:22px;
-}
-
-.verdict-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:14px;
-}
-
-.verdict-card{
-    background:#0d0d0d;
-    border:1px solid var(--border);
-    border-radius:8px;
-    padding:18px;
-}
-
-.verdict-card .category{
-    color:#777;
-    font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    font-weight:900;
-    margin-bottom:8px;
-}
-
-.verdict-card h3{
-    font-size:16px;
+.why-card h3{
     margin-bottom:7px;
 }
 
-.verdict-card p{
+.why-card p{
+    color:#999;
+    font-size:13px;
+}
+
+/* DISCLAIMER */
+
+.disclaimer{
+    max-width:1050px;
+    margin:40px auto 80px;
+    padding:0 24px;
+}
+
+.disclaimer-box{
+    border-left:3px solid var(--yellow);
+    background:#111;
+    padding:18px 20px;
     color:#999;
     font-size:12px;
-}
-
-.verdict-card .reason{
-    color:var(--yellow);
-    font-size:11px;
-    font-weight:800;
-    margin-top:10px;
-}
-
-/* ACTIONS */
-
-.actions{
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    margin-top:30px;
-}
-
-.btn{
-    border:1px solid #444;
-    background:#151515;
-    color:white;
-    padding:12px 20px;
-    border-radius:5px;
-    cursor:pointer;
-    font-weight:800;
-}
-
-.btn:hover{
-    border-color:var(--yellow);
-}
-
-.btn.primary{
-    background:var(--yellow);
-    border-color:var(--yellow);
-    color:#000;
-}
-
-/* EMPTY */
-
-.empty{
-    text-align:center;
-    padding:60px 20px;
-    color:#777;
-}
-
-.empty strong{
-    display:block;
-    color:#ddd;
-    font-size:20px;
-    margin-bottom:8px;
 }
 
 /* FOOTER */
 
 footer{
     border-top:1px solid var(--border);
-    background:#060606;
-    padding:45px 20px;
+    background:#050505;
 }
 
 .footer-inner{
-    max-width:1100px;
+    max-width:1400px;
     margin:auto;
-    display:flex;
-    justify-content:space-between;
-    gap:30px;
-}
-
-.footer-brand{
-    max-width:350px;
-}
-
-.footer-brand h3{
-    font-size:20px;
-    margin-bottom:8px;
-}
-
-.footer-brand h3 span{
-    color:var(--yellow);
+    padding:45px 24px;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:40px;
 }
 
 .footer-brand p{
     color:#777;
+    max-width:350px;
+    font-size:13px;
+    margin-top:12px;
+}
+
+.footer-column h4{
+    color:var(--yellow);
     font-size:12px;
+    letter-spacing:1px;
+    margin-bottom:15px;
 }
 
-.footer-links{
-    display:flex;
-    gap:25px;
-    flex-wrap:wrap;
-    align-items:flex-start;
-}
-
-.footer-links a{
+.footer-column a{
+    display:block;
     color:#888;
     font-size:12px;
+    margin:8px 0;
 }
 
-.footer-links a:hover{
-    color:var(--yellow);
+.footer-column a:hover{
+    color:#fff;
 }
 
-.copyright{
-    max-width:1100px;
-    margin:30px auto 0;
-    padding-top:20px;
-    border-top:1px solid #171717;
-    color:#555;
+.footer-bottom{
+    border-top:1px solid var(--border);
+    padding:18px 24px;
+    text-align:center;
+    color:#666;
     font-size:11px;
 }
 
 /* MOBILE */
 
-@media(max-width:900px){
+@media(max-width:1000px){
 
-    .navlinks{
-        display:none;
-        position:absolute;
-        top:76px;
-        left:0;
-        width:100%;
-        background:#0a0a0a;
-        border-bottom:1px solid var(--border);
-        padding:20px;
-        flex-direction:column;
-        align-items:stretch;
+    .nav-links{
+        gap:12px;
     }
 
-    .navlinks.show{
+    .nav-links a{
+        font-size:11px;
+    }
+
+}
+
+@media(max-width:760px){
+
+    .navbar{
+        min-height:68px;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+    .nav-links{
+        position:absolute;
+        top:68px;
+        left:0;
+        right:0;
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+        background:#0b0b0b;
+        border-bottom:1px solid var(--border);
+        padding:15px 20px;
+    }
+
+    .nav-links.open{
         display:flex;
     }
 
-    .navlinks a{
-        padding:10px 0;
+    .nav-links a{
+        padding:12px;
     }
 
-    .menu{
-        display:block;
-        margin-left:auto;
+    .match-card{
+        padding:25px 18px;
     }
 
-    .select-grid{
+    .option-grid,
+    .budget-grid{
         grid-template-columns:1fr;
     }
 
-    .verdict-grid{
-        grid-template-columns:1fr 1fr;
+    .match-result{
+        grid-template-columns:100px 1fr;
+    }
+
+    .result-image{
+        width:100px;
+        height:80px;
+    }
+
+    .score{
+        grid-column:2;
+        text-align:left;
+    }
+
+    .result-actions{
+        margin-top:8px;
+    }
+
+    .why-grid{
+        grid-template-columns:1fr;
     }
 
     .footer-inner{
-        flex-direction:column;
+        grid-template-columns:1fr 1fr;
     }
 }
 
-@media(max-width:550px){
+@media(max-width:500px){
 
     .hero{
-        padding:50px 18px 40px;
+        min-height:390px;
     }
 
-    .container{
-        padding:30px 15px 60px;
+    .hero h1{
+        font-size:40px;
     }
 
-    .selector{
-        padding:18px;
+    .hero p{
+        font-size:15px;
     }
 
-    .selector-top{
-        flex-direction:column;
-        align-items:flex-start;
-    }
-
-    .verdict{
-        padding:20px;
-    }
-
-    .verdict-grid{
+    .match-result{
         grid-template-columns:1fr;
     }
 
-    .actions{
-        flex-direction:column;
+    .result-image{
+        width:100%;
+        height:180px;
     }
 
-    .actions .btn{
-        width:100%;
+    .score{
+        grid-column:auto;
+    }
+
+    .footer-inner{
+        grid-template-columns:1fr;
     }
 }
 </style>
@@ -667,741 +735,1183 @@ footer{
 <body>
 
 <header>
-    <div class="nav">
 
-        <a href="index.html" class="logo">
-            NAUZA <span>TU</span>
-            <small>DIGITAL MOTOR MARKET</small>
-        </a>
+<div class="navbar">
 
-        <button class="menu" onclick="toggleMenu()">☰</button>
+<a href="index.html" class="logo">
+<div class="logo-main">NAUZA TU</div>
+<span class="logo-sub">DIGITAL MOTOR MARKET</span>
+</a>
 
-        <nav class="navlinks" id="navLinks">
-            <a href="index.html">HOME</a>
-            <a href="cars.html">CARS FOR SALE</a>
-            <a href="car-match.html">CAR MATCH</a>
-            <a href="compare.html" class="active">COMPARE</a>
-            <a href="sell.html">SELL YOUR CAR</a>
-            <a href="financing.html">FINANCING</a>
-            <a href="resources.html">RESOURCES</a>
-            <a href="login.html">LOGIN / SIGN UP</a>
-            <a href="sell.html" class="sell-btn">+ POST YOUR CAR</a>
-        </nav>
+<div class="mobile-menu" onclick="toggleMenu()">☰</div>
 
-    </div>
+<nav class="nav-links" id="navLinks">
+
+<a href="index.html">HOME</a>
+<a href="cars.html">CARS FOR SALE</a>
+<a href="car-match.html" class="active">CAR MATCH</a>
+<a href="compare.html">COMPARE</a>
+<a href="sell.html">SELL YOUR CAR</a>
+<a href="resources.html">RESOURCES</a>
+<a href="login.html">LOGIN / SIGN UP</a>
+
+<a href="sell.html" class="post-btn">+ POST YOUR CAR</a>
+
+</nav>
+
+</div>
+
 </header>
 
 
 <section class="hero">
-    <div class="hero-inner">
 
-        <div class="eyebrow">NAUZA TU DECISION TOOL</div>
+<div class="hero-inner">
 
-        <h1>
-            Don't just compare cars.<br>
-            <span>Compare the decision.</span>
-        </h1>
+<div class="hero-label">SMARTER CAR SEARCH</div>
 
-        <p>
-            Put up to three vehicles side by side and see how they stack up
-            on price, specifications, mileage, suitability and overall value.
-        </p>
+<h1>
+Don't know what car to buy?
+<span>We'll help you match.</span>
+</h1>
 
-    </div>
+<p>
+Tell NAUZA TU how you intend to use your car, your budget and what matters most to you. We'll show you marketplace listings that fit your needs.
+</p>
+
+</div>
+
 </section>
 
 
-<main class="container">
+<main class="match-wrapper">
 
-    <section class="selector">
+<div class="progress-area">
 
-        <div class="selector-top">
-            <div>
-                <h2>Select vehicles to compare</h2>
-                <p>Choose two or three vehicles from the marketplace.</p>
-            </div>
-        </div>
+<div class="progress-top">
+<span id="progressText">Step 1 of 5</span>
+<span id="progressPercent">20%</span>
+</div>
 
-        <div class="select-grid">
+<div class="progress-bar">
+<div class="progress-fill" id="progressFill"></div>
+</div>
 
-            <div class="vehicle-selector">
-                <label>Vehicle 1</label>
-
-                <select id="car1" onchange="renderComparison()">
-                    <option value="">Select a vehicle</option>
-                    <option value="vitz">Toyota Vitz 2019</option>
-                    <option value="probox">Toyota Probox 2019</option>
-                    <option value="premio">Toyota Premio 2018</option>
-                    <option value="vezel">Honda Vezel Hybrid 2018</option>
-                    <option value="xtrail">Nissan X-Trail 2019</option>
-                    <option value="noah">Toyota Noah 2019</option>
-                    <option value="harrier">Toyota Harrier 2017</option>
-                </select>
-            </div>
+</div>
 
 
-            <div class="vehicle-selector">
-                <label>Vehicle 2</label>
-
-                <select id="car2" onchange="renderComparison()">
-                    <option value="">Select a vehicle</option>
-                    <option value="vitz">Toyota Vitz 2019</option>
-                    <option value="probox">Toyota Probox 2019</option>
-                    <option value="premio">Toyota Premio 2018</option>
-                    <option value="vezel">Honda Vezel Hybrid 2018</option>
-                    <option value="xtrail">Nissan X-Trail 2019</option>
-                    <option value="noah">Toyota Noah 2019</option>
-                    <option value="harrier">Toyota Harrier 2017</option>
-                </select>
-            </div>
+<div class="match-card" id="matchCard">
 
 
-            <div class="vehicle-selector">
-                <label>Vehicle 3</label>
+<!-- STEP 1 -->
 
-                <select id="car3" onchange="renderComparison()">
-                    <option value="">Select a vehicle</option>
-                    <option value="vitz">Toyota Vitz 2019</option>
-                    <option value="probox">Toyota Probox 2019</option>
-                    <option value="premio">Toyota Premio 2018</option>
-                    <option value="vezel">Honda Vezel Hybrid 2018</option>
-                    <option value="xtrail">Nissan X-Trail 2019</option>
-                    <option value="noah">Toyota Noah 2019</option>
-                    <option value="harrier">Toyota Harrier 2017</option>
-                </select>
-            </div>
+<section class="step active" data-step="1">
 
-        </div>
+<div class="step-number">01 — YOUR NEED</div>
 
-    </section>
+<h2>What are you buying the car for?</h2>
+
+<p class="step-intro">
+Choose the option that best describes your main use.
+</p>
+
+<div class="option-grid">
+
+<div class="option">
+<input type="radio" name="purpose" id="commute" value="commute">
+<label for="commute">
+<div class="option-title">Daily Nairobi Commuting</div>
+<div class="option-description">Work, errands and everyday city driving.</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="purpose" id="family" value="family">
+<label for="family">
+<div class="option-title">Family Use</div>
+<div class="option-description">Space, comfort and everyday family travel.</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="purpose" id="business" value="business">
+<label for="business">
+<div class="option-title">Business / Work</div>
+<div class="option-description">A practical vehicle for work and business.</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="purpose" id="longdistance" value="longdistance">
+<label for="longdistance">
+<div class="option-title">Long Distance</div>
+<div class="option-description">Frequent highway and upcountry travel.</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="purpose" id="offroad" value="offroad">
+<label for="offroad">
+<div class="option-title">Off-Road / Adventure</div>
+<div class="option-description">Rough roads, travel and outdoor use.</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="purpose" id="firstcar" value="firstcar">
+<label for="firstcar">
+<div class="option-title">My First Car</div>
+<div class="option-description">Easy ownership and sensible running costs.</div>
+</label>
+</div>
+
+</div>
+
+<div class="step-buttons">
+<div></div>
+<button class="btn btn-primary" onclick="nextStep()">Continue →</button>
+</div>
+
+</section>
 
 
-    <section id="comparison"></section>
+<!-- STEP 2 -->
+
+<section class="step" data-step="2">
+
+<div class="step-number">02 — YOUR BUDGET</div>
+
+<h2>How much are you looking to spend?</h2>
+
+<p class="step-intro">
+Choose the approximate purchase price you're comfortable with.
+</p>
+
+<div class="budget-grid">
+
+<div class="budget-option">
+<input type="radio" name="budget" id="b1" value="500">
+<label for="b1">Under KSh 500K</label>
+</div>
+
+<div class="budget-option">
+<input type="radio" name="budget" id="b2" value="800">
+<label for="b2">KSh 500K–800K</label>
+</div>
+
+<div class="budget-option">
+<input type="radio" name="budget" id="b3" value="1200">
+<label for="b3">KSh 800K–1.2M</label>
+</div>
+
+<div class="budget-option">
+<input type="radio" name="budget" id="b4" value="2000">
+<label for="b4">KSh 1.2M–2M</label>
+</div>
+
+<div class="budget-option">
+<input type="radio" name="budget" id="b5" value="3000">
+<label for="b5">KSh 2M–3M</label>
+</div>
+
+<div class="budget-option">
+<input type="radio" name="budget" id="b6" value="5000">
+<label for="b6">Above KSh 3M</label>
+</div>
+
+</div>
+
+<div class="step-buttons">
+<button class="btn btn-secondary" onclick="prevStep()">← Back</button>
+<button class="btn btn-primary" onclick="nextStep()">Continue →</button>
+</div>
+
+</section>
 
 
-    <section class="verdict" id="verdict" style="display:none;">
+<!-- STEP 3 -->
 
-        <div class="verdict-title">
-            <span>✓</span>
-            <h2>NAUZA TU Decision Guide</h2>
-        </div>
+<section class="step" data-step="3">
 
-        <div class="verdict-grid" id="verdictGrid"></div>
+<div class="step-number">03 — VEHICLE TYPE</div>
 
-    </section>
+<h2>What type of vehicle suits you?</h2>
+
+<p class="step-intro">
+Pick your preferred body type, or choose no preference.
+</p>
+
+<div class="option-grid">
+
+<div class="option">
+<input type="radio" name="body" id="hatch" value="hatchback">
+<label for="hatch">
+<div class="option-title">City & Compact</div>
+<div class="option-description">Vitz, Demio, Fit, Note and similar cars.</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="body" id="sedan" value="sedan">
+<label for="sedan">
+<div class="option-title">Sedan</div>
+<div class="option-description">Premio, Axio, Corolla and similar cars.</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="body" id="suv" value="suv">
+<label for="suv">
+<div class="option-title">SUV / Crossover</div>
+<div class="option-description">Harrier, X-Trail, RAV4, CX-5 and similar.</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="body" id="fourbyfour" value="4x4">
+<label for="fourbyfour">
+<div class="option-title">4×4 / Pickup</div>
+<div class="option-description">Prado, Land Cruiser, Hilux and similar.</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="body" id="mpv" value="mpv">
+<label for="mpv">
+<div class="option-title">Family / MPV</div>
+<div class="option-description">Noah, Voxy, Serena and similar vehicles.</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="body" id="anybody" value="any">
+<label for="anybody">
+<div class="option-title">No Preference</div>
+<div class="option-description">Show me whatever matches my needs.</div>
+</label>
+</div>
+
+</div>
+
+<div class="step-buttons">
+<button class="btn btn-secondary" onclick="prevStep()">← Back</button>
+<button class="btn btn-primary" onclick="nextStep()">Continue →</button>
+</div>
+
+</section>
 
 
-    <div class="actions">
+<!-- STEP 4 -->
 
-        <button class="btn" onclick="clearComparison()">
-            CLEAR COMPARISON
-        </button>
+<section class="step" data-step="4">
 
-        <a href="cars.html" class="btn primary">
-            BROWSE MORE CARS
-        </a>
+<div class="step-number">04 — FEATURES</div>
 
-    </div>
+<h2>What matters most to you?</h2>
+
+<p class="step-intro">
+Select the features you care about most.
+</p>
+
+<div class="option-grid">
+
+<div class="option">
+<input type="checkbox" name="priority" id="economy" value="economy">
+<label for="economy">
+<div class="option-title">Low Running Costs</div>
+<div class="option-description">Affordable everyday ownership.</div>
+</label>
+</div>
+
+<div class="option">
+<input type="checkbox" name="priority" id="reliable" value="reliability">
+<label for="reliable">
+<div class="option-title">Reliability</div>
+<div class="option-description">A dependable vehicle for regular use.</div>
+</label>
+</div>
+
+<div class="option">
+<input type="checkbox" name="priority" id="space" value="space">
+<label for="space">
+<div class="option-title">Space</div>
+<div class="option-description">Passenger and luggage capacity.</div>
+</label>
+</div>
+
+<div class="option">
+<input type="checkbox" name="priority" id="clearance" value="clearance">
+<label for="clearance">
+<div class="option-title">Ground Clearance</div>
+<div class="option-description">Useful for rough roads and uneven terrain.</div>
+</label>
+</div>
+
+<div class="option">
+<input type="checkbox" name="priority" id="performance" value="performance">
+<label for="performance">
+<div class="option-title">Performance</div>
+<div class="option-description">Power and driving performance.</div>
+</label>
+</div>
+
+<div class="option">
+<input type="checkbox" name="priority" id="resale" value="resale">
+<label for="resale">
+<div class="option-title">Resale Value</div>
+<div class="option-description">Strong demand when you eventually sell.</div>
+</label>
+</div>
+
+</div>
+
+<div class="step-buttons">
+<button class="btn btn-secondary" onclick="prevStep()">← Back</button>
+<button class="btn btn-primary" onclick="nextStep()">Continue →</button>
+</div>
+
+</section>
+
+
+<!-- STEP 5 -->
+
+<section class="step" data-step="5">
+
+<div class="step-number">05 — TRANSMISSION & FUEL</div>
+
+<h2>How do you want the car to drive?</h2>
+
+<p class="step-intro">
+These preferences help us narrow the marketplace results.
+</p>
+
+<div class="option-grid">
+
+<div class="option">
+<input type="radio" name="transmission" id="automatic" value="automatic">
+<label for="automatic">
+<div class="option-title">Automatic</div>
+<div class="option-description">Convenient for city traffic.</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="transmission" id="manual" value="manual">
+<label for="manual">
+<div class="option-title">Manual</div>
+<div class="option-description">Traditional manual driving.</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="transmission" id="anytrans" value="any">
+<label for="anytrans">
+<div class="option-title">No Preference</div>
+<div class="option-description">Either transmission is fine.</div>
+</label>
+</div>
+
+</div>
+
+<br>
+
+<h3 style="margin-bottom:15px;">Fuel preference</h3>
+
+<div class="option-grid">
+
+<div class="option">
+<input type="radio" name="fuel" id="petrol" value="petrol">
+<label for="petrol">
+<div class="option-title">Petrol</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="fuel" id="diesel" value="diesel">
+<label for="diesel">
+<div class="option-title">Diesel</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="fuel" id="hybrid" value="hybrid">
+<label for="hybrid">
+<div class="option-title">Hybrid</div>
+</label>
+</div>
+
+<div class="option">
+<input type="radio" name="fuel" id="anyfuel" value="any">
+<label for="anyfuel">
+<div class="option-title">No Preference</div>
+</label>
+</div>
+
+</div>
+
+<div class="step-buttons">
+<button class="btn btn-secondary" onclick="prevStep()">← Back</button>
+<button class="btn btn-primary" onclick="runMatch()">Find My Matches →</button>
+</div>
+
+</section>
+
+
+<!-- RESULTS -->
+
+<section class="results" id="results">
+
+<div class="result-header">
+
+<div class="small">YOUR NAUZA TU MATCH</div>
+
+<h2>Cars that fit your needs.</h2>
+
+<p>
+These are marketplace listings that best match the preferences you selected.
+</p>
+
+</div>
+
+<div id="resultsList"></div>
+
+<div style="text-align:center;margin-top:30px;">
+
+<a href="cars.html" class="btn btn-secondary">
+Browse All Cars
+</a>
+
+<button class="btn btn-primary" onclick="restartMatch()">
+Start Again
+</button>
+
+</div>
+
+</section>
+
+</div>
 
 </main>
 
 
+<section class="why-match">
+
+<h2>Why use Car Match?</h2>
+
+<div class="why-grid" style="max-width:1050px;margin:auto;padding:0 24px;">
+
+<div class="why-card">
+
+<div class="why-icon">01</div>
+
+<h3>Start with your needs</h3>
+
+<p>
+You don't need to know which model you want. Start with how you intend to use the vehicle.
+</p>
+
+</div>
+
+<div class="why-card">
+
+<div class="why-icon">02</div>
+
+<h3>Compare suitable cars</h3>
+
+<p>
+NAUZA TU can narrow down marketplace listings instead of making you search through everything.
+</p>
+
+</div>
+
+<div class="why-card">
+
+<div class="why-icon">03</div>
+
+<h3>You choose the seller</h3>
+
+<p>
+NAUZA TU is a marketplace. The vehicle is listed by the seller and buyers contact sellers directly.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<div class="disclaimer">
+
+<div class="disclaimer-box">
+
+<strong style="color:#fff;">Important:</strong>
+Car Match is a search and recommendation tool. A match does not mean that NAUZA TU owns, sells, inspects, guarantees or finances the vehicle. Vehicle information comes from marketplace listings and should be independently verified by the buyer before purchase.
+
+</div>
+
+</div>
+
+
 <footer>
 
-    <div class="footer-inner">
+<div class="footer-inner">
 
-        <div class="footer-brand">
+<div class="footer-brand">
 
-            <h3>NAUZA <span>TU</span></h3>
+<div class="logo-main">NAUZA TU</div>
 
-            <p>
-                DIGITAL MOTOR MARKET — a smarter way to discover,
-                compare and connect around vehicles in Kenya.
-            </p>
+<span class="logo-sub">DIGITAL MOTOR MARKET</span>
 
-        </div>
+<p>
+A digital marketplace connecting people looking to buy vehicles with people and businesses listing vehicles for sale in Kenya.
+</p>
 
-        <div class="footer-links">
-            <a href="cars.html">Cars for Sale</a>
-            <a href="car-match.html">Car Match</a>
-            <a href="compare.html">Compare</a>
-            <a href="sell.html">Sell Your Car</a>
-            <a href="financing.html">Financing</a>
-            <a href="resources.html">Resources</a>
-            <a href="contact.html">Contact</a>
-        </div>
+</div>
 
-    </div>
+<div class="footer-column">
 
-    <div class="copyright">
-        © 2026 NAUZA TU DIGITAL MOTOR MARKET. All rights reserved.
-    </div>
+<h4>MARKETPLACE</h4>
+
+<a href="cars.html">Cars for Sale</a>
+<a href="car-match.html">Car Match</a>
+<a href="compare.html">Compare Cars</a>
+<a href="sell.html">Sell Your Car</a>
+
+</div>
+
+<div class="footer-column">
+
+<h4>BUYERS</h4>
+
+<a href="resources.html">Buying Guide</a>
+<a href="resources.html">Inspection Guide</a>
+<a href="resources.html">Buyer Safety</a>
+<a href="resources.html">Ownership Guide</a>
+
+</div>
+
+<div class="footer-column">
+
+<h4>NAUZA TU</h4>
+
+<a href="about.html">About Us</a>
+<a href="contact.html">Contact</a>
+<a href="login.html">Login / Sign Up</a>
+<a href="sell.html">Post Your Car</a>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+© 2026 NAUZA TU DIGITAL MOTOR MARKET. Marketplace platform.
+
+</div>
 
 </footer>
 
 
 <script>
 
-const cars = {
-
-    vitz:{
-        name:"Toyota Vitz",
-        year:2019,
-        price:780000,
-        mileage:"78,000 km",
-        engine:"1.0L",
-        fuel:"Petrol",
-        transmission:"Automatic",
-        body:"Hatchback",
-        drive:"2WD",
-        origin:"Foreign Used",
-        score:88,
-        passport:92,
-        image:"https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg",
-        best:["Nairobi commuting","First-time buyer","Fuel economy"],
-        tags:["Compact","Easy to park","Economical"],
-        finance:15500,
-        economy:9.1,
-        family:5,
-        business:5,
-        city:10
-    },
-
-    probox:{
-        name:"Toyota Probox",
-        year:2019,
-        price:1430000,
-        mileage:"91,000 km",
-        engine:"1.5L",
-        fuel:"Petrol",
-        transmission:"Automatic",
-        body:"Wagon",
-        drive:"2WD",
-        origin:"Foreign Used",
-        score:86,
-        passport:89,
-        image:"https://www.motorhub.co.ke/assets/images/CarPhotos/Large_195475067cfea203b52f831f2a3ecddb_10122024032419.JPG",
-        best:["Business use","Cargo","High daily usage"],
-        tags:["Workhorse","Practical","Large cargo"],
-        finance:28500,
-        economy:8.0,
-        family:6,
-        business:10,
-        city:8
-    },
-
-    premio:{
-        name:"Toyota Premio",
-        year:2018,
-        price:1180000,
-        mileage:"83,000 km",
-        engine:"1.8L",
-        fuel:"Petrol",
-        transmission:"Automatic",
-        body:"Sedan",
-        drive:"2WD",
-        origin:"Foreign Used",
-        score:90,
-        passport:94,
-        image:"https://pbs.twimg.com/media/HEp95QQXoAA7kuH.jpg",
-        best:["Comfort","Executive use","Longer trips"],
-        tags:["Comfortable","Refined","Reliable"],
-        finance:23500,
-        economy:7.5,
-        family:8,
-        business:7,
-        city:8
-    },
-
-    vezel:{
-        name:"Honda Vezel Hybrid",
-        year:2018,
-        price:1380000,
-        mileage:"76,000 km",
-        engine:"1.5L Hybrid",
-        fuel:"Hybrid",
-        transmission:"Automatic",
-        body:"SUV / Crossover",
-        drive:"2WD",
-        origin:"Foreign Used",
-        score:92,
-        passport:91,
-        image:"https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/vehicles/thumbnails/IMG-20250827-WA0172.jpg",
-        best:["Fuel economy","Urban SUV","Modern features"],
-        tags:["Hybrid","SUV","Economical"],
-        finance:27500,
-        economy:10,
-        family:8,
-        business:6,
-        city:9
-    },
-
-    xtrail:{
-        name:"Nissan X-Trail",
-        year:2019,
-        price:1850000,
-        mileage:"88,000 km",
-        engine:"2.0L",
-        fuel:"Petrol",
-        transmission:"Automatic",
-        body:"SUV",
-        drive:"2WD",
-        origin:"Foreign Used",
-        score:87,
-        passport:88,
-        image:"https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/vehicles/thumbnails/IMG-20250827-WA0172.jpg",
-        best:["Family","Space","Mixed driving"],
-        tags:["SUV","Family","Ground clearance"],
-        finance:36500,
-        economy:6.5,
-        family:10,
-        business:6,
-        city:6
-    },
-
-    noah:{
-        name:"Toyota Noah",
-        year:2019,
-        price:2050000,
-        mileage:"84,000 km",
-        engine:"2.0L",
-        fuel:"Petrol",
-        transmission:"Automatic",
-        body:"MPV",
-        drive:"2WD",
-        origin:"Foreign Used",
-        score:89,
-        passport:90,
-        image:"https://d20plav1k4kerc.cloudfront.net/media/uploads/assessment/prescreeningimage/2fe2c5fc-dc9b-4a28-b766-265dce54f4b4.jpeg",
-        best:["Large family","Group travel","Tourism"],
-        tags:["7–8 seats","Spacious","Family"],
-        finance:40500,
-        economy:6,
-        family:10,
-        business:8,
-        city:5
-    },
-
-    harrier:{
-        name:"Toyota Harrier",
-        year:2017,
-        price:2380000,
-        mileage:"96,000 km",
-        engine:"2.0L",
-        fuel:"Petrol",
-        transmission:"Automatic",
-        body:"SUV",
-        drive:"2WD",
-        origin:"Foreign Used",
-        score:91,
-        passport:93,
-        image:"https://d20plav1k4kerc.cloudfront.net/media/uploads/assessment/prescreeningimage/9a99003a-81ad-48f5-bf4b-c7d949e4e509.jpeg",
-        best:["Premium comfort","Executive use","Family"],
-        tags:["Premium","SUV","Comfort"],
-        finance:47000,
-        economy:6,
-        family:9,
-        business:7,
-        city:7
-    }
-
-};
-
-
-function money(value){
-
-    return "KES " + value.toLocaleString("en-KE");
-
-}
-
-
-function getSelected(){
-
-    return [
-        document.getElementById("car1").value,
-        document.getElementById("car2").value,
-        document.getElementById("car3").value
-    ]
-    .filter(Boolean)
-    .map(id => cars[id]);
-
-}
-
-
-function renderComparison(){
-
-    const selected = getSelected();
-
-    const area = document.getElementById("comparison");
-    const verdict = document.getElementById("verdict");
-
-    if(selected.length < 2){
-
-        area.innerHTML = `
-            <div class="empty">
-                <strong>Choose at least two vehicles</strong>
-                Select two or three vehicles above to start your comparison.
-            </div>
-        `;
-
-        verdict.style.display="none";
-
-        return;
-    }
-
-
-    const rows = [
-
-        {
-            label:"Vehicle",
-            render:c => `
-                <div class="vehicle-head">
-                    <img
-                        class="vehicle-image"
-                        src="${c.image}"
-                        alt="${c.name}"
-                        onerror="this.style.display='none'"
-                    >
-
-                    <div class="vehicle-head-info">
-                        <h3>${c.name}</h3>
-                        <p>${c.year} • ${c.body}</p>
-                        <div class="price">${money(c.price)}</div>
-                    </div>
-                </div>
-            `
-        },
-
-        {
-            label:"NAUZA TU Score",
-            render:c => `
-                <div class="score">
-                    <div class="score-number">${c.score}</div>
-                    <div class="score-text">
-                        Overall marketplace<br>
-                        decision score
-                    </div>
-                </div>
-            `
-        },
-
-        {
-            label:"Vehicle Passport",
-            render:c => `
-                <span class="passport ${c.passport < 90 ? 'partial':''}">
-                    ${c.passport}% COMPLETE
-                </span>
-            `
-        },
-
-        {
-            label:"Year",
-            key:"year"
-        },
-
-        {
-            label:"Mileage",
-            key:"mileage"
-        },
-
-        {
-            label:"Engine",
-            key:"engine"
-        },
-
-        {
-            label:"Fuel",
-            key:"fuel"
-        },
-
-        {
-            label:"Transmission",
-            key:"transmission"
-        },
-
-        {
-            label:"Body",
-            key:"body"
-        },
-
-        {
-            label:"Drivetrain",
-            key:"drive"
-        },
-
-        {
-            label:"Usage",
-            key:"origin"
-        },
-
-        {
-            label:"Estimated Finance",
-            render:c => `
-                <div class="spec">
-                    ${money(c.finance)}
-                    <small>Illustrative monthly estimate</small>
-                </div>
-            `
-        },
-
-        {
-            label:"Best For",
-            render:c => `
-                <div class="tag-list">
-                    ${c.best.map(x=>`<span class="tag">${x}</span>`).join("")}
-                </div>
-            `
-        }
-
-    ];
-
-
-    let html = `<div class="compare-area">
-        <div class="compare-table">`;
-
-
-    rows.forEach(row => {
-
-        html += `<div class="compare-row">`;
-
-        html += `<div class="label-cell">${row.label}</div>`;
-
-        selected.forEach(c => {
-
-            let content="";
-
-            if(row.render){
-                content=row.render(c);
-            }else{
-                content=`
-                    <div class="spec">
-                        ${c[row.key]}
-                    </div>
-                `;
-            }
-
-            html += `<div>${content}</div>`;
-
-        });
-
-        while(selected.length < 3){
-
-            html += `<div style="background:#0d0d0d;"></div>`;
-
-            break;
-
-        }
-
-        html += `</div>`;
-
-    });
-
-
-    html += `
-        <div class="compare-row winner-row">
-            <div class="label-cell">NAUZA TU QUICK VERDICT</div>
-    `;
-
-
-    selected.forEach(c => {
-
-        html += `
-            <div>
-                <div class="winner">
-                    <strong>${getBestSingle(c)}</strong>
-                    <p>${getSingleReason(c)}</p>
-                </div>
-            </div>
-        `;
-
-    });
-
-
-    if(selected.length < 3){
-        html += `<div></div>`;
-    }
-
-
-    html += `
-        </div>
-        </div>
-        </div>
-    `;
-
-
-    area.innerHTML=html;
-
-    renderVerdict(selected);
-
-}
-
-
-function getBestSingle(c){
-
-    if(c.city >= 9) return "Strong Nairobi choice";
-
-    if(c.business >= 9) return "Strong business choice";
-
-    if(c.family >= 9) return "Strong family choice";
-
-    if(c.economy >= 9) return "Strong economy profile";
-
-    return "Balanced choice";
-
-}
-
-
-function getSingleReason(c){
-
-    if(c.city >= 9)
-        return "Compact and practical for frequent city driving.";
-
-    if(c.business >= 9)
-        return "Useful for high-mileage and commercial-oriented use.";
-
-    if(c.family >= 9)
-        return "Prioritises space, passengers and everyday practicality.";
-
-    if(c.economy >= 9)
-        return "Its fuel-efficiency profile is one of its strongest advantages.";
-
-    return "A balanced combination of comfort, practicality and ownership appeal.";
-
-}
-
-
-function renderVerdict(selected){
-
-    const grid=document.getElementById("verdictGrid");
-
-    const bestValue=[...selected]
-        .sort((a,b)=>(b.score/b.price)-(a.score/a.price))[0];
-
-    const bestCity=[...selected]
-        .sort((a,b)=>b.city-a.city)[0];
-
-    const bestFamily=[...selected]
-        .sort((a,b)=>b.family-a.family)[0];
-
-    const bestBusiness=[...selected]
-        .sort((a,b)=>b.business-a.business)[0];
-
-
-    grid.innerHTML=`
-
-        <div class="verdict-card">
-
-            <div class="category">Best Value</div>
-
-            <h3>${bestValue.name}</h3>
-
-            <p>
-                Strongest balance of asking price,
-                overall score and practical ownership profile.
-            </p>
-
-            <div class="reason">
-                ${money(bestValue.price)}
-            </div>
-
-        </div>
-
-
-        <div class="verdict-card">
-
-            <div class="category">Best for Nairobi</div>
-
-            <h3>${bestCity.name}</h3>
-
-            <p>
-                Most suitable profile for frequent
-                urban driving and everyday city use.
-            </p>
-
-            <div class="reason">
-                City score: ${bestCity.city}/10
-            </div>
-
-        </div>
-
-
-        <div class="verdict-card">
-
-            <div class="category">Best for Family</div>
-
-            <h3>${bestFamily.name}</h3>
-
-            <p>
-                Highest family-use score based on
-                space, passenger practicality and comfort.
-            </p>
-
-            <div class="reason">
-                Family score: ${bestFamily.family}/10
-            </div>
-
-        </div>
-
-
-        <div class="verdict-card">
-
-            <div class="category">Best for Business</div>
-
-            <h3>${bestBusiness.name}</h3>
-
-            <p>
-                Strongest profile for practical,
-                frequent-use and business-oriented driving.
-            </p>
-
-            <div class="reason">
-                Business score: ${bestBusiness.business}/10
-            </div>
-
-        </div>
-
-    `;
-
-    document.getElementById("verdict").style.display="block";
-
-}
-
-
-function clearComparison(){
-
-    document.getElementById("car1").value="";
-    document.getElementById("car2").value="";
-    document.getElementById("car3").value="";
-
-    document.getElementById("comparison").innerHTML=`
-        <div class="empty">
-            <strong>Choose at least two vehicles</strong>
-            Select two or three vehicles above to start your comparison.
-        </div>
-    `;
-
-    document.getElementById("verdict").style.display="none";
-
-}
-
+/* MOBILE MENU */
 
 function toggleMenu(){
 
-    document.getElementById("navLinks").classList.toggle("show");
+    document.getElementById("navLinks").classList.toggle("open");
 
 }
 
 
-document.addEventListener("DOMContentLoaded",()=>{
+/* MATCH STEPS */
 
-    document.getElementById("comparison").innerHTML=`
-        <div class="empty">
-            <strong>Ready to compare?</strong>
-            Select two or three vehicles above.
-        </div>
-    `;
+let currentStep = 1;
 
-});
+const totalSteps = 5;
+
+function updateProgress(){
+
+    const percent = currentStep * 20;
+
+    document.getElementById("progressFill").style.width = percent + "%";
+
+    document.getElementById("progressText").textContent =
+        "Step " + currentStep + " of " + totalSteps;
+
+    document.getElementById("progressPercent").textContent =
+        percent + "%";
+
+}
+
+
+function showStep(){
+
+    document.querySelectorAll(".step").forEach(step => {
+
+        step.classList.remove("active");
+
+        if(Number(step.dataset.step) === currentStep){
+
+            step.classList.add("active");
+
+        }
+
+    });
+
+    updateProgress();
+
+}
+
+
+function validateStep(){
+
+    if(currentStep === 1){
+
+        return document.querySelector(
+            'input[name="purpose"]:checked'
+        );
+
+    }
+
+    if(currentStep === 2){
+
+        return document.querySelector(
+            'input[name="budget"]:checked'
+        );
+
+    }
+
+    if(currentStep === 3){
+
+        return document.querySelector(
+            'input[name="body"]:checked'
+        );
+
+    }
+
+    if(currentStep === 4){
+
+        return document.querySelectorAll(
+            'input[name="priority"]:checked'
+        ).length > 0;
+
+    }
+
+    if(currentStep === 5){
+
+        return document.querySelector(
+            'input[name="transmission"]:checked'
+        ) &&
+        document.querySelector(
+            'input[name="fuel"]:checked'
+        );
+
+    }
+
+}
+
+
+function nextStep(){
+
+    if(!validateStep()){
+
+        alert("Please select an option before continuing.");
+
+        return;
+
+    }
+
+    if(currentStep < totalSteps){
+
+        currentStep++;
+
+        showStep();
+
+        window.scrollTo({
+            top:document.querySelector(".match-wrapper").offsetTop - 90,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+function prevStep(){
+
+    if(currentStep > 1){
+
+        currentStep--;
+
+        showStep();
+
+    }
+
+}
+
+
+/* DEMO MARKETPLACE INVENTORY */
+
+const vehicles = [
+
+{
+    id:"vitz-001",
+    name:"Toyota Vitz",
+    price:680000,
+    year:2017,
+    mileage:82000,
+    body:"hatchback",
+    fuel:"petrol",
+    transmission:"automatic",
+    image:"https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg",
+    reasons:["City friendly","Low running costs","Automatic"],
+    score:0
+},
+
+{
+    id:"probox-001",
+    name:"Toyota Probox",
+    price:850000,
+    year:2016,
+    mileage:118000,
+    body:"mpv",
+    fuel:"petrol",
+    transmission:"automatic",
+    image:"https://www.motorhub.co.ke/assets/images/CarPhotos/Large_195475067cfea203b52f831f2a3ecddb_10122024032419.JPG",
+    reasons:["Business use","Practical","Reliable"],
+    score:0
+},
+
+{
+    id:"premio-001",
+    name:"Toyota Premio",
+    price:1150000,
+    year:2016,
+    mileage:96000,
+    body:"sedan",
+    fuel:"petrol",
+    transmission:"automatic",
+    image:"https://pbs.twimg.com/media/HEp95QQXoAA7kuH.jpg",
+    reasons:["Comfort","Resale","Automatic"],
+    score:0
+},
+
+{
+    id:"vezel-001",
+    name:"Honda Vezel Hybrid",
+    price:1380000,
+    year:2018,
+    mileage:74000,
+    body:"suv",
+    fuel:"hybrid",
+    transmission:"automatic",
+    image:"https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/vehicles/thumbnails/IMG-20250827-WA0172.jpg",
+    reasons:["Hybrid","SUV","Fuel efficient"],
+    score:0
+},
+
+{
+    id:"xtrail-001",
+    name:"Nissan X-Trail",
+    price:1750000,
+    year:2018,
+    mileage:91000,
+    body:"suv",
+    fuel:"petrol",
+    transmission:"automatic",
+    image:"https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/vehicles/thumbnails/IMG-20250827-WA0172.jpg",
+    reasons:["Family","Ground clearance","SUV"],
+    score:0
+},
+
+{
+    id:"noah-001",
+    name:"Toyota Noah",
+    price:1950000,
+    year:2019,
+    mileage:68000,
+    body:"mpv",
+    fuel:"petrol",
+    transmission:"automatic",
+    image:"https://d20plav1k4kerc.cloudfront.net/media/uploads/assessment/prescreeningimage/2fe2c5fc-dc9b-4a28-b766-265dce54f4b4.jpeg",
+    reasons:["Family space","Comfort","Automatic"],
+    score:0
+},
+
+{
+    id:"harrier-001",
+    name:"Toyota Harrier",
+    price:2200000,
+    year:2017,
+    mileage:88000,
+    body:"suv",
+    fuel:"petrol",
+    transmission:"automatic",
+    image:"https://d20plav1k4kerc.cloudfront.net/media/uploads/assessment/prescreeningimage/9a99003a-81ad-48f5-bf4b-c7d949e4e509.jpeg",
+    reasons:["Premium","Comfort","SUV"],
+    score:0
+},
+
+{
+    id:"axio-001",
+    name:"Toyota Corolla Axio",
+    price:980000,
+    year:2017,
+    mileage:99000,
+    body:"sedan",
+    fuel:"petrol",
+    transmission:"automatic",
+    image:"https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg",
+    reasons:["Economical","Reliable","Resale"],
+    score:0
+},
+
+{
+    id:"demio-001",
+    name:"Mazda Demio",
+    price:720000,
+    year:2018,
+    mileage:79000,
+    body:"hatchback",
+    fuel:"petrol",
+    transmission:"automatic",
+    image:"https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg",
+    reasons:["City friendly","Economical","Automatic"],
+    score:0
+},
+
+{
+    id:"hilux-001",
+    name:"Toyota Hilux",
+    price:3100000,
+    year:2018,
+    mileage:125000,
+    body:"4x4",
+    fuel:"diesel",
+    transmission:"manual",
+    image:"https://autoskenya.s3.amazonaws.com/uploads/picture/url/224244/toyota-vitz-nairobi-nairobi-21735.jpg",
+    reasons:["Work","4×4","Ground clearance"],
+    score:0
+}
+
+];
+
+
+/* MATCH ENGINE */
+
+function runMatch(){
+
+    if(!validateStep()){
+
+        alert("Please select both transmission and fuel preference.");
+
+        return;
+
+    }
+
+    const purpose =
+        document.querySelector('input[name="purpose"]:checked').value;
+
+    const budget =
+        Number(document.querySelector('input[name="budget"]:checked').value);
+
+    const body =
+        document.querySelector('input[name="body"]:checked').value;
+
+    const transmission =
+        document.querySelector('input[name="transmission"]:checked').value;
+
+    const fuel =
+        document.querySelector('input[name="fuel"]:checked').value;
+
+    const priorities =
+        Array.from(
+            document.querySelectorAll('input[name="priority"]:checked')
+        ).map(item => item.value);
+
+
+    vehicles.forEach(vehicle => {
+
+        let score = 0;
+
+        /* BUDGET */
+
+        if(vehicle.price <= budget * 1000){
+
+            score += 30;
+
+        }
+        else if(vehicle.price <= (budget * 1000) * 1.15){
+
+            score += 15;
+
+        }
+
+
+        /* BODY */
+
+        if(body === "any" || vehicle.body === body){
+
+            score += 20;
+
+        }
+
+
+        /* TRANSMISSION */
+
+        if(transmission === "any" ||
+           vehicle.transmission === transmission){
+
+            score += 15;
+
+        }
+
+
+        /* FUEL */
+
+        if(fuel === "any" ||
+           vehicle.fuel === fuel){
+
+            score += 15;
+
+        }
+
+
+        /* PURPOSE */
+
+        if(purpose === "commute" &&
+           ["hatchback","sedan"].includes(vehicle.body)){
+
+            score += 10;
+
+        }
+
+        if(purpose === "family" &&
+           ["mpv","suv"].includes(vehicle.body)){
+
+            score += 10;
+
+        }
+
+        if(purpose === "business" &&
+           ["mpv","4x4"].includes(vehicle.body)){
+
+            score += 10;
+
+        }
+
+        if(purpose === "longdistance" &&
+           ["sedan","suv","mpv"].includes(vehicle.body)){
+
+            score += 10;
+
+        }
+
+        if(purpose === "offroad" &&
+           ["suv","4x4"].includes(vehicle.body)){
+
+            score += 10;
+
+        }
+
+        if(purpose === "firstcar" &&
+           ["hatchback","sedan"].includes(vehicle.body)){
+
+            score += 10;
+
+        }
+
+
+        /* PRIORITIES */
+
+        priorities.forEach(priority => {
+
+            if(priority === "economy" &&
+               ["hatchback","sedan"].includes(vehicle.body)){
+
+                score += 3;
+
+            }
+
+            if(priority === "space" &&
+               ["mpv","suv"].includes(vehicle.body)){
+
+                score += 3;
+
+            }
+
+            if(priority === "clearance" &&
+               ["suv","4x4"].includes(vehicle.body)){
+
+                score += 3;
+
+            }
+
+            if(priority === "reliability" &&
+               vehicle.name.includes("Toyota")){
+
+                score += 3;
+
+            }
+
+            if(priority === "resale" &&
+               vehicle.name.includes("Toyota")){
+
+                score += 3;
+
+            }
+
+            if(priority === "performance" &&
+               ["suv","4x4"].includes(vehicle.body)){
+
+                score += 3;
+
+            }
+
+        });
+
+
+        vehicle.score = Math.min(99,score);
+
+    });
+
+
+    const matches = [...vehicles]
+        .sort((a,b) => b.score - a.score)
+        .slice(0,6);
+
+
+    displayResults(matches);
+
+}
+
+
+function displayResults(matches){
+
+    document.querySelectorAll(".step").forEach(step =>
+        step.classList.remove("active")
+    );
+
+    document.getElementById("results").classList.add("active");
+
+    document.querySelector(".progress-area").style.display = "none";
+
+    const container =
+        document.getElementById("resultsList");
+
+    container.innerHTML = "";
+
+    matches.forEach(vehicle => {
+
+        const reasons =
+            vehicle.reasons.map(reason =>
+                `<span class="reason">${reason}</span>`
+            ).join("");
+
+        container.innerHTML += `
+
+        <article class="match-result">
+
+            <div class="result-image">
+
+                <img
+                    src="${vehicle.image}"
+                    alt="${vehicle.name}"
+                    loading="lazy"
+                >
+
+            </div>
+
+            <div class="result-info">
+
+                <h3>${vehicle.name}</h3>
+
+                <div class="result-meta">
+
+                    KSh ${vehicle.price.toLocaleString()}
+                    &nbsp; • &nbsp;
+                    ${vehicle.year}
+                    &nbsp; • &nbsp;
+                    ${vehicle.mileage.toLocaleString()} km
+                    &nbsp; • &nbsp;
+                    ${vehicle.transmission}
+
+                </div>
+
+                <div class="match-reasons">
+                    ${reasons}
+                </div>
+
+                <div class="result-actions">
+
+                    <a
+                        href="car-details.html?id=${vehicle.id}"
+                        class="view-btn"
+                    >
+                        VIEW LISTING →
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="score">
+
+                <div class="score-number">
+                    ${vehicle.score}%
+                </div>
+
+                <div class="score-label">
+                    MATCH
+                </div>
+
+            </div>
+
+        </article>
+
+        `;
+
+    });
+
+    window.scrollTo({
+        top:document.querySelector(".match-wrapper").offsetTop - 90,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* RESTART */
+
+function restartMatch(){
+
+    document.querySelectorAll(
+        'input[type="radio"], input[type="checkbox"]'
+    ).forEach(input => {
+
+        input.checked = false;
+
+    });
+
+    currentStep = 1;
+
+    document.getElementById("results")
+        .classList.remove("active");
+
+    document.querySelector(".progress-area")
+        .style.display = "block";
+
+    showStep();
+
+    window.scrollTo({
+        top:document.querySelector(".match-wrapper").offsetTop - 90,
+        behavior:"smooth"
+    });
+
+}
+
+updateProgress();
 
 </script>
 
