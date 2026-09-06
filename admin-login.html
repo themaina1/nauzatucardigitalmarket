@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nauza Tu | Administrator Login</title>
+
+    <meta name="description"
+          content="Secure administrator login for Nauza Tu Digital Motor Market.">
+
+    <meta name="robots" content="noindex, nofollow">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.72),
+                    rgba(0, 0, 0, 0.72)
+                ),
+                url("images/kenya-car-market.jpg") center/cover fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .login-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 38px 32px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        .brand {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .brand-icon {
+            width: 68px;
+            height: 68px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: #111827;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .brand h1 {
+            margin: 0;
+            color: #111827;
+            font-size: 29px;
+            line-height: 1.2;
+        }
+
+        .brand p {
+            margin: 7px 0 0;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .login-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .login-title h2 {
+            margin: 0 0 7px;
+            color: #111827;
+            font-size: 23px;
+        }
+
+        .login-title p {
+            margin: 0;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #374151;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            background: #ffffff;
+            color: #111827;
+            font-size: 16px;
+            outline: none;
+            transition: 0.2s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #111827;
+            box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.08);
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-wrapper input {
+            padding-right: 80px;
+        }
+
+        .show-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: transparent;
+            color: #4b5563;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 7px;
+        }
+
+        .show-password:hover {
+            color: #111827;
+        }
+
+        .login-button {
+            width: 100%;
+            margin-top: 5px;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #111827;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .login-button:hover {
+            background: #000000;
+            transform: translateY(-1px);
+        }
+
+        .login-button:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .message {
+            display: none;
+            margin-top: 18px;
+            padding: 13px 14px;
+            border-radius: 9px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .message.error {
+            display: block;
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
+        .message.success {
+            display: block;
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 22px;
+            color: #4b5563;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            color: #111827;
+        }
+
+        .security-notice {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .footer {
+            text-align: center;
+            color: rgba(255,255,255,0.75);
+            font-size: 12px;
+            margin-top: 18px;
+        }
+
+        @media (max-width: 500px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .login-card {
+                padding: 30px 22px;
+            }
+
+            .brand h1 {
+                font-size: 26px;
+            }
+
+            .login-title h2 {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <div class="login-card">
+
+        <!-- BRAND -->
+        <div class="brand">
+
+            <div class="brand-icon">
+                NT
+            </div>
+
+            <h1>Nauza Tu</h1>
+
+            <p>
+                Digital Motor Market
+            </p>
+
+        </div>
+
+
+        <!-- LOGIN TITLE -->
+        <div class="login-title">
+
+            <h2>Administrator Login</h2>
+
+            <p>
+                Secure access to your marketplace dashboard
+            </p>
+
+        </div>
+
+
+        <!-- LOGIN FORM -->
+        <form id="loginForm">
+
+            <div class="form-group">
+
+                <label for="email">
+                    Administrator Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your admin email"
+                    autocomplete="username"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <div class="password-wrapper">
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="show-password"
+                        id="showPassword"
+                    >
+                        SHOW
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-button"
+                id="loginButton"
+            >
+                Login to Admin Dashboard
+            </button>
+
+        </form>
+
+
+        <!-- MESSAGE -->
+        <div
+            id="message"
+            class="message"
+        ></div>
+
+
+        <!-- BACK TO WEBSITE -->
+        <a
+            href="index.html"
+            class="back-link"
+        >
+            ← Back to Nauza Tu
+        </a>
+
+
+        <!-- SECURITY -->
+        <div class="security-notice">
+
+            🔒 Restricted administrator area<br>
+
+            Only authorized Nauza Tu administrators can access
+            the marketplace management system.
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+
+        © <span id="year"></span> Nauza Tu Digital Motor Market
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     SUPABASE JAVASCRIPT LIBRARY
+     ========================================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+/* =========================================================
+   NAUZA TU — SUPABASE CONFIGURATION
+   =========================================================
+
+   Replace ONLY these two values.
+
+   Get them from:
+
+   Supabase
+   → Project Settings
+   → API Keys
+
+   IMPORTANT:
+   Use the Project URL and Publishable Key.
+
+   NEVER put a secret/service_role key here.
+   ========================================================= */
+
+
+const SUPABASE_URL =
+    "https://hoogdxegjomtsvaddkwk.supabase.co/rest/v1/";
+
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "https://hoogdxegjomtsvaddkwk.supabase.co/rest/v1/";
+
+
+/* =========================================================
+   CREATE SUPABASE CLIENT
+   ========================================================= */
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+/* =========================================================
+   PAGE ELEMENTS
+   ========================================================= */
+
+const loginForm =
+    document.getElementById("loginForm");
+
+const emailInput =
+    document.getElementById("email");
+
+const passwordInput =
+    document.getElementById("password");
+
+const loginButton =
+    document.getElementById("loginButton");
+
+const messageBox =
+    document.getElementById("message");
+
+const showPasswordButton =
+    document.getElementById("showPassword");
+
+const yearElement =
+    document.getElementById("year");
+
+
+/* =========================================================
+   CURRENT YEAR
+   ========================================================= */
+
+yearElement.textContent =
+    new Date().getFullYear();
+
+
+/* =========================================================
+   SHOW / HIDE PASSWORD
+   ========================================================= */
+
+showPasswordButton.addEventListener(
+    "click",
+    function () {
+
+        if (passwordInput.type === "password") {
+
+            passwordInput.type = "text";
+
+            showPasswordButton.textContent =
+                "HIDE";
+
+        } else {
+
+            passwordInput.type = "password";
+
+            showPasswordButton.textContent =
+                "SHOW";
+        }
+
+    }
+);
+
+
+/* =========================================================
+   DISPLAY MESSAGE
+   ========================================================= */
+
+function showMessage(text, type) {
+
+    messageBox.textContent = text;
+
+    messageBox.className =
+        "message " + type;
+
+}
+
+
+/* =========================================================
+   CLEAR MESSAGE
+   ========================================================= */
+
+function clearMessage() {
+
+    messageBox.textContent = "";
+
+    messageBox.className =
+        "message";
+
+}
+
+
+/* =========================================================
+   CHECK IF USER IS ALREADY LOGGED IN
+   ========================================================= */
+
+async function checkExistingSession() {
+
+    try {
+
+        const {
+            data: {
+                session
+            }
+        } = await supabaseClient.auth.getSession();
+
+
+        if (!session) {
+            return;
+        }
+
+
+        /*
+         * Check whether the logged-in account
+         * is an active Nauza Tu administrator.
+         */
+
+        const {
+            data: adminUser,
+            error
+        } = await supabaseClient
+            .from("admin_users")
+            .select("id, email, full_name, role, active")
+            .eq(
+                "email",
+                session.user.email
+            )
+            .eq(
+                "active",
+                true
+            )
+            .eq(
+                "role",
+                "admin"
+            )
+            .maybeSingle();
+
+
+        if (error) {
+
+            console.error(
+                "Admin verification error:",
+                error
+            );
+
+            return;
+        }
+
+
+        if (adminUser) {
+
+            window.location.href =
+                "admin-dashboard.html";
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Session check error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+loginForm.addEventListener(
+    "submit",
+    async function (event) {
+
+        event.preventDefault();
+
+        clearMessage();
+
+
+        const email =
+            emailInput.value.trim();
+
+        const password =
+            passwordInput.value;
+
+
+        if (!email || !password) {
+
+            showMessage(
+                "Please enter your email and password.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        loginButton.disabled = true;
+
+        loginButton.textContent =
+            "Signing in...";
+
+
+        try {
+
+            /*
+             * Authenticate with Supabase.
+             */
+
+            const {
+                data,
+                error
+            } = await supabaseClient.auth.signInWithPassword({
+
+                email: email,
+
+                password: password
+
+            });
+
+
+            if (error) {
+
+                throw error;
+
+            }
+
+
+            if (!data || !data.user) {
+
+                throw new Error(
+                    "Login failed. Please try again."
+                );
+
+            }
+
+
+            /*
+             * Check administrator status.
+             */
+
+            const {
+                data: adminUser,
+                error: adminError
+            } = await supabaseClient
+                .from("admin_users")
+                .select(
+                    "id, email, full_name, role, active"
+                )
+                .eq(
+                    "email",
+                    data.user.email
+                )
+                .eq(
+                    "active",
+                    true
+                )
+                .eq(
+                    "role",
+                    "admin"
+                )
+                .maybeSingle();
+
+
+            if (adminError) {
+
+                console.error(
+                    "Administrator verification error:",
+                    adminError
+                );
+
+
+                await supabaseClient.auth.signOut();
+
+
+                throw new Error(
+                    "Your password was accepted, but administrator verification failed."
+                );
+
+            }
+
+
+            if (!adminUser) {
+
+                await supabaseClient.auth.signOut();
+
+
+                throw new Error(
+                    "This account is not registered as a Nauza Tu administrator."
+                );
+
+            }
+
+
+            /*
+             * Everything is correct.
+             */
+
+            showMessage(
+                "Login successful. Opening your administrator dashboard...",
+                "success"
+            );
+
+
+            loginButton.textContent =
+                "Opening Dashboard...";
+
+
+            setTimeout(
+                function () {
+
+                    window.location.href =
+                        "admin-dashboard.html";
+
+                },
+                800
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "Login error:",
+                error
+            );
+
+
+            let errorMessage =
+                "Unable to sign in. Please check your email and password.";
+
+
+            /*
+             * Give useful messages for common
+             * Supabase authentication errors.
+             */
+
+            if (
+                error &&
+                error.message
+            ) {
+
+                if (
+                    error.message
+                        .toLowerCase()
+                        .includes("invalid login credentials")
+                ) {
+
+                    errorMessage =
+                        "Incorrect email or password.";
+
+                } else if (
+                    error.message
+                        .toLowerCase()
+                        .includes("email not confirmed")
+                ) {
+
+                    errorMessage =
+                        "Your email has not been confirmed. Confirm the account in Supabase Authentication first.";
+
+                } else if (
+                    error.message
+                        .toLowerCase()
+                        .includes("failed")
+                ) {
+
+                    errorMessage =
+                        error.message;
+
+                } else {
+
+                    errorMessage =
+                        error.message;
+                }
+
+            }
+
+
+            showMessage(
+                errorMessage,
+                "error"
+            );
+
+
+            loginButton.disabled = false;
+
+            loginButton.textContent =
+                "Login to Admin Dashboard";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   START SESSION CHECK
+   ========================================================= */
+
+checkExistingSession();
+
+</script>
+
+</body>
+</html>
