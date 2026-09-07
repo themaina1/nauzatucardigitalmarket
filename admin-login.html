@@ -1,283 +1,398 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Nauza Tu | Administrator Login</title>
+<title>Nauza Tu | Administrator Login</title>
 
-    <meta name="description"
-          content="Secure administrator login for Nauza Tu Digital Motor Market.">
+<meta name="description"
+      content="Secure administrator login for Nauza Tu Digital Motor Market.">
 
-    <meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="noindex, nofollow">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-        html {
-            scroll-behavior: smooth;
-        }
+<style>
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: Arial, Helvetica, sans-serif;
-            background:
-                linear-gradient(
-                    rgba(0, 0, 0, 0.72),
-                    rgba(0, 0, 0, 0.72)
-                ),
-                url("images/kenya-car-market.jpg") center/cover fixed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 25px;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        .login-container {
-            width: 100%;
-            max-width: 440px;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .login-card {
-            background: #ffffff;
-            border-radius: 18px;
-            padding: 38px 32px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
-        }
+body {
+    margin: 0;
+    min-height: 100vh;
 
-        .brand {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+    font-family: Arial, Helvetica, sans-serif;
 
-        .brand-icon {
-            width: 68px;
-            height: 68px;
-            margin: 0 auto 15px;
-            border-radius: 50%;
-            background: #111827;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            font-weight: bold;
-        }
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.72),
+            rgba(0, 0, 0, 0.72)
+        ),
+        url("images/kenya-car-market.jpg") center/cover fixed;
 
-        .brand h1 {
-            margin: 0;
-            color: #111827;
-            font-size: 29px;
-            line-height: 1.2;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        .brand p {
-            margin: 7px 0 0;
-            color: #6b7280;
-            font-size: 14px;
-        }
+    padding: 25px;
+}
 
-        .login-title {
-            text-align: center;
-            margin-bottom: 25px;
-        }
+.login-container {
+    width: 100%;
+    max-width: 440px;
+}
 
-        .login-title h2 {
-            margin: 0 0 7px;
-            color: #111827;
-            font-size: 23px;
-        }
+.login-card {
+    background: #ffffff;
+    border-radius: 18px;
 
-        .login-title p {
-            margin: 0;
-            color: #6b7280;
-            font-size: 14px;
-        }
+    padding: 38px 32px;
 
-        .form-group {
-            margin-bottom: 18px;
-        }
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.35);
+}
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #374151;
-            font-size: 14px;
-            font-weight: 700;
-        }
+.brand {
+    text-align: center;
+    margin-bottom: 30px;
+}
 
-        .form-group input {
-            width: 100%;
-            padding: 14px 15px;
-            border: 1px solid #d1d5db;
-            border-radius: 10px;
-            background: #ffffff;
-            color: #111827;
-            font-size: 16px;
-            outline: none;
-            transition: 0.2s ease;
-        }
+.brand-icon {
+    width: 68px;
+    height: 68px;
 
-        .form-group input:focus {
-            border-color: #111827;
-            box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.08);
-        }
+    margin: 0 auto 15px;
 
-        .password-wrapper {
-            position: relative;
-        }
+    border-radius: 50%;
 
-        .password-wrapper input {
-            padding-right: 80px;
-        }
+    background: #111827;
+    color: #ffffff;
 
-        .show-password {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            border: none;
-            background: transparent;
-            color: #4b5563;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            padding: 7px;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        .show-password:hover {
-            color: #111827;
-        }
+    font-size: 30px;
+    font-weight: bold;
+}
 
-        .login-button {
-            width: 100%;
-            margin-top: 5px;
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            background: #111827;
-            color: #ffffff;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.2s ease;
-        }
+.brand h1 {
+    margin: 0;
 
-        .login-button:hover {
-            background: #000000;
-            transform: translateY(-1px);
-        }
+    color: #111827;
 
-        .login-button:disabled {
-            opacity: 0.65;
-            cursor: not-allowed;
-            transform: none;
-        }
+    font-size: 29px;
+    line-height: 1.2;
+}
 
-        .message {
-            display: none;
-            margin-top: 18px;
-            padding: 13px 14px;
-            border-radius: 9px;
-            font-size: 14px;
-            line-height: 1.5;
-        }
+.brand p {
+    margin: 7px 0 0;
 
-        .message.error {
-            display: block;
-            background: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #fecaca;
-        }
+    color: #6b7280;
 
-        .message.success {
-            display: block;
-            background: #dcfce7;
-            color: #166534;
-            border: 1px solid #bbf7d0;
-        }
+    font-size: 14px;
+}
 
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 22px;
-            color: #4b5563;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-        }
+.login-title {
+    text-align: center;
 
-        .back-link:hover {
-            color: #111827;
-        }
+    margin-bottom: 25px;
+}
 
-        .security-notice {
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 1px solid #e5e7eb;
-            text-align: center;
-            color: #9ca3af;
-            font-size: 12px;
-            line-height: 1.5;
-        }
+.login-title h2 {
+    margin: 0 0 7px;
 
-        .footer {
-            text-align: center;
-            color: rgba(255,255,255,0.75);
-            font-size: 12px;
-            margin-top: 18px;
-        }
+    color: #111827;
 
-        @media (max-width: 500px) {
+    font-size: 23px;
+}
 
-            body {
-                padding: 15px;
-            }
+.login-title p {
+    margin: 0;
 
-            .login-card {
-                padding: 30px 22px;
-            }
+    color: #6b7280;
 
-            .brand h1 {
-                font-size: 26px;
-            }
+    font-size: 14px;
+}
 
-            .login-title h2 {
-                font-size: 21px;
-            }
-        }
-    </style>
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #374151;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.form-group input {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+    color: #111827;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+.form-group input:focus {
+    border-color: #111827;
+
+    box-shadow:
+        0 0 0 3px rgba(17, 24, 39, 0.08);
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 80px;
+}
+
+.show-password {
+    position: absolute;
+
+    right: 10px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+    background: transparent;
+
+    color: #4b5563;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    padding: 7px;
+}
+
+.show-password:hover {
+    color: #111827;
+}
+
+.login-button,
+.reset-button {
+    width: 100%;
+
+    margin-top: 5px;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #111827;
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.login-button:hover,
+.reset-button:hover {
+    background: #000000;
+
+    transform: translateY(-1px);
+}
+
+.login-button:disabled,
+.reset-button:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+.forgot-password {
+    display: block;
+
+    text-align: center;
+
+    margin-top: 15px;
+
+    color: #374151;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.message {
+    display: none;
+
+    margin-top: 18px;
+
+    padding: 13px 14px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+.message.error {
+    display: block;
+
+    background: #fee2e2;
+
+    color: #991b1b;
+
+    border: 1px solid #fecaca;
+}
+
+.message.success {
+    display: block;
+
+    background: #dcfce7;
+
+    color: #166534;
+
+    border: 1px solid #bbf7d0;
+}
+
+.back-link {
+    display: block;
+
+    text-align: center;
+
+    margin-top: 22px;
+
+    color: #4b5563;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.back-link:hover {
+    color: #111827;
+}
+
+.security-notice {
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #e5e7eb;
+
+    text-align: center;
+
+    color: #9ca3af;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+.footer {
+    text-align: center;
+
+    color: rgba(255,255,255,0.75);
+
+    font-size: 12px;
+
+    margin-top: 18px;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 500px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .login-card {
+        padding: 30px 22px;
+    }
+
+    .brand h1 {
+        font-size: 26px;
+    }
+
+    .login-title h2 {
+        font-size: 21px;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
 
 <div class="login-container">
 
-    <div class="login-card">
+<div class="login-card">
 
-        <!-- BRAND -->
-        <div class="brand">
+    <!-- BRAND -->
 
-            <div class="brand-icon">
-                NT
-            </div>
+    <div class="brand">
 
-            <h1>Nauza Tu</h1>
-
-            <p>
-                Digital Motor Market
-            </p>
-
+        <div class="brand-icon">
+            NT
         </div>
 
+        <h1>Nauza Tu</h1>
 
-        <!-- LOGIN TITLE -->
+        <p>
+            Digital Motor Market
+        </p>
+
+    </div>
+
+
+    <!-- LOGIN SECTION -->
+
+    <div id="loginSection">
+
         <div class="login-title">
 
-            <h2>Administrator Login</h2>
+            <h2>
+                Administrator Login
+            </h2>
 
             <p>
                 Secure access to your marketplace dashboard
@@ -286,7 +401,6 @@
         </div>
 
 
-        <!-- LOGIN FORM -->
         <form id="loginForm">
 
             <div class="form-group">
@@ -348,75 +462,127 @@
         </form>
 
 
-        <!-- MESSAGE -->
-        <div
-            id="message"
-            class="message"
-        ></div>
-
-
-        <!-- BACK TO WEBSITE -->
         <a
-            href="index.html"
-            class="back-link"
+            href="#"
+            class="forgot-password"
+            id="forgotPassword"
         >
-            ← Back to Nauza Tu
+            Forgot Password?
         </a>
-
-
-        <!-- SECURITY -->
-        <div class="security-notice">
-
-            🔒 Restricted administrator area<br>
-
-            Only authorized Nauza Tu administrators can access
-            the marketplace management system.
-
-        </div>
 
     </div>
 
 
-    <div class="footer">
+    <!-- RESET EMAIL SECTION -->
 
-        © <span id="year"></span> Nauza Tu Digital Motor Market
+    <div
+        id="resetSection"
+        class="hidden"
+    >
+
+        <div class="login-title">
+
+            <h2>
+                Reset Admin Password
+            </h2>
+
+            <p>
+                Enter your administrator email and we will send you a password reset link.
+            </p>
+
+        </div>
+
+
+        <form id="resetForm">
+
+            <div class="form-group">
+
+                <label for="resetEmail">
+                    Administrator Email
+                </label>
+
+                <input
+                    type="email"
+                    id="resetEmail"
+                    placeholder="Enter your admin email"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="reset-button"
+                id="resetButton"
+            >
+                Send Reset Email
+            </button>
+
+        </form>
+
+
+        <a
+            href="#"
+            class="back-link"
+            id="backToLogin"
+        >
+            ← Back to Login
+        </a>
+
+    </div>
+
+
+    <!-- MESSAGE -->
+
+    <div
+        id="message"
+        class="message"
+    ></div>
+
+
+    <!-- BACK TO WEBSITE -->
+
+    <a
+        href="index.html"
+        class="back-link"
+    >
+        ← Back to Nauza Tu
+    </a>
+
+
+    <!-- SECURITY -->
+
+    <div class="security-notice">
+
+        🔒 Restricted administrator area<br>
+
+        Only authorized Nauza Tu administrators can access
+        the marketplace management system.
 
     </div>
 
 </div>
 
 
-<!-- =========================================================
-     SUPABASE JAVASCRIPT LIBRARY
-     ========================================================= -->
+<div class="footer">
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    © <span id="year"></span>
+    Nauza Tu Digital Motor Market
+
+</div>
+
+</div>
 
 
 <script>
 
 /* =========================================================
-   NAUZA TU — SUPABASE CONFIGURATION
-   =========================================================
-
-   Replace ONLY these two values.
-
-   Get them from:
-
-   Supabase
-   → Project Settings
-   → API Keys
-
-   IMPORTANT:
-   Use the Project URL and Publishable Key.
-
-   NEVER put a secret/service_role key here.
+   SUPABASE CONFIGURATION
    ========================================================= */
 
-
 const SUPABASE_URL =
-    "https://hoogdxegjomtsvaddkwk.supabase.co/rest/v1/";
-
+    "https://hoogdxegjomtsvaddkwk.supabase.co";
 
 const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_VEq6gUDlCthklOIgVUaDzQ_5TaqAsu8";
@@ -429,7 +595,7 @@ const SUPABASE_PUBLISHABLE_KEY =
 const supabaseClient =
     window.supabase.createClient(
         SUPABASE_URL,
-        sb_publishable_VEq6gUDlCthklOIgVUaDzQ_5TaqAsu8
+        SUPABASE_PUBLISHABLE_KEY
     );
 
 
@@ -449,11 +615,32 @@ const passwordInput =
 const loginButton =
     document.getElementById("loginButton");
 
-const messageBox =
-    document.getElementById("message");
-
 const showPasswordButton =
     document.getElementById("showPassword");
+
+const forgotPassword =
+    document.getElementById("forgotPassword");
+
+const loginSection =
+    document.getElementById("loginSection");
+
+const resetSection =
+    document.getElementById("resetSection");
+
+const resetForm =
+    document.getElementById("resetForm");
+
+const resetEmail =
+    document.getElementById("resetEmail");
+
+const resetButton =
+    document.getElementById("resetButton");
+
+const backToLogin =
+    document.getElementById("backToLogin");
+
+const messageBox =
+    document.getElementById("message");
 
 const yearElement =
     document.getElementById("year");
@@ -465,33 +652,6 @@ const yearElement =
 
 yearElement.textContent =
     new Date().getFullYear();
-
-
-/* =========================================================
-   SHOW / HIDE PASSWORD
-   ========================================================= */
-
-showPasswordButton.addEventListener(
-    "click",
-    function () {
-
-        if (passwordInput.type === "password") {
-
-            passwordInput.type = "text";
-
-            showPasswordButton.textContent =
-                "HIDE";
-
-        } else {
-
-            passwordInput.type = "password";
-
-            showPasswordButton.textContent =
-                "SHOW";
-        }
-
-    }
-);
 
 
 /* =========================================================
@@ -523,79 +683,190 @@ function clearMessage() {
 
 
 /* =========================================================
-   CHECK IF USER IS ALREADY LOGGED IN
+   SHOW / HIDE PASSWORD
    ========================================================= */
 
-async function checkExistingSession() {
+showPasswordButton.addEventListener(
+    "click",
+    function () {
 
-    try {
+        if (
+            passwordInput.type === "password"
+        ) {
 
-        const {
-            data: {
-                session
-            }
-        } = await supabaseClient.auth.getSession();
+            passwordInput.type = "text";
 
+            showPasswordButton.textContent =
+                "HIDE";
 
-        if (!session) {
-            return;
+        } else {
+
+            passwordInput.type = "password";
+
+            showPasswordButton.textContent =
+                "SHOW";
+
         }
 
-
-        /*
-         * Check whether the logged-in account
-         * is an active Nauza Tu administrator.
-         */
-
-        const {
-            data: adminUser,
-            error
-        } = await supabaseClient
-            .from("admin_users")
-            .select("id, email, full_name, role, active")
-            .eq(
-                "email",
-                session.user.email
-            )
-            .eq(
-                "active",
-                true
-            )
-            .eq(
-                "role",
-                "admin"
-            )
-            .maybeSingle();
+    }
+);
 
 
-        if (error) {
+/* =========================================================
+   OPEN FORGOT PASSWORD
+   ========================================================= */
 
-            console.error(
-                "Admin verification error:",
-                error
+forgotPassword.addEventListener(
+    "click",
+    function (event) {
+
+        event.preventDefault();
+
+        clearMessage();
+
+        resetEmail.value =
+            emailInput.value.trim();
+
+        loginSection.classList.add(
+            "hidden"
+        );
+
+        resetSection.classList.remove(
+            "hidden"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   BACK TO LOGIN
+   ========================================================= */
+
+backToLogin.addEventListener(
+    "click",
+    function (event) {
+
+        event.preventDefault();
+
+        clearMessage();
+
+        resetSection.classList.add(
+            "hidden"
+        );
+
+        loginSection.classList.remove(
+            "hidden"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   SEND PASSWORD RESET EMAIL
+   ========================================================= */
+
+resetForm.addEventListener(
+    "submit",
+    async function (event) {
+
+        event.preventDefault();
+
+        clearMessage();
+
+        const email =
+            resetEmail.value.trim();
+
+        if (!email) {
+
+            showMessage(
+                "Please enter your administrator email.",
+                "error"
             );
 
             return;
         }
 
 
-        if (adminUser) {
+        resetButton.disabled = true;
 
-            window.location.href =
-                "admin-dashboard.html";
+        resetButton.textContent =
+            "Sending...";
+
+
+        try {
+
+            /*
+             * The reset link will open:
+             *
+             * reset-password.html
+             *
+             * on your live GitHub Pages website.
+             */
+
+            const redirectUrl =
+                window.location.origin +
+                window.location.pathname
+                    .replace(
+                        "admin-login.html",
+                        "reset-password.html"
+                    );
+
+
+            const {
+                error
+            } =
+                await supabaseClient.auth.resetPasswordForEmail(
+                    email,
+                    {
+                        redirectTo: redirectUrl
+                    }
+                );
+
+
+            if (error) {
+
+                throw error;
+
+            }
+
+
+            showMessage(
+                "Password reset email sent. Check your email and open the newest reset link.",
+                "success"
+            );
+
+
+            resetButton.textContent =
+                "Email Sent";
+
+
+        } catch (error) {
+
+            console.error(
+                "Password reset error:",
+                error
+            );
+
+
+            showMessage(
+                error.message ||
+                "Unable to send password reset email.",
+                "error"
+            );
+
+
+            resetButton.disabled =
+                false;
+
+            resetButton.textContent =
+                "Send Reset Email";
 
         }
 
-    } catch (error) {
-
-        console.error(
-            "Session check error:",
-            error
-        );
-
     }
-
-}
+);
 
 
 /* =========================================================
@@ -629,7 +900,8 @@ loginForm.addEventListener(
         }
 
 
-        loginButton.disabled = true;
+        loginButton.disabled =
+            true;
 
         loginButton.textContent =
             "Signing in...";
@@ -644,13 +916,13 @@ loginForm.addEventListener(
             const {
                 data,
                 error
-            } = await supabaseClient.auth.signInWithPassword({
-
-                email: email,
-
-                password: password
-
-            });
+            } =
+                await supabaseClient.auth.signInWithPassword(
+                    {
+                        email: email,
+                        password: password
+                    }
+                );
 
 
             if (error) {
@@ -660,7 +932,10 @@ loginForm.addEventListener(
             }
 
 
-            if (!data || !data.user) {
+            if (
+                !data ||
+                !data.user
+            ) {
 
                 throw new Error(
                     "Login failed. Please try again."
@@ -670,30 +945,32 @@ loginForm.addEventListener(
 
 
             /*
-             * Check administrator status.
+             * Verify that this user
+             * is an active Nauza Tu administrator.
              */
 
             const {
                 data: adminUser,
                 error: adminError
-            } = await supabaseClient
-                .from("admin_users")
-                .select(
-                    "id, email, full_name, role, active"
-                )
-                .eq(
-                    "email",
-                    data.user.email
-                )
-                .eq(
-                    "active",
-                    true
-                )
-                .eq(
-                    "role",
-                    "admin"
-                )
-                .maybeSingle();
+            } =
+                await supabaseClient
+                    .from("admin_users")
+                    .select(
+                        "id, email, full_name, role, active"
+                    )
+                    .eq(
+                        "email",
+                        data.user.email
+                    )
+                    .eq(
+                        "active",
+                        true
+                    )
+                    .eq(
+                        "role",
+                        "admin"
+                    )
+                    .maybeSingle();
 
 
             if (adminError) {
@@ -727,7 +1004,7 @@ loginForm.addEventListener(
 
 
             /*
-             * Everything is correct.
+             * Login successful.
              */
 
             showMessage(
@@ -763,47 +1040,38 @@ loginForm.addEventListener(
                 "Unable to sign in. Please check your email and password.";
 
 
-            /*
-             * Give useful messages for common
-             * Supabase authentication errors.
-             */
-
             if (
                 error &&
                 error.message
             ) {
 
+                const msg =
+                    error.message.toLowerCase();
+
+
                 if (
-                    error.message
-                        .toLowerCase()
-                        .includes("invalid login credentials")
+                    msg.includes(
+                        "invalid login credentials"
+                    )
                 ) {
 
                     errorMessage =
                         "Incorrect email or password.";
 
                 } else if (
-                    error.message
-                        .toLowerCase()
-                        .includes("email not confirmed")
+                    msg.includes(
+                        "email not confirmed"
+                    )
                 ) {
 
                     errorMessage =
                         "Your email has not been confirmed. Confirm the account in Supabase Authentication first.";
 
-                } else if (
-                    error.message
-                        .toLowerCase()
-                        .includes("failed")
-                ) {
-
-                    errorMessage =
-                        error.message;
-
                 } else {
 
                     errorMessage =
                         error.message;
+
                 }
 
             }
@@ -815,7 +1083,8 @@ loginForm.addEventListener(
             );
 
 
-            loginButton.disabled = false;
+            loginButton.disabled =
+                false;
 
             loginButton.textContent =
                 "Login to Admin Dashboard";
@@ -824,6 +1093,88 @@ loginForm.addEventListener(
 
     }
 );
+
+
+/* =========================================================
+   CHECK EXISTING SESSION
+   ========================================================= */
+
+async function checkExistingSession() {
+
+    try {
+
+        const {
+            data: {
+                session
+            }
+        } =
+            await supabaseClient.auth.getSession();
+
+
+        if (!session) {
+
+            return;
+
+        }
+
+
+        /*
+         * Check administrator status.
+         */
+
+        const {
+            data: adminUser,
+            error
+        } =
+            await supabaseClient
+                .from("admin_users")
+                .select(
+                    "id, email, full_name, role, active"
+                )
+                .eq(
+                    "email",
+                    session.user.email
+                )
+                .eq(
+                    "active",
+                    true
+                )
+                .eq(
+                    "role",
+                    "admin"
+                )
+                .maybeSingle();
+
+
+        if (error) {
+
+            console.error(
+                "Admin verification error:",
+                error
+            );
+
+            return;
+
+        }
+
+
+        if (adminUser) {
+
+            window.location.href =
+                "admin-dashboard.html";
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Session check error:",
+            error
+        );
+
+    }
+
+}
 
 
 /* =========================================================
