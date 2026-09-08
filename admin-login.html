@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>Nauza Tu | Administrator Login</title>
 
 <meta name="description"
       content="Secure administrator login for Nauza Tu Digital Motor Market.">
 
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots"
+      content="noindex, nofollow">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -51,7 +55,6 @@ body {
 .login-card {
     background: #ffffff;
     border-radius: 18px;
-
     padding: 38px 32px;
 
     box-shadow:
@@ -359,6 +362,7 @@ body {
 }
 
 </style>
+
 </head>
 
 <body>
@@ -786,6 +790,7 @@ resetForm.addEventListener(
             );
 
             return;
+
         }
 
 
@@ -897,6 +902,7 @@ loginForm.addEventListener(
             );
 
             return;
+
         }
 
 
@@ -995,7 +1001,6 @@ loginForm.addEventListener(
 
                 await supabaseClient.auth.signOut();
 
-
                 throw new Error(
                     "This account is not registered as a Nauza Tu administrator."
                 );
@@ -1005,6 +1010,9 @@ loginForm.addEventListener(
 
             /*
              * Login successful.
+             *
+             * IMPORTANT:
+             * Your actual administrator page is admin.html.
              */
 
             showMessage(
@@ -1021,7 +1029,7 @@ loginForm.addEventListener(
                 function () {
 
                     window.location.href =
-                        "admin-dashboard.html";
+                        "admin.html";
 
                 },
                 800
@@ -1160,10 +1168,18 @@ async function checkExistingSession() {
 
         if (adminUser) {
 
+            /*
+             * Existing authenticated admin.
+             *
+             * Your actual administrator page
+             * is admin.html.
+             */
+
             window.location.href =
-                "admin-dashboard.html";
+                "admin.html";
 
         }
+
 
     } catch (error) {
 
