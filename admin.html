@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Nauza Tu | Admin Listing Manager</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-<meta name="robots" content="noindex,nofollow">
+<title>Nauza Tu | Admin Dashboard</title>
+
+<meta name="robots"
+      content="noindex,nofollow">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 
@@ -19,19 +25,25 @@
 body{
     font-family:Arial,Helvetica,sans-serif;
     background:#f3f4f6;
-    color:#1f2937;
+    color:#111827;
     line-height:1.5;
 }
+
+/* HEADER */
 
 header{
     background:#111827;
     color:white;
-    padding:18px 20px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 3px 15px rgba(0,0,0,.15);
 }
 
 .header-inner{
-    max-width:1200px;
+    max-width:1250px;
     margin:auto;
+    padding:16px 20px;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -39,55 +51,151 @@ header{
 }
 
 .logo{
-    color:#22c55e;
     font-size:22px;
     font-weight:bold;
 }
 
-.logo span{
-    color:white;
+.logo-main{
+    color:#22c55e;
 }
 
-.header-note{
+.logo-sub{
+    color:white;
+    font-size:14px;
+    font-weight:normal;
+    display:block;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.admin-email{
     font-size:13px;
     color:#d1d5db;
 }
 
-.container{
-    max-width:1200px;
-    margin:35px auto;
+.logout-btn{
+    background:#dc2626;
+    color:white;
+    border:0;
+    border-radius:7px;
+    padding:10px 15px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.logout-btn:hover{
+    background:#b91c1c;
+}
+
+/* LAYOUT */
+
+.page{
+    max-width:1250px;
+    margin:25px auto;
     padding:0 20px;
 }
 
-.warning{
-    background:#fff7ed;
-    border-left:5px solid #f97316;
-    padding:18px;
-    border-radius:8px;
-    margin-bottom:30px;
+.dashboard-title{
+    margin-bottom:25px;
 }
 
-.warning strong{
-    color:#c2410c;
+.dashboard-title h1{
+    font-size:28px;
+    margin-bottom:5px;
 }
 
-.card{
+.dashboard-title p{
+    color:#6b7280;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-bottom:25px;
+}
+
+.stat{
     background:white;
     border-radius:12px;
+    padding:22px;
+    box-shadow:0 3px 15px rgba(0,0,0,.06);
+}
+
+.stat-icon{
+    font-size:27px;
+    margin-bottom:10px;
+}
+
+.stat-number{
+    font-size:26px;
+    font-weight:bold;
+}
+
+.stat-label{
+    color:#6b7280;
+    font-size:13px;
+}
+
+/* NAV CARDS */
+
+.quick-actions{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-bottom:25px;
+}
+
+.quick-card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    border:1px solid #e5e7eb;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.quick-card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 7px 20px rgba(0,0,0,.08);
+}
+
+.quick-card h3{
+    margin-bottom:5px;
+}
+
+.quick-card p{
+    color:#6b7280;
+    font-size:13px;
+}
+
+/* SECTIONS */
+
+.section{
+    background:white;
+    border-radius:13px;
     padding:28px;
     margin-bottom:25px;
-    box-shadow:0 4px 16px rgba(0,0,0,.07);
+    box-shadow:0 3px 15px rgba(0,0,0,.06);
 }
 
-.card h2{
-    margin-bottom:8px;
-    color:#111827;
+.section h2{
+    margin-bottom:7px;
+    font-size:22px;
 }
 
-.card-description{
+.section-description{
     color:#6b7280;
     margin-bottom:22px;
 }
+
+/* FORM */
 
 .grid{
     display:grid;
@@ -96,12 +204,13 @@ header{
 }
 
 .full{
-    grid-column:1 / -1;
+    grid-column:1/-1;
 }
 
 label{
     display:block;
     font-weight:bold;
+    font-size:14px;
     margin-bottom:7px;
 }
 
@@ -111,13 +220,13 @@ textarea{
     width:100%;
     padding:12px;
     border:1px solid #d1d5db;
-    border-radius:7px;
+    border-radius:8px;
     font-size:15px;
     background:white;
 }
 
 textarea{
-    min-height:120px;
+    min-height:130px;
     resize:vertical;
 }
 
@@ -126,121 +235,142 @@ select:focus,
 textarea:focus{
     outline:none;
     border-color:#16a34a;
+    box-shadow:0 0 0 3px rgba(22,163,74,.08);
 }
+
+/* SELLER */
+
+.checkbox{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    margin-top:17px;
+}
+
+.checkbox input{
+    width:auto;
+    margin-top:4px;
+}
+
+.checkbox label{
+    font-weight:normal;
+    margin:0;
+}
+
+/* PROMOTION */
 
 .promotion-box{
     background:#ecfdf5;
     border:1px solid #bbf7d0;
     border-radius:10px;
-    padding:22px;
-    margin-top:10px;
-}
-
-.promotion-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
+    padding:20px;
 }
 
 .package-info{
-    margin-top:18px;
     background:white;
-    padding:16px;
-    border-radius:8px;
     border:1px solid #d1fae5;
+    padding:15px;
+    border-radius:8px;
+    margin-top:17px;
 }
 
 .package-info strong{
     color:#166534;
 }
 
-.checkbox-row{
-    display:flex;
-    align-items:flex-start;
-    gap:10px;
-    margin-top:18px;
-}
-
-.checkbox-row input{
-    width:auto;
-    margin-top:4px;
-}
-
-.checkbox-row label{
-    margin:0;
-    font-weight:normal;
-}
+/* BUTTONS */
 
 .buttons{
     display:flex;
     flex-wrap:wrap;
-    gap:12px;
-    margin-top:20px;
+    gap:10px;
+    margin-top:22px;
 }
 
 button{
-    border:none;
-    border-radius:7px;
-    padding:13px 20px;
-    font-size:15px;
+    border:0;
+    border-radius:8px;
+    padding:12px 18px;
+    font-size:14px;
     font-weight:bold;
     cursor:pointer;
 }
 
-.generate{
+.primary{
     background:#16a34a;
     color:white;
 }
 
-.generate:hover{
+.primary:hover{
     background:#15803d;
 }
 
-.preview{
+.dark{
     background:#111827;
     color:white;
 }
 
-.clear{
-    background:#e5e7eb;
-    color:#111827;
-}
-
-.copy{
+.blue{
     background:#2563eb;
     color:white;
 }
 
-button:hover{
-    opacity:.9;
+.gray{
+    background:#e5e7eb;
+    color:#111827;
 }
+
+.red{
+    background:#dc2626;
+    color:white;
+}
+
+/* OUTPUT */
 
 .output{
     width:100%;
-    min-height:400px;
+    min-height:350px;
     background:#111827;
     color:#e5e7eb;
     border:0;
     border-radius:8px;
-    padding:18px;
+    padding:17px;
     font-family:monospace;
     font-size:13px;
-    line-height:1.6;
     resize:vertical;
 }
 
-.preview-box{
-    background:#f9fafb;
-    border:1px solid #e5e7eb;
-    border-radius:10px;
-    padding:20px;
+/* PREVIEW */
+
+.preview{
+    display:none;
     margin-top:20px;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    padding:20px;
+    background:#f9fafb;
+}
+
+.preview-image{
+    width:100%;
+    max-width:500px;
+    height:280px;
+    object-fit:cover;
+    border-radius:10px;
+    background:#e5e7eb;
+    margin-bottom:15px;
 }
 
 .preview-title{
+    font-size:25px;
+    font-weight:bold;
+}
+
+.price{
+    color:#16a34a;
     font-size:24px;
     font-weight:bold;
-    margin-bottom:8px;
+    margin:8px 0;
 }
 
 .badge{
@@ -249,66 +379,106 @@ button:hover{
     color:white;
     padding:5px 10px;
     border-radius:20px;
-    font-size:12px;
+    font-size:11px;
     font-weight:bold;
     margin-bottom:10px;
 }
 
-.normal-badge{
+.normal{
     background:#6b7280;
 }
 
-.preview-price{
-    color:#16a34a;
-    font-size:24px;
-    font-weight:bold;
-    margin:8px 0;
-}
-
-.preview-specs{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin:12px 0;
-}
-
-.spec{
-    background:white;
-    border:1px solid #e5e7eb;
-    padding:7px 10px;
-    border-radius:6px;
-    font-size:13px;
-}
+/* STATUS */
 
 .status{
+    padding:13px;
+    border-radius:8px;
     margin-top:15px;
-    padding:12px;
-    background:#eff6ff;
-    border-left:4px solid #2563eb;
-    border-radius:5px;
+    display:none;
 }
 
-.instructions ol{
-    padding-left:22px;
+.status.success{
+    display:block;
+    background:#dcfce7;
+    color:#166534;
 }
 
-.instructions li{
-    margin:10px 0;
+.status.error{
+    display:block;
+    background:#fee2e2;
+    color:#991b1b;
 }
+
+/* WARNING */
+
+.warning{
+    background:#fff7ed;
+    border-left:5px solid #f97316;
+    padding:17px;
+    border-radius:8px;
+    margin-bottom:25px;
+}
+
+.warning strong{
+    color:#c2410c;
+}
+
+/* FOOTER */
 
 footer{
     background:#111827;
     color:#d1d5db;
     text-align:center;
-    padding:25px 20px;
+    padding:25px;
     margin-top:40px;
     font-size:13px;
 }
 
-@media(max-width:800px){
+/* LOADING */
 
-    .grid,
-    .promotion-grid{
+#loadingScreen{
+    position:fixed;
+    inset:0;
+    background:#111827;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    font-size:18px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .quick-actions{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:650px){
+
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .header-right{
+        width:100%;
+        justify-content:space-between;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .grid{
         grid-template-columns:1fr;
     }
 
@@ -316,798 +486,168 @@ footer{
         grid-column:auto;
     }
 
-    .header-inner{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .card{
+    .section{
         padding:20px;
     }
 
 }
 
 </style>
+
 </head>
 
 <body>
 
+
+<!-- LOADING -->
+
+<div id="loadingScreen">
+    Checking administrator access...
+</div>
+
+
+<!-- HEADER -->
+
 <header>
 
-    <div class="header-inner">
+<div class="header-inner">
 
-        <div class="logo">
-            Nauza Tu <span>Digital Motor Market</span>
-        </div>
+    <div class="logo">
 
-        <div class="header-note">
-            Internal Listing & Promotion Manager
-        </div>
+        <span class="logo-main">
+            Nauza Tu
+        </span>
+
+        Digital Motor Market
+
+        <span class="logo-sub">
+            Administrator Dashboard
+        </span>
 
     </div>
+
+
+    <div class="header-right">
+
+        <div
+            class="admin-email"
+            id="adminEmail"
+        >
+            Checking...
+        </div>
+
+        <button
+            class="logout-btn"
+            id="logoutBtn"
+        >
+            Logout
+        </button>
+
+    </div>
+
+</div>
 
 </header>
 
 
-<div class="container">
+<!-- MAIN -->
 
+<main class="page">
 
-    <div class="warning">
 
-        <strong>IMPORTANT — INTERNAL TOOL</strong>
+<div class="dashboard-title">
 
-        <p style="margin-top:8px;">
-            This page is intended for Nauza Tu administration.
-            It is not a secure login-protected administration system.
-            Do not publish or advertise this page as a public admin portal.
-        </p>
+    <h1>
+        Admin Dashboard
+    </h1>
 
-        <p style="margin-top:8px;">
-            Payment must be independently verified before activating
-            a paid promotion.
-        </p>
+    <p>
+        Manage vehicle advertisements, sellers,
+        promotions and payment verification.
+    </p>
 
-    </div>
+</div>
 
 
-    <!-- VEHICLE INFORMATION -->
+<!-- STATS -->
 
-    <div class="card">
+<div class="stats">
 
-        <h2>1. Vehicle Information</h2>
+    <div class="stat">
 
-        <p class="card-description">
-            Enter the approved vehicle information exactly as it should
-            appear in the marketplace.
-        </p>
+        <div class="stat-icon">
+            🚗
+        </div>
 
+        <div
+            class="stat-number"
+            id="vehicleCount"
+        >
+            —
+        </div>
 
-        <div class="grid">
-
-            <div>
-
-                <label for="listingId">
-                    Listing ID *
-                </label>
-
-                <input
-                    id="listingId"
-                    type="text"
-                    placeholder="Example: NT010">
-
-            </div>
-
-
-            <div>
-
-                <label for="year">
-                    Year *
-                </label>
-
-                <input
-                    id="year"
-                    type="number"
-                    min="1990"
-                    max="2035"
-                    placeholder="2020">
-
-            </div>
-
-
-            <div>
-
-                <label for="make">
-                    Make *
-                </label>
-
-                <input
-                    id="make"
-                    type="text"
-                    placeholder="Toyota">
-
-            </div>
-
-
-            <div>
-
-                <label for="model">
-                    Model *
-                </label>
-
-                <input
-                    id="model"
-                    type="text"
-                    placeholder="Harrier">
-
-            </div>
-
-
-            <div>
-
-                <label for="category">
-                    Category *
-                </label>
-
-                <select id="category">
-
-                    <option value="">-- Select Category --</option>
-                    <option>SUV</option>
-                    <option>Sedan</option>
-                    <option>Station Wagon</option>
-                    <option>Pickup</option>
-                    <option>Van</option>
-                    <option>Truck</option>
-                    <option>Hatchback</option>
-                    <option>Coupe</option>
-                    <option>Convertible</option>
-                    <option>Bus</option>
-                    <option>Other</option>
-
-                </select>
-
-            </div>
-
-
-            <div>
-
-                <label for="condition">
-                    Condition *
-                </label>
-
-                <select id="condition">
-
-                    <option value="">-- Select Condition --</option>
-                    <option>New</option>
-                    <option>Used</option>
-                    <option>Locally Used</option>
-                    <option>Imported</option>
-
-                </select>
-
-            </div>
-
-
-            <div>
-
-                <label for="price">
-                    Asking Price — KES *
-                </label>
-
-                <input
-                    id="price"
-                    type="number"
-                    min="0"
-                    placeholder="2850000">
-
-            </div>
-
-
-            <div>
-
-                <label for="mileage">
-                    Mileage — KM
-                </label>
-
-                <input
-                    id="mileage"
-                    type="number"
-                    min="0"
-                    placeholder="72000">
-
-            </div>
-
-
-            <div>
-
-                <label for="engine">
-                    Engine
-                </label>
-
-                <input
-                    id="engine"
-                    type="text"
-                    placeholder="2.0L">
-
-            </div>
-
-
-            <div>
-
-                <label for="transmission">
-                    Transmission
-                </label>
-
-                <select id="transmission">
-
-                    <option value="">-- Select --</option>
-                    <option>Automatic</option>
-                    <option>Manual</option>
-                    <option>CVT</option>
-                    <option>Other</option>
-
-                </select>
-
-            </div>
-
-
-            <div>
-
-                <label for="fuel">
-                    Fuel Type
-                </label>
-
-                <select id="fuel">
-
-                    <option value="">-- Select --</option>
-                    <option>Petrol</option>
-                    <option>Diesel</option>
-                    <option>Hybrid</option>
-                    <option>Electric</option>
-                    <option>Other</option>
-
-                </select>
-
-            </div>
-
-
-            <div>
-
-                <label for="drive">
-                    Drive Type
-                </label>
-
-                <select id="drive">
-
-                    <option value="">-- Select --</option>
-                    <option>2WD</option>
-                    <option>4WD</option>
-                    <option>AWD</option>
-                    <option>Other</option>
-
-                </select>
-
-            </div>
-
-
-            <div>
-
-                <label for="location">
-                    Vehicle Location *
-                </label>
-
-                <input
-                    id="location"
-                    type="text"
-                    placeholder="Nairobi">
-
-            </div>
-
-
-            <div>
-
-                <label for="mainImage">
-                    Main Image Path *
-                </label>
-
-                <input
-                    id="mainImage"
-                    type="text"
-                    placeholder="images/toyota-harrier.jpg">
-
-            </div>
-
-
-            <div class="full">
-
-                <label for="additionalImages">
-                    Additional Image Paths
-                </label>
-
-                <input
-                    id="additionalImages"
-                    type="text"
-                    placeholder="images/toyota-harrier-2.jpg, images/toyota-harrier-3.jpg">
-
-            </div>
-
-
-            <div class="full">
-
-                <label for="description">
-                    Vehicle Description *
-                </label>
-
-                <textarea
-                    id="description"
-                    placeholder="Describe the vehicle, condition, service history and other relevant information."></textarea>
-
-            </div>
-
+        <div class="stat-label">
+            Vehicle Listings
         </div>
 
     </div>
 
 
-    <!-- SELLER -->
+    <div class="stat">
 
-    <div class="card">
-
-        <h2>2. Seller / Advertiser Information</h2>
-
-        <p class="card-description">
-            Enter the seller details supplied with the advertisement.
-        </p>
-
-
-        <div class="grid">
-
-            <div>
-
-                <label for="sellerName">
-                    Seller / Business Name *
-                </label>
-
-                <input
-                    id="sellerName"
-                    type="text"
-                    placeholder="Seller or business name">
-
-            </div>
-
-
-            <div>
-
-                <label for="sellerType">
-                    Seller Type
-                </label>
-
-                <select id="sellerType">
-
-                    <option>Private Seller</option>
-                    <option>Motor Vehicle Dealer</option>
-                    <option>Importer</option>
-                    <option>Business / Company</option>
-                    <option>Other</option>
-
-                </select>
-
-            </div>
-
-
-            <div>
-
-                <label for="sellerPhone">
-                    Seller Phone
-                </label>
-
-                <input
-                    id="sellerPhone"
-                    type="tel"
-                    placeholder="+254...">
-
-            </div>
-
-
-            <div>
-
-                <label for="sellerWhatsapp">
-                    Seller WhatsApp
-                </label>
-
-                <input
-                    id="sellerWhatsapp"
-                    type="tel"
-                    placeholder="+254...">
-
-            </div>
-
+        <div class="stat-icon">
+            ⭐
         </div>
 
+        <div
+            class="stat-number"
+            id="featuredCount"
+        >
+            —
+        </div>
 
-        <div class="checkbox-row">
-
-            <input
-                id="publicContact"
-                type="checkbox">
-
-            <label for="publicContact">
-
-                Seller has expressly authorized Nauza Tu
-                to display the seller's contact details publicly
-                on this listing.
-
-            </label>
-
+        <div class="stat-label">
+            Featured Listings
         </div>
 
     </div>
 
 
-    <!-- PROMOTION -->
+    <div class="stat">
 
-    <div class="card">
+        <div class="stat-icon">
+            💰
+        </div>
 
-        <h2>3. Promotion & Approval</h2>
+        <div
+            class="stat-number"
+            id="paidCount"
+        >
+            —
+        </div>
 
-        <p class="card-description">
-            Select the advertising package after confirming the seller's
-            payment status.
-        </p>
-
-
-        <div class="promotion-box">
-
-            <div class="promotion-grid">
-
-
-                <div>
-
-                    <label for="promotion">
-                        Promotion Package *
-                    </label>
-
-                    <select id="promotion"
-                            onchange="updatePromotion()">
-
-                        <option value="Free Listing">
-                            Free Listing — KES 0
-                        </option>
-
-                        <option value="Quick Sale">
-                            Quick Sale — KES 500 / 7 days
-                        </option>
-
-                        <option value="Premium Listing">
-                            Premium Listing — KES 1,500 / 30 days
-                        </option>
-
-                        <option value="Dealer Starter">
-                            Dealer Starter — KES 3,000 / month
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div>
-
-                    <label for="promotionStart">
-                        Promotion Start Date
-                    </label>
-
-                    <input
-                        id="promotionStart"
-                        type="date"
-                        onchange="updatePromotion()">
-
-                </div>
-
-
-                <div>
-
-                    <label for="promotionExpiry">
-                        Promotion Expiry Date
-                    </label>
-
-                    <input
-                        id="promotionExpiry"
-                        type="date"
-                        readonly>
-
-                </div>
-
-            </div>
-
-
-            <div class="package-info">
-
-                <strong>Package information:</strong>
-
-                <div id="packageDetails">
-                    Free Listing — No paid promotion.
-                </div>
-
-            </div>
-
-
-            <div class="checkbox-row">
-
-                <input
-                    id="featured"
-                    type="checkbox">
-
-                <label for="featured">
-
-                    Display this vehicle in the Featured Vehicles
-                    section while its promotion is active.
-
-                </label>
-
-            </div>
-
-
-            <div class="checkbox-row">
-
-                <input
-                    id="approved"
-                    type="checkbox">
-
-                <label for="approved">
-
-                    I have reviewed this listing and approve it
-                    for publication.
-
-                </label>
-
-            </div>
-
+        <div class="stat-label">
+            Paid Promotions
         </div>
 
     </div>
 
 
-    <!-- PAYMENT RECORD -->
+    <div class="stat">
 
-    <div class="card">
-
-        <h2>4. Payment Verification Record</h2>
-
-        <p class="card-description">
-            Keep the payment information together with the listing record.
-        </p>
-
-
-        <div class="grid">
-
-            <div>
-
-                <label for="paymentStatus">
-                    Payment Status
-                </label>
-
-                <select id="paymentStatus">
-
-                    <option>Not Applicable — Free Listing</option>
-                    <option>Pending Verification</option>
-                    <option>Payment Verified</option>
-                    <option>Payment Rejected</option>
-
-                </select>
-
-            </div>
-
-
-            <div>
-
-                <label for="transactionCode">
-                    M-Pesa Transaction Code
-                </label>
-
-                <input
-                    id="transactionCode"
-                    type="text"
-                    placeholder="Example: QGH7XXXXXX">
-
-            </div>
-
-
-            <div>
-
-                <label for="paymentAmount">
-                    Amount Paid — KES
-                </label>
-
-                <input
-                    id="paymentAmount"
-                    type="number"
-                    min="0"
-                    placeholder="1500">
-
-            </div>
-
-
-            <div>
-
-                <label for="paymentDate">
-                    Payment Date
-                </label>
-
-                <input
-                    id="paymentDate"
-                    type="date">
-
-            </div>
-
+        <div class="stat-icon">
+            👤
         </div>
 
-    </div>
-
-
-    <!-- GENERATOR -->
-
-    <div class="card">
-
-        <h2>5. Generate Vehicle Listing</h2>
-
-        <p class="card-description">
-            Generate the JavaScript object and paste it into
-            <strong>vehicles-data.js</strong>.
-        </p>
-
-
-        <div class="buttons">
-
-            <button
-                class="generate"
-                onclick="generateListing()">
-
-                Generate Listing Code
-
-            </button>
-
-
-            <button
-                class="preview"
-                onclick="showPreview()">
-
-                Preview Listing
-
-            </button>
-
-
-            <button
-                class="clear"
-                onclick="clearForm()">
-
-                Clear Form
-
-            </button>
-
+        <div
+            class="stat-number"
+            id="adminStatus"
+        >
+            Active
         </div>
 
-
-        <div style="margin-top:25px;">
-
-            <label for="output">
-                Generated Code
-            </label>
-
-            <textarea
-                id="output"
-                class="output"
-                readonly
-                placeholder="Your generated vehicle object will appear here..."></textarea>
-
-        </div>
-
-
-        <div class="buttons">
-
-            <button
-                class="copy"
-                onclick="copyCode()">
-
-                Copy Listing Code
-
-            </button>
-
-        </div>
-
-
-        <div id="preview"
-             class="preview-box"
-             style="display:none;">
-
-        </div>
-
-    </div>
-
-
-    <!-- INSTRUCTIONS -->
-
-    <div class="card instructions">
-
-        <h2>How to Use This Tool</h2>
-
-        <ol>
-
-            <li>
-                Receive the seller's vehicle information and photographs.
-            </li>
-
-            <li>
-                Review the submitted information before approving the vehicle.
-            </li>
-
-            <li>
-                Give the vehicle a unique Listing ID such as
-                <strong>NT010</strong>.
-            </li>
-
-            <li>
-                Upload the approved vehicle photographs into the
-                <strong>images</strong> folder.
-            </li>
-
-            <li>
-                Enter the image filenames/paths in this tool.
-            </li>
-
-            <li>
-                Select the seller's advertising package.
-            </li>
-
-            <li>
-                Verify payment before activating a paid promotion.
-            </li>
-
-            <li>
-                Select <strong>Featured</strong> when the listing should
-                appear in the Featured Vehicles section.
-            </li>
-
-            <li>
-                Tick <strong>Approved</strong> only after the listing has
-                been reviewed.
-            </li>
-
-            <li>
-                Click <strong>Generate Listing Code</strong>.
-            </li>
-
-            <li>
-                Copy the generated object.
-            </li>
-
-            <li>
-                Open <strong>vehicles-data.js</strong> in GitHub.
-            </li>
-
-            <li>
-                Paste the new object inside the
-                <strong>vehicles</strong> array.
-            </li>
-
-            <li>
-                Commit the changes.
-            </li>
-
-            <li>
-                Check the Vehicles page and confirm the listing appears
-                correctly.
-            </li>
-
-        </ol>
-
-
-        <div class="status">
-
-            <strong>Important:</strong>
-            A paid promotion should only be marked
-            <strong>Payment Verified</strong> after you have actually
-            confirmed the M-Pesa transaction.
-
+        <div class="stat-label">
+            Administrator Status
         </div>
 
     </div>
@@ -1115,181 +655,1121 @@ footer{
 </div>
 
 
+<!-- QUICK ACTIONS -->
+
+<div class="quick-actions">
+
+    <div
+        class="quick-card"
+        onclick="scrollToSection('vehicleSection')"
+    >
+
+        <h3>
+            🚗 Add Vehicle
+        </h3>
+
+        <p>
+            Create a new vehicle advertisement.
+        </p>
+
+    </div>
+
+
+    <div
+        class="quick-card"
+        onclick="scrollToSection('promotionSection')"
+    >
+
+        <h3>
+            ⭐ Promotions
+        </h3>
+
+        <p>
+            Manage featured and paid advertising.
+        </p>
+
+    </div>
+
+
+    <div
+        class="quick-card"
+        onclick="scrollToSection('paymentSection')"
+    >
+
+        <h3>
+            💳 Payments
+        </h3>
+
+        <p>
+            Record and verify M-Pesa payments.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- WARNING -->
+
+<div class="warning">
+
+    <strong>
+        Administrator Notice
+    </strong>
+
+    <p style="margin-top:7px;">
+
+        Only publish vehicles after checking the seller's
+        information, photographs, ownership details and
+        payment status where applicable.
+
+    </p>
+
+</div>
+
+
+<!-- VEHICLE -->
+
+<section
+    class="section"
+    id="vehicleSection"
+>
+
+<h2>
+    🚗 Vehicle Information
+</h2>
+
+<p class="section-description">
+    Enter the vehicle information that should appear
+    on the Nauza Tu marketplace.
+</p>
+
+
+<div class="grid">
+
+
+<div>
+
+<label for="listingId">
+    Listing ID *
+</label>
+
+<input
+    id="listingId"
+    placeholder="Example: NT001"
+>
+
+</div>
+
+
+<div>
+
+<label for="year">
+    Year *
+</label>
+
+<input
+    id="year"
+    type="number"
+    min="1990"
+    max="2035"
+    placeholder="2020"
+>
+
+</div>
+
+
+<div>
+
+<label for="make">
+    Make *
+</label>
+
+<input
+    id="make"
+    placeholder="Toyota"
+>
+
+</div>
+
+
+<div>
+
+<label for="model">
+    Model *
+</label>
+
+<input
+    id="model"
+    placeholder="Prado TX"
+>
+
+</div>
+
+
+<div>
+
+<label for="category">
+    Category *
+</label>
+
+<select id="category">
+
+<option value="">
+    Select category
+</option>
+
+<option>SUV</option>
+<option>Sedan</option>
+<option>Station Wagon</option>
+<option>Pickup</option>
+<option>Van</option>
+<option>Truck</option>
+<option>Hatchback</option>
+<option>Coupe</option>
+<option>Convertible</option>
+<option>Bus</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label for="condition">
+    Condition *
+</label>
+
+<select id="condition">
+
+<option value="">
+    Select condition
+</option>
+
+<option>New</option>
+<option>Used</option>
+<option>Locally Used</option>
+<option>Imported</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label for="price">
+    Asking Price — KES *
+</label>
+
+<input
+    id="price"
+    type="number"
+    min="0"
+    placeholder="2850000"
+>
+
+</div>
+
+
+<div>
+
+<label for="mileage">
+    Mileage — KM
+</label>
+
+<input
+    id="mileage"
+    type="number"
+    min="0"
+    placeholder="72000"
+>
+
+</div>
+
+
+<div>
+
+<label for="engine">
+    Engine
+</label>
+
+<input
+    id="engine"
+    placeholder="2.8L"
+>
+
+</div>
+
+
+<div>
+
+<label for="transmission">
+    Transmission
+</label>
+
+<select id="transmission">
+
+<option value="">
+    Select
+</option>
+
+<option>Automatic</option>
+<option>Manual</option>
+<option>CVT</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label for="fuel">
+    Fuel
+</label>
+
+<select id="fuel">
+
+<option value="">
+    Select
+</option>
+
+<option>Petrol</option>
+<option>Diesel</option>
+<option>Hybrid</option>
+<option>Electric</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label for="drive">
+    Drive Type
+</label>
+
+<select id="drive">
+
+<option value="">
+    Select
+</option>
+
+<option>2WD</option>
+<option>4WD</option>
+<option>AWD</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label for="location">
+    Vehicle Location *
+</label>
+
+<input
+    id="location"
+    placeholder="Nairobi"
+>
+
+</div>
+
+
+<div>
+
+<label for="mainImage">
+    Main Image Path *
+</label>
+
+<input
+    id="mainImage"
+    placeholder="images/toyota-prado.jpg"
+>
+
+</div>
+
+
+<div class="full">
+
+<label for="additionalImages">
+    Additional Image Paths
+</label>
+
+<input
+    id="additionalImages"
+    placeholder="images/prado-2.jpg, images/prado-3.jpg"
+>
+
+</div>
+
+
+<div class="full">
+
+<label for="description">
+    Vehicle Description *
+</label>
+
+<textarea
+    id="description"
+    placeholder="Describe the vehicle, condition, service history and other important information."
+></textarea>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- SELLER -->
+
+<section class="section">
+
+<h2>
+    👤 Seller / Advertiser
+</h2>
+
+<p class="section-description">
+    Enter the seller details supplied with the advertisement.
+</p>
+
+
+<div class="grid">
+
+
+<div>
+
+<label for="sellerName">
+    Seller / Business Name *
+</label>
+
+<input
+    id="sellerName"
+    placeholder="Seller or business name"
+>
+
+</div>
+
+
+<div>
+
+<label for="sellerType">
+    Seller Type
+</label>
+
+<select id="sellerType">
+
+<option>Private Seller</option>
+<option>Motor Vehicle Dealer</option>
+<option>Importer</option>
+<option>Business / Company</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label for="sellerPhone">
+    Seller Phone
+</label>
+
+<input
+    id="sellerPhone"
+    type="tel"
+    placeholder="+254..."
+>
+
+</div>
+
+
+<div>
+
+<label for="sellerWhatsapp">
+    Seller WhatsApp
+</label>
+
+<input
+    id="sellerWhatsapp"
+    type="tel"
+    placeholder="+254..."
+>
+
+</div>
+
+
+</div>
+
+
+<div class="checkbox">
+
+<input
+    id="publicContact"
+    type="checkbox"
+>
+
+<label for="publicContact">
+
+    Seller has authorized Nauza Tu to
+    display the seller's contact details
+    publicly on this listing.
+
+</label>
+
+</div>
+
+</section>
+
+
+<!-- PROMOTION -->
+
+<section
+    class="section"
+    id="promotionSection"
+>
+
+<h2>
+    ⭐ Promotion & Approval
+</h2>
+
+<p class="section-description">
+    Select the advertising package and approve
+    the listing only after reviewing it.
+</p>
+
+
+<div class="promotion-box">
+
+
+<div class="grid">
+
+
+<div>
+
+<label for="promotion">
+    Promotion Package
+</label>
+
+<select
+    id="promotion"
+    onchange="updatePromotion()"
+>
+
+<option value="Free Listing">
+    Free Listing — KES 0
+</option>
+
+<option value="Quick Sale">
+    Quick Sale — KES 500 / 7 days
+</option>
+
+<option value="Premium Listing">
+    Premium Listing — KES 1,500 / 30 days
+</option>
+
+<option value="Dealer Starter">
+    Dealer Starter — KES 3,000 / month
+</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label for="promotionStart">
+    Promotion Start
+</label>
+
+<input
+    id="promotionStart"
+    type="date"
+    onchange="updatePromotion()"
+>
+
+</div>
+
+
+<div>
+
+<label for="promotionExpiry">
+    Promotion Expiry
+</label>
+
+<input
+    id="promotionExpiry"
+    type="date"
+    readonly
+>
+
+</div>
+
+
+</div>
+
+
+<div
+    class="package-info"
+    id="packageDetails"
+>
+</div>
+
+
+<div class="checkbox">
+
+<input
+    id="featured"
+    type="checkbox"
+>
+
+<label for="featured">
+
+    Display this vehicle in the
+    Featured Vehicles section.
+
+</label>
+
+</div>
+
+
+<div class="checkbox">
+
+<input
+    id="approved"
+    type="checkbox"
+>
+
+<label for="approved">
+
+    I have reviewed this listing and
+    approve it for publication.
+
+</label>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- PAYMENT -->
+
+<section
+    class="section"
+    id="paymentSection"
+>
+
+<h2>
+    💳 Payment Verification
+</h2>
+
+<p class="section-description">
+    Record payment information for paid promotions.
+</p>
+
+
+<div class="grid">
+
+
+<div>
+
+<label for="paymentStatus">
+    Payment Status
+</label>
+
+<select id="paymentStatus">
+
+<option>
+    Not Applicable — Free Listing
+</option>
+
+<option>
+    Pending Verification
+</option>
+
+<option>
+    Payment Verified
+</option>
+
+<option>
+    Payment Rejected
+</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label for="transactionCode">
+    M-Pesa Transaction Code
+</label>
+
+<input
+    id="transactionCode"
+    placeholder="Example: QGH7XXXXXX"
+>
+
+</div>
+
+
+<div>
+
+<label for="paymentAmount">
+    Amount Paid — KES
+</label>
+
+<input
+    id="paymentAmount"
+    type="number"
+    min="0"
+    placeholder="1500"
+>
+
+</div>
+
+
+<div>
+
+<label for="paymentDate">
+    Payment Date
+</label>
+
+<input
+    id="paymentDate"
+    type="date"
+>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ACTIONS -->
+
+<section class="section">
+
+<h2>
+    📋 Listing Actions
+</h2>
+
+<p class="section-description">
+    Review the information before generating the
+    vehicle listing data.
+</p>
+
+
+<div class="buttons">
+
+<button
+    class="primary"
+    onclick="generateListing()"
+>
+    Generate Listing
+</button>
+
+
+<button
+    class="dark"
+    onclick="showPreview()"
+>
+    Preview Listing
+</button>
+
+
+<button
+    class="gray"
+    onclick="clearForm()"
+>
+    Clear Form
+</button>
+
+</div>
+
+
+<div
+    id="status"
+    class="status"
+></div>
+
+
+<div style="margin-top:25px;">
+
+<label for="output">
+    Generated Vehicle Data
+</label>
+
+<textarea
+    id="output"
+    class="output"
+    readonly
+    placeholder="Generated vehicle data will appear here..."
+></textarea>
+
+</div>
+
+
+<div class="buttons">
+
+<button
+    class="blue"
+    onclick="copyCode()"
+>
+    Copy Listing Data
+</button>
+
+</div>
+
+
+<div
+    id="preview"
+    class="preview"
+></div>
+
+</section>
+
+
+</main>
+
+
 <footer>
 
-    Nauza Tu Digital Motor Market —
-    Internal Listing Management Tool
+Nauza Tu Digital Motor Market<br>
+
+<span>
+    Secure Administrator Area
+</span>
 
 </footer>
 
 
 <script>
 
-/* =========================
-   PACKAGE INFORMATION
-========================= */
+/* =====================================================
+   SUPABASE
+===================================================== */
+
+const SUPABASE_URL =
+    "https://hoogdxegjomtsvaddkwk.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_VEq6gUDlCthklOIgVUaDzQ_5TaqAsu8";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const loadingScreen =
+    document.getElementById("loadingScreen");
+
+const adminEmail =
+    document.getElementById("adminEmail");
+
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
+const statusBox =
+    document.getElementById("status");
+
+
+/* =====================================================
+   ADMIN SECURITY CHECK
+===================================================== */
+
+async function verifyAdmin(){
+
+    try{
+
+        const {
+            data:{
+                session
+            },
+            error
+        } =
+        await supabaseClient.auth.getSession();
+
+
+        if(error || !session){
+
+            window.location.href =
+                "admin-login.html";
+
+            return;
+
+        }
+
+
+        const userEmail =
+            session.user.email;
+
+
+        const {
+            data:admin,
+            error:adminError
+        } =
+        await supabaseClient
+        .from("admin_users")
+        .select(
+            "id,email,full_name,role,active"
+        )
+        .eq(
+            "email",
+            userEmail
+        )
+        .eq(
+            "role",
+            "admin"
+        )
+        .eq(
+            "active",
+            true
+        )
+        .maybeSingle();
+
+
+        if(adminError || !admin){
+
+            await supabaseClient.auth.signOut();
+
+            window.location.href =
+                "admin-login.html";
+
+            return;
+
+        }
+
+
+        adminEmail.textContent =
+            admin.full_name
+            ? admin.full_name +
+              " • " +
+              userEmail
+            : userEmail;
+
+
+        loadingScreen.style.display =
+            "none";
+
+
+    }catch(error){
+
+        console.error(error);
+
+        window.location.href =
+            "admin-login.html";
+
+    }
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+logoutBtn.addEventListener(
+    "click",
+    async function(){
+
+        logoutBtn.disabled = true;
+
+        logoutBtn.textContent =
+            "Logging out...";
+
+        await supabaseClient.auth.signOut();
+
+        window.location.href =
+            "admin-login.html";
+
+    }
+);
+
+
+/* =====================================================
+   PACKAGE DATA
+===================================================== */
 
 const packageData = {
 
     "Free Listing":{
         amount:0,
         days:0,
-        description:"Standard marketplace listing. No paid promotion.",
-        featured:false
+        description:
+            "Standard marketplace listing. No paid promotion."
     },
 
     "Quick Sale":{
         amount:500,
         days:7,
-        description:"Featured promotion for 7 days.",
-        featured:true
+        description:
+            "Featured promotion for 7 days."
     },
 
     "Premium Listing":{
         amount:1500,
         days:30,
-        description:"Premium featured promotion for 30 days.",
-        featured:true
+        description:
+            "Premium featured promotion for 30 days."
     },
 
     "Dealer Starter":{
         amount:3000,
         days:30,
-        description:"Dealer package for one month.",
-        featured:true
+        description:
+            "Dealer package for one month."
     }
 
 };
 
 
-/* =========================
-   TODAY'S DATE
-========================= */
+/* =====================================================
+   DATE
+===================================================== */
 
 function getToday(){
 
-    const date = new Date();
+    const d =
+        new Date();
 
-    const year = date.getFullYear();
-
-    const month = String(
-        date.getMonth() + 1
-    ).padStart(2,"0");
-
-    const day = String(
-        date.getDate()
-    ).padStart(2,"0");
-
-    return year + "-" + month + "-" + day;
+    return d.getFullYear()
+        + "-"
+        + String(
+            d.getMonth()+1
+          ).padStart(2,"0")
+        + "-"
+        + String(
+            d.getDate()
+          ).padStart(2,"0");
 
 }
 
 
-/* =========================
-   DEFAULT START DATE
-========================= */
-
-document.getElementById(
-    "promotionStart"
-).value = getToday();
-
-
-/* =========================
+/* =====================================================
    UPDATE PROMOTION
-========================= */
+===================================================== */
 
 function updatePromotion(){
 
     const packageName =
-        document.getElementById("promotion").value;
+        document.getElementById(
+            "promotion"
+        ).value;
 
     const startInput =
-        document.getElementById("promotionStart");
+        document.getElementById(
+            "promotionStart"
+        );
 
     const expiryInput =
-        document.getElementById("promotionExpiry");
+        document.getElementById(
+            "promotionExpiry"
+        );
 
     const details =
-        document.getElementById("packageDetails");
+        document.getElementById(
+            "packageDetails"
+        );
+
+    const featured =
+        document.getElementById(
+            "featured"
+        );
 
     const data =
         packageData[packageName];
 
+
     details.innerHTML =
-        "Price: <strong>KES " +
-        data.amount.toLocaleString() +
-        "</strong> — " +
-        data.description;
+        "<strong>Package:</strong> "
+        + packageName
+        + "<br>"
+        + "<strong>Price:</strong> KES "
+        + data.amount.toLocaleString()
+        + "<br>"
+        + data.description;
 
 
     if(packageName === "Free Listing"){
 
         expiryInput.value = "";
 
-        document.getElementById(
-            "featured"
-        ).checked = false;
+        featured.checked = false;
 
-        document.getElementById(
-            "featured"
-        ).disabled = true;
+        featured.disabled = true;
 
         return;
 
     }
 
 
-    document.getElementById(
-        "featured"
-    ).disabled = false;
+    featured.disabled = false;
 
 
     if(!startInput.value){
 
-        startInput.value = getToday();
+        startInput.value =
+            getToday();
 
     }
 
 
     const start =
-        new Date(startInput.value + "T00:00:00");
+        new Date(
+            startInput.value
+            + "T00:00:00"
+        );
 
 
     start.setDate(
-        start.getDate() + data.days
+        start.getDate()
+        + data.days
     );
 
 
-    const year =
-        start.getFullYear();
-
-    const month =
-        String(
-            start.getMonth() + 1
-        ).padStart(2,"0");
-
-    const day =
-        String(
+    expiryInput.value =
+        start.getFullYear()
+        + "-"
+        + String(
+            start.getMonth()+1
+        ).padStart(2,"0")
+        + "-"
+        + String(
             start.getDate()
         ).padStart(2,"0");
-
-
-    expiryInput.value =
-        year + "-" + month + "-" + day;
 
 }
 
 
-/* =========================
-   INITIAL PACKAGE
-========================= */
-
-updatePromotion();
-
-
-/* =========================
+/* =====================================================
    CLEAN TEXT
-========================= */
+===================================================== */
 
 function clean(value){
 
@@ -1301,25 +1781,25 @@ function clean(value){
 }
 
 
-/* =========================
+/* =====================================================
    NUMBER
-========================= */
+===================================================== */
 
 function numberValue(value){
 
-    const number =
+    const n =
         Number(value);
 
-    return Number.isFinite(number)
-        ? number
+    return Number.isFinite(n)
+        ? n
         : 0;
 
 }
 
 
-/* =========================
-   IMAGE ARRAY
-========================= */
+/* =====================================================
+   IMAGES
+===================================================== */
 
 function buildImages(){
 
@@ -1334,7 +1814,7 @@ function buildImages(){
             "additionalImages"
         ).value
         .split(",")
-        .map(item => item.trim())
+        .map(x => x.trim())
         .filter(Boolean);
 
 
@@ -1342,20 +1822,26 @@ function buildImages(){
 
 
     if(main){
+
         images.push(main);
+
     }
 
 
-    additional.forEach(image => {
+    additional.forEach(
+        image => {
 
-        if(
-            image &&
-            !images.includes(image)
-        ){
-            images.push(image);
+            if(
+                image &&
+                !images.includes(image)
+            ){
+
+                images.push(image);
+
+            }
+
         }
-
-    });
+    );
 
 
     return images;
@@ -1363,9 +1849,9 @@ function buildImages(){
 }
 
 
-/* =========================
+/* =====================================================
    VALIDATION
-========================= */
+===================================================== */
 
 function validate(){
 
@@ -1386,7 +1872,9 @@ function validate(){
     ];
 
 
-    for(const item of required){
+    for(
+        const item of required
+    ){
 
         const field =
             document.getElementById(
@@ -1394,11 +1882,16 @@ function validate(){
             );
 
 
-        if(!field.value.trim()){
+        if(
+            !String(
+                field.value
+            ).trim()
+        ){
 
-            alert(
-                "Please complete: " +
-                item[1]
+            showStatus(
+                "Please complete: "
+                + item[1],
+                "error"
             );
 
             field.focus();
@@ -1416,8 +1909,9 @@ function validate(){
         ).checked
     ){
 
-        alert(
-            "The listing must be approved before generating the final listing."
+        showStatus(
+            "Approve the listing before generating it.",
+            "error"
         );
 
         return false;
@@ -1432,7 +1926,8 @@ function validate(){
 
 
     if(
-        promotion !== "Free Listing"
+        promotion !==
+        "Free Listing"
     ){
 
         const paymentStatus =
@@ -1446,8 +1941,9 @@ function validate(){
             "Payment Verified"
         ){
 
-            alert(
-                "Paid promotion cannot be activated until payment is verified."
+            showStatus(
+                "Paid promotion cannot be activated until payment is verified.",
+                "error"
             );
 
             return false;
@@ -1462,320 +1958,215 @@ function validate(){
 }
 
 
-/* =========================
-   GENERATE LISTING
-========================= */
+/* =====================================================
+   GENERATE
+===================================================== */
 
 function generateListing(){
 
     if(!validate()){
+
         return;
-    }
-
-
-    const listingId =
-        clean(
-            document.getElementById(
-                "listingId"
-            ).value.trim()
-        );
-
-
-    const year =
-        numberValue(
-            document.getElementById(
-                "year"
-            ).value
-        );
-
-
-    const make =
-        clean(
-            document.getElementById(
-                "make"
-            ).value.trim()
-        );
-
-
-    const model =
-        clean(
-            document.getElementById(
-                "model"
-            ).value.trim()
-        );
-
-
-    const category =
-        clean(
-            document.getElementById(
-                "category"
-            ).value
-        );
-
-
-    const condition =
-        clean(
-            document.getElementById(
-                "condition"
-            ).value
-        );
-
-
-    const price =
-        numberValue(
-            document.getElementById(
-                "price"
-            ).value
-        );
-
-
-    const location =
-        clean(
-            document.getElementById(
-                "location"
-            ).value.trim()
-        );
-
-
-    const transmission =
-        clean(
-            document.getElementById(
-                "transmission"
-            ).value
-        );
-
-
-    const fuel =
-        clean(
-            document.getElementById(
-                "fuel"
-            ).value
-        );
-
-
-    const mileage =
-        numberValue(
-            document.getElementById(
-                "mileage"
-            ).value
-        );
-
-
-    const engine =
-        clean(
-            document.getElementById(
-                "engine"
-            ).value.trim()
-        );
-
-
-    const drive =
-        clean(
-            document.getElementById(
-                "drive"
-            ).value
-        );
-
-
-    const mainImage =
-        clean(
-            document.getElementById(
-                "mainImage"
-            ).value.trim()
-        );
-
-
-    const images =
-        buildImages();
-
-
-    const description =
-        clean(
-            document.getElementById(
-                "description"
-            ).value.trim()
-        );
-
-
-    const sellerName =
-        clean(
-            document.getElementById(
-                "sellerName"
-            ).value.trim()
-        );
-
-
-    const sellerType =
-        clean(
-            document.getElementById(
-                "sellerType"
-            ).value
-        );
-
-
-    const sellerPhone =
-        clean(
-            document.getElementById(
-                "sellerPhone"
-            ).value.trim()
-        );
-
-
-    const sellerWhatsapp =
-        clean(
-            document.getElementById(
-                "sellerWhatsapp"
-            ).value.trim()
-        );
-
-
-    const publicContact =
-        document.getElementById(
-            "publicContact"
-        ).checked;
-
-
-    const promotion =
-        document.getElementById(
-            "promotion"
-        ).value;
-
-
-    const featured =
-        document.getElementById(
-            "featured"
-        ).checked;
-
-
-    const featuredUntil =
-        document.getElementById(
-            "promotionExpiry"
-        ).value;
-
-
-    const paymentStatus =
-        document.getElementById(
-            "paymentStatus"
-        ).value;
-
-
-    const transactionCode =
-        clean(
-            document.getElementById(
-                "transactionCode"
-            ).value.trim()
-        );
-
-
-    const paymentAmount =
-        numberValue(
-            document.getElementById(
-                "paymentAmount"
-            ).value
-        );
-
-
-    const paymentDate =
-        clean(
-            document.getElementById(
-                "paymentDate"
-            ).value
-        );
-
-
-    let featuredValue =
-        featured;
-
-
-    if(
-        promotion ===
-        "Free Listing"
-    ){
-
-        featuredValue = false;
 
     }
 
 
     const listing = {
 
-        id:listingId,
+        id:
+            clean(
+                document.getElementById(
+                    "listingId"
+                ).value
+            ),
 
-        make:make,
+        make:
+            clean(
+                document.getElementById(
+                    "make"
+                ).value
+            ),
 
-        model:model,
+        model:
+            clean(
+                document.getElementById(
+                    "model"
+                ).value
+            ),
 
-        year:year,
+        year:
+            numberValue(
+                document.getElementById(
+                    "year"
+                ).value
+            ),
 
-        category:category,
+        category:
+            clean(
+                document.getElementById(
+                    "category"
+                ).value
+            ),
 
-        price:price,
+        condition:
+            clean(
+                document.getElementById(
+                    "condition"
+                ).value
+            ),
 
-        location:location,
+        price:
+            numberValue(
+                document.getElementById(
+                    "price"
+                ).value
+            ),
 
-        transmission:transmission,
+        location:
+            clean(
+                document.getElementById(
+                    "location"
+                ).value
+            ),
 
-        fuel:fuel,
+        transmission:
+            clean(
+                document.getElementById(
+                    "transmission"
+                ).value
+            ),
 
-        mileage:mileage,
+        fuel:
+            clean(
+                document.getElementById(
+                    "fuel"
+                ).value
+            ),
 
-        engine:engine,
+        mileage:
+            numberValue(
+                document.getElementById(
+                    "mileage"
+                ).value
+            ),
 
-        drive:drive,
+        engine:
+            clean(
+                document.getElementById(
+                    "engine"
+                ).value
+            ),
 
-        condition:condition,
+        drive:
+            clean(
+                document.getElementById(
+                    "drive"
+                ).value
+            ),
 
-        image:mainImage,
+        image:
+            clean(
+                document.getElementById(
+                    "mainImage"
+                ).value
+            ),
 
-        images:images,
+        images:
+            buildImages(),
 
-        description:description,
+        description:
+            clean(
+                document.getElementById(
+                    "description"
+                ).value
+            ),
 
-        featured:featuredValue,
+        featured:
+            document.getElementById(
+                "featured"
+            ).checked,
 
-        promotion:promotion,
+        promotion:
+            document.getElementById(
+                "promotion"
+            ).value,
 
         featuredUntil:
-            featuredValue
-            ? featuredUntil
-            : "",
+            document.getElementById(
+                "promotionExpiry"
+            ).value,
 
         seller:{
 
-            name:sellerName,
+            name:
+                clean(
+                    document.getElementById(
+                        "sellerName"
+                    ).value
+                ),
 
-            type:sellerType,
+            type:
+                clean(
+                    document.getElementById(
+                        "sellerType"
+                    ).value
+                ),
 
-            phone:sellerPhone,
+            phone:
+                clean(
+                    document.getElementById(
+                        "sellerPhone"
+                    ).value
+                ),
 
-            whatsapp:sellerWhatsapp,
+            whatsapp:
+                clean(
+                    document.getElementById(
+                        "sellerWhatsapp"
+                    ).value
+                ),
 
-            publicContact:publicContact
+            publicContact:
+                document.getElementById(
+                    "publicContact"
+                ).checked
 
         },
 
         payment:{
 
-            status:paymentStatus,
+            status:
+                document.getElementById(
+                    "paymentStatus"
+                ).value,
 
-            transactionCode:transactionCode,
+            transactionCode:
+                clean(
+                    document.getElementById(
+                        "transactionCode"
+                    ).value
+                ),
 
-            amount:paymentAmount,
+            amount:
+                numberValue(
+                    document.getElementById(
+                        "paymentAmount"
+                    ).value
+                ),
 
-            date:paymentDate
+            date:
+                document.getElementById(
+                    "paymentDate"
+                ).value
 
         }
 
     };
 
 
-    const output =
-        document.getElementById(
-            "output"
-        );
-
-
-    output.value =
+    document.getElementById(
+        "output"
+    ).value =
         JSON.stringify(
             listing,
             null,
@@ -1783,16 +2174,17 @@ function generateListing(){
         ) + ",";
 
 
-    alert(
-        "Listing code generated successfully."
+    showStatus(
+        "Listing generated successfully.",
+        "success"
     );
 
 }
 
 
-/* =========================
+/* =====================================================
    PREVIEW
-========================= */
+===================================================== */
 
 function showPreview(){
 
@@ -1800,7 +2192,6 @@ function showPreview(){
         document.getElementById(
             "make"
         ).value.trim();
-
 
     const model =
         document.getElementById(
@@ -1810,8 +2201,9 @@ function showPreview(){
 
     if(!make || !model){
 
-        alert(
-            "Enter at least the vehicle make and model first."
+        showStatus(
+            "Enter the vehicle make and model first.",
+            "error"
         );
 
         return;
@@ -1819,17 +2211,20 @@ function showPreview(){
     }
 
 
+    const image =
+        document.getElementById(
+            "mainImage"
+        ).value.trim();
+
     const category =
         document.getElementById(
             "category"
         ).value;
 
-
     const year =
         document.getElementById(
             "year"
         ).value;
-
 
     const price =
         numberValue(
@@ -1838,7 +2233,6 @@ function showPreview(){
             ).value
         );
 
-
     const mileage =
         numberValue(
             document.getElementById(
@@ -1846,29 +2240,15 @@ function showPreview(){
             ).value
         );
 
-
     const location =
         document.getElementById(
             "location"
         ).value;
 
-
-    const promotion =
-        document.getElementById(
-            "promotion"
-        ).value;
-
-
     const featured =
         document.getElementById(
             "featured"
         ).checked;
-
-
-    const image =
-        document.getElementById(
-            "mainImage"
-        ).value;
 
 
     const preview =
@@ -1884,92 +2264,55 @@ function showPreview(){
     const badge =
         featured
         ? '<span class="badge">FEATURED</span>'
-        : '<span class="badge normal-badge">STANDARD LISTING</span>';
+        : '<span class="badge normal">STANDARD LISTING</span>';
 
 
     preview.innerHTML = `
 
         ${badge}
 
+        <img
+            class="preview-image"
+            src="${escapeHTML(image)}"
+            onerror="this.style.display='none'"
+            alt="${escapeHTML(make + " " + model)}"
+        >
+
         <div class="preview-title">
-            ${escapeHTML(make)} ${escapeHTML(model)}
+            ${escapeHTML(make)}
+            ${escapeHTML(model)}
         </div>
 
-        <div>
+        <div style="color:#6b7280;margin-top:5px;">
             ${escapeHTML(category)}
             ${year ? " • " + escapeHTML(year) : ""}
             ${location ? " • " + escapeHTML(location) : ""}
         </div>
 
-        <div class="preview-price">
+        <div class="price">
             KES ${price.toLocaleString()}
         </div>
 
-        <div class="preview-specs">
-
-            <span class="spec">
-                ${mileage.toLocaleString()} KM
-            </span>
-
-            <span class="spec">
-                ${escapeHTML(
-                    document.getElementById("transmission").value
-                )}
-            </span>
-
-            <span class="spec">
-                ${escapeHTML(
-                    document.getElementById("fuel").value
-                )}
-            </span>
-
-            <span class="spec">
-                ${escapeHTML(
-                    document.getElementById("drive").value
-                )}
-            </span>
-
+        <div style="color:#4b5563;">
+            ${mileage
+                ? mileage.toLocaleString() + " KM"
+                : "Mileage not specified"}
         </div>
-
-        <div>
-            <strong>Promotion:</strong>
-            ${escapeHTML(promotion)}
-        </div>
-
-        ${
-            featured
-            ? `
-                <div style="margin-top:8px;">
-                    <strong>Featured Until:</strong>
-                    ${escapeHTML(
-                        document.getElementById(
-                            "promotionExpiry"
-                        ).value
-                    )}
-                </div>
-              `
-            : ""
-        }
-
-        ${
-            image
-            ? `
-                <div style="margin-top:15px;">
-                    <strong>Main Image:</strong>
-                    ${escapeHTML(image)}
-                </div>
-              `
-            : ""
-        }
 
     `;
+
+
+    preview.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+    });
 
 }
 
 
-/* =========================
+/* =====================================================
    ESCAPE HTML
-========================= */
+===================================================== */
 
 function escapeHTML(value){
 
@@ -1983,11 +2326,11 @@ function escapeHTML(value){
 }
 
 
-/* =========================
-   COPY CODE
-========================= */
+/* =====================================================
+   COPY
+===================================================== */
 
-function copyCode(){
+async function copyCode(){
 
     const output =
         document.getElementById(
@@ -1997,8 +2340,9 @@ function copyCode(){
 
     if(!output.value){
 
-        alert(
-            "Generate the listing code first."
+        showStatus(
+            "Generate a listing first.",
+            "error"
         );
 
         return;
@@ -2006,80 +2350,119 @@ function copyCode(){
     }
 
 
-    navigator.clipboard.writeText(
-        output.value
-    )
-    .then(function(){
+    try{
 
-        alert(
-            "Listing code copied to clipboard."
+        await navigator.clipboard.writeText(
+            output.value
         );
 
-    })
-    .catch(function(){
+
+        showStatus(
+            "Listing data copied to clipboard.",
+            "success"
+        );
+
+
+    }catch(error){
 
         output.select();
 
-        document.execCommand("copy");
-
-        alert(
-            "Listing code copied."
+        document.execCommand(
+            "copy"
         );
 
-    });
+
+        showStatus(
+            "Listing data copied.",
+            "success"
+        );
+
+    }
 
 }
 
 
-/* =========================
-   CLEAR FORM
-========================= */
+/* =====================================================
+   CLEAR
+===================================================== */
 
 function clearForm(){
 
-    if(
-        !confirm(
-            "Clear all entered information?"
-        )
-    ){
-        return;
-    }
+    const fields = [
+
+        "listingId",
+        "year",
+        "make",
+        "model",
+        "price",
+        "mileage",
+        "engine",
+        "location",
+        "mainImage",
+        "additionalImages",
+        "description",
+        "sellerName",
+        "sellerPhone",
+        "sellerWhatsapp",
+        "transactionCode",
+        "paymentAmount",
+        "paymentDate"
+
+    ];
 
 
-    document
-        .querySelectorAll(
-            "input, textarea"
-        )
-        .forEach(function(field){
+    fields.forEach(
+        id => {
 
-            if(field.type === "checkbox"){
+            const field =
+                document.getElementById(id);
 
-                field.checked = false;
-
-            }
-            else{
+            if(field){
 
                 field.value = "";
 
             }
 
-        });
+        }
+    );
+
+
+    document.getElementById(
+        "featured"
+    ).checked = false;
+
+
+    document.getElementById(
+        "approved"
+    ).checked = false;
+
+
+    document.getElementById(
+        "publicContact"
+    ).checked = false;
 
 
     document.getElementById(
         "promotion"
-    ).value = "Free Listing";
-
-
-    document.getElementById(
-        "sellerType"
-    ).value = "Private Seller";
+    ).value =
+        "Free Listing";
 
 
     document.getElementById(
         "paymentStatus"
     ).value =
         "Not Applicable — Free Listing";
+
+
+    document.getElementById(
+        "promotionStart"
+    ).value =
+        getToday();
+
+
+    document.getElementById(
+        "promotionExpiry"
+    ).value = "";
 
 
     document.getElementById(
@@ -2093,14 +2476,84 @@ function clearForm(){
         "none";
 
 
-    document.getElementById(
-        "promotionStart"
-    ).value = getToday();
-
-
     updatePromotion();
 
+
+    showStatus(
+        "Form cleared.",
+        "success"
+    );
+
 }
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+function showStatus(
+    message,
+    type
+){
+
+    statusBox.textContent =
+        message;
+
+    statusBox.className =
+        "status " + type;
+
+
+    setTimeout(
+        function(){
+
+            statusBox.className =
+                "status";
+
+        },
+        5000
+    );
+
+}
+
+
+/* =====================================================
+   QUICK NAVIGATION
+===================================================== */
+
+function scrollToSection(id){
+
+    const element =
+        document.getElementById(id);
+
+    if(element){
+
+        element.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+
+    }
+
+}
+
+
+/* =====================================================
+   INITIAL DATA
+===================================================== */
+
+document.getElementById(
+    "promotionStart"
+).value =
+    getToday();
+
+updatePromotion();
+
+
+/* =====================================================
+   START SECURITY CHECK
+===================================================== */
+
+verifyAdmin();
 
 </script>
 
