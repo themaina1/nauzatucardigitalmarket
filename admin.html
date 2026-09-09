@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 
 <meta name="viewport"
@@ -29,8 +28,6 @@ body{
     line-height:1.5;
 }
 
-/* HEADER */
-
 header{
     background:#111827;
     color:white;
@@ -43,7 +40,7 @@ header{
 .header-inner{
     max-width:1250px;
     margin:auto;
-    padding:16px 20px;
+    padding:15px 20px;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -51,7 +48,7 @@ header{
 }
 
 .logo{
-    font-size:22px;
+    font-size:21px;
     font-weight:bold;
 }
 
@@ -60,10 +57,10 @@ header{
 }
 
 .logo-sub{
-    color:white;
-    font-size:14px;
-    font-weight:normal;
     display:block;
+    color:#d1d5db;
+    font-size:13px;
+    font-weight:normal;
 }
 
 .header-right{
@@ -73,8 +70,8 @@ header{
 }
 
 .admin-email{
-    font-size:13px;
     color:#d1d5db;
+    font-size:13px;
 }
 
 .logout-btn{
@@ -90,8 +87,6 @@ header{
 .logout-btn:hover{
     background:#b91c1c;
 }
-
-/* LAYOUT */
 
 .page{
     max-width:1250px;
@@ -112,8 +107,6 @@ header{
     color:#6b7280;
 }
 
-/* STATS */
-
 .stats{
     display:grid;
     grid-template-columns:repeat(4,1fr);
@@ -124,13 +117,13 @@ header{
 .stat{
     background:white;
     border-radius:12px;
-    padding:22px;
+    padding:20px;
     box-shadow:0 3px 15px rgba(0,0,0,.06);
 }
 
 .stat-icon{
-    font-size:27px;
-    margin-bottom:10px;
+    font-size:25px;
+    margin-bottom:8px;
 }
 
 .stat-number{
@@ -143,59 +136,23 @@ header{
     font-size:13px;
 }
 
-/* NAV CARDS */
-
-.quick-actions{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    margin-bottom:25px;
-}
-
-.quick-card{
-    background:white;
-    padding:20px;
-    border-radius:12px;
-    border:1px solid #e5e7eb;
-    cursor:pointer;
-    transition:.2s;
-}
-
-.quick-card:hover{
-    transform:translateY(-2px);
-    box-shadow:0 7px 20px rgba(0,0,0,.08);
-}
-
-.quick-card h3{
-    margin-bottom:5px;
-}
-
-.quick-card p{
-    color:#6b7280;
-    font-size:13px;
-}
-
-/* SECTIONS */
-
 .section{
     background:white;
     border-radius:13px;
-    padding:28px;
+    padding:25px;
     margin-bottom:25px;
     box-shadow:0 3px 15px rgba(0,0,0,.06);
 }
 
 .section h2{
-    margin-bottom:7px;
-    font-size:22px;
+    font-size:21px;
+    margin-bottom:6px;
 }
 
 .section-description{
     color:#6b7280;
-    margin-bottom:22px;
+    margin-bottom:20px;
 }
-
-/* FORM */
 
 .grid{
     display:grid;
@@ -238,8 +195,6 @@ textarea:focus{
     box-shadow:0 0 0 3px rgba(22,163,74,.08);
 }
 
-/* SELLER */
-
 .checkbox{
     display:flex;
     align-items:flex-start;
@@ -257,8 +212,6 @@ textarea:focus{
     margin:0;
 }
 
-/* PROMOTION */
-
 .promotion-box{
     background:#ecfdf5;
     border:1px solid #bbf7d0;
@@ -271,14 +224,12 @@ textarea:focus{
     border:1px solid #d1fae5;
     padding:15px;
     border-radius:8px;
-    margin-top:17px;
+    margin-top:15px;
 }
 
 .package-info strong{
     color:#166534;
 }
-
-/* BUTTONS */
 
 .buttons{
     display:flex;
@@ -310,11 +261,6 @@ button{
     color:white;
 }
 
-.blue{
-    background:#2563eb;
-    color:white;
-}
-
 .gray{
     background:#e5e7eb;
     color:#111827;
@@ -325,22 +271,52 @@ button{
     color:white;
 }
 
-/* OUTPUT */
-
-.output{
-    width:100%;
-    min-height:350px;
-    background:#111827;
-    color:#e5e7eb;
-    border:0;
-    border-radius:8px;
-    padding:17px;
-    font-family:monospace;
-    font-size:13px;
-    resize:vertical;
+.blue{
+    background:#2563eb;
+    color:white;
 }
 
-/* PREVIEW */
+button:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+}
+
+.status{
+    padding:13px;
+    border-radius:8px;
+    margin-top:15px;
+    display:none;
+}
+
+.status.success{
+    display:block;
+    background:#dcfce7;
+    color:#166534;
+}
+
+.status.error{
+    display:block;
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+.status.info{
+    display:block;
+    background:#dbeafe;
+    color:#1e40af;
+}
+
+.warning{
+    background:#fff7ed;
+    border-left:5px solid #f97316;
+    padding:17px;
+    border-radius:8px;
+    margin-bottom:25px;
+}
+
+.warning strong{
+    color:#c2410c;
+}
 
 .preview{
     display:none;
@@ -362,15 +338,15 @@ button{
 }
 
 .preview-title{
-    font-size:25px;
+    font-size:24px;
     font-weight:bold;
 }
 
-.price{
+.preview-price{
     color:#16a34a;
-    font-size:24px;
+    font-size:23px;
     font-weight:bold;
-    margin:8px 0;
+    margin:7px 0;
 }
 
 .badge{
@@ -384,59 +360,49 @@ button{
     margin-bottom:10px;
 }
 
-.normal{
-    background:#6b7280;
+.recent-list{
+    display:grid;
+    gap:12px;
 }
 
-/* STATUS */
-
-.status{
-    padding:13px;
-    border-radius:8px;
-    margin-top:15px;
-    display:none;
+.vehicle-row{
+    border:1px solid #e5e7eb;
+    border-radius:10px;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    background:#fff;
 }
 
-.status.success{
-    display:block;
-    background:#dcfce7;
-    color:#166534;
+.vehicle-row-main{
+    min-width:0;
 }
 
-.status.error{
-    display:block;
-    background:#fee2e2;
-    color:#991b1b;
+.vehicle-row-title{
+    font-weight:bold;
+    font-size:16px;
 }
 
-/* WARNING */
-
-.warning{
-    background:#fff7ed;
-    border-left:5px solid #f97316;
-    padding:17px;
-    border-radius:8px;
-    margin-bottom:25px;
-}
-
-.warning strong{
-    color:#c2410c;
-}
-
-/* FOOTER */
-
-footer{
-    background:#111827;
-    color:#d1d5db;
-    text-align:center;
-    padding:25px;
-    margin-top:40px;
+.vehicle-row-info{
+    color:#6b7280;
     font-size:13px;
+    margin-top:3px;
 }
 
-/* LOADING */
+.vehicle-row-price{
+    color:#16a34a;
+    font-weight:bold;
+}
 
-#loadingScreen{
+.empty{
+    color:#6b7280;
+    text-align:center;
+    padding:20px;
+}
+
+.loading-screen{
     position:fixed;
     inset:0;
     background:#111827;
@@ -448,16 +414,25 @@ footer{
     font-size:18px;
 }
 
-/* MOBILE */
+.small-note{
+    color:#6b7280;
+    font-size:12px;
+    margin-top:6px;
+}
+
+footer{
+    background:#111827;
+    color:#d1d5db;
+    text-align:center;
+    padding:25px;
+    margin-top:40px;
+    font-size:13px;
+}
 
 @media(max-width:900px){
 
     .stats{
         grid-template-columns:repeat(2,1fr);
-    }
-
-    .quick-actions{
-        grid-template-columns:1fr;
     }
 
 }
@@ -490,23 +465,25 @@ footer{
         padding:20px;
     }
 
+    .vehicle-row{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
 }
 
 </style>
-
 </head>
 
 <body>
 
-
-<!-- LOADING -->
-
-<div id="loadingScreen">
+<div
+    id="loadingScreen"
+    class="loading-screen"
+>
     Checking administrator access...
 </div>
 
-
-<!-- HEADER -->
 
 <header>
 
@@ -550,8 +527,6 @@ footer{
 </header>
 
 
-<!-- MAIN -->
-
 <main class="page">
 
 
@@ -562,14 +537,11 @@ footer{
     </h1>
 
     <p>
-        Manage vehicle advertisements, sellers,
-        promotions and payment verification.
+        Add, publish and manage vehicle advertisements.
     </p>
 
 </div>
 
-
-<!-- STATS -->
 
 <div class="stats">
 
@@ -587,7 +559,7 @@ footer{
         </div>
 
         <div class="stat-label">
-            Vehicle Listings
+            Published Vehicles
         </div>
 
     </div>
@@ -607,7 +579,7 @@ footer{
         </div>
 
         <div class="stat-label">
-            Featured Listings
+            Featured Vehicles
         </div>
 
     </div>
@@ -655,62 +627,6 @@ footer{
 </div>
 
 
-<!-- QUICK ACTIONS -->
-
-<div class="quick-actions">
-
-    <div
-        class="quick-card"
-        onclick="scrollToSection('vehicleSection')"
-    >
-
-        <h3>
-            🚗 Add Vehicle
-        </h3>
-
-        <p>
-            Create a new vehicle advertisement.
-        </p>
-
-    </div>
-
-
-    <div
-        class="quick-card"
-        onclick="scrollToSection('promotionSection')"
-    >
-
-        <h3>
-            ⭐ Promotions
-        </h3>
-
-        <p>
-            Manage featured and paid advertising.
-        </p>
-
-    </div>
-
-
-    <div
-        class="quick-card"
-        onclick="scrollToSection('paymentSection')"
-    >
-
-        <h3>
-            💳 Payments
-        </h3>
-
-        <p>
-            Record and verify M-Pesa payments.
-        </p>
-
-    </div>
-
-</div>
-
-
-<!-- WARNING -->
-
 <div class="warning">
 
     <strong>
@@ -718,17 +634,15 @@ footer{
     </strong>
 
     <p style="margin-top:7px;">
-
-        Only publish vehicles after checking the seller's
-        information, photographs, ownership details and
-        payment status where applicable.
-
+        Check the seller information, photographs,
+        vehicle details and payment status before
+        publishing an advertisement.
     </p>
 
 </div>
 
 
-<!-- VEHICLE -->
+<!-- VEHICLE INFORMATION -->
 
 <section
     class="section"
@@ -740,7 +654,7 @@ footer{
 </h2>
 
 <p class="section-description">
-    Enter the vehicle information that should appear
+    Enter the vehicle details that should appear
     on the Nauza Tu marketplace.
 </p>
 
@@ -759,6 +673,10 @@ footer{
     placeholder="Example: NT001"
 >
 
+<div class="small-note">
+    Must be unique.
+</div>
+
 </div>
 
 
@@ -771,7 +689,7 @@ footer{
 <input
     id="year"
     type="number"
-    min="1990"
+    min="1900"
     max="2035"
     placeholder="2020"
 >
@@ -996,6 +914,10 @@ footer{
     placeholder="images/toyota-prado.jpg"
 >
 
+<div class="small-note">
+    Example: images/prado.jpg
+</div>
+
 </div>
 
 
@@ -1009,6 +931,10 @@ footer{
     id="additionalImages"
     placeholder="images/prado-2.jpg, images/prado-3.jpg"
 >
+
+<div class="small-note">
+    Separate image paths with commas.
+</div>
 
 </div>
 
@@ -1122,11 +1048,8 @@ footer{
 >
 
 <label for="publicContact">
-
-    Seller has authorized Nauza Tu to
-    display the seller's contact details
-    publicly on this listing.
-
+    Seller has authorized Nauza Tu to display
+    the seller's contact details publicly.
 </label>
 
 </div>
@@ -1146,8 +1069,7 @@ footer{
 </h2>
 
 <p class="section-description">
-    Select the advertising package and approve
-    the listing only after reviewing it.
+    Select the advertising package.
 </p>
 
 
@@ -1181,25 +1103,10 @@ footer{
 </option>
 
 <option value="Dealer Starter">
-    Dealer Starter — KES 3,000 / month
+    Dealer Starter — KES 3,000 / 30 days
 </option>
 
 </select>
-
-</div>
-
-
-<div>
-
-<label for="promotionStart">
-    Promotion Start
-</label>
-
-<input
-    id="promotionStart"
-    type="date"
-    onchange="updatePromotion()"
->
 
 </div>
 
@@ -1223,25 +1130,12 @@ footer{
 
 
 <div
-    class="package-info"
     id="packageDetails"
+    class="package-info"
 >
+    Free marketplace listing.
 </div>
 
-
-<div class="checkbox">
-
-<input
-    id="featured"
-    type="checkbox"
->
-
-<label for="featured">
-
-    Display this vehicle in the
-    Featured Vehicles section.
-
-</label>
 
 </div>
 
@@ -1254,14 +1148,9 @@ footer{
 >
 
 <label for="approved">
-
-    I have reviewed this listing and
-    approve it for publication.
-
+    I have reviewed this listing and approve it
+    for publication.
 </label>
-
-</div>
-
 
 </div>
 
@@ -1280,7 +1169,8 @@ footer{
 </h2>
 
 <p class="section-description">
-    Record payment information for paid promotions.
+    Paid promotion must have verified payment
+    before publication.
 </p>
 
 
@@ -1295,19 +1185,19 @@ footer{
 
 <select id="paymentStatus">
 
-<option>
+<option value="Not Applicable — Free Listing">
     Not Applicable — Free Listing
 </option>
 
-<option>
+<option value="Pending Verification">
     Pending Verification
 </option>
 
-<option>
+<option value="Payment Verified">
     Payment Verified
 </option>
 
-<option>
+<option value="Payment Rejected">
     Payment Rejected
 </option>
 
@@ -1374,26 +1264,27 @@ footer{
 </h2>
 
 <p class="section-description">
-    Review the information before generating the
-    vehicle listing data.
+    Preview the vehicle and then publish it directly
+    into the Supabase marketplace database.
 </p>
 
 
 <div class="buttons">
 
 <button
-    class="primary"
-    onclick="generateListing()"
->
-    Generate Listing
-</button>
-
-
-<button
     class="dark"
     onclick="showPreview()"
 >
     Preview Listing
+</button>
+
+
+<button
+    class="primary"
+    id="publishBtn"
+    onclick="publishVehicle()"
+>
+    Publish Vehicle
 </button>
 
 
@@ -1413,38 +1304,37 @@ footer{
 ></div>
 
 
-<div style="margin-top:25px;">
-
-<label for="output">
-    Generated Vehicle Data
-</label>
-
-<textarea
-    id="output"
-    class="output"
-    readonly
-    placeholder="Generated vehicle data will appear here..."
-></textarea>
-
-</div>
-
-
-<div class="buttons">
-
-<button
-    class="blue"
-    onclick="copyCode()"
->
-    Copy Listing Data
-</button>
-
-</div>
-
-
 <div
     id="preview"
     class="preview"
 ></div>
+
+</section>
+
+
+<!-- RECENT LISTINGS -->
+
+<section class="section">
+
+<h2>
+    📋 Recent Listings
+</h2>
+
+<p class="section-description">
+    Vehicles currently stored in your Supabase database.
+</p>
+
+
+<div
+    id="recentListings"
+    class="recent-list"
+>
+
+<div class="empty">
+    Loading listings...
+</div>
+
+</div>
 
 </section>
 
@@ -1498,9 +1388,12 @@ const logoutBtn =
 const statusBox =
     document.getElementById("status");
 
+const publishBtn =
+    document.getElementById("publishBtn");
+
 
 /* =====================================================
-   ADMIN SECURITY CHECK
+   ADMIN SECURITY
 ===================================================== */
 
 async function verifyAdmin(){
@@ -1521,8 +1414,7 @@ async function verifyAdmin(){
             window.location.href =
                 "admin-login.html";
 
-            return;
-
+            return false;
         }
 
 
@@ -1539,7 +1431,7 @@ async function verifyAdmin(){
         .select(
             "id,email,full_name,role,active"
         )
-        .eq(
+        .ilike(
             "email",
             userEmail
         )
@@ -1561,8 +1453,7 @@ async function verifyAdmin(){
             window.location.href =
                 "admin-login.html";
 
-            return;
-
+            return false;
         }
 
 
@@ -1578,6 +1469,13 @@ async function verifyAdmin(){
             "none";
 
 
+        await loadStats();
+
+        await loadRecentListings();
+
+        return true;
+
+
     }catch(error){
 
         console.error(error);
@@ -1585,6 +1483,7 @@ async function verifyAdmin(){
         window.location.href =
             "admin-login.html";
 
+        return false;
     }
 
 }
@@ -1643,36 +1542,65 @@ const packageData = {
         amount:3000,
         days:30,
         description:
-            "Dealer package for one month."
+            "Dealer promotion for 30 days."
     }
 
 };
 
 
 /* =====================================================
-   DATE
+   DATE HELPERS
 ===================================================== */
 
 function getToday(){
 
-    const d =
+    const date =
         new Date();
 
-    return d.getFullYear()
+    return date.getFullYear()
         + "-"
         + String(
-            d.getMonth()+1
-          ).padStart(2,"0")
+            date.getMonth()+1
+        ).padStart(2,"0")
         + "-"
         + String(
-            d.getDate()
-          ).padStart(2,"0");
+            date.getDate()
+        ).padStart(2,"0");
+
+}
+
+
+function addDays(
+    startDate,
+    days
+){
+
+    const date =
+        new Date(
+            startDate +
+            "T00:00:00"
+        );
+
+    date.setDate(
+        date.getDate() +
+        days
+    );
+
+    return date.getFullYear()
+        + "-"
+        + String(
+            date.getMonth()+1
+        ).padStart(2,"0")
+        + "-"
+        + String(
+            date.getDate()
+        ).padStart(2,"0");
 
 }
 
 
 /* =====================================================
-   UPDATE PROMOTION
+   PROMOTION
 ===================================================== */
 
 function updatePromotion(){
@@ -1682,139 +1610,113 @@ function updatePromotion(){
             "promotion"
         ).value;
 
-    const startInput =
-        document.getElementById(
-            "promotionStart"
-        );
-
-    const expiryInput =
-        document.getElementById(
-            "promotionExpiry"
-        );
+    const data =
+        packageData[packageName];
 
     const details =
         document.getElementById(
             "packageDetails"
         );
 
-    const featured =
+    const expiry =
         document.getElementById(
-            "featured"
+            "promotionExpiry"
         );
 
-    const data =
-        packageData[packageName];
+    const paymentStatus =
+        document.getElementById(
+            "paymentStatus"
+        );
+
+    const paymentAmount =
+        document.getElementById(
+            "paymentAmount"
+        );
 
 
     details.innerHTML =
-        "<strong>Package:</strong> "
+        "<strong>"
         + packageName
-        + "<br>"
+        + "</strong><br>"
+        + data.description
+        + "<br><br>"
         + "<strong>Price:</strong> KES "
-        + data.amount.toLocaleString()
-        + "<br>"
-        + data.description;
+        + data.amount.toLocaleString();
 
 
-    if(packageName === "Free Listing"){
+    if(data.days > 0){
 
-        expiryInput.value = "";
+        expiry.value =
+            addDays(
+                getToday(),
+                data.days
+            );
 
-        featured.checked = false;
+        paymentAmount.value =
+            data.amount;
 
-        featured.disabled = true;
+        paymentStatus.value =
+            "Pending Verification";
 
-        return;
+    }else{
+
+        expiry.value = "";
+
+        paymentAmount.value = "0";
+
+        paymentStatus.value =
+            "Not Applicable — Free Listing";
 
     }
-
-
-    featured.disabled = false;
-
-
-    if(!startInput.value){
-
-        startInput.value =
-            getToday();
-
-    }
-
-
-    const start =
-        new Date(
-            startInput.value
-            + "T00:00:00"
-        );
-
-
-    start.setDate(
-        start.getDate()
-        + data.days
-    );
-
-
-    expiryInput.value =
-        start.getFullYear()
-        + "-"
-        + String(
-            start.getMonth()+1
-        ).padStart(2,"0")
-        + "-"
-        + String(
-            start.getDate()
-        ).padStart(2,"0");
 
 }
 
 
 /* =====================================================
-   CLEAN TEXT
+   FORM DATA
 ===================================================== */
 
 function clean(value){
 
-    return String(value || "")
-        .replace(/\\/g,"\\\\")
-        .replace(/"/g,'\\"')
-        .replace(/\r?\n/g," ");
+    return String(
+        value || ""
+    ).trim();
 
 }
 
 
-/* =====================================================
-   NUMBER
-===================================================== */
-
 function numberValue(value){
 
-    const n =
+    const number =
         Number(value);
 
-    return Number.isFinite(n)
-        ? n
+    return Number.isFinite(number)
+        ? number
         : 0;
 
 }
 
 
-/* =====================================================
-   IMAGES
-===================================================== */
-
 function buildImages(){
 
     const main =
-        document.getElementById(
-            "mainImage"
-        ).value.trim();
+        clean(
+            document.getElementById(
+                "mainImage"
+            ).value
+        );
 
 
     const additional =
-        document.getElementById(
-            "additionalImages"
-        ).value
+        clean(
+            document.getElementById(
+                "additionalImages"
+            ).value
+        )
         .split(",")
-        .map(x => x.trim())
+        .map(
+            image => image.trim()
+        )
         .filter(Boolean);
 
 
@@ -1853,21 +1755,31 @@ function buildImages(){
    VALIDATION
 ===================================================== */
 
-function validate(){
+function validateForm(){
 
     const required = [
 
         ["listingId","Listing ID"],
+
         ["year","Year"],
+
         ["make","Make"],
+
         ["model","Model"],
+
         ["category","Category"],
+
         ["condition","Condition"],
+
         ["price","Price"],
-        ["location","Location"],
-        ["mainImage","Main Image"],
-        ["description","Description"],
-        ["sellerName","Seller Name"]
+
+        ["location","Vehicle Location"],
+
+        ["mainImage","Main Image Path"],
+
+        ["description","Vehicle Description"],
+
+        ["sellerName","Seller / Business Name"]
 
     ];
 
@@ -1883,9 +1795,7 @@ function validate(){
 
 
         if(
-            !String(
-                field.value
-            ).trim()
+            !clean(field.value)
         ){
 
             showStatus(
@@ -1910,7 +1820,7 @@ function validate(){
     ){
 
         showStatus(
-            "Approve the listing before generating it.",
+            "Please approve the listing before publishing.",
             "error"
         );
 
@@ -1942,7 +1852,58 @@ function validate(){
         ){
 
             showStatus(
-                "Paid promotion cannot be activated until payment is verified.",
+                "Paid promotion cannot be published until payment is verified.",
+                "error"
+            );
+
+            return false;
+
+        }
+
+
+        const packageAmount =
+            packageData[
+                promotion
+            ].amount;
+
+
+        const paidAmount =
+            numberValue(
+                document.getElementById(
+                    "paymentAmount"
+                ).value
+            );
+
+
+        if(
+            paidAmount !==
+            packageAmount
+        ){
+
+            showStatus(
+                "Payment amount must be KES "
+                + packageAmount.toLocaleString()
+                + " for "
+                + promotion
+                + ".",
+                "error"
+            );
+
+            return false;
+
+        }
+
+
+        if(
+            !clean(
+                document.getElementById(
+                    "transactionCode"
+                ).value
+            )
+        ){
+
+            showStatus(
+                "Enter the M-Pesa transaction code.",
                 "error"
             );
 
@@ -1959,21 +1920,51 @@ function validate(){
 
 
 /* =====================================================
-   GENERATE
+   BUILD VEHICLE OBJECT
 ===================================================== */
 
-function generateListing(){
+function getVehicleData(){
 
-    if(!validate()){
+    const promotion =
+        document.getElementById(
+            "promotion"
+        ).value;
 
-        return;
+    const packageInfo =
+        packageData[
+            promotion
+        ];
+
+
+    let featuredUntil =
+        null;
+
+
+    if(
+        packageInfo.days > 0
+    ){
+
+        const expiry =
+            document.getElementById(
+                "promotionExpiry"
+            ).value;
+
+        if(expiry){
+
+            featuredUntil =
+                new Date(
+                    expiry +
+                    "T23:59:59"
+                ).toISOString();
+
+        }
 
     }
 
 
-    const listing = {
+    return {
 
-        id:
+        listing_id:
             clean(
                 document.getElementById(
                     "listingId"
@@ -2029,20 +2020,6 @@ function generateListing(){
                 ).value
             ),
 
-        transmission:
-            clean(
-                document.getElementById(
-                    "transmission"
-                ).value
-            ),
-
-        fuel:
-            clean(
-                document.getElementById(
-                    "fuel"
-                ).value
-            ),
-
         mileage:
             numberValue(
                 document.getElementById(
@@ -2057,6 +2034,20 @@ function generateListing(){
                 ).value
             ),
 
+        transmission:
+            clean(
+                document.getElementById(
+                    "transmission"
+                ).value
+            ),
+
+        fuel:
+            clean(
+                document.getElementById(
+                    "fuel"
+                ).value
+            ),
+
         drive:
             clean(
                 document.getElementById(
@@ -2064,7 +2055,7 @@ function generateListing(){
                 ).value
             ),
 
-        image:
+        main_image:
             clean(
                 document.getElementById(
                     "mainImage"
@@ -2082,22 +2073,15 @@ function generateListing(){
             ),
 
         featured:
-            document.getElementById(
-                "featured"
-            ).checked,
+            packageInfo.days > 0,
 
         promotion:
-            document.getElementById(
-                "promotion"
-            ).value,
+            promotion,
 
-        featuredUntil:
-            document.getElementById(
-                "promotionExpiry"
-            ).value,
+        featured_until:
+            featuredUntil,
 
         seller:{
-
             name:
                 clean(
                     document.getElementById(
@@ -2159,25 +2143,12 @@ function generateListing(){
                     "paymentDate"
                 ).value
 
-        }
+        },
+
+        status:
+            "published"
 
     };
-
-
-    document.getElementById(
-        "output"
-    ).value =
-        JSON.stringify(
-            listing,
-            null,
-            4
-        ) + ",";
-
-
-    showStatus(
-        "Listing generated successfully.",
-        "success"
-    );
 
 }
 
@@ -2188,21 +2159,23 @@ function generateListing(){
 
 function showPreview(){
 
-    const make =
+    const preview =
         document.getElementById(
-            "make"
-        ).value.trim();
-
-    const model =
-        document.getElementById(
-            "model"
-        ).value.trim();
+            "preview"
+        );
 
 
-    if(!make || !model){
+    const vehicle =
+        getVehicleData();
+
+
+    if(
+        !clean(vehicle.make) ||
+        !clean(vehicle.model)
+    ){
 
         showStatus(
-            "Enter the vehicle make and model first.",
+            "Enter at least the vehicle make and model to preview.",
             "error"
         );
 
@@ -2212,100 +2185,70 @@ function showPreview(){
 
 
     const image =
-        document.getElementById(
-            "mainImage"
-        ).value.trim();
-
-    const category =
-        document.getElementById(
-            "category"
-        ).value;
-
-    const year =
-        document.getElementById(
-            "year"
-        ).value;
-
-    const price =
-        numberValue(
-            document.getElementById(
-                "price"
-            ).value
-        );
-
-    const mileage =
-        numberValue(
-            document.getElementById(
-                "mileage"
-            ).value
-        );
-
-    const location =
-        document.getElementById(
-            "location"
-        ).value;
-
-    const featured =
-        document.getElementById(
-            "featured"
-        ).checked;
-
-
-    const preview =
-        document.getElementById(
-            "preview"
-        );
-
-
-    preview.style.display =
-        "block";
-
-
-    const badge =
-        featured
-        ? '<span class="badge">FEATURED</span>'
-        : '<span class="badge normal">STANDARD LISTING</span>';
+        vehicle.main_image;
 
 
     preview.innerHTML = `
 
-        ${badge}
+        ${
+            image
+            ?
+            `<img
+                src="${escapeHtml(image)}"
+                class="preview-image"
+                onerror="this.style.display='none'"
+            >`
+            :
+            ""
+        }
 
-        <img
-            class="preview-image"
-            src="${escapeHTML(image)}"
-            onerror="this.style.display='none'"
-            alt="${escapeHTML(make + " " + model)}"
-        >
+        <div class="badge">
+            ${
+                vehicle.featured
+                ? "FEATURED"
+                : "LISTING"
+            }
+        </div>
 
         <div class="preview-title">
-            ${escapeHTML(make)}
-            ${escapeHTML(model)}
+            ${escapeHtml(vehicle.year)}
+            ${escapeHtml(vehicle.make)}
+            ${escapeHtml(vehicle.model)}
         </div>
 
-        <div style="color:#6b7280;margin-top:5px;">
-            ${escapeHTML(category)}
-            ${year ? " • " + escapeHTML(year) : ""}
-            ${location ? " • " + escapeHTML(location) : ""}
+        <div class="preview-price">
+            KES ${Number(vehicle.price).toLocaleString()}
         </div>
 
-        <div class="price">
-            KES ${price.toLocaleString()}
-        </div>
+        <p>
+            <strong>Location:</strong>
+            ${escapeHtml(vehicle.location)}
+        </p>
 
-        <div style="color:#4b5563;">
-            ${mileage
-                ? mileage.toLocaleString() + " KM"
-                : "Mileage not specified"}
-        </div>
+        <p>
+            <strong>Category:</strong>
+            ${escapeHtml(vehicle.category)}
+        </p>
+
+        <p>
+            <strong>Condition:</strong>
+            ${escapeHtml(vehicle.condition)}
+        </p>
+
+        <p style="margin-top:12px;">
+            ${escapeHtml(vehicle.description)}
+        </p>
+
+        <p style="margin-top:12px;">
+            <strong>Seller:</strong>
+            ${escapeHtml(vehicle.seller.name)}
+        </p>
 
     `;
 
 
-    preview.scrollIntoView({
-        behavior:"smooth",
-        block:"start"
-    });
+    preview.style.display =
+        "block";
 
 }
 
@@ -2314,174 +2257,30 @@ function showPreview(){
    ESCAPE HTML
 ===================================================== */
 
-function escapeHTML(value){
+function escapeHtml(value){
 
-    return String(value || "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-
-/* =====================================================
-   COPY
-===================================================== */
-
-async function copyCode(){
-
-    const output =
-        document.getElementById(
-            "output"
-        );
-
-
-    if(!output.value){
-
-        showStatus(
-            "Generate a listing first.",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    try{
-
-        await navigator.clipboard.writeText(
-            output.value
-        );
-
-
-        showStatus(
-            "Listing data copied to clipboard.",
-            "success"
-        );
-
-
-    }catch(error){
-
-        output.select();
-
-        document.execCommand(
-            "copy"
-        );
-
-
-        showStatus(
-            "Listing data copied.",
-            "success"
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   CLEAR
-===================================================== */
-
-function clearForm(){
-
-    const fields = [
-
-        "listingId",
-        "year",
-        "make",
-        "model",
-        "price",
-        "mileage",
-        "engine",
-        "location",
-        "mainImage",
-        "additionalImages",
-        "description",
-        "sellerName",
-        "sellerPhone",
-        "sellerWhatsapp",
-        "transactionCode",
-        "paymentAmount",
-        "paymentDate"
-
-    ];
-
-
-    fields.forEach(
-        id => {
-
-            const field =
-                document.getElementById(id);
-
-            if(field){
-
-                field.value = "";
-
-            }
-
-        }
-    );
-
-
-    document.getElementById(
-        "featured"
-    ).checked = false;
-
-
-    document.getElementById(
-        "approved"
-    ).checked = false;
-
-
-    document.getElementById(
-        "publicContact"
-    ).checked = false;
-
-
-    document.getElementById(
-        "promotion"
-    ).value =
-        "Free Listing";
-
-
-    document.getElementById(
-        "paymentStatus"
-    ).value =
-        "Not Applicable — Free Listing";
-
-
-    document.getElementById(
-        "promotionStart"
-    ).value =
-        getToday();
-
-
-    document.getElementById(
-        "promotionExpiry"
-    ).value = "";
-
-
-    document.getElementById(
-        "output"
-    ).value = "";
-
-
-    document.getElementById(
-        "preview"
-    ).style.display =
-        "none";
-
-
-    updatePromotion();
-
-
-    showStatus(
-        "Form cleared.",
-        "success"
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
     );
 
 }
@@ -2500,37 +2299,166 @@ function showStatus(
         message;
 
     statusBox.className =
-        "status " + type;
-
-
-    setTimeout(
-        function(){
-
-            statusBox.className =
-                "status";
-
-        },
-        5000
-    );
+        "status "
+        + type;
 
 }
 
 
 /* =====================================================
-   QUICK NAVIGATION
+   PUBLISH VEHICLE
 ===================================================== */
 
-function scrollToSection(id){
+async function publishVehicle(){
 
-    const element =
-        document.getElementById(id);
+    if(
+        !validateForm()
+    ){
 
-    if(element){
+        return;
 
-        element.scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-        });
+    }
+
+
+    const vehicle =
+        getVehicleData();
+
+
+    publishBtn.disabled =
+        true;
+
+    publishBtn.textContent =
+        "Publishing...";
+
+
+    showStatus(
+        "Saving vehicle to Supabase...",
+        "info"
+    );
+
+
+    try{
+
+        const {
+            data:{
+                session
+            },
+            error:sessionError
+        } =
+        await supabaseClient.auth.getSession();
+
+
+        if(
+            sessionError ||
+            !session
+        ){
+
+            throw new Error(
+                "Your administrator session has expired. Please log in again."
+            );
+
+        }
+
+
+        const {
+            data:existing,
+            error:existingError
+        } =
+        await supabaseClient
+        .from("vehicles")
+        .select("id")
+        .eq(
+            "listing_id",
+            vehicle.listing_id
+        )
+        .maybeSingle();
+
+
+        if(existingError){
+
+            throw existingError;
+
+        }
+
+
+        if(existing){
+
+            throw new Error(
+                "Listing ID "
+                + vehicle.listing_id
+                + " already exists. Use a different Listing ID."
+            );
+
+        }
+
+
+        const {
+            data,
+            error
+        } =
+        await supabaseClient
+        .from("vehicles")
+        .insert(
+            vehicle
+        )
+        .select()
+        .single();
+
+
+        if(error){
+
+            throw error;
+
+        }
+
+
+        showStatus(
+            "Vehicle "
+            + data.listing_id
+            + " was successfully published to Supabase.",
+            "success"
+        );
+
+
+        await loadStats();
+
+        await loadRecentListings();
+
+
+        setTimeout(
+            function(){
+
+                clearForm();
+
+            },
+            1200
+        );
+
+
+    }catch(error){
+
+        console.error(
+            "Publish error:",
+            error
+        );
+
+
+        showStatus(
+            "Could not publish vehicle: "
+            + (
+                error.message ||
+                "Unknown error"
+            ),
+            "error"
+        );
+
+    }finally{
+
+        publishBtn.disabled =
+            false;
+
+        publishBtn.textContent =
+            "Publish Vehicle";
 
     }
 
@@ -2538,20 +2466,462 @@ function scrollToSection(id){
 
 
 /* =====================================================
-   INITIAL DATA
+   LOAD STATS
 ===================================================== */
 
-document.getElementById(
-    "promotionStart"
-).value =
-    getToday();
+async function loadStats(){
 
-updatePromotion();
+    try{
+
+        const {
+            data,
+            error
+        } =
+        await supabaseClient
+        .from("vehicles")
+        .select(
+            "id,featured,promotion,status"
+        );
+
+
+        if(error){
+
+            console.error(
+                "Stats error:",
+                error
+            );
+
+            return;
+
+        }
+
+
+        const vehicles =
+            data || [];
+
+
+        const published =
+            vehicles.filter(
+                vehicle =>
+                    vehicle.status ===
+                    "published"
+            );
+
+
+        const featured =
+            vehicles.filter(
+                vehicle =>
+                    vehicle.featured ===
+                    true
+            );
+
+
+        const paid =
+            vehicles.filter(
+                vehicle =>
+                    vehicle.promotion &&
+                    vehicle.promotion !==
+                    "Free Listing"
+            );
+
+
+        document.getElementById(
+            "vehicleCount"
+        ).textContent =
+            published.length;
+
+
+        document.getElementById(
+            "featuredCount"
+        ).textContent =
+            featured.length;
+
+
+        document.getElementById(
+            "paidCount"
+        ).textContent =
+            paid.length;
+
+
+    }catch(error){
+
+        console.error(error);
+
+    }
+
+}
 
 
 /* =====================================================
-   START SECURITY CHECK
+   LOAD RECENT LISTINGS
 ===================================================== */
+
+async function loadRecentListings(){
+
+    const container =
+        document.getElementById(
+            "recentListings"
+        );
+
+
+    container.innerHTML =
+        `<div class="empty">
+            Loading listings...
+        </div>`;
+
+
+    try{
+
+        const {
+            data,
+            error
+        } =
+        await supabaseClient
+        .from("vehicles")
+        .select(
+            "id,listing_id,make,model,year,price,location,featured,status,created_at"
+        )
+        .order(
+            "created_at",
+            {
+                ascending:false
+            }
+        )
+        .limit(20);
+
+
+        if(error){
+
+            throw error;
+
+        }
+
+
+        if(
+            !data ||
+            data.length === 0
+        ){
+
+            container.innerHTML =
+                `<div class="empty">
+                    No vehicles have been published yet.
+                </div>`;
+
+            return;
+
+        }
+
+
+        container.innerHTML =
+            data.map(
+                vehicle => `
+
+                    <div class="vehicle-row">
+
+                        <div class="vehicle-row-main">
+
+                            <div class="vehicle-row-title">
+
+                                ${escapeHtml(
+                                    vehicle.listing_id
+                                )}
+
+                                —
+                                ${escapeHtml(
+                                    vehicle.year
+                                )}
+
+                                ${escapeHtml(
+                                    vehicle.make
+                                )}
+
+                                ${escapeHtml(
+                                    vehicle.model
+                                )}
+
+                            </div>
+
+                            <div class="vehicle-row-info">
+
+                                ${escapeHtml(
+                                    vehicle.location
+                                )}
+
+                                •
+                                ${vehicle.featured
+                                    ? "Featured"
+                                    : "Standard"
+                                }
+
+                                •
+                                ${escapeHtml(
+                                    vehicle.status
+                                )}
+
+                            </div>
+
+                        </div>
+
+
+                        <div>
+
+                            <div class="vehicle-row-price">
+
+                                KES
+                                ${Number(
+                                    vehicle.price
+                                ).toLocaleString()}
+
+                            </div>
+
+
+                            <button
+                                class="red"
+                                style="margin-top:7px;padding:8px 12px;"
+                                onclick="deleteVehicle('${vehicle.id}','${escapeHtml(vehicle.listing_id)}')"
+                            >
+                                Delete
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `
+            )
+            .join("");
+
+
+    }catch(error){
+
+        console.error(
+            "Listings error:",
+            error
+        );
+
+
+        container.innerHTML =
+            `<div class="empty">
+                Could not load listings.
+            </div>`;
+
+    }
+
+}
+
+
+/* =====================================================
+   DELETE VEHICLE
+===================================================== */
+
+async function deleteVehicle(
+    id,
+    listingId
+){
+
+    const confirmed =
+        confirm(
+            "Delete listing "
+            + listingId
+            + " permanently?"
+        );
+
+
+    if(!confirmed){
+
+        return;
+
+    }
+
+
+    try{
+
+        const {
+            error
+        } =
+        await supabaseClient
+        .from("vehicles")
+        .delete()
+        .eq(
+            "id",
+            id
+        );
+
+
+        if(error){
+
+            throw error;
+
+        }
+
+
+        showStatus(
+            "Listing "
+            + listingId
+            + " was deleted.",
+            "success"
+        );
+
+
+        await loadStats();
+
+        await loadRecentListings();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        showStatus(
+            "Could not delete listing: "
+            + error.message,
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   CLEAR FORM
+===================================================== */
+
+function clearForm(){
+
+    document.getElementById(
+        "listingId"
+    ).value = "";
+
+    document.getElementById(
+        "year"
+    ).value = "";
+
+    document.getElementById(
+        "make"
+    ).value = "";
+
+    document.getElementById(
+        "model"
+    ).value = "";
+
+    document.getElementById(
+        "category"
+    ).value = "";
+
+    document.getElementById(
+        "condition"
+    ).value = "";
+
+    document.getElementById(
+        "price"
+    ).value = "";
+
+    document.getElementById(
+        "mileage"
+    ).value = "";
+
+    document.getElementById(
+        "engine"
+    ).value = "";
+
+    document.getElementById(
+        "transmission"
+    ).value = "";
+
+    document.getElementById(
+        "fuel"
+    ).value = "";
+
+    document.getElementById(
+        "drive"
+    ).value = "";
+
+    document.getElementById(
+        "location"
+    ).value = "";
+
+    document.getElementById(
+        "mainImage"
+    ).value = "";
+
+    document.getElementById(
+        "additionalImages"
+    ).value = "";
+
+    document.getElementById(
+        "description"
+    ).value = "";
+
+    document.getElementById(
+        "sellerName"
+    ).value = "";
+
+    document.getElementById(
+        "sellerType"
+    ).value =
+        "Private Seller";
+
+    document.getElementById(
+        "sellerPhone"
+    ).value = "";
+
+    document.getElementById(
+        "sellerWhatsapp"
+    ).value = "";
+
+    document.getElementById(
+        "publicContact"
+    ).checked = false;
+
+    document.getElementById(
+        "approved"
+    ).checked = false;
+
+    document.getElementById(
+        "promotion"
+    ).value =
+        "Free Listing";
+
+    document.getElementById(
+        "promotionExpiry"
+    ).value = "";
+
+    document.getElementById(
+        "paymentStatus"
+    ).value =
+        "Not Applicable — Free Listing";
+
+    document.getElementById(
+        "transactionCode"
+    ).value = "";
+
+    document.getElementById(
+        "paymentAmount"
+    ).value = "0";
+
+    document.getElementById(
+        "paymentDate"
+    ).value = "";
+
+
+    document.getElementById(
+        "preview"
+    ).style.display =
+        "none";
+
+
+    statusBox.className =
+        "status";
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+updatePromotion();
 
 verifyAdmin();
 
