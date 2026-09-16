@@ -9,6 +9,8 @@
 <meta name="description"
 content="Browse vehicles for sale across Kenya on Nauza Tu Digital Motor Market. Search SUVs, sedans, pickups, vans and more.">
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 
 *{
@@ -22,6 +24,8 @@ body{
     background:#f5f7fa;
     color:#1f2937;
 }
+
+/* HEADER */
 
 header{
     background:#111827;
@@ -65,6 +69,8 @@ header{
     color:#facc15;
 }
 
+/* HERO */
+
 .hero{
     background:
         linear-gradient(rgba(0,0,0,.68),rgba(0,0,0,.68)),
@@ -84,24 +90,15 @@ header{
     font-size:18px;
 }
 
+/* MAIN */
+
 .container{
     max-width:1200px;
     margin:35px auto;
     padding:0 20px;
 }
 
-.featured-heading{
-    margin-bottom:20px;
-}
-
-.featured-heading h2{
-    color:#111827;
-    font-size:28px;
-}
-
-.featured-heading p{
-    color:#667085;
-}
+/* FILTERS */
 
 .filters{
     background:white;
@@ -147,16 +144,62 @@ select{
     color:white;
 }
 
+/* HEADINGS */
+
+.featured-heading{
+    margin-bottom:20px;
+}
+
+.featured-heading h2{
+    color:#111827;
+    font-size:28px;
+}
+
+.featured-heading p{
+    color:#667085;
+}
+
 .results-info{
     margin-bottom:20px;
     color:#667085;
 }
+
+/* LOADING */
+
+.loading{
+    text-align:center;
+    padding:45px;
+    background:white;
+    border-radius:10px;
+    color:#667085;
+    font-size:17px;
+}
+
+.loading-spinner{
+    width:38px;
+    height:38px;
+    border:4px solid #e5e7eb;
+    border-top-color:#16a34a;
+    border-radius:50%;
+    margin:0 auto 15px;
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* VEHICLE GRID */
 
 .vehicle-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:22px;
 }
+
+/* CARD */
 
 .vehicle-card{
     background:white;
@@ -175,6 +218,7 @@ select{
     width:100%;
     height:220px;
     object-fit:cover;
+    display:block;
 }
 
 .featured-badge{
@@ -188,6 +232,18 @@ select{
     font-size:12px;
     font-weight:bold;
     box-shadow:0 2px 5px rgba(0,0,0,.2);
+}
+
+.database-badge{
+    position:absolute;
+    top:12px;
+    right:12px;
+    background:#2563eb;
+    color:white;
+    padding:6px 10px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:bold;
 }
 
 .card-content{
@@ -255,12 +311,44 @@ select{
     color:white;
 }
 
+/* EMPTY / ERROR */
+
 .empty{
     text-align:center;
     padding:50px;
     background:white;
     border-radius:10px;
+    grid-column:1/-1;
 }
+
+.empty h2{
+    margin-bottom:10px;
+}
+
+.empty p{
+    color:#667085;
+}
+
+.error-box{
+    background:#fff1f2;
+    border-left:5px solid #dc2626;
+    padding:18px;
+    margin-bottom:25px;
+    border-radius:8px;
+    color:#991b1b;
+}
+
+.retry-button{
+    margin-top:15px;
+    background:#111827;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+/* NOTICE */
 
 .notice{
     background:#fff8db;
@@ -269,6 +357,8 @@ select{
     margin-top:35px;
     border-radius:8px;
 }
+
+/* FOOTER */
 
 footer{
     background:#111827;
@@ -305,6 +395,8 @@ footer{
     font-size:13px;
 }
 
+/* TABLET */
+
 @media(max-width:950px){
 
     .filter-grid{
@@ -316,6 +408,8 @@ footer{
     }
 
 }
+
+/* MOBILE */
 
 @media(max-width:650px){
 
@@ -349,7 +443,6 @@ footer{
 </head>
 
 <body>
-
 
 <header>
 
@@ -489,7 +582,29 @@ Trucks
 </section>
 
 
-<section id="featuredSection">
+<div id="loadingBox" class="loading">
+
+<div class="loading-spinner"></div>
+
+Loading vehicles...
+
+</div>
+
+
+<div id="errorBox" style="display:none;" class="error-box">
+
+<strong>Unable to load the latest marketplace listings.</strong>
+
+<div id="errorMessage" style="margin-top:7px;"></div>
+
+<button class="retry-button" onclick="loadVehicles()">
+Try Again
+</button>
+
+</div>
+
+
+<section id="featuredSection" style="display:none;">
 
 <div class="featured-heading">
 
@@ -590,37 +705,148 @@ All rights reserved.
 </footer>
 
 
+<!--
+==========================================================
+OLD STATIC VEHICLE DATA
+==========================================================
+
+This remains temporarily so the existing NT001-NT009
+listings continue appearing while the marketplace is
+being migrated to Supabase.
+
+New administrator listings come from Supabase.
+==========================================================
+-->
+
 <script src="vehicles-data.js"></script>
+
 
 <script>
 
+/* ==========================================================
+   SUPABASE CONNECTION
+   ========================================================== */
+
+const SUPABASE_URL =
+    "https://hoogdxegjomtsvaddkwk.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_VEq6gUDlCthklOIgVUaDzQ_5TaqAsu8";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+/* ==========================================================
+   PAGE ELEMENTS
+   ========================================================== */
+
 const searchInput =
-document.getElementById("search");
+    document.getElementById("search");
 
 const categorySelect =
-document.getElementById("category");
+    document.getElementById("category");
 
 const minPrice =
-document.getElementById("minPrice");
+    document.getElementById("minPrice");
 
 const maxPrice =
-document.getElementById("maxPrice");
+    document.getElementById("maxPrice");
 
 const sortSelect =
-document.getElementById("sort");
+    document.getElementById("sort");
 
 const vehicleGrid =
-document.getElementById("vehicleGrid");
+    document.getElementById("vehicleGrid");
 
 const featuredGrid =
-document.getElementById("featuredGrid");
+    document.getElementById("featuredGrid");
 
 const featuredSection =
-document.getElementById("featuredSection");
+    document.getElementById("featuredSection");
 
 const resultsInfo =
-document.getElementById("resultsInfo");
+    document.getElementById("resultsInfo");
 
+const loadingBox =
+    document.getElementById("loadingBox");
+
+const errorBox =
+    document.getElementById("errorBox");
+
+const errorMessage =
+    document.getElementById("errorMessage");
+
+
+/* ==========================================================
+   VEHICLE DATABASE
+   ========================================================== */
+
+let allVehicles = [];
+
+
+/* ==========================================================
+   SAFE HTML
+   ========================================================== */
+
+function escapeHtml(value){
+
+    if(value === null || value === undefined){
+        return "";
+    }
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+
+/* ==========================================================
+   PRICE FORMAT
+   ========================================================== */
+
+function formatPrice(price){
+
+    const number =
+        Number(price);
+
+    if(!Number.isFinite(number)){
+        return "Price on request";
+    }
+
+    return "KES " +
+        number.toLocaleString("en-KE");
+
+}
+
+
+/* ==========================================================
+   MILEAGE FORMAT
+   ========================================================== */
+
+function formatMileage(mileage){
+
+    const number =
+        Number(mileage);
+
+    if(!Number.isFinite(number)){
+        return "N/A";
+    }
+
+    return number.toLocaleString("en-KE") + " KM";
+
+}
+
+
+/* ==========================================================
+   FEATURED CHECK
+   ========================================================== */
 
 function isFeatured(vehicle){
 
@@ -639,18 +865,344 @@ function isFeatured(vehicle){
 }
 
 
-function formatPrice(price){
+/* ==========================================================
+   NORMALIZE SUPABASE VEHICLE
+   ========================================================== */
 
-    return "KES " +
-    Number(price).toLocaleString("en-KE");
+function normalizeSupabaseVehicle(row){
+
+    let image =
+        row.main_image || "";
+
+    let images = [];
+
+    if(Array.isArray(row.images)){
+        images = row.images;
+    }
+    else if(typeof row.images === "string"){
+
+        try{
+            const parsed =
+                JSON.parse(row.images);
+
+            if(Array.isArray(parsed)){
+                images = parsed;
+            }
+
+        }catch(error){
+
+            images = [];
+
+        }
+
+    }
+
+    if(!image && images.length){
+        image = images[0];
+    }
+
+    const featuredUntil =
+        row.featured_until || "";
+
+    return {
+
+        id:
+            row.listing_id ||
+            row.id,
+
+        databaseId:
+            row.id,
+
+        listingId:
+            row.listing_id || "",
+
+        make:
+            row.make || "",
+
+        model:
+            row.model || "",
+
+        year:
+            Number(row.year) || 0,
+
+        category:
+            row.category || "",
+
+        condition:
+            row.condition || "",
+
+        price:
+            Number(row.price) || 0,
+
+        location:
+            row.location || "",
+
+        mileage:
+            Number(row.mileage) || 0,
+
+        engine:
+            row.engine || "",
+
+        transmission:
+            row.transmission || "",
+
+        fuel:
+            row.fuel || "",
+
+        drive:
+            row.drive || "",
+
+        image:
+            image,
+
+        images:
+            images,
+
+        description:
+            row.description || "",
+
+        featured:
+            Boolean(row.featured),
+
+        promotion:
+            row.promotion || "Free Listing",
+
+        featuredUntil:
+            featuredUntil,
+
+        seller:
+            row.seller || {},
+
+        payment:
+            row.payment || {},
+
+        status:
+            row.status || "published",
+
+        createdAt:
+            row.created_at || ""
+
+    };
 
 }
 
 
+/* ==========================================================
+   LOAD VEHICLES
+   ========================================================== */
+
+async function loadVehicles(){
+
+    loadingBox.style.display =
+        "block";
+
+    errorBox.style.display =
+        "none";
+
+    vehicleGrid.innerHTML = "";
+
+    featuredGrid.innerHTML = "";
+
+    featuredSection.style.display =
+        "none";
+
+
+    try{
+
+        /*
+        ------------------------------------------------------
+        LOAD PUBLISHED VEHICLES FROM SUPABASE
+        ------------------------------------------------------
+        */
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+            .from("vehicles")
+            .select("*")
+            .eq("status","published");
+
+
+        if(error){
+            throw error;
+        }
+
+
+        const supabaseVehicles =
+            (data || [])
+            .map(normalizeSupabaseVehicle);
+
+
+        /*
+        ------------------------------------------------------
+        KEEP EXISTING STATIC LISTINGS
+        ------------------------------------------------------
+        */
+
+        const staticVehicles =
+            Array.isArray(window.vehicles)
+            ? window.vehicles
+            : (
+                typeof vehicles !== "undefined"
+                ? vehicles
+                : []
+            );
+
+
+        /*
+        ------------------------------------------------------
+        COMBINE STATIC + SUPABASE
+        ------------------------------------------------------
+
+        If a Supabase listing has the same listing ID as
+        a static listing, the Supabase version replaces
+        the static version.
+
+        This means future database listings can gradually
+        replace the old hard-coded listings.
+        ------------------------------------------------------
+        */
+
+        const combinedMap =
+            new Map();
+
+
+        staticVehicles.forEach(vehicle => {
+
+            if(
+                vehicle &&
+                vehicle.id
+            ){
+
+                combinedMap.set(
+                    String(vehicle.id),
+                    vehicle
+                );
+
+            }
+
+        });
+
+
+        supabaseVehicles.forEach(vehicle => {
+
+            if(
+                vehicle &&
+                vehicle.id
+            ){
+
+                combinedMap.set(
+                    String(vehicle.id),
+                    vehicle
+                );
+
+            }
+
+        });
+
+
+        allVehicles =
+            Array.from(
+                combinedMap.values()
+            );
+
+
+        loadingBox.style.display =
+            "none";
+
+
+        /*
+        ------------------------------------------------------
+        DISPLAY
+        ------------------------------------------------------
+        */
+
+        filterVehicles();
+
+
+    }catch(error){
+
+        console.error(
+            "Supabase vehicle loading error:",
+            error
+        );
+
+
+        loadingBox.style.display =
+            "none";
+
+        errorBox.style.display =
+            "block";
+
+
+        errorMessage.textContent =
+            error.message ||
+            "Unknown database error.";
+
+
+        /*
+        ------------------------------------------------------
+        IMPORTANT FALLBACK
+
+        If Supabase temporarily fails, the old static
+        listings still remain available.
+        ------------------------------------------------------
+        */
+
+        const staticVehicles =
+            Array.isArray(window.vehicles)
+            ? window.vehicles
+            : (
+                typeof vehicles !== "undefined"
+                ? vehicles
+                : []
+            );
+
+
+        allVehicles =
+            Array.isArray(staticVehicles)
+            ? [...staticVehicles]
+            : [];
+
+
+        filterVehicles();
+
+    }
+
+}
+
+
+/* ==========================================================
+   CREATE VEHICLE CARD
+   ========================================================== */
+
 function createCard(vehicle){
 
     const featured =
-    isFeatured(vehicle);
+        isFeatured(vehicle);
+
+
+    const image =
+        vehicle.image ||
+        (
+            Array.isArray(vehicle.images) &&
+            vehicle.images.length
+            ? vehicle.images[0]
+            : "images/suv.jpg"
+        );
+
+
+    const listingId =
+        vehicle.id || "";
+
+
+    const databaseListing =
+        vehicle.databaseId
+        ? true
+        : false;
+
 
     return `
 
@@ -659,161 +1211,267 @@ function createCard(vehicle){
         ${
             featured
             ?
-            `<div class="featured-badge">
+            `
+            <div class="featured-badge">
                 FEATURED
-            </div>`
+            </div>
+            `
             :
             ""
         }
 
+
+        ${
+            databaseListing
+            ?
+            `
+            <div class="database-badge">
+                VERIFIED LISTING
+            </div>
+            `
+            :
+            ""
+        }
+
+
         <img
             class="vehicle-image"
-            src="${vehicle.image || "images/suv.jpg"}"
-            alt="${vehicle.make} ${vehicle.model}"
+            src="${escapeHtml(image)}"
+            alt="${escapeHtml(vehicle.make)} ${escapeHtml(vehicle.model)}"
             onerror="this.src='images/suv.jpg'"
         >
 
+
         <div class="card-content">
 
+
             <div class="vehicle-title">
-                ${vehicle.make} ${vehicle.model}
+
+                ${escapeHtml(vehicle.make)}
+                ${escapeHtml(vehicle.model)}
+
             </div>
+
 
             <div class="location">
-                📍 ${vehicle.location}
+
+                📍 ${escapeHtml(vehicle.location)}
+
             </div>
 
+
             <div class="price">
+
                 ${formatPrice(vehicle.price)}
+
             </div>
+
 
             ${
                 featured
                 ?
-                `<div class="promotion">
-                    ${vehicle.promotion || "Featured Listing"}
-                </div>`
+                `
+                <div class="promotion">
+
+                    ${escapeHtml(
+                        vehicle.promotion ||
+                        "Featured Listing"
+                    )}
+
+                </div>
+                `
                 :
                 ""
             }
 
+
             <div class="specs">
 
+
                 <div>
+
                     <strong>Year:</strong>
-                    ${vehicle.year}
+                    ${escapeHtml(vehicle.year)}
+
                 </div>
 
+
                 <div>
+
                     <strong>Category:</strong>
-                    ${vehicle.category}
+                    ${escapeHtml(vehicle.category)}
+
                 </div>
 
+
                 <div>
+
                     <strong>Mileage:</strong>
-                    ${Number(vehicle.mileage).toLocaleString()} KM
+                    ${formatMileage(vehicle.mileage)}
+
                 </div>
 
+
                 <div>
+
                     <strong>Fuel:</strong>
-                    ${vehicle.fuel}
+                    ${escapeHtml(vehicle.fuel || "N/A")}
+
                 </div>
 
+
                 <div>
+
                     <strong>Transmission:</strong>
-                    ${vehicle.transmission}
+                    ${escapeHtml(
+                        vehicle.transmission ||
+                        "N/A"
+                    )}
+
                 </div>
 
+
                 <div>
+
                     <strong>Drive:</strong>
-                    ${vehicle.drive}
+                    ${escapeHtml(
+                        vehicle.drive ||
+                        "N/A"
+                    )}
+
                 </div>
+
 
             </div>
+
 
             <div class="card-buttons">
 
+
                 <a
                     class="view"
-                    href="vehicle-details.html?id=${vehicle.id}">
+                    href="vehicle-details.html?id=${encodeURIComponent(listingId)}">
+
                     View Details
+
                 </a>
+
 
                 <a
                     class="contact"
-                    href="contact.html?vehicle=${vehicle.id}">
+                    href="contact.html?vehicle=${encodeURIComponent(listingId)}">
+
                     Enquire
+
                 </a>
+
 
             </div>
 
+
         </div>
+
 
     </article>
 
     `;
+
 }
 
+
+/* ==========================================================
+   GET CATEGORY FROM URL
+   ========================================================== */
 
 function getCategoryFromURL(){
 
     const params =
-    new URLSearchParams(window.location.search);
+        new URLSearchParams(
+            window.location.search
+        );
 
-    return params.get("category") || "";
+    return (
+        params.get("category") ||
+        ""
+    );
 
 }
 
 
+/* ==========================================================
+   FILTER VEHICLES
+   ========================================================== */
+
 function filterVehicles(){
 
     const search =
-    searchInput.value.toLowerCase().trim();
+        searchInput.value
+        .toLowerCase()
+        .trim();
+
 
     const category =
-    categorySelect.value;
+        categorySelect.value;
+
 
     const minimum =
-    minPrice.value
-    ? Number(minPrice.value)
-    : 0;
+        minPrice.value
+        ? Number(minPrice.value)
+        : 0;
+
 
     const maximum =
-    maxPrice.value
-    ? Number(maxPrice.value)
-    : Infinity;
+        maxPrice.value
+        ? Number(maxPrice.value)
+        : Infinity;
 
 
     let filtered =
-    vehicles.filter(vehicle => {
+        allVehicles.filter(
+            vehicle => {
 
-        const searchable =
-        `${vehicle.make}
-        ${vehicle.model}
-        ${vehicle.category}
-        ${vehicle.location}`
-        .toLowerCase();
+                const searchable =
+                    `
+                    ${vehicle.make}
+                    ${vehicle.model}
+                    ${vehicle.category}
+                    ${vehicle.location}
+                    ${vehicle.condition}
+                    ${vehicle.fuel}
+                    ${vehicle.transmission}
+                    `
+                    .toLowerCase();
 
-        return (
 
-            searchable.includes(search)
+                const matchesSearch =
+                    searchable.includes(
+                        search
+                    );
 
-            &&
 
-            (!category ||
-             vehicle.category === category)
+                const matchesCategory =
+                    !category ||
+                    vehicle.category ===
+                    category;
 
-            &&
 
-            vehicle.price >= minimum
+                const price =
+                    Number(vehicle.price) || 0;
 
-            &&
 
-            vehicle.price <= maximum
+                const matchesPrice =
+                    price >= minimum &&
+                    price <= maximum;
 
+
+                return (
+                    matchesSearch &&
+                    matchesCategory &&
+                    matchesPrice
+                );
+
+            }
         );
-
-    });
 
 
     sortVehicles(filtered);
@@ -823,33 +1481,53 @@ function filterVehicles(){
 }
 
 
+/* ==========================================================
+   SORT VEHICLES
+   ========================================================== */
+
 function sortVehicles(list){
 
     const sort =
-    sortSelect.value;
+        sortSelect.value;
 
 
     if(sort === "featured"){
 
-        list.sort((a,b) => {
+        list.sort(
+            (a,b) => {
 
-            if(isFeatured(a) &&
-               !isFeatured(b)) return -1;
+                if(
+                    isFeatured(a) &&
+                    !isFeatured(b)
+                ){
+                    return -1;
+                }
 
-            if(!isFeatured(a) &&
-               isFeatured(b)) return 1;
+                if(
+                    !isFeatured(a) &&
+                    isFeatured(b)
+                ){
+                    return 1;
+                }
 
-            return b.year - a.year;
 
-        });
+                return (
+                    Number(b.year || 0) -
+                    Number(a.year || 0)
+                );
+
+            }
+        );
 
     }
 
 
     else if(sort === "newest"){
 
-        list.sort((a,b) =>
-            b.year - a.year
+        list.sort(
+            (a,b) =>
+                Number(b.year || 0) -
+                Number(a.year || 0)
         );
 
     }
@@ -857,8 +1535,10 @@ function sortVehicles(list){
 
     else if(sort === "priceLow"){
 
-        list.sort((a,b) =>
-            a.price - b.price
+        list.sort(
+            (a,b) =>
+                Number(a.price || 0) -
+                Number(b.price || 0)
         );
 
     }
@@ -866,8 +1546,10 @@ function sortVehicles(list){
 
     else if(sort === "priceHigh"){
 
-        list.sort((a,b) =>
-            b.price - a.price
+        list.sort(
+            (a,b) =>
+                Number(b.price || 0) -
+                Number(a.price || 0)
         );
 
     }
@@ -875,8 +1557,10 @@ function sortVehicles(list){
 
     else if(sort === "mileage"){
 
-        list.sort((a,b) =>
-            a.mileage - b.mileage
+        list.sort(
+            (a,b) =>
+                Number(a.mileage || 0) -
+                Number(b.mileage || 0)
         );
 
     }
@@ -884,85 +1568,135 @@ function sortVehicles(list){
 }
 
 
+/* ==========================================================
+   RENDER VEHICLES
+   ========================================================== */
+
 function render(list){
 
     const featured =
-    list.filter(vehicle =>
-        isFeatured(vehicle)
-    );
+        list.filter(
+            vehicle =>
+                isFeatured(vehicle)
+        );
+
 
     const normal =
-    list.filter(vehicle =>
-        !isFeatured(vehicle)
-    );
+        list.filter(
+            vehicle =>
+                !isFeatured(vehicle)
+        );
 
+
+    /*
+    ----------------------------------------------------------
+    FEATURED
+    ----------------------------------------------------------
+    */
 
     if(featured.length){
 
         featuredSection.style.display =
-        "block";
+            "block";
+
 
         featuredGrid.innerHTML =
-        featured.map(createCard).join("");
+            featured
+            .map(createCard)
+            .join("");
 
-    }else{
+    }
+    else{
 
         featuredSection.style.display =
-        "none";
+            "none";
 
-        featuredGrid.innerHTML = "";
+        featuredGrid.innerHTML =
+            "";
 
     }
 
 
-    resultsInfo.textContent =
-    `${list.length} vehicle${list.length === 1 ? "" : "s"} found.`;
+    /*
+    ----------------------------------------------------------
+    RESULT COUNT
+    ----------------------------------------------------------
+    */
 
+    resultsInfo.textContent =
+        `${list.length} vehicle${
+            list.length === 1
+            ? ""
+            : "s"
+        } found.`;
+
+
+    /*
+    ----------------------------------------------------------
+    NORMAL VEHICLES
+    ----------------------------------------------------------
+    */
 
     if(normal.length){
 
         vehicleGrid.innerHTML =
-        normal.map(createCard).join("");
+            normal
+            .map(createCard)
+            .join("");
 
-    }else{
+    }
+    else{
 
         vehicleGrid.innerHTML =
-        `
-        <div class="empty">
+            `
 
-            <h2>No additional vehicles found</h2>
+            <div class="empty">
 
-            <p>
-            Try changing your search or filters.
-            </p>
+                <h2>
+                    No vehicles found
+                </h2>
 
-        </div>
-        `;
+                <p>
+                    Try changing your search
+                    or filters.
+                </p>
+
+            </div>
+
+            `;
 
     }
 
 }
 
 
+/* ==========================================================
+   EVENT LISTENERS
+   ========================================================== */
+
 searchInput.addEventListener(
     "input",
     filterVehicles
 );
+
 
 categorySelect.addEventListener(
     "change",
     filterVehicles
 );
 
+
 minPrice.addEventListener(
     "change",
     filterVehicles
 );
 
+
 maxPrice.addEventListener(
     "change",
     filterVehicles
 );
+
 
 sortSelect.addEventListener(
     "change",
@@ -970,52 +1704,83 @@ sortSelect.addEventListener(
 );
 
 
+/* ==========================================================
+   CATEGORY BUTTONS
+   ========================================================== */
+
 document
-.querySelectorAll(".category-buttons button")
+.querySelectorAll(
+    ".category-buttons button"
+)
 .forEach(button => {
 
-    button.addEventListener("click", () => {
+    button.addEventListener(
+        "click",
+        () => {
 
-        document
-        .querySelectorAll(".category-buttons button")
-        .forEach(btn =>
-            btn.classList.remove("active")
-        );
+            document
+            .querySelectorAll(
+                ".category-buttons button"
+            )
+            .forEach(btn => {
 
-        button.classList.add("active");
+                btn.classList.remove(
+                    "active"
+                );
 
-        categorySelect.value =
-        button.dataset.category;
+            });
 
-        filterVehicles();
 
-    });
+            button.classList.add(
+                "active"
+            );
+
+
+            categorySelect.value =
+                button.dataset.category;
+
+
+            filterVehicles();
+
+        }
+    );
 
 });
 
 
-/* Homepage/category URL support */
+/* ==========================================================
+   HOMEPAGE / CATEGORY URL SUPPORT
+   ========================================================== */
 
 const urlCategory =
-getCategoryFromURL();
+    getCategoryFromURL();
+
 
 if(urlCategory){
 
     categorySelect.value =
-    urlCategory;
+        urlCategory;
+
 
     document
-    .querySelectorAll(".category-buttons button")
+    .querySelectorAll(
+        ".category-buttons button"
+    )
     .forEach(button => {
 
-        button.classList.remove("active");
+        button.classList.remove(
+            "active"
+        );
+
 
         if(
             button.dataset.category ===
             urlCategory
         ){
 
-            button.classList.add("active");
+            button.classList.add(
+                "active"
+            );
 
         }
 
@@ -1024,12 +1789,20 @@ if(urlCategory){
 }
 
 
+/* ==========================================================
+   FOOTER YEAR
+   ========================================================== */
+
 document.getElementById("year")
 .textContent =
-new Date().getFullYear();
+    new Date().getFullYear();
 
 
-filterVehicles();
+/* ==========================================================
+   START
+   ========================================================== */
+
+loadVehicles();
 
 </script>
 
