@@ -1,1448 +1,1051 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Add Vehicle | Nauza Tu Digital Motor Market</title>
 
+<meta name="description"
+      content="Add a vehicle listing to Nauza Tu Digital Motor Market.">
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f5f7fa;
-    color:#1f2937;
-}
-
-header{
-    background:#111827;
-    color:white;
-}
-
-.navbar{
-    max-width:1100px;
-    margin:auto;
-    padding:16px 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
-}
-
-.logo{
-    color:#facc15;
-    font-size:22px;
-    font-weight:bold;
-    text-decoration:none;
-}
-
-.nav-links{
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
-}
-
-.nav-links a{
-    color:white;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:bold;
-}
-
-.nav-links a:hover{
-    color:#facc15;
-}
-
-.container{
-    max-width:900px;
-    margin:35px auto;
-    padding:0 20px;
-}
-
-.page-heading{
-    margin-bottom:25px;
-}
-
-.page-heading h1{
-    font-size:32px;
-    color:#111827;
-    margin-bottom:8px;
-}
-
-.page-heading p{
-    color:#667085;
-}
-
-.form-card{
-    background:white;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 4px 18px rgba(0,0,0,.08);
-}
-
-.section-title{
-    font-size:20px;
-    font-weight:bold;
-    color:#111827;
-    margin:25px 0 15px;
-    padding-bottom:8px;
-    border-bottom:1px solid #e5e7eb;
-}
-
-.section-title:first-child{
-    margin-top:0;
-}
-
-.form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:16px;
-}
-
-.form-group{
-    margin-bottom:4px;
-}
-
-.form-group.full{
-    grid-column:1/-1;
-}
-
-label{
-    display:block;
-    font-size:14px;
-    font-weight:bold;
-    margin-bottom:7px;
-    color:#374151;
-}
-
-.required{
-    color:#dc2626;
-}
-
-input,
-select,
-textarea{
-    width:100%;
-    padding:12px;
-    border:1px solid #d1d5db;
-    border-radius:7px;
-    background:white;
-    font-family:inherit;
-    font-size:15px;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-    outline:none;
-    border-color:#2563eb;
-    box-shadow:0 0 0 2px rgba(37,99,235,.1);
-}
-
-textarea{
-    min-height:120px;
-    resize:vertical;
-}
-
-.help{
-    margin-top:6px;
-    color:#6b7280;
-    font-size:12px;
-}
-
-.vendor-box{
-    background:#f0fdf4;
-    border:1px solid #bbf7d0;
-    padding:16px;
-    border-radius:8px;
-    margin-bottom:20px;
-}
-
-.vendor-box strong{
-    color:#166534;
-}
-
-.vendor-details{
-    margin-top:7px;
-    font-size:14px;
-    color:#374151;
-    line-height:1.6;
-}
-
-.button-row{
-    display:flex;
-    gap:12px;
-    margin-top:30px;
-}
-
-button,
-.button-link{
-    border:none;
-    padding:13px 20px;
-    border-radius:7px;
-    font-weight:bold;
-    font-size:15px;
-    cursor:pointer;
-    text-decoration:none;
-    text-align:center;
-}
-
-.publish-button{
-    background:#16a34a;
-    color:white;
-    flex:1;
-}
-
-.publish-button:hover{
-    background:#15803d;
-}
-
-.cancel-button{
-    background:#e5e7eb;
-    color:#111827;
-}
-
-.message{
-    display:none;
-    padding:15px;
-    border-radius:7px;
-    margin-bottom:20px;
-    line-height:1.5;
-}
-
-.message.success{
-    display:block;
-    background:#dcfce7;
-    color:#166534;
-    border-left:5px solid #16a34a;
-}
-
-.message.error{
-    display:block;
-    background:#fee2e2;
-    color:#991b1b;
-    border-left:5px solid #dc2626;
-}
-
-.loading{
-    text-align:center;
-    padding:40px;
-    color:#667085;
-}
-
-.spinner{
-    width:35px;
-    height:35px;
-    border:4px solid #e5e7eb;
-    border-top-color:#16a34a;
-    border-radius:50%;
-    margin:0 auto 12px;
-    animation:spin .8s linear infinite;
-}
-
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-.hidden{
-    display:none !important;
-}
-
-footer{
-    margin-top:50px;
-    background:#111827;
-    color:#cbd5e1;
-    text-align:center;
-    padding:25px 20px;
-    font-size:13px;
-}
-
-@media(max-width:700px){
-
-    .navbar{
-        flex-direction:column;
+    * {
+        box-sizing: border-box;
     }
 
-    .form-grid{
-        grid-template-columns:1fr;
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f6f8;
+        color: #222;
     }
 
-    .form-group.full{
-        grid-column:auto;
+    header {
+        background: #111827;
+        color: white;
+        padding: 18px 20px;
     }
 
-    .form-card{
-        padding:20px;
+    header .top {
+        max-width: 1100px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
     }
 
-    .button-row{
-        flex-direction:column;
+    header h1 {
+        margin: 0;
+        font-size: 21px;
     }
 
-}
+    header a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
+    }
 
+    main {
+        max-width: 1000px;
+        margin: 25px auto;
+        padding: 0 15px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 12px;
+        padding: 22px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        margin-top: 0;
+        color: #111827;
+    }
+
+    .intro {
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 25px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 17px;
+    }
+
+    .full {
+        grid-column: 1 / -1;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 7px;
+        font-size: 14px;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 7px;
+        font-size: 15px;
+        background: white;
+    }
+
+    textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        outline: none;
+        border-color: #2563eb;
+    }
+
+    .required {
+        color: #dc2626;
+    }
+
+    .photo-box {
+        border: 2px dashed #cbd5e1;
+        border-radius: 10px;
+        padding: 20px;
+        background: #f8fafc;
+    }
+
+    .photo-help {
+        margin-top: 8px;
+        color: #64748b;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .preview-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .preview {
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #e5e7eb;
+        aspect-ratio: 4 / 3;
+    }
+
+    .preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .main-label {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0,0,0,0.7);
+        color: white;
+        padding: 5px;
+        font-size: 11px;
+        text-align: center;
+    }
+
+    .button-row {
+        display: flex;
+        gap: 12px;
+        margin-top: 25px;
+        flex-wrap: wrap;
+    }
+
+    button {
+        border: none;
+        border-radius: 8px;
+        padding: 13px 22px;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .publish-btn {
+        background: #166534;
+        color: white;
+        flex: 1;
+    }
+
+    .publish-btn:hover {
+        background: #14532d;
+    }
+
+    .cancel-btn {
+        background: #e5e7eb;
+        color: #111827;
+    }
+
+    button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .message {
+        display: none;
+        padding: 13px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        line-height: 1.5;
+    }
+
+    .message.success {
+        display: block;
+        background: #dcfce7;
+        color: #166534;
+    }
+
+    .message.error {
+        display: block;
+        background: #fee2e2;
+        color: #991b1b;
+    }
+
+    .message.info {
+        display: block;
+        background: #dbeafe;
+        color: #1e40af;
+    }
+
+    .seller-box {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 15px;
+        line-height: 1.7;
+        color: #475569;
+    }
+
+    .price-input {
+        font-weight: bold;
+    }
+
+    @media (max-width: 700px) {
+        .grid {
+            grid-template-columns: 1fr;
+        }
+
+        .full {
+            grid-column: auto;
+        }
+
+        .preview-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        header .top {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .card {
+            padding: 17px;
+        }
+    }
 </style>
-
 </head>
 
 <body>
 
-
 <header>
-
-<div class="navbar">
-
-<a href="index.html" class="logo">
-Nauza Tu
-</a>
-
-<nav class="nav-links">
-
-<a href="vendor-dashboard.html">
-Dashboard
-</a>
-
-<a href="vehicles.html">
-Browse Vehicles
-</a>
-
-<a href="index.html">
-Home
-</a>
-
-</nav>
-
-</div>
-
+    <div class="top">
+        <h1>Nauza Tu Digital Motor Market</h1>
+        <a href="vendor-dashboard.html">← Back to Dashboard</a>
+    </div>
 </header>
 
-
-<main class="container">
-
-
-<div class="page-heading">
-
-<h1>
-Add Vehicle
-</h1>
-
-<p>
-Advertise your vehicle on Nauza Tu Digital Motor Market.
-</p>
-
-</div>
-
-
-<div id="loadingBox" class="loading">
-
-<div class="spinner"></div>
-
-Checking your vendor account...
-
-</div>
-
-
-<div id="pageContent" class="hidden">
-
-
-<div id="message" class="message"></div>
-
-
-<div class="vendor-box">
-
-<strong>
-Logged-in Vendor
-</strong>
-
-<div id="vendorDetails" class="vendor-details">
-Loading vendor information...
-</div>
-
-</div>
-
-
-<form id="vehicleForm" class="form-card">
-
-
-<div class="section-title">
-Vehicle Information
-</div>
-
-
-<div class="form-grid">
-
-
-<div class="form-group">
-
-<label>
-Make <span class="required">*</span>
-</label>
-
-<input
-type="text"
-id="make"
-placeholder="e.g. Toyota"
-required
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Model <span class="required">*</span>
-</label>
-
-<input
-type="text"
-id="model"
-placeholder="e.g. Harrier"
-required
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Year <span class="required">*</span>
-</label>
-
-<input
-type="number"
-id="year"
-min="1950"
-max="2035"
-placeholder="e.g. 2018"
-required
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Category <span class="required">*</span>
-</label>
-
-<select id="category" required>
-
-<option value="">
-Select category
-</option>
-
-<option value="SUV">
-SUV
-</option>
-
-<option value="Sedan">
-Sedan
-</option>
-
-<option value="Station Wagon">
-Station Wagon
-</option>
-
-<option value="Pickup">
-Pickup
-</option>
-
-<option value="Van">
-Van
-</option>
-
-<option value="Truck">
-Truck
-</option>
-
-<option value="Hatchback">
-Hatchback
-</option>
-
-<option value="Coupe">
-Coupe
-</option>
-
-<option value="Bus">
-Bus
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Condition
-</label>
-
-<select id="condition">
-
-<option value="">
-Select condition
-</option>
-
-<option value="Foreign Used">
-Foreign Used
-</option>
-
-<option value="Local Used">
-Local Used
-</option>
-
-<option value="New">
-New
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Mileage (KM)
-</label>
-
-<input
-type="number"
-id="mileage"
-min="0"
-placeholder="e.g. 85000"
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Price (KES) <span class="required">*</span>
-</label>
-
-<input
-type="number"
-id="price"
-min="0"
-placeholder="e.g. 1850000"
-required
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Location <span class="required">*</span>
-</label>
-
-<input
-type="text"
-id="location"
-placeholder="e.g. Nairobi, Kenya"
-required
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Engine
-</label>
-
-<input
-type="text"
-id="engine"
-placeholder="e.g. 2.0L Petrol"
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Transmission
-</label>
-
-<select id="transmission">
-
-<option value="">
-Select transmission
-</option>
-
-<option value="Automatic">
-Automatic
-</option>
-
-<option value="Manual">
-Manual
-</option>
-
-<option value="CVT">
-CVT
-</option>
-
-<option value="Semi-Automatic">
-Semi-Automatic
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Fuel
-</label>
-
-<select id="fuel">
-
-<option value="">
-Select fuel
-</option>
-
-<option value="Petrol">
-Petrol
-</option>
-
-<option value="Diesel">
-Diesel
-</option>
-
-<option value="Hybrid">
-Hybrid
-</option>
-
-<option value="Electric">
-Electric
-</option>
-
-<option value="Other">
-Other
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Drive
-</label>
-
-<select id="drive">
-
-<option value="">
-Select drive
-</option>
-
-<option value="2WD">
-2WD
-</option>
-
-<option value="4WD">
-4WD
-</option>
-
-<option value="AWD">
-AWD
-</option>
-
-</select>
-
-</div>
-
-
-</div>
-
-
-<div class="section-title">
-Vehicle Images
-</div>
-
-
-<div class="form-grid">
-
-
-<div class="form-group full">
-
-<label>
-Main Image URL <span class="required">*</span>
-</label>
-
-<input
-type="url"
-id="mainImage"
-placeholder="https://example.com/vehicle-photo.jpg"
-required
->
-
-<div class="help">
-Paste the direct URL of the main vehicle photograph.
-</div>
-
-</div>
-
-
-<div class="form-group full">
-
-<label>
-Additional Image URLs
-</label>
-
-<textarea
-id="additionalImages"
-placeholder="Paste additional image URLs, one per line"
-></textarea>
-
-<div class="help">
-You can add several image URLs. Put each image URL on a separate line.
-</div>
-
-</div>
-
-
-</div>
-
-
-<div class="section-title">
-Vehicle Description
-</div>
-
-
-<div class="form-group">
-
-<label>
-Description
-</label>
-
-<textarea
-id="description"
-placeholder="Describe the vehicle, condition, service history, features, ownership information and anything else a buyer should know."
-></textarea>
-
-</div>
-
-
-<div class="section-title">
-Seller Information
-</div>
-
-
-<div class="form-grid">
-
-
-<div class="form-group">
-
-<label>
-Seller Name
-</label>
-
-<input
-type="text"
-id="sellerName"
-readonly
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Seller Phone
-</label>
-
-<input
-type="text"
-id="sellerPhone"
-readonly
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-WhatsApp
-</label>
-
-<input
-type="text"
-id="sellerWhatsapp"
-readonly
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Business Name
-</label>
-
-<input
-type="text"
-id="sellerBusiness"
-readonly
->
-
-</div>
-
-
-</div>
-
-
-<div class="button-row">
-
-<a
-href="vendor-dashboard.html"
-class="button-link cancel-button"
->
-Cancel
-</a>
-
-
-<button
-type="submit"
-class="publish-button"
-id="publishButton"
->
-Publish Vehicle
-</button>
-
-</div>
-
-
-</form>
-
-
-</div>
-
+<main>
+
+    <div class="card">
+        <h2>Add Vehicle</h2>
+
+        <p class="intro">
+            List a vehicle for buyers on Nauza Tu Digital Motor Market.
+            Upload clear photos of the actual vehicle. Your listing will be
+            connected to your vendor account.
+        </p>
+
+        <div id="message" class="message"></div>
+
+        <form id="vehicleForm">
+
+            <div class="grid">
+
+                <div>
+                    <label>Make <span class="required">*</span></label>
+                    <input
+                        type="text"
+                        id="make"
+                        placeholder="e.g. Toyota"
+                        required>
+                </div>
+
+                <div>
+                    <label>Model <span class="required">*</span></label>
+                    <input
+                        type="text"
+                        id="model"
+                        placeholder="e.g. Harrier"
+                        required>
+                </div>
+
+                <div>
+                    <label>Year <span class="required">*</span></label>
+                    <input
+                        type="number"
+                        id="year"
+                        min="1950"
+                        max="2035"
+                        placeholder="e.g. 2019"
+                        required>
+                </div>
+
+                <div>
+                    <label>Category <span class="required">*</span></label>
+                    <select id="category" required>
+                        <option value="">Select category</option>
+                        <option value="Small Car">Small Car</option>
+                        <option value="Sedan">Sedan</option>
+                        <option value="Hatchback">Hatchback</option>
+                        <option value="SUV">SUV</option>
+                        <option value="Crossover">Crossover</option>
+                        <option value="Pickup">Pickup</option>
+                        <option value="Van">Van</option>
+                        <option value="Minibus">Minibus</option>
+                        <option value="Station Wagon">Station Wagon</option>
+                        <option value="Truck">Truck</option>
+                        <option value="Bus">Bus</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Condition <span class="required">*</span></label>
+                    <select id="condition" required>
+                        <option value="">Select condition</option>
+                        <option value="Used">Used</option>
+                        <option value="New">New</option>
+                        <option value="Reconditioned">Reconditioned</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Price (KES) <span class="required">*</span></label>
+                    <input
+                        type="number"
+                        id="price"
+                        class="price-input"
+                        min="0"
+                        step="1"
+                        placeholder="e.g. 2500000"
+                        required>
+                </div>
+
+                <div>
+                    <label>Location <span class="required">*</span></label>
+                    <input
+                        type="text"
+                        id="location"
+                        placeholder="e.g. Nairobi"
+                        required>
+                </div>
+
+                <div>
+                    <label>Mileage (km)</label>
+                    <input
+                        type="number"
+                        id="mileage"
+                        min="0"
+                        placeholder="e.g. 72000">
+                </div>
+
+                <div>
+                    <label>Engine</label>
+                    <input
+                        type="text"
+                        id="engine"
+                        placeholder="e.g. 2.0">
+                </div>
+
+                <div>
+                    <label>Transmission</label>
+                    <select id="transmission">
+                        <option value="">Select</option>
+                        <option value="Automatic">Automatic</option>
+                        <option value="Manual">Manual</option>
+                        <option value="CVT">CVT</option>
+                        <option value="DCT">DCT</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Fuel</label>
+                    <select id="fuel">
+                        <option value="">Select</option>
+                        <option value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Hybrid">Hybrid</option>
+                        <option value="Electric">Electric</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Drive</label>
+                    <select id="drive">
+                        <option value="">Select</option>
+                        <option value="2WD">2WD</option>
+                        <option value="4WD">4WD</option>
+                        <option value="AWD">AWD</option>
+                    </select>
+                </div>
+
+                <div class="full">
+                    <label>Description</label>
+                    <textarea
+                        id="description"
+                        placeholder="Describe the vehicle, condition, ownership history, service history, features, etc."></textarea>
+                </div>
+
+                <div class="full">
+                    <label>
+                        Vehicle Photos <span class="required">*</span>
+                    </label>
+
+                    <div class="photo-box">
+
+                        <input
+                            type="file"
+                            id="vehiclePhotos"
+                            accept="image/jpeg,image/png,image/webp"
+                            multiple
+                            required>
+
+                        <div class="photo-help">
+                            Select one or more clear photos of the actual vehicle.
+                            The first photo will be used as the main vehicle photo.
+                            Recommended formats: JPG, PNG or WebP.
+                        </div>
+
+                        <div id="previewGrid" class="preview-grid"></div>
+
+                    </div>
+                </div>
+
+                <div class="full">
+
+                    <label>Seller Information</label>
+
+                    <div class="seller-box" id="sellerInfo">
+                        Loading your vendor information...
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="button-row">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    onclick="window.location.href='vendor-dashboard.html'">
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="publish-btn"
+                    id="publishButton">
+                    Publish Vehicle
+                </button>
+
+            </div>
+
+        </form>
+    </div>
 
 </main>
 
-
-<footer>
-
-© <span id="year"></span>
-Nauza Tu Digital Motor Market.
-All rights reserved.
-
-</footer>
-
-
 <script>
 
-/* ==========================================================
-   SUPABASE CONNECTION
-   ========================================================== */
+const SUPABASE_URL = "https://hoogdxegjomtsvaddkwk.supabase.co";
 
-const SUPABASE_URL =
-    "https://hoogdxegjomtsvaddkwk.supabase.co";
-
-const SUPABASE_PUBLISHABLE_KEY =
-    "sb_publishable_VEq6gUDlCthklOIgVUaDzQ_5TaqAsu8";
+const SUPABASE_KEY =
+"sb_publishable_VEq6gUDlCthklOIgVUaDzQ_5TaqAsu8";
 
 const supabaseClient =
     window.supabase.createClient(
         SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
+        SUPABASE_KEY
     );
 
-
-/* ==========================================================
-   PAGE ELEMENTS
-   ========================================================== */
-
-const loadingBox =
-    document.getElementById("loadingBox");
-
-const pageContent =
-    document.getElementById("pageContent");
-
-const messageBox =
-    document.getElementById("message");
-
-const vendorDetails =
-    document.getElementById("vendorDetails");
-
-const vehicleForm =
-    document.getElementById("vehicleForm");
-
-const publishButton =
-    document.getElementById("publishButton");
-
+const STORAGE_BUCKET = "vehicle-images";
 
 let currentUser = null;
-let vendorProfile = null;
+let currentProfile = null;
+let selectedFiles = [];
 
 
-/* ==========================================================
+/* ============================
    MESSAGE
-   ========================================================== */
+============================ */
 
-function showMessage(type,text){
+function showMessage(text, type) {
 
-    messageBox.className =
-        "message " + type;
+    const box = document.getElementById("message");
 
-    messageBox.textContent =
-        text;
+    box.className = "message " + type;
 
-    messageBox.scrollIntoView({
-        behavior:"smooth",
-        block:"center"
+    box.textContent = text;
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
     });
-
 }
 
 
-/* ==========================================================
+/* ============================
    CREATE LISTING ID
-   ========================================================== */
+============================ */
 
-function createListingId(){
+function createListingId() {
+
+    const now = Date.now();
 
     const random =
-        Math.random()
-        .toString(36)
-        .substring(2,7)
-        .toUpperCase();
+        Math.floor(Math.random() * 9000) + 1000;
 
-    const time =
-        Date.now()
-        .toString()
-        .slice(-6);
-
-    return "NT" + time + random;
-
+    return "NT" + now + random;
 }
 
 
-/* ==========================================================
-   LOAD VENDOR
-   ========================================================== */
+/* ============================
+   CLEAN FILE NAME
+============================ */
 
-async function loadVendor(){
+function cleanFileName(name) {
 
-    try{
-
-        const {
-            data:sessionData,
-            error:sessionError
-        } =
-            await supabaseClient
-            .auth
-            .getSession();
+    return name
+        .toLowerCase()
+        .replace(/[^a-z0-9.]+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "");
+}
 
 
-        if(sessionError){
-            throw sessionError;
-        }
+/* ============================
+   LOAD USER
+============================ */
 
+async function loadVendor() {
 
-        const session =
-            sessionData.session;
+    const {
+        data: {
+            session
+        },
+        error
+    } = await supabaseClient.auth.getSession();
 
+    if (error || !session) {
 
-        if(!session){
+        window.location.href = "vendor-login.html";
 
-            window.location.href =
-                "vendor-login.html";
-
-            return;
-
-        }
-
-
-        currentUser =
-            session.user;
-
-
-        /*
-        ------------------------------------------------------
-        LOAD VENDOR PROFILE
-        ------------------------------------------------------
-        */
-
-        const {
-            data,
-            error
-        } =
-            await supabaseClient
-            .from("vendor_profiles")
-            .select("*")
-            .eq("id",currentUser.id)
-            .single();
-
-
-        if(error){
-            throw error;
-        }
-
-
-        vendorProfile =
-            data;
-
-
-        /*
-        ------------------------------------------------------
-        DISPLAY VENDOR
-        ------------------------------------------------------
-        */
-
-        vendorDetails.innerHTML = `
-
-            <strong>
-            ${escapeHtml(vendorProfile.full_name || "Vendor")}
-            </strong>
-
-            <br>
-
-            ${escapeHtml(
-                vendorProfile.business_name ||
-                "Private Seller"
-            )}
-
-            <br>
-
-            ${escapeHtml(
-                vendorProfile.phone || ""
-            )}
-
-            ${
-                vendorProfile.location
-                ?
-                `
-                <br>
-                ${escapeHtml(
-                    vendorProfile.location
-                )}
-                `
-                :
-                ""
-            }
-
-        `;
-
-
-        /*
-        ------------------------------------------------------
-        FILL SELLER INFORMATION
-        ------------------------------------------------------
-        */
-
-        document.getElementById("sellerName")
-            .value =
-            vendorProfile.full_name || "";
-
-
-        document.getElementById("sellerPhone")
-            .value =
-            vendorProfile.phone || "";
-
-
-        document.getElementById("sellerWhatsapp")
-            .value =
-            vendorProfile.whatsapp || "";
-
-
-        document.getElementById("sellerBusiness")
-            .value =
-            vendorProfile.business_name || "";
-
-
-        /*
-        ------------------------------------------------------
-        DEFAULT LOCATION
-        ------------------------------------------------------
-        */
-
-        document.getElementById("location")
-            .value =
-            vendorProfile.location || "";
-
-
-        loadingBox.style.display =
-            "none";
-
-        pageContent.classList.remove(
-            "hidden"
-        );
-
-
-    }catch(error){
-
-        console.error(
-            "Vendor loading error:",
-            error
-        );
-
-
-        loadingBox.innerHTML = `
-
-            <strong>
-            Unable to load your vendor account.
-            </strong>
-
-            <br><br>
-
-            ${escapeHtml(
-                error.message ||
-                "Unknown error."
-            )}
-
-            <br><br>
-
-            <a href="vendor-login.html">
-            Return to Vendor Login
-            </a>
-
-        `;
-
+        return;
     }
 
+    currentUser = session.user;
+
+    const {
+        data: profile,
+        error: profileError
+    } = await supabaseClient
+        .from("vendor_profiles")
+        .select("*")
+        .eq("id", currentUser.id)
+        .single();
+
+    if (profileError || !profile) {
+
+        showMessage(
+            "Your vendor profile could not be loaded. Please return to your dashboard.",
+            "error"
+        );
+
+        return;
+    }
+
+    currentProfile = profile;
+
+    document.getElementById("sellerInfo").innerHTML = `
+
+        <strong>${escapeHtml(profile.full_name || "Vendor")}</strong><br>
+
+        ${profile.business_name
+            ? escapeHtml(profile.business_name) + "<br>"
+            : ""}
+
+        Phone:
+        ${escapeHtml(profile.phone || "Not provided")}<br>
+
+        WhatsApp:
+        ${escapeHtml(profile.whatsapp || profile.phone || "Not provided")}<br>
+
+        Location:
+        ${escapeHtml(profile.location || "Not provided")}
+
+    `;
 }
 
 
-/* ==========================================================
+/* ============================
    ESCAPE HTML
-   ========================================================== */
+============================ */
 
-function escapeHtml(value){
+function escapeHtml(value) {
 
-    if(
-        value === null ||
-        value === undefined
-    ){
-        return "";
-    }
-
-    return String(value)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
 
-/* ==========================================================
-   PUBLISH VEHICLE
-   ========================================================== */
+/* ============================
+   PHOTO SELECTION
+============================ */
 
-vehicleForm.addEventListener(
-    "submit",
-    async function(event){
+document
+    .getElementById("vehiclePhotos")
+    .addEventListener("change", function(event) {
+
+        selectedFiles =
+            Array.from(event.target.files || []);
+
+        renderPreviews();
+    });
+
+
+/* ============================
+   PHOTO PREVIEWS
+============================ */
+
+function renderPreviews() {
+
+    const grid =
+        document.getElementById("previewGrid");
+
+    grid.innerHTML = "";
+
+    selectedFiles.forEach((file, index) => {
+
+        const wrapper =
+            document.createElement("div");
+
+        wrapper.className = "preview";
+
+        const img =
+            document.createElement("img");
+
+        const label =
+            document.createElement("div");
+
+        label.className = "main-label";
+
+        label.textContent =
+            index === 0
+                ? "MAIN PHOTO"
+                : "PHOTO " + (index + 1);
+
+        const reader =
+            new FileReader();
+
+        reader.onload = function(e) {
+
+            img.src = e.target.result;
+
+        };
+
+        reader.readAsDataURL(file);
+
+        wrapper.appendChild(img);
+
+        wrapper.appendChild(label);
+
+        grid.appendChild(wrapper);
+
+    });
+}
+
+
+/* ============================
+   UPLOAD PHOTOS
+============================ */
+
+async function uploadVehiclePhotos(
+    files,
+    listingId
+) {
+
+    const uploadedUrls = [];
+
+    for (let i = 0; i < files.length; i++) {
+
+        const file = files[i];
+
+        if (!file.type.startsWith("image/")) {
+
+            throw new Error(
+                file.name + " is not an image."
+            );
+        }
+
+        /*
+         * 8 MB limit per image.
+         */
+
+        if (file.size > 8 * 1024 * 1024) {
+
+            throw new Error(
+                file.name +
+                " is larger than 8 MB. Please choose a smaller image."
+            );
+        }
+
+        const safeName =
+            cleanFileName(file.name);
+
+        const extension =
+            safeName.includes(".")
+                ? safeName.substring(
+                    safeName.lastIndexOf(".")
+                )
+                : ".jpg";
+
+        const uniqueName =
+            `${Date.now()}-${i}-${Math.random()
+                .toString(36)
+                .substring(2, 8)}${extension}`;
+
+        /*
+         * Keep each vendor's images in their
+         * own folder and each listing in its
+         * own folder.
+         */
+
+        const filePath =
+            `${currentUser.id}/${listingId}/${uniqueName}`;
+
+        showMessage(
+            `Uploading photo ${i + 1} of ${files.length}...`,
+            "info"
+        );
+
+        const {
+            error: uploadError
+        } = await supabaseClient
+            .storage
+            .from(STORAGE_BUCKET)
+            .upload(
+                filePath,
+                file,
+                {
+                    cacheControl: "3600",
+                    upsert: false,
+                    contentType: file.type
+                }
+            );
+
+        if (uploadError) {
+
+            throw new Error(
+                "Could not upload " +
+                file.name +
+                ": " +
+                uploadError.message
+            );
+        }
+
+        const {
+            data: publicData
+        } =
+            supabaseClient
+                .storage
+                .from(STORAGE_BUCKET)
+                .getPublicUrl(filePath);
+
+        if (!publicData ||
+            !publicData.publicUrl) {
+
+            throw new Error(
+                "The image was uploaded but a public URL could not be created."
+            );
+        }
+
+        uploadedUrls.push(
+            publicData.publicUrl
+        );
+    }
+
+    return uploadedUrls;
+}
+
+
+/* ============================
+   DELETE UPLOADED FILES
+   IF DATABASE INSERT FAILS
+============================ */
+
+async function deleteUploadedPhotos(urls) {
+
+    if (!urls || !urls.length) {
+        return;
+    }
+
+    const paths = [];
+
+    urls.forEach(url => {
+
+        const marker =
+            `/storage/v1/object/public/${STORAGE_BUCKET}/`;
+
+        const position =
+            url.indexOf(marker);
+
+        if (position !== -1) {
+
+            const path =
+                decodeURIComponent(
+                    url.substring(
+                        position + marker.length
+                    )
+                );
+
+            paths.push(path);
+        }
+    });
+
+    if (paths.length) {
+
+        await supabaseClient
+            .storage
+            .from(STORAGE_BUCKET)
+            .remove(paths);
+    }
+}
+
+
+/* ============================
+   PUBLISH VEHICLE
+============================ */
+
+document
+    .getElementById("vehicleForm")
+    .addEventListener("submit", async function(event) {
 
         event.preventDefault();
 
+        const button =
+            document.getElementById("publishButton");
 
-        if(!currentUser){
+        button.disabled = true;
 
-            showMessage(
-                "error",
-                "Your vendor session has expired. Please log in again."
-            );
+        button.textContent =
+            "Preparing listing...";
 
-            return;
+        try {
 
-        }
+            if (!currentUser) {
 
+                throw new Error(
+                    "Your login session has expired. Please log in again."
+                );
+            }
 
-        publishButton.disabled =
-            true;
+            if (!selectedFiles.length) {
 
-        publishButton.textContent =
-            "Publishing...";
-
-
-        messageBox.className =
-            "message";
-
-        messageBox.textContent =
-            "";
-
-
-        try{
-
-            /*
-            --------------------------------------------------
-            BASIC INFORMATION
-            --------------------------------------------------
-            */
+                throw new Error(
+                    "Please select at least one vehicle photo."
+                );
+            }
 
             const make =
-                document.getElementById("make")
-                .value
-                .trim();
-
+                document.getElementById("make").value.trim();
 
             const model =
-                document.getElementById("model")
-                .value
-                .trim();
-
+                document.getElementById("model").value.trim();
 
             const year =
                 Number(
-                    document.getElementById("year")
-                    .value
+                    document.getElementById("year").value
                 );
 
-
             const category =
-                document.getElementById("category")
-                .value;
-
+                document.getElementById("category").value;
 
             const condition =
-                document.getElementById("condition")
-                .value;
-
-
-            const mileageValue =
-                document.getElementById("mileage")
-                .value;
-
-
-            const mileage =
-                mileageValue
-                ? Number(mileageValue)
-                : 0;
-
+                document.getElementById("condition").value;
 
             const price =
                 Number(
-                    document.getElementById("price")
-                    .value
+                    document.getElementById("price").value
                 );
-
 
             const location =
-                document.getElementById("location")
-                .value
-                .trim();
+                document.getElementById("location").value.trim();
 
+            const mileageValue =
+                document.getElementById("mileage").value;
+
+            const mileage =
+                mileageValue === ""
+                    ? null
+                    : Number(mileageValue);
 
             const engine =
-                document.getElementById("engine")
-                .value
-                .trim();
-
+                document.getElementById("engine").value.trim();
 
             const transmission =
-                document.getElementById("transmission")
-                .value;
-
+                document.getElementById("transmission").value;
 
             const fuel =
-                document.getElementById("fuel")
-                .value;
-
+                document.getElementById("fuel").value;
 
             const drive =
-                document.getElementById("drive")
-                .value;
-
-
-            const mainImage =
-                document.getElementById("mainImage")
-                .value
-                .trim();
-
+                document.getElementById("drive").value;
 
             const description =
-                document.getElementById("description")
-                .value
-                .trim();
+                document.getElementById("description").value.trim();
 
 
-            /*
-            --------------------------------------------------
-            ADDITIONAL IMAGES
-            --------------------------------------------------
-            */
-
-            const additionalText =
-                document.getElementById("additionalImages")
-                .value
-                .trim();
-
-
-            const additionalImages =
-                additionalText
-                ?
-                additionalText
-                    .split(/\r?\n/)
-                    .map(url => url.trim())
-                    .filter(url => url.length > 0)
-                :
-                [];
-
-
-            /*
-            --------------------------------------------------
-            VALIDATION
-            --------------------------------------------------
-            */
-
-            if(!make || !model){
-
-                throw new Error(
-                    "Please enter the vehicle make and model."
-                );
-
-            }
-
-
-            if(
+            if (!make ||
+                !model ||
                 !year ||
-                year < 1950 ||
-                year > 2035
-            ){
-
-                throw new Error(
-                    "Please enter a valid vehicle year."
-                );
-
-            }
-
-
-            if(!category){
-
-                throw new Error(
-                    "Please select a vehicle category."
-                );
-
-            }
-
-
-            if(
+                !category ||
+                !condition ||
                 !price ||
-                price <= 0
-            ){
+                !location) {
 
                 throw new Error(
-                    "Please enter a valid vehicle price."
+                    "Please complete all required fields."
                 );
-
             }
 
 
-            if(!location){
-
-                throw new Error(
-                    "Please enter the vehicle location."
-                );
-
-            }
-
-
-            if(!mainImage){
-
-                throw new Error(
-                    "Please enter the main vehicle image URL."
-                );
-
-            }
+            const listingId =
+                createListingId();
 
 
             /*
-            --------------------------------------------------
-            IMAGE ARRAY
-            --------------------------------------------------
-            */
-
-            const images =
-                [
-                    mainImage,
-                    ...additionalImages
-                ];
-
-
-            /*
-            --------------------------------------------------
-            SELLER OBJECT
-            --------------------------------------------------
-            */
+             * SELLER DATA
+             */
 
             const seller = {
 
                 name:
-                    vendorProfile.full_name || "",
+                    currentProfile.full_name || "",
+
+                type:
+                    currentProfile.business_name
+                        ? "Motor Dealer"
+                        : "Private Seller",
 
                 phone:
-                    vendorProfile.phone || "",
+                    currentProfile.phone || "",
 
                 whatsapp:
-                    vendorProfile.whatsapp || "",
+                    currentProfile.whatsapp ||
+                    currentProfile.phone ||
+                    "",
 
-                business:
-                    vendorProfile.business_name || "",
-
-                location:
-                    vendorProfile.location || ""
+                publicContact: true
 
             };
 
 
             /*
-            --------------------------------------------------
-            PAYMENT OBJECT
-            --------------------------------------------------
-            */
+             * PAYMENT DATA
+             */
 
             const payment = {
 
-                mode:
-                    "Contact seller",
+                date: "",
+
+                amount: 0,
 
                 status:
-                    "Not processed"
+                    "Not Applicable — Free Listing",
+
+                transactionCode: ""
 
             };
 
 
             /*
-            --------------------------------------------------
-            VEHICLE RECORD
-            --------------------------------------------------
-            */
+             * UPLOAD ACTUAL PHOTOS
+             */
+
+            button.textContent =
+                "Uploading photos...";
+
+            const imageUrls =
+                await uploadVehiclePhotos(
+                    selectedFiles,
+                    listingId
+                );
+
+
+            if (!imageUrls.length) {
+
+                throw new Error(
+                    "No vehicle photos were uploaded."
+                );
+            }
+
+
+            /*
+             * INSERT VEHICLE RECORD
+             */
+
+            button.textContent =
+                "Publishing vehicle...";
+
+            showMessage(
+                "Photos uploaded. Publishing your vehicle...",
+                "info"
+            );
+
 
             const vehicleData = {
 
                 listing_id:
-                    createListingId(),
+                    listingId,
 
                 make:
                     make,
@@ -1481,10 +1084,10 @@ vehicleForm.addEventListener(
                     drive,
 
                 main_image:
-                    mainImage,
+                    imageUrls[0],
 
                 images:
-                    images,
+                    imageUrls,
 
                 description:
                     description,
@@ -1513,137 +1116,81 @@ vehicleForm.addEventListener(
             };
 
 
-            /*
-            --------------------------------------------------
-            INSERT INTO SUPABASE
-            --------------------------------------------------
-            */
-
             const {
-                data,
-                error
+                data: insertedVehicle,
+                error: insertError
             } =
                 await supabaseClient
-                .from("vehicles")
-                .insert(vehicleData)
-                .select()
-                .single();
+                    .from("vehicles")
+                    .insert([vehicleData])
+                    .select()
+                    .single();
 
 
-            if(error){
+            if (insertError) {
 
-                console.error(
-                    "Vehicle publishing error:",
-                    error
+                await deleteUploadedPhotos(
+                    imageUrls
                 );
 
-                throw error;
-
+                throw new Error(
+                    "Could not publish vehicle: " +
+                    insertError.message
+                );
             }
 
 
             /*
-            --------------------------------------------------
-            SUCCESS
-            --------------------------------------------------
-            */
+             * SUCCESS
+             */
 
             showMessage(
-                "success",
-                "Vehicle published successfully. Your listing is now live on the Nauza Tu marketplace."
+                "Vehicle published successfully with " +
+                imageUrls.length +
+                " photo" +
+                (imageUrls.length === 1 ? "" : "s") +
+                ".",
+                "success"
             );
 
 
-            vehicleForm.reset();
+            button.textContent =
+                "Published Successfully";
 
 
-            /*
-            Restore vendor information after reset
-            */
+            setTimeout(function() {
 
-            document.getElementById("sellerName")
-                .value =
-                vendorProfile.full_name || "";
+                window.location.href =
+                    "vendor-dashboard.html";
 
-
-            document.getElementById("sellerPhone")
-                .value =
-                vendorProfile.phone || "";
+            }, 1800);
 
 
-            document.getElementById("sellerWhatsapp")
-                .value =
-                vendorProfile.whatsapp || "";
-
-
-            document.getElementById("sellerBusiness")
-                .value =
-                vendorProfile.business_name || "";
-
-
-            document.getElementById("location")
-                .value =
-                vendorProfile.location || "";
-
-
-            /*
-            Redirect to dashboard after a short delay
-            */
-
-            setTimeout(
-                () => {
-
-                    window.location.href =
-                        "vendor-dashboard.html";
-
-                },
-                1800
-            );
-
-
-        }catch(error){
+        } catch (error) {
 
             console.error(
+                "Vehicle publishing error:",
                 error
             );
 
-
             showMessage(
-                "error",
-                "Could not publish vehicle: " +
-                (
-                    error.message ||
-                    "Unknown database error."
-                )
+                error.message ||
+                "Something went wrong while publishing the vehicle.",
+                "error"
             );
 
+            button.disabled = false;
 
-        }finally{
-
-            publishButton.disabled =
-                false;
-
-            publishButton.textContent =
+            button.textContent =
                 "Publish Vehicle";
-
         }
 
-    }
-);
+    });
 
 
-/* ==========================================================
-   FOOTER YEAR
-   ========================================================== */
-
-document.getElementById("year")
-    .textContent =
-    new Date().getFullYear();
-
-
-/* ==========================================================
+/* ============================
    START
-   ========================================================== */
+============================ */
 
 loadVendor();
 
