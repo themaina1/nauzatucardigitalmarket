@@ -1,551 +1,628 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Admin | Nauza Tu Digital Motor Market</title>
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f4f6f8;
-      color: #1f2937;
-    }
-
-    header {
-      background: #111827;
-      color: white;
-      padding: 18px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 22px;
-    }
-
-    header p {
-      margin: 5px 0 0;
-      color: #d1d5db;
-      font-size: 13px;
-    }
-
-    .logout {
-      background: #dc2626;
-      color: white;
-      border: 0;
-      padding: 11px 17px;
-      border-radius: 7px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1400px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    .message {
-      display: none;
-      padding: 14px 16px;
-      border-radius: 8px;
-      margin-bottom: 18px;
-      font-weight: bold;
-      white-space: pre-wrap;
-    }
-
-    .success {
-      background: #dcfce7;
-      color: #166534;
-    }
-
-    .error {
-      background: #fee2e2;
-      color: #991b1b;
-    }
-
-    .loading {
-      background: white;
-      border-radius: 10px;
-      padding: 30px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,.05);
-    }
-
-    #dashboard {
-      display: none;
-    }
-
-    /* STATS */
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .stat {
-      background: white;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.05);
-    }
-
-    .stat-title {
-      font-size: 13px;
-      color: #6b7280;
-      margin-bottom: 8px;
-    }
-
-    .stat-number {
-      font-size: 30px;
-      font-weight: bold;
-    }
-
-    .pending {
-      color: #d97706;
-    }
-
-    .published {
-      color: #15803d;
-    }
-
-    .sold {
-      color: #6b7280;
-    }
-
-    /* FILTERS */
-
-    .filters {
-      background: white;
-      padding: 16px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 12px;
-    }
-
-    .filters input,
-    .filters select {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #d1d5db;
-      border-radius: 7px;
-      font-size: 14px;
-    }
-
-    /* SECTION */
-
-    .section {
-      background: white;
-      border-radius: 10px;
-      margin-bottom: 25px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.05);
-      overflow: hidden;
-    }
-
-    .section-header {
-      padding: 17px 20px;
-      border-bottom: 1px solid #e5e7eb;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .section-header h2 {
-      margin: 0;
-      font-size: 19px;
-    }
-
-    .count {
-      background: #e5e7eb;
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    /* PENDING NOTICE */
-
-    .pending-notice {
-      background: #fff7ed;
-      border: 2px solid #f59e0b;
-      color: #92400e;
-      padding: 15px;
-      margin: 15px;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-
-    /* VEHICLES */
-
-    .vehicle-list {
-      padding: 15px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
-
-    .vehicle-card {
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      overflow: hidden;
-      background: white;
-    }
-
-    .vehicle-main {
-      display: flex;
-      gap: 15px;
-      padding: 15px;
-    }
-
-    .vehicle-photo {
-      width: 170px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 8px;
-      background: #e5e7eb;
-      flex-shrink: 0;
-    }
-
-    .vehicle-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .vehicle-title {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 6px;
-    }
-
-    .listing-id {
-      color: #6b7280;
-      font-size: 12px;
-      margin-bottom: 8px;
-    }
-
-    .price {
-      font-size: 17px;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-
-    .details {
-      color: #4b5563;
-      font-size: 13px;
-      line-height: 1.7;
-    }
-
-    .status {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 6px 10px;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: bold;
-    }
-
-    .status-pending {
-      background: #fef3c7;
-      color: #92400e;
-    }
-
-    .status-published {
-      background: #dcfce7;
-      color: #166534;
-    }
-
-    .status-sold {
-      background: #e5e7eb;
-      color: #374151;
-    }
-
-    /* VENDOR */
-
-    .vendor {
-      background: #f9fafb;
-      border-top: 1px solid #e5e7eb;
-      padding: 13px 15px;
-      font-size: 13px;
-      line-height: 1.7;
-    }
-
-    .vendor strong {
-      color: #111827;
-    }
-
-    /* ACTIONS */
-
-    .actions {
-      padding: 15px;
-      border-top: 1px solid #e5e7eb;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-    }
-
-    .action {
-      border: 0;
-      border-radius: 7px;
-      padding: 10px 13px;
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: bold;
-      text-decoration: none;
-      text-align: center;
-    }
-
-    .view {
-      background: #e5e7eb;
-      color: #111827;
-    }
-
-    .edit {
-      background: #dbeafe;
-      color: #1d4ed8;
-    }
-
-    /* VERY CLEAR APPROVAL BUTTON */
-
-    .approve {
-      background: #15803d;
-      color: white;
-      font-size: 14px;
-      padding: 13px 18px;
-      border: 2px solid #166534;
-    }
-
-    .approve:hover {
-      background: #166534;
-    }
-
-    .mark-sold {
-      background: #6b7280;
-      color: white;
-    }
-
-    .publish-again {
-      background: #2563eb;
-      color: white;
-    }
-
-    .delete {
-      background: #dc2626;
-      color: white;
-    }
-
-    /* EMPTY */
-
-    .empty {
-      padding: 35px;
-      text-align: center;
-      color: #6b7280;
-    }
-
-    /* VENDORS */
-
-    .vendors {
-      padding: 15px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-    }
-
-    .vendor-card {
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
-      padding: 15px;
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    .vendor-card h3 {
-      margin: 0 0 7px;
-      font-size: 16px;
-    }
-
-    /* MOBILE */
-
-    @media(max-width: 1000px) {
-
-      .stats {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .vehicle-list {
-        grid-template-columns: 1fr;
-      }
-
-      .vendors {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media(max-width: 650px) {
-
-      .container {
-        padding: 12px;
-      }
-
-      .stats {
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-      }
-
-      .stat {
-        padding: 15px;
-      }
-
-      .stat-number {
-        font-size: 25px;
-      }
-
-      .filters {
-        grid-template-columns: 1fr;
-      }
-
-      .vehicle-main {
-        flex-direction: column;
-      }
-
-      .vehicle-photo {
-        width: 100%;
-        height: 200px;
-      }
-
-      .vendors {
-        grid-template-columns: 1fr;
-      }
-
-      .actions {
-        flex-direction: column;
-      }
-
-      .action {
-        width: 100%;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard | Nauza Tu Digital Motor Market</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f4f6;
+  color: #111827;
+}
+
+header {
+  background: #111827;
+  color: white;
+  padding: 18px 20px;
+}
+
+.header-inner {
+  max-width: 1250px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.logout-btn {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.container {
+  max-width: 1250px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+h1 {
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #6b7280;
+  margin-bottom: 25px;
+}
+
+/* STATS */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.stat {
+  background: white;
+  padding: 22px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.07);
+}
+
+.stat-title {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.stat-number {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.pending-number {
+  color: #d97706;
+}
+
+.published-number {
+  color: #059669;
+}
+
+.sold-number {
+  color: #dc2626;
+}
+
+/* FILTER */
+
+.filters {
+  background: white;
+  padding: 18px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: 10px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  font-size: 14px;
+}
+
+.filter-btn {
+  background: #111827;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  padding: 11px 18px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* SECTIONS */
+
+.section {
+  margin-bottom: 35px;
+}
+
+.section-header {
+  background: #111827;
+  color: white;
+  padding: 14px 18px;
+  border-radius: 9px 9px 0 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.pending-header {
+  background: #92400e;
+}
+
+.published-header {
+  background: #065f46;
+}
+
+.sold-header {
+  background: #991b1b;
+}
+
+.listings {
+  display: grid;
+  gap: 18px;
+}
+
+/* CARD */
+
+.card {
+  background: white;
+  border-radius: 0 0 9px 9px;
+  padding: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.07);
+}
+
+.vehicle-top {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 20px;
+}
+
+.vehicle-image {
+  width: 220px;
+  height: 165px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #e5e7eb;
+}
+
+.vehicle-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+
+.price {
+  color: #047857;
+  font-size: 19px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.info-grid div {
+  padding: 4px 0;
+}
+
+.description {
+  margin-top: 14px;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.seller-box {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  padding: 13px;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+.seller-box strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* BUTTONS */
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.btn {
+  border: none;
+  border-radius: 7px;
+  padding: 10px 15px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.approve {
+  background: #059669;
+  color: white;
+}
+
+.sold {
+  background: #dc2626;
+  color: white;
+}
+
+.republish {
+  background: #2563eb;
+  color: white;
+}
+
+.delete {
+  background: #7f1d1d;
+  color: white;
+}
+
+.view {
+  background: #111827;
+  color: white;
+}
+
+.feature {
+  background: #d97706;
+  color: white;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.badge-pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badge-published {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.badge-sold {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.featured {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.empty {
+  background: white;
+  padding: 30px;
+  text-align: center;
+  color: #6b7280;
+  border-radius: 0 0 9px 9px;
+}
+
+.error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.success {
+  background: #d1fae5;
+  color: #065f46;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.loading {
+  text-align: center;
+  padding: 30px;
+  color: #6b7280;
+}
+
+footer {
+  background: #111827;
+  color: white;
+  text-align: center;
+  padding: 30px;
+  margin-top: 50px;
+}
+
+@media (max-width: 900px) {
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filters {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .vehicle-top {
+    grid-template-columns: 180px 1fr;
+  }
+
+  .vehicle-image {
+    width: 180px;
+    height: 145px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .filters {
+    grid-template-columns: 1fr;
+  }
+
+  .vehicle-top {
+    grid-template-columns: 1fr;
+  }
+
+  .vehicle-image {
+    width: 100%;
+    height: 220px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div>
-    <h1>Nauza Tu Digital Motor Market</h1>
-    <p>Administrator Dashboard</p>
+
+  <div class="header-inner">
+
+    <div class="logo">
+      Nauza Tu Digital Motor Market — Admin
+    </div>
+
+    <button
+      class="logout-btn"
+      onclick="logout()">
+      Logout
+    </button>
+
   </div>
 
-  <button class="logout" onclick="logout()">Logout</button>
 </header>
+
 
 <div class="container">
 
-  <div id="loading" class="loading">
-    Checking administrator access...
+  <h1>Administrator Dashboard</h1>
+
+  <p class="subtitle">
+    Review, approve and manage vehicle advertisements.
+  </p>
+
+  <div id="message"></div>
+
+
+  <!-- STATISTICS -->
+
+  <div class="stats">
+
+    <div class="stat">
+      <div class="stat-title">Total Vehicles</div>
+      <div id="totalCount" class="stat-number">0</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-title">Pending Approval</div>
+      <div id="pendingCount"
+           class="stat-number pending-number">
+        0
+      </div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-title">Published</div>
+      <div id="publishedCount"
+           class="stat-number published-number">
+        0
+      </div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-title">Sold</div>
+      <div id="soldCount"
+           class="stat-number sold-number">
+        0
+      </div>
+    </div>
+
   </div>
 
-  <div id="successMessage" class="message success"></div>
-  <div id="errorMessage" class="message error"></div>
 
-  <div id="dashboard">
+  <!-- FILTERS -->
 
-    <!-- STATISTICS -->
+  <div class="filters">
 
-    <div class="stats">
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="Search vehicle, listing ID, vendor or location..."
+    >
 
-      <div class="stat">
-        <div class="stat-title">Total Vehicles</div>
-        <div id="totalCount" class="stat-number">0</div>
-      </div>
+    <select id="statusFilter">
 
-      <div class="stat">
-        <div class="stat-title">Pending Approval</div>
-        <div id="pendingCount" class="stat-number pending">0</div>
-      </div>
+      <option value="">
+        All Statuses
+      </option>
 
-      <div class="stat">
-        <div class="stat-title">Published</div>
-        <div id="publishedCount" class="stat-number published">0</div>
-      </div>
+      <option value="pending">
+        Pending
+      </option>
 
-      <div class="stat">
-        <div class="stat-title">Sold</div>
-        <div id="soldCount" class="stat-number sold">0</div>
+      <option value="published">
+        Published
+      </option>
+
+      <option value="sold">
+        Sold
+      </option>
+
+    </select>
+
+
+    <select id="categoryFilter">
+
+      <option value="">
+        All Categories
+      </option>
+
+      <option value="SUV">
+        SUV
+      </option>
+
+      <option value="Sedan">
+        Sedan
+      </option>
+
+      <option value="Hatchback">
+        Hatchback
+      </option>
+
+      <option value="Van">
+        Van
+      </option>
+
+      <option value="Pickup">
+        Pickup
+      </option>
+
+      <option value="Wagon">
+        Wagon
+      </option>
+
+      <option value="Truck">
+        Truck
+      </option>
+
+    </select>
+
+
+    <button
+      class="filter-btn"
+      onclick="applyFilters()">
+      Search
+    </button>
+
+  </div>
+
+
+  <!-- PENDING -->
+
+  <div class="section">
+
+    <div class="section-header pending-header">
+      Pending Approval
+    </div>
+
+    <div
+      id="pendingListings"
+      class="listings">
+
+      <div class="loading">
+        Loading...
       </div>
 
     </div>
 
-    <!-- FILTERS -->
+  </div>
 
-    <div class="filters">
 
-      <input
-        id="search"
-        type="text"
-        placeholder="Search vehicle, listing ID, vendor or location..."
-        oninput="renderVehicles()"
-      >
+  <!-- PUBLISHED -->
 
-      <select id="statusFilter" onchange="renderVehicles()">
-        <option value="all">All Statuses</option>
-        <option value="pending">Pending Approval</option>
-        <option value="published">Published</option>
-        <option value="sold">Sold</option>
-      </select>
+  <div class="section">
 
-      <select id="categoryFilter" onchange="renderVehicles()">
-        <option value="all">All Categories</option>
-      </select>
+    <div class="section-header published-header">
+      Published Vehicles
+    </div>
+
+    <div
+      id="publishedListings"
+      class="listings">
+
+      <div class="loading">
+        Loading...
+      </div>
 
     </div>
 
-    <!-- VEHICLE LIST -->
+  </div>
 
-    <div class="section">
 
-      <div class="section-header">
-        <h2>Vehicle Listings</h2>
-        <span id="vehicleCount" class="count">0</span>
-      </div>
+  <!-- SOLD -->
 
-      <div id="pendingNotice" class="pending-notice" style="display:none;">
-        ⚠️ These vehicles are waiting for administrator approval.
-        Review the vehicle details, photos and seller information before publishing.
-      </div>
+  <div class="section">
 
-      <div id="vehicleList" class="vehicle-list"></div>
-
+    <div class="section-header sold-header">
+      Sold Vehicles
     </div>
 
-    <!-- VENDORS -->
+    <div
+      id="soldListings"
+      class="listings">
 
-    <div class="section">
-
-      <div class="section-header">
-        <h2>Registered Vendors</h2>
-        <span id="vendorCount" class="count">0</span>
+      <div class="loading">
+        Loading...
       </div>
-
-      <div id="vendorList" class="vendors"></div>
 
     </div>
 
@@ -553,145 +630,129 @@
 
 </div>
 
+
+<footer>
+
+  <p>
+    © 2026 Nauza Tu Digital Motor Market
+  </p>
+
+</footer>
+
+
 <script>
 
-  /* =====================================================
-     SUPABASE
-  ===================================================== */
+const SUPABASE_URL =
+  "https://hoogdxegjomtsvaddkwk.supabase.co";
 
-  const SUPABASE_URL =
-    "https://hoogdxegjomtsvaddkwk.supabase.co";
+const SUPABASE_KEY =
+  "sb_publishable_VEq6gUDlCthklOIgVUaDzQ_5TaqAsu8";
 
-  const SUPABASE_KEY =
-    "sb_publishable_VEq6gUDlCthklOIgVUaDzQ_5TaqAsu8";
-
-  const db = window.supabase.createClient(
+const db =
+  window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
   );
 
-
-  /* =====================================================
-     DATA
-  ===================================================== */
-
-  let currentUser = null;
-  let vehicles = [];
-  let vendors = [];
+let currentUser = null;
+let allVehicles = [];
 
 
-  /* =====================================================
-     START
-  ===================================================== */
+/* =========================
+   START
+========================= */
 
-  document.addEventListener(
-    "DOMContentLoaded",
-    checkAdmin
-  );
-
-
-  /* =====================================================
-     CHECK ADMIN
-  ===================================================== */
-
-  async function checkAdmin() {
-
-    try {
-
-      const {
-        data: sessionData,
-        error: sessionError
-      } = await db.auth.getSession();
-
-      if (sessionError) {
-        throw sessionError;
-      }
-
-      if (
-        !sessionData.session ||
-        !sessionData.session.user
-      ) {
-        window.location.href = "admin-login.html";
-        return;
-      }
-
-      currentUser =
-        sessionData.session.user;
+document.addEventListener(
+  "DOMContentLoaded",
+  startAdmin
+);
 
 
-      const {
-        data: admin,
-        error: adminError
-      } = await db
-        .from("admin_users")
-        .select("id,email,role,active")
-        .eq("id", currentUser.id)
-        .eq("active", true)
-        .maybeSingle();
+async function startAdmin() {
 
-      if (adminError) {
-        throw adminError;
-      }
-
-      if (
-        !admin ||
-        admin.role !== "admin"
-      ) {
-
-        showError(
-          "This account is not authorized as an administrator."
-        );
-
-        await db.auth.signOut();
-
-        setTimeout(function() {
-          window.location.href =
-            "admin-login.html";
-        }, 2000);
-
-        return;
-      }
-
-      document.getElementById("loading").style.display =
-        "none";
-
-      document.getElementById("dashboard").style.display =
-        "block";
-
-      await loadEverything();
-
-    } catch (error) {
-
-      console.error(error);
-
-      document.getElementById("loading").style.display =
-        "none";
-
-      showError(
-        "Could not load the administrator dashboard.\n\n" +
-        error.message
-      );
+  const {
+    data: {
+      session
     }
+  } = await db.auth.getSession();
+
+
+  if (!session) {
+
+    window.location.href =
+      "admin-login.html";
+
+    return;
   }
 
 
-  /* =====================================================
-     LOAD DATA
-  ===================================================== */
+  currentUser =
+    session.user;
 
-  async function loadEverything() {
 
-    await loadVehicles();
-    await loadVendors();
+  /* Verify administrator */
 
-    updateStats();
-    buildCategories();
-    renderVehicles();
-    renderVendors();
+  const {
+    data: admin,
+    error
+  } = await db
+    .from("admin_users")
+    .select(
+      "id,email,role,active"
+    )
+    .eq(
+      "id",
+      currentUser.id
+    )
+    .eq(
+      "active",
+      true
+    )
+    .maybeSingle();
+
+
+  if (
+    error ||
+    !admin ||
+    admin.role !== "admin"
+  ) {
+
+    document.body.innerHTML = `
+      <div style="
+        max-width:600px;
+        margin:100px auto;
+        padding:30px;
+        text-align:center;
+        font-family:Arial;
+      ">
+
+        <h2>
+          This account is not authorized as an administrator.
+        </h2>
+
+        <p style="margin-top:15px;color:#666;">
+          Please log in using the authorized administrator account.
+        </p>
+
+      </div>
+    `;
+
+    return;
   }
 
 
-  async function loadVehicles() {
+  await loadVehicles();
+
+}
+
+
+/* =========================
+   LOAD VEHICLES
+========================= */
+
+async function loadVehicles() {
+
+  try {
 
     const {
       data,
@@ -699,1007 +760,990 @@
     } = await db
       .from("vehicles")
       .select("*")
-      .order("created_at", {
-        ascending: false
-      });
+      .order(
+        "created_at",
+        {
+          ascending: false
+        }
+      );
+
 
     if (error) {
       throw error;
     }
 
-    vehicles = data || [];
+
+    allVehicles =
+      data || [];
+
+
+    updateStats();
+
+    applyFilters();
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    showMessage(
+      "Unable to load vehicle listings: " +
+      error.message,
+      "error"
+    );
+
   }
 
-
-  async function loadVendors() {
-
-    const {
-      data,
-      error
-    } = await db
-      .from("vendor_profiles")
-      .select("*")
-      .order("created_at", {
-        ascending: false
-      });
-
-    if (error) {
-
-      console.warn(
-        "Vendor profiles:",
-        error.message
-      );
-
-      vendors = [];
-
-      return;
-    }
-
-    vendors = data || [];
-  }
+}
 
 
-  /* =====================================================
-     STATISTICS
-  ===================================================== */
+/* =========================
+   STATISTICS
+========================= */
 
-  function updateStats() {
+function updateStats() {
 
-    const pending =
-      vehicles.filter(function(v) {
-        return String(v.status).toLowerCase() === "pending";
-      }).length;
+  const total =
+    allVehicles.length;
 
-    const published =
-      vehicles.filter(function(v) {
-        return String(v.status).toLowerCase() === "published";
-      }).length;
+  const pending =
+    allVehicles.filter(
+      v => v.status === "pending"
+    ).length;
 
-    const sold =
-      vehicles.filter(function(v) {
-        return String(v.status).toLowerCase() === "sold";
-      }).length;
+  const published =
+    allVehicles.filter(
+      v => v.status === "published"
+    ).length;
 
-    document.getElementById("totalCount").textContent =
-      vehicles.length;
-
-    document.getElementById("pendingCount").textContent =
-      pending;
-
-    document.getElementById("publishedCount").textContent =
-      published;
-
-    document.getElementById("soldCount").textContent =
-      sold;
-  }
+  const sold =
+    allVehicles.filter(
+      v => v.status === "sold"
+    ).length;
 
 
-  /* =====================================================
-     CATEGORIES
-  ===================================================== */
+  document.getElementById(
+    "totalCount"
+  ).textContent = total;
 
-  function buildCategories() {
+  document.getElementById(
+    "pendingCount"
+  ).textContent = pending;
 
-    const select =
-      document.getElementById("categoryFilter");
+  document.getElementById(
+    "publishedCount"
+  ).textContent = published;
 
-    const categories = [];
+  document.getElementById(
+    "soldCount"
+  ).textContent = sold;
 
-    vehicles.forEach(function(vehicle) {
-
-      if (
-        vehicle.category &&
-        !categories.includes(vehicle.category)
-      ) {
-        categories.push(vehicle.category);
-      }
-
-    });
-
-    categories.sort();
-
-    select.innerHTML =
-      '<option value="all">All Categories</option>';
-
-    categories.forEach(function(category) {
-
-      const option =
-        document.createElement("option");
-
-      option.value = category;
-      option.textContent = category;
-
-      select.appendChild(option);
-    });
-  }
+}
 
 
-  /* =====================================================
-     RENDER VEHICLES
-  ===================================================== */
+/* =========================
+   FILTER
+========================= */
 
-  function renderVehicles() {
+function applyFilters() {
 
-    const search =
-      document.getElementById("search")
-        .value
-        .toLowerCase()
-        .trim();
+  const search =
+    document
+      .getElementById(
+        "searchInput"
+      )
+      .value
+      .trim()
+      .toLowerCase();
 
-    const status =
-      document.getElementById("statusFilter").value;
 
-    const category =
-      document.getElementById("categoryFilter").value;
+  const status =
+    document
+      .getElementById(
+        "statusFilter"
+      )
+      .value;
 
-    const filtered =
-      vehicles.filter(function(vehicle) {
 
-        const vehicleStatus =
-          String(vehicle.status || "")
-            .toLowerCase();
+  const category =
+    document
+      .getElementById(
+        "categoryFilter"
+      )
+      .value;
+
+
+  const filtered =
+    allVehicles.filter(
+      vehicle => {
 
         const seller =
-          parseSeller(vehicle.seller);
+          parseSeller(
+            vehicle.seller
+          );
 
-        const vendor =
-          vendors.find(function(v) {
-            return v.id === vehicle.vendor_id;
-          });
 
-        const searchText = [
-          vehicle.listing_id,
-          vehicle.make,
-          vehicle.model,
-          vehicle.location,
-          vehicle.category,
-          seller.name,
-          seller.phone,
-          vendor ? vendor.full_name : "",
-          vendor ? vendor.business_name : ""
-        ]
-          .filter(Boolean)
-          .join(" ")
-          .toLowerCase();
+        const searchable =
+          `
+          ${vehicle.make || ""}
+          ${vehicle.model || ""}
+          ${vehicle.listing_id || ""}
+          ${vehicle.location || ""}
+          ${vehicle.category || ""}
+          ${seller.name || ""}
+          ${seller.businessName || ""}
+          ${seller.phone || ""}
+          ${seller.whatsapp || ""}
+          `.toLowerCase();
 
-        const matchesSearch =
-          !search ||
-          searchText.includes(search);
-
-        const matchesStatus =
-          status === "all" ||
-          vehicleStatus === status;
-
-        const matchesCategory =
-          category === "all" ||
-          vehicle.category === category;
 
         return (
-          matchesSearch &&
-          matchesStatus &&
-          matchesCategory
+
+          (!search ||
+            searchable.includes(
+              search
+            )) &&
+
+          (!status ||
+            vehicle.status === status) &&
+
+          (!category ||
+            vehicle.category === category)
+
         );
-      });
+
+      }
+    );
 
 
-    document.getElementById("vehicleCount").textContent =
-      filtered.length +
-      (filtered.length === 1
-        ? " vehicle"
-        : " vehicles");
+  renderListings(
+    filtered
+  );
+
+}
 
 
-    const pendingVehicles =
-      filtered.filter(function(vehicle) {
-        return String(vehicle.status).toLowerCase() === "pending";
-      });
+/* =========================
+   RENDER
+========================= */
 
-    document.getElementById("pendingNotice").style.display =
-      pendingVehicles.length
-        ? "block"
-        : "none";
+function renderListings(
+  vehicles
+) {
 
+  const pending =
+    vehicles.filter(
+      v => v.status === "pending"
+    );
 
-    const container =
-      document.getElementById("vehicleList");
+  const published =
+    vehicles.filter(
+      v => v.status === "published"
+    );
 
-
-    if (!filtered.length) {
-
-      container.innerHTML = `
-        <div class="empty">
-          No vehicle listings found.
-        </div>
-      `;
-
-      return;
-    }
+  const sold =
+    vehicles.filter(
+      v => v.status === "sold"
+    );
 
 
-    container.innerHTML =
-      filtered
-        .map(createVehicleCard)
-        .join("");
+  renderSection(
+    "pendingListings",
+    pending,
+    "pending"
+  );
+
+  renderSection(
+    "publishedListings",
+    published,
+    "published"
+  );
+
+  renderSection(
+    "soldListings",
+    sold,
+    "sold"
+  );
+
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+function renderSection(
+  elementId,
+  vehicles,
+  type
+) {
+
+  const container =
+    document.getElementById(
+      elementId
+    );
+
+
+  if (!vehicles.length) {
+
+    container.innerHTML = `
+      <div class="empty">
+        No ${type} vehicles.
+      </div>
+    `;
+
+    return;
   }
 
 
-  /* =====================================================
-     CREATE VEHICLE CARD
-  ===================================================== */
+  container.innerHTML =
+    vehicles
+      .map(
+        vehicle =>
+          vehicleCard(
+            vehicle,
+            type
+          )
+      )
+      .join("");
 
-  function createVehicleCard(vehicle) {
-
-    const status =
-      String(vehicle.status || "")
-        .toLowerCase();
-
-    const seller =
-      parseSeller(vehicle.seller);
-
-    const vendor =
-      vendors.find(function(v) {
-        return v.id === vehicle.vendor_id;
-      });
+}
 
 
-    const vendorName =
-      vendor?.full_name ||
-      seller.name ||
-      "Not provided";
+/* =========================
+   VEHICLE CARD
+========================= */
 
-    const business =
-      vendor?.business_name ||
-      seller.businessName ||
-      seller.business_name ||
-      "Private Seller";
+function vehicleCard(
+  vehicle,
+  type
+) {
 
-    const phone =
-      vendor?.phone ||
-      seller.phone ||
-      "Not provided";
-
-    const whatsapp =
-      vendor?.whatsapp ||
-      seller.whatsapp ||
-      "Not provided";
-
-    const location =
-      vendor?.location ||
-      vehicle.location ||
-      "Not provided";
+  const seller =
+    parseSeller(
+      vehicle.seller
+    );
 
 
-    const title = [
-      vehicle.make,
-      vehicle.model
-    ]
-      .filter(Boolean)
-      .join(" ");
+  const image =
+    vehicle.main_image ||
+    "https://via.placeholder.com/600x400?text=Vehicle";
 
 
-    const image =
-      getImage(vehicle);
+  const name =
+    `${vehicle.year || ""} ${vehicle.make || ""} ${vehicle.model || ""}`
+      .trim();
 
 
-    let actionButtons = `
-      <a
-        class="action view"
-        href="vehicle-details.html?id=${encodeURIComponent(vehicle.id)}"
-        target="_blank"
-      >
-        VIEW
-      </a>
+  const price =
+    vehicle.price
+      ? Number(
+          vehicle.price
+        ).toLocaleString()
+      : "Price on request";
 
-      <a
-        class="action edit"
-        href="vendor-edit-vehicle.html?id=${encodeURIComponent(vehicle.id)}"
-        target="_blank"
-      >
-        EDIT
-      </a>
+
+  const listingId =
+    vehicle.listing_id ||
+    vehicle.id;
+
+
+  const status =
+    vehicle.status ||
+    "pending";
+
+
+  let actions = "";
+
+
+  if (type === "pending") {
+
+    actions = `
+
+      <button
+        class="btn approve"
+        onclick="approveVehicle('${vehicle.id}')">
+
+        ✓ APPROVE & PUBLISH
+
+      </button>
+
+
+      <button
+        class="btn delete"
+        onclick="deleteVehicle('${vehicle.id}')">
+
+        Delete
+
+      </button>
+
     `;
 
+  }
 
-    /* ===============================================
-       PENDING
-    =============================================== */
 
-    if (status === "pending") {
+  if (type === "published") {
 
-      actionButtons += `
-        <button
-          class="action approve"
-          onclick="approveVehicle('${escapeJs(vehicle.id)}')"
+    actions = `
+
+      <a
+        class="btn view"
+        href="vehicle-details.html?id=${encodeURIComponent(listingId)}"
+        target="_blank">
+
+        View
+
+      </a>
+
+
+      <button
+        class="btn sold"
+        onclick="markSold('${vehicle.id}')">
+
+        Mark Sold
+
+      </button>
+
+
+      <button
+        class="btn feature"
+        onclick="toggleFeatured('${vehicle.id}', ${vehicle.featured === true})">
+
+        ${vehicle.featured === true ? "Remove Feature" : "⭐ Feature"}
+
+      </button>
+
+
+      <button
+        class="btn delete"
+        onclick="deleteVehicle('${vehicle.id}')">
+
+        Delete
+
+      </button>
+
+    `;
+
+  }
+
+
+  if (type === "sold") {
+
+    actions = `
+
+      <a
+        class="btn view"
+        href="vehicle-details.html?id=${encodeURIComponent(listingId)}"
+        target="_blank">
+
+        View
+
+      </a>
+
+
+      <button
+        class="btn republish"
+        onclick="republishVehicle('${vehicle.id}')">
+
+        Publish Again
+
+      </button>
+
+
+      <button
+        class="btn delete"
+        onclick="deleteVehicle('${vehicle.id}')">
+
+        Delete
+
+      </button>
+
+    `;
+
+  }
+
+
+  return `
+
+    <div class="card">
+
+      <div class="vehicle-top">
+
+        <img
+          class="vehicle-image"
+          src="${escapeHtml(image)}"
+          onerror="this.src='https://via.placeholder.com/600x400?text=Vehicle'"
+          alt="${escapeHtml(name)}"
         >
-          ✓ APPROVE & PUBLISH
-        </button>
-
-        <button
-          class="action delete"
-          onclick="deleteVehicle('${escapeJs(vehicle.id)}')"
-        >
-          DELETE
-        </button>
-      `;
-    }
 
 
-    /* ===============================================
-       PUBLISHED
-    =============================================== */
+        <div>
 
-    else if (status === "published") {
+          <span class="status-badge badge-${escapeHtml(status)}">
+            ${escapeHtml(status.toUpperCase())}
+          </span>
 
-      actionButtons += `
-        <button
-          class="action mark-sold"
-          onclick="markSold('${escapeJs(vehicle.id)}')"
-        >
-          MARK AS SOLD
-        </button>
-
-        <button
-          class="action delete"
-          onclick="deleteVehicle('${escapeJs(vehicle.id)}')"
-        >
-          DELETE
-        </button>
-      `;
-    }
+          ${
+            vehicle.featured === true
+              ? `<span class="featured">⭐ FEATURED</span>`
+              : ""
+          }
 
 
-    /* ===============================================
-       SOLD
-    =============================================== */
-
-    else if (status === "sold") {
-
-      actionButtons += `
-        <button
-          class="action publish-again"
-          onclick="publishAgain('${escapeJs(vehicle.id)}')"
-        >
-          PUBLISH AGAIN
-        </button>
-
-        <button
-          class="action delete"
-          onclick="deleteVehicle('${escapeJs(vehicle.id)}')"
-        >
-          DELETE
-        </button>
-      `;
-    }
+          <div class="vehicle-title">
+            ${escapeHtml(name)}
+          </div>
 
 
-    return `
-      <div class="vehicle-card">
+          <div class="price">
+            KES ${escapeHtml(price)}
+          </div>
 
-        <div class="vehicle-main">
 
-          <img
-            class="vehicle-photo"
-            src="${escapeAttribute(image)}"
-            alt="${escapeAttribute(title || "Vehicle")}"
-            onerror="this.src='https://via.placeholder.com/600x400?text=No+Photo'"
-          >
+          <div class="info-grid">
 
-          <div class="vehicle-info">
-
-            <div class="vehicle-title">
-              ${escapeHtml(title || "Vehicle")}
+            <div>
+              <strong>Listing:</strong>
+              ${escapeHtml(listingId)}
             </div>
 
-            <div class="listing-id">
-              Listing ID:
-              <strong>
-                ${escapeHtml(vehicle.listing_id || "N/A")}
-              </strong>
-            </div>
-
-            <div class="price">
-              ${formatPrice(vehicle.price)}
-            </div>
-
-            <div class="details">
-
-              <strong>Year:</strong>
-              ${escapeHtml(vehicle.year || "N/A")}
-              <br>
-
+            <div>
               <strong>Category:</strong>
-              ${escapeHtml(vehicle.category || "N/A")}
-              <br>
-
-              <strong>Location:</strong>
-              ${escapeHtml(location)}
-              <br>
-
-              <strong>Mileage:</strong>
-              ${escapeHtml(vehicle.mileage || "N/A")}
-              <br>
-
-              <strong>Transmission:</strong>
-              ${escapeHtml(vehicle.transmission || "N/A")}
-
+              ${escapeHtml(vehicle.category || "-")}
             </div>
 
-            <span class="status ${getStatusClass(status)}">
-              ${getStatusLabel(status)}
-            </span>
+            <div>
+              <strong>Condition:</strong>
+              ${escapeHtml(vehicle.condition || "-")}
+            </div>
+
+            <div>
+              <strong>Location:</strong>
+              ${escapeHtml(vehicle.location || "-")}
+            </div>
+
+            <div>
+              <strong>Mileage:</strong>
+              ${vehicle.mileage
+                ? Number(vehicle.mileage).toLocaleString() + " km"
+                : "-"
+              }
+            </div>
+
+            <div>
+              <strong>Transmission:</strong>
+              ${escapeHtml(vehicle.transmission || "-")}
+            </div>
+
+            <div>
+              <strong>Fuel:</strong>
+              ${escapeHtml(vehicle.fuel || "-")}
+            </div>
+
+            <div>
+              <strong>Engine:</strong>
+              ${escapeHtml(vehicle.engine || "-")}
+            </div>
+
+            <div>
+              <strong>Drive:</strong>
+              ${escapeHtml(vehicle.drive || "-")}
+            </div>
 
           </div>
 
         </div>
 
-
-        <div class="vendor">
-
-          <strong>SELLER / VENDOR</strong>
-          <br>
-
-          Name:
-          ${escapeHtml(vendorName)}
-          <br>
-
-          Business:
-          ${escapeHtml(business)}
-          <br>
-
-          Phone:
-          ${escapeHtml(phone)}
-          <br>
-
-          WhatsApp:
-          ${escapeHtml(whatsapp)}
-
-        </div>
+      </div>
 
 
-        <div class="actions">
+      ${
+        vehicle.description
+          ? `
+            <div class="description">
+              <strong>Description:</strong><br>
+              ${escapeHtml(vehicle.description)}
+            </div>
+          `
+          : ""
+      }
 
-          ${actionButtons}
 
-        </div>
+      <div class="seller-box">
+
+        <strong>
+          Seller / Vendor
+        </strong>
+
+        ${escapeHtml(
+          seller.name ||
+          "Seller information unavailable"
+        )}
+
+        ${
+          seller.businessName
+            ? `<br>${escapeHtml(seller.businessName)}`
+            : ""
+        }
+
+        ${
+          seller.phone
+            ? `<br>Phone: ${escapeHtml(seller.phone)}`
+            : ""
+        }
+
+        ${
+          seller.whatsapp
+            ? `<br>WhatsApp: ${escapeHtml(seller.whatsapp)}`
+            : ""
+        }
 
       </div>
-    `;
+
+
+      <div class="actions">
+
+        ${actions}
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================
+   APPROVE
+========================= */
+
+async function approveVehicle(
+  id
+) {
+
+  if (
+    !confirm(
+      "Approve this vehicle and publish it to the public marketplace?"
+    )
+  ) {
+    return;
   }
 
 
-  /* =====================================================
-     APPROVE & PUBLISH
-  ===================================================== */
+  try {
 
-  async function approveVehicle(id) {
-
-    const vehicle =
-      vehicles.find(function(v) {
-        return v.id === id;
-      });
-
-    if (!vehicle) {
-      showError("Vehicle not found.");
-      return;
-    }
-
-
-    const title = [
-      vehicle.make,
-      vehicle.model,
-      vehicle.year
-    ]
-      .filter(Boolean)
-      .join(" ");
-
-
-    const confirmed =
-      confirm(
-        "APPROVE AND PUBLISH THIS VEHICLE?\n\n" +
-        title +
-        "\n\n" +
-        "The vehicle will become visible on the public Vehicles page."
+    const {
+      error
+    } = await db
+      .from("vehicles")
+      .update({
+        status: "published"
+      })
+      .eq(
+        "id",
+        id
       );
 
 
-    if (!confirmed) {
-      return;
+    if (error) {
+      throw error;
     }
 
 
-    try {
-
-      const {
-        error
-      } = await db
-        .from("vehicles")
-        .update({
-          status: "published"
-        })
-        .eq("id", id);
+    showMessage(
+      "Vehicle approved and published.",
+      "success"
+    );
 
 
-      if (error) {
-        throw error;
-      }
+    await loadVehicles();
 
 
-      showSuccess(
-        "Vehicle approved successfully.\n\n" +
-        "It is now PUBLISHED."
-      );
+  } catch (error) {
+
+    showMessage(
+      "Could not publish vehicle: " +
+      error.message,
+      "error"
+    );
+
+  }
+
+}
 
 
-      await loadEverything();
+/* =========================
+   MARK SOLD
+========================= */
 
-    } catch (error) {
+async function markSold(
+  id
+) {
 
-      console.error(error);
-
-      showError(
-        "Could not approve vehicle.\n\n" +
-        error.message
-      );
-    }
+  if (
+    !confirm(
+      "Mark this vehicle as SOLD?"
+    )
+  ) {
+    return;
   }
 
 
-  /* =====================================================
-     MARK SOLD
-  ===================================================== */
+  try {
 
-  async function markSold(id) {
-
-    if (
-      !confirm(
-        "Mark this vehicle as SOLD?\n\n" +
-        "It will no longer appear publicly."
-      )
-    ) {
-      return;
-    }
-
-
-    try {
-
-      const {
-        error
-      } = await db
-        .from("vehicles")
-        .update({
-          status: "sold"
-        })
-        .eq("id", id);
-
-
-      if (error) {
-        throw error;
-      }
-
-
-      showSuccess(
-        "Vehicle marked as SOLD."
+    const {
+      error
+    } = await db
+      .from("vehicles")
+      .update({
+        status: "sold"
+      })
+      .eq(
+        "id",
+        id
       );
 
 
-      await loadEverything();
-
-    } catch (error) {
-
-      showError(
-        "Could not mark vehicle as sold.\n\n" +
-        error.message
-      );
+    if (error) {
+      throw error;
     }
+
+
+    showMessage(
+      "Vehicle marked as sold.",
+      "success"
+    );
+
+
+    await loadVehicles();
+
+
+  } catch (error) {
+
+    showMessage(
+      "Could not mark vehicle as sold: " +
+      error.message,
+      "error"
+    );
+
+  }
+
+}
+
+
+/* =========================
+   REPUBLISH
+========================= */
+
+async function republishVehicle(
+  id
+) {
+
+  if (
+    !confirm(
+      "Publish this vehicle again?"
+    )
+  ) {
+    return;
   }
 
 
-  /* =====================================================
-     PUBLISH AGAIN
-  ===================================================== */
+  try {
 
-  async function publishAgain(id) {
-
-    if (
-      !confirm(
-        "Publish this vehicle again?"
-      )
-    ) {
-      return;
-    }
-
-
-    try {
-
-      const {
-        error
-      } = await db
-        .from("vehicles")
-        .update({
-          status: "published"
-        })
-        .eq("id", id);
-
-
-      if (error) {
-        throw error;
-      }
-
-
-      showSuccess(
-        "Vehicle has been published again."
-      );
-
-
-      await loadEverything();
-
-    } catch (error) {
-
-      showError(
-        "Could not publish vehicle.\n\n" +
-        error.message
-      );
-    }
-  }
-
-
-  /* =====================================================
-     DELETE
-  ===================================================== */
-
-  async function deleteVehicle(id) {
-
-    if (
-      !confirm(
-        "DELETE this vehicle listing?\n\n" +
-        "This cannot be undone."
-      )
-    ) {
-      return;
-    }
-
-
-    try {
-
-      const {
-        error
-      } = await db
-        .from("vehicles")
-        .delete()
-        .eq("id", id);
-
-
-      if (error) {
-        throw error;
-      }
-
-
-      showSuccess(
-        "Vehicle listing deleted."
+    const {
+      error
+    } = await db
+      .from("vehicles")
+      .update({
+        status: "published"
+      })
+      .eq(
+        "id",
+        id
       );
 
 
-      await loadEverything();
+    if (error) {
+      throw error;
+    }
 
-    } catch (error) {
 
-      showError(
-        "Could not delete vehicle.\n\n" +
-        error.message
+    showMessage(
+      "Vehicle published again.",
+      "success"
+    );
+
+
+    await loadVehicles();
+
+
+  } catch (error) {
+
+    showMessage(
+      "Could not republish vehicle: " +
+      error.message,
+      "error"
+    );
+
+  }
+
+}
+
+
+/* =========================
+   FEATURE
+========================= */
+
+async function toggleFeatured(
+  id,
+  currentlyFeatured
+) {
+
+  try {
+
+    const {
+      error
+    } = await db
+      .from("vehicles")
+      .update({
+        featured:
+          !currentlyFeatured
+      })
+      .eq(
+        "id",
+        id
       );
+
+
+    if (error) {
+      throw error;
     }
+
+
+    showMessage(
+      currentlyFeatured
+        ? "Vehicle removed from Featured."
+        : "Vehicle added to Featured.",
+      "success"
+    );
+
+
+    await loadVehicles();
+
+
+  } catch (error) {
+
+    showMessage(
+      "Could not change Featured status: " +
+      error.message,
+      "error"
+    );
+
+  }
+
+}
+
+
+/* =========================
+   DELETE
+========================= */
+
+async function deleteVehicle(
+  id
+) {
+
+  if (
+    !confirm(
+      "Delete this vehicle permanently? This cannot be undone."
+    )
+  ) {
+    return;
   }
 
 
-  /* =====================================================
-     VENDORS
-  ===================================================== */
+  try {
 
-  function renderVendors() {
-
-    const container =
-      document.getElementById("vendorList");
-
-    document.getElementById("vendorCount").textContent =
-      vendors.length +
-      (vendors.length === 1
-        ? " vendor"
-        : " vendors");
+    const {
+      error
+    } = await db
+      .from("vehicles")
+      .delete()
+      .eq(
+        "id",
+        id
+      );
 
 
-    if (!vendors.length) {
-
-      container.innerHTML = `
-        <div class="empty">
-          No vendor profiles found.
-        </div>
-      `;
-
-      return;
+    if (error) {
+      throw error;
     }
 
 
-    container.innerHTML =
-      vendors
-        .map(function(vendor) {
-
-          const listingCount =
-            vehicles.filter(function(vehicle) {
-              return vehicle.vendor_id === vendor.id;
-            }).length;
+    showMessage(
+      "Vehicle deleted.",
+      "success"
+    );
 
 
-          return `
-            <div class="vendor-card">
+    await loadVehicles();
 
-              <h3>
-                ${escapeHtml(
-                  vendor.business_name ||
-                  vendor.full_name ||
-                  "Vendor"
-                )}
-              </h3>
 
-              <strong>Name:</strong>
-              ${escapeHtml(vendor.full_name || "N/A")}
-              <br>
+  } catch (error) {
 
-              <strong>Phone:</strong>
-              ${escapeHtml(vendor.phone || "N/A")}
-              <br>
+    showMessage(
+      "Could not delete vehicle: " +
+      error.message,
+      "error"
+    );
 
-              <strong>WhatsApp:</strong>
-              ${escapeHtml(vendor.whatsapp || "N/A")}
-              <br>
+  }
 
-              <strong>Location:</strong>
-              ${escapeHtml(vendor.location || "N/A")}
-              <br>
+}
 
-              <strong>Listings:</strong>
-              ${listingCount}
 
-            </div>
-          `;
-        })
-        .join("");
+/* =========================
+   SELLER PARSER
+========================= */
+
+function parseSeller(
+  seller
+) {
+
+  if (!seller) {
+    return {};
   }
 
 
-  /* =====================================================
-     SELLER PARSER
-  ===================================================== */
-
-  function parseSeller(value) {
-
-    if (!value) {
-      return {};
-    }
-
-    if (typeof value === "object") {
-      return value;
-    }
-
-    try {
-      return JSON.parse(value);
-    } catch (error) {
-      return {};
-    }
+  if (
+    typeof seller === "object"
+  ) {
+    return seller;
   }
 
 
-  /* =====================================================
-     IMAGE
-  ===================================================== */
+  try {
 
-  function getImage(vehicle) {
+    return JSON.parse(
+      seller
+    );
 
-    if (
-      vehicle.main_image &&
-      String(vehicle.main_image)
-        .startsWith("http")
-    ) {
-      return vehicle.main_image;
-    }
+  } catch (error) {
 
+    return {};
 
-    let images = vehicle.images;
-
-
-    if (typeof images === "string") {
-
-      try {
-        images = JSON.parse(images);
-      } catch (error) {
-        images = [];
-      }
-    }
-
-
-    if (Array.isArray(images)) {
-
-      const found =
-        images.find(function(image) {
-          return (
-            image &&
-            String(image).startsWith("http")
-          );
-        });
-
-
-      if (found) {
-        return found;
-      }
-    }
-
-
-    return "https://via.placeholder.com/600x400?text=No+Vehicle+Photo";
   }
 
-
-  /* =====================================================
-     PRICE
-  ===================================================== */
-
-  function formatPrice(value) {
-
-    if (
-      value === null ||
-      value === undefined ||
-      value === ""
-    ) {
-      return "Price on request";
-    }
+}
 
 
-    const number = Number(value);
+/* =========================
+   MESSAGE
+========================= */
+
+function showMessage(
+  text,
+  type
+) {
+
+  const box =
+    document.getElementById(
+      "message"
+    );
 
 
-    if (isNaN(number)) {
-      return escapeHtml(value);
-    }
+  box.innerHTML = `
+
+    <div class="${type}">
+      ${escapeHtml(text)}
+    </div>
+
+  `;
 
 
-    return "KES " +
-      number.toLocaleString("en-KE");
-  }
+  setTimeout(
+    () => {
+      box.innerHTML = "";
+    },
+    5000
+  );
+
+}
 
 
-  /* =====================================================
-     STATUS
-  ===================================================== */
+/* =========================
+   LOGOUT
+========================= */
 
-  function getStatusClass(status) {
+async function logout() {
 
-    if (status === "pending") {
-      return "status-pending";
-    }
+  await db.auth.signOut();
 
-    if (status === "published") {
-      return "status-published";
-    }
+  window.location.href =
+    "admin-login.html";
 
-    if (status === "sold") {
-      return "status-sold";
-    }
+}
 
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHtml(
+  value
+) {
+
+  if (
+    value === null ||
+    value === undefined
+  ) {
     return "";
   }
 
 
-  function getStatusLabel(status) {
+  return String(value)
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
 
-    if (status === "pending") {
-      return "PENDING APPROVAL";
+}
+
+
+/* =========================
+   ENTER KEY SEARCH
+========================= */
+
+document
+  .getElementById("searchInput")
+  .addEventListener(
+    "keydown",
+    function(event) {
+
+      if (
+        event.key === "Enter"
+      ) {
+        applyFilters();
+      }
+
     }
-
-    if (status === "published") {
-      return "PUBLISHED";
-    }
-
-    if (status === "sold") {
-      return "SOLD";
-    }
-
-    return status.toUpperCase();
-  }
-
-
-  /* =====================================================
-     LOGOUT
-  ===================================================== */
-
-  async function logout() {
-
-    await db.auth.signOut();
-
-    window.location.href =
-      "admin-login.html";
-  }
-
-
-  /* =====================================================
-     MESSAGES
-  ===================================================== */
-
-  function showSuccess(message) {
-
-    const box =
-      document.getElementById("successMessage");
-
-    const error =
-      document.getElementById("errorMessage");
-
-    error.style.display = "none";
-
-    box.textContent = message;
-    box.style.display = "block";
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-
-
-    setTimeout(function() {
-      box.style.display = "none";
-    }, 5000);
-  }
-
-
-  function showError(message) {
-
-    const box =
-      document.getElementById("errorMessage");
-
-    const success =
-      document.getElementById("successMessage");
-
-    success.style.display = "none";
-
-    box.textContent = message;
-    box.style.display = "block";
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  }
-
-
-  /* =====================================================
-     ESCAPING
-  ===================================================== */
-
-  function escapeHtml(value) {
-
-    if (
-      value === null ||
-      value === undefined
-    ) {
-      return "";
-    }
-
-    return String(value)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
-  }
-
-
-  function escapeAttribute(value) {
-    return escapeHtml(value);
-  }
-
-
-  function escapeJs(value) {
-
-    return String(value)
-      .replace(/\\/g, "\\\\")
-      .replace(/'/g, "\\'");
-  }
+  );
 
 </script>
 
