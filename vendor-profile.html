@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Vendor Profile | Nauza Tu Digital Motor Market</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #222;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 18px 20px;
+    }
+
+    .header-inner {
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      color: #d1d5db;
+      font-size: 13px;
+    }
+
+    .dashboard-link {
+      color: white;
+      text-decoration: none;
+      background: #2563eb;
+      padding: 10px 14px;
+      border-radius: 7px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .dashboard-link:hover {
+      background: #1d4ed8;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 650px;
+      margin: 35px auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #111827;
+      text-align: center;
+    }
+
+    .intro {
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 25px;
+    }
+
+    .account-email {
+      background: #f3f4f6;
+      padding: 12px;
+      border-radius: 7px;
+      margin-bottom: 22px;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    .account-email strong {
+      color: #111827;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 7px;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d1d5db;
+      border-radius: 7px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #2563eb;
+    }
+
+    .help-text {
+      margin-top: 5px;
+      color: #777;
+      font-size: 12px;
+    }
+
+    .save-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 7px;
+      background: #16a34a;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .save-btn:hover {
+      background: #15803d;
+    }
+
+    .save-btn:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+    }
+
+    .message {
+      display: none;
+      margin-top: 18px;
+      padding: 12px;
+      border-radius: 7px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .success {
+      display: block;
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #86efac;
+    }
+
+    .error {
+      display: block;
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fca5a5;
+    }
+
+    .loading {
+      text-align: center;
+      color: #666;
+      padding: 20px;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 22px;
+      color: #2563eb;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+
+      header {
+        padding: 15px;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+      }
+
+      .dashboard-link {
+        display: inline-block;
+      }
+
+      .container {
+        margin: 20px auto;
+        padding: 15px;
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      header h1 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="header-inner">
+
+    <div>
+      <h1>Nauza Tu Digital Motor Market</h1>
+      <p>Vendor Profile</p>
+    </div>
+
+    <a
+      href="vendor-dashboard.html"
+      class="dashboard-link"
+    >
+      Vendor Dashboard
+    </a>
+
+  </div>
+
+</header>
+
+
+<div class="container">
+
+  <div class="card">
+
+    <h2>Edit Vendor Profile</h2>
+
+    <p class="intro">
+      Update your contact and business information below.
+      Your login email cannot be changed from this page.
+    </p>
+
+
+    <div
+      id="loadingMessage"
+      class="loading"
+    >
+      Loading your profile...
+    </div>
+
+
+    <form
+      id="profileForm"
+      style="display:none;"
+    >
+
+      <div class="account-email">
+        <strong>Login Email:</strong>
+        <span id="emailDisplay">Loading...</span>
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="fullName">
+          Full Name *
+        </label>
+
+        <input
+          type="text"
+          id="fullName"
+          placeholder="Enter your full name"
+          required
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="phone">
+          Phone Number *
+        </label>
+
+        <input
+          type="tel"
+          id="phone"
+          placeholder="e.g. 0712345678"
+          required
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="whatsapp">
+          WhatsApp Number
+        </label>
+
+        <input
+          type="tel"
+          id="whatsapp"
+          placeholder="e.g. 0712345678"
+        >
+
+        <div class="help-text">
+          Leave blank if your WhatsApp number is the same as your phone number.
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="businessName">
+          Business / Dealer Name
+        </label>
+
+        <input
+          type="text"
+          id="businessName"
+          placeholder="e.g. Test Motor Dealer"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="location">
+          Location *
+        </label>
+
+        <input
+          type="text"
+          id="location"
+          placeholder="e.g. Nairobi, Kenya"
+          required
+        >
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="save-btn"
+        id="saveButton"
+      >
+        Save Profile Changes
+      </button>
+
+
+      <div
+        id="message"
+        class="message"
+      ></div>
+
+    </form>
+
+
+    <a
+      href="vendor-dashboard.html"
+      class="back-link"
+    >
+      ← Back to Vendor Dashboard
+    </a>
+
+  </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+  const SUPABASE_URL =
+    "https://hoogdxegjomtsvaddkwk.supabase.co";
+
+  const SUPABASE_KEY =
+    "sb_publishable_VEq6gUDlCthklOIgVUaDzQ_5TaqAsu8";
+
+
+  const supabaseClient =
+    window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+
+  const loadingMessage =
+    document.getElementById("loadingMessage");
+
+  const profileForm =
+    document.getElementById("profileForm");
+
+  const message =
+    document.getElementById("message");
+
+  const saveButton =
+    document.getElementById("saveButton");
+
+
+  let currentUser = null;
+
+
+  function showMessage(text, type) {
+
+    message.textContent = text;
+
+    message.className =
+      "message " + type;
+
+  }
+
+
+  async function loadProfile() {
+
+    try {
+
+      /*
+       * Check whether the vendor is logged in.
+       */
+
+      const {
+        data: sessionData,
+        error: sessionError
+      } =
+        await supabaseClient.auth.getSession();
+
+
+      if (sessionError) {
+
+        throw sessionError;
+
+      }
+
+
+      if (!sessionData.session) {
+
+        window.location.href =
+          "vendor-login.html";
+
+        return;
+
+      }
+
+
+      currentUser =
+        sessionData.session.user;
+
+
+      /*
+       * Display login email.
+       */
+
+      document.getElementById(
+        "emailDisplay"
+      ).textContent =
+        currentUser.email || "";
+
+
+      /*
+       * Load the vendor's profile.
+       */
+
+      const {
+        data: profile,
+        error: profileError
+      } =
+        await supabaseClient
+          .from("vendor_profiles")
+          .select("*")
+          .eq("id", currentUser.id)
+          .maybeSingle();
+
+
+      if (profileError) {
+
+        throw profileError;
+
+      }
+
+
+      /*
+       * If the profile doesn't exist,
+       * show a clear message.
+       */
+
+      if (!profile) {
+
+        loadingMessage.style.display =
+          "none";
+
+        profileForm.style.display =
+          "block";
+
+        showMessage(
+          "Your vendor profile was not found. Please contact the administrator.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      /*
+       * Fill the form with existing information.
+       */
+
+      document.getElementById(
+        "fullName"
+      ).value =
+        profile.full_name || "";
+
+
+      document.getElementById(
+        "phone"
+      ).value =
+        profile.phone || "";
+
+
+      document.getElementById(
+        "whatsapp"
+      ).value =
+        profile.whatsapp || "";
+
+
+      document.getElementById(
+        "businessName"
+      ).value =
+        profile.business_name || "";
+
+
+      document.getElementById(
+        "location"
+      ).value =
+        profile.location || "";
+
+
+      loadingMessage.style.display =
+        "none";
+
+      profileForm.style.display =
+        "block";
+
+    } catch (error) {
+
+      console.error(error);
+
+      loadingMessage.style.display =
+        "none";
+
+      profileForm.style.display =
+        "block";
+
+      showMessage(
+        error.message ||
+        "Could not load your vendor profile.",
+        "error"
+      );
+
+    }
+
+  }
+
+
+  profileForm.addEventListener(
+    "submit",
+    async function(event) {
+
+      event.preventDefault();
+
+
+      if (!currentUser) {
+
+        showMessage(
+          "Your login session has expired. Please log in again.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      const fullName =
+        document.getElementById(
+          "fullName"
+        ).value.trim();
+
+
+      const phone =
+        document.getElementById(
+          "phone"
+        ).value.trim();
+
+
+      const whatsapp =
+        document.getElementById(
+          "whatsapp"
+        ).value.trim();
+
+
+      const businessName =
+        document.getElementById(
+          "businessName"
+        ).value.trim();
+
+
+      const location =
+        document.getElementById(
+          "location"
+        ).value.trim();
+
+
+      /*
+       * Basic validation.
+       */
+
+      if (!fullName) {
+
+        showMessage(
+          "Please enter your full name.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      if (!phone) {
+
+        showMessage(
+          "Please enter your phone number.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      if (!location) {
+
+        showMessage(
+          "Please enter your location.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      saveButton.disabled = true;
+
+      saveButton.textContent =
+        "Saving Changes...";
+
+
+      message.className =
+        "message";
+
+
+      try {
+
+        /*
+         * Update ONLY the logged-in vendor's
+         * own profile.
+         */
+
+        const {
+          error
+        } =
+          await supabaseClient
+            .from("vendor_profiles")
+            .update({
+
+              full_name: fullName,
+
+              phone: phone,
+
+              whatsapp:
+                whatsapp || null,
+
+              business_name:
+                businessName || null,
+
+              location: location
+
+            })
+            .eq("id", currentUser.id);
+
+
+        if (error) {
+
+          throw error;
+
+        }
+
+
+        showMessage(
+          "Your vendor profile has been updated successfully.",
+          "success"
+        );
+
+
+        saveButton.textContent =
+          "Profile Saved";
+
+
+        /*
+         * Return to dashboard after
+         * a short delay.
+         */
+
+        setTimeout(() => {
+
+          window.location.href =
+            "vendor-dashboard.html";
+
+        }, 1800);
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        showMessage(
+          error.message ||
+          "Could not save your profile. Please try again.",
+          "error"
+        );
+
+
+        saveButton.disabled =
+          false;
+
+        saveButton.textContent =
+          "Save Profile Changes";
+
+      }
+
+    }
+  );
+
+
+  /*
+   * Start the page.
+   */
+
+  loadProfile();
+
+</script>
+
+</body>
+</html>
