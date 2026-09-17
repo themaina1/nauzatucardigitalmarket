@@ -1,1305 +1,1122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Vendor Dashboard | Nauza Tu Digital Motor Market</title>
+<title>Vendor Dashboard | Nauza Tu Digital Motor Market</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
+<meta name="description"
+content="Vendor dashboard for managing vehicle listings on Nauza Tu Digital Motor Market.">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f6f8;
+    color:#222;
+}
+
+header{
+    background:#111827;
+    color:white;
+    padding:16px 20px;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.header-inner{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo{
+    font-size:21px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#f4b400;
+}
+
+.header-buttons{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.header-buttons a,
+.header-buttons button{
+    border:none;
+    text-decoration:none;
+    cursor:pointer;
+    padding:10px 14px;
+    border-radius:7px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.home-btn{
+    background:#fff;
+    color:#111827;
+}
+
+.add-btn{
+    background:#f4b400;
+    color:#111;
+}
+
+.logout-btn{
+    background:#dc3545;
+    color:white;
+}
+
+.container{
+    max-width:1200px;
+    margin:25px auto;
+    padding:0 16px;
+}
+
+.welcome{
+    background:white;
+    padding:22px;
+    border-radius:12px;
+    margin-bottom:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,.07);
+}
+
+.welcome h1{
+    font-size:26px;
+    margin-bottom:7px;
+}
+
+.welcome p{
+    color:#666;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-bottom:22px;
+}
+
+.stat{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 2px 8px rgba(0,0,0,.07);
+}
+
+.stat-number{
+    display:block;
+    font-size:30px;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.stat-label{
+    color:#666;
+    font-size:14px;
+}
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+    gap:10px;
+}
+
+.section-title h2{
+    font-size:22px;
+}
+
+.vehicle-list{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.vehicle-card{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 2px 9px rgba(0,0,0,.08);
+}
+
+.vehicle-image{
+    width:100%;
+    height:210px;
+    object-fit:cover;
+    background:#ddd;
+    display:block;
+}
+
+.vehicle-body{
+    padding:16px;
+}
+
+.vehicle-title{
+    font-size:19px;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.vehicle-info{
+    color:#555;
+    font-size:14px;
+    line-height:1.7;
+}
+
+.price{
+    color:#0b7a42;
+    font-size:19px;
+    font-weight:bold;
+    margin:8px 0;
+}
+
+.badge{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+    margin:5px 0 10px;
+}
+
+.badge-published{
+    background:#d8f5e3;
+    color:#08753b;
+}
+
+.badge-sold{
+    background:#f8d7da;
+    color:#842029;
+}
+
+.badge-pending{
+    background:#fff3cd;
+    color:#856404;
+}
+
+.actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-top:13px;
+}
+
+.actions button,
+.actions a{
+    border:none;
+    text-decoration:none;
+    text-align:center;
+    cursor:pointer;
+    padding:10px 7px;
+    border-radius:7px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.edit-btn{
+    background:#0d6efd;
+    color:white;
+}
+
+.sold-btn{
+    background:#dc3545;
+    color:white;
+}
+
+.publish-btn{
+    background:#198754;
+    color:white;
+}
+
+.delete-btn{
+    background:#6c757d;
+    color:white;
+}
+
+.details-btn{
+    background:#212529;
+    color:white;
+}
+
+.loading,
+.empty,
+.error{
+    background:white;
+    padding:30px;
+    text-align:center;
+    border-radius:12px;
+    color:#666;
+}
+
+.error{
+    color:#842029;
+    background:#f8d7da;
+}
+
+.profile-box{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:22px;
+    box-shadow:0 2px 8px rgba(0,0,0,.07);
+}
+
+.profile-box h2{
+    margin-bottom:12px;
+}
+
+.profile-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+.profile-item{
+    background:#f7f7f7;
+    padding:11px;
+    border-radius:7px;
+    font-size:14px;
+}
+
+.profile-item strong{
+    display:block;
+    margin-bottom:3px;
+    color:#333;
+}
+
+footer{
+    margin-top:40px;
+    background:#111827;
+    color:#ccc;
+    text-align:center;
+    padding:22px 15px;
+    font-size:13px;
+}
+
+@media(max-width:900px){
+    .vehicle-list{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:650px){
+    .header-inner{
+        align-items:flex-start;
+        flex-direction:column;
     }
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      color: #222;
+    .header-buttons{
+        width:100%;
     }
 
-    header {
-      background: #111827;
-      color: white;
-      padding: 18px 20px;
+    .header-buttons a,
+    .header-buttons button{
+        flex:1;
+        text-align:center;
     }
 
-    .header-inner {
-      max-width: 1100px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
+    .stats{
+        grid-template-columns:1fr;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 22px;
+    .vehicle-list{
+        grid-template-columns:1fr;
     }
 
-    header p {
-      margin: 5px 0 0;
-      color: #d1d5db;
-      font-size: 13px;
+    .profile-grid{
+        grid-template-columns:1fr;
     }
 
-    .logout-btn {
-      border: none;
-      background: #dc2626;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 7px;
-      font-weight: bold;
-      cursor: pointer;
+    .welcome h1{
+        font-size:22px;
     }
-
-    .logout-btn:hover {
-      background: #b91c1c;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 30px auto;
-      padding: 15px;
-    }
-
-    .welcome {
-      margin-bottom: 25px;
-    }
-
-    .welcome h2 {
-      margin: 0 0 6px;
-      color: #111827;
-    }
-
-    .welcome p {
-      margin: 0;
-      color: #666;
-    }
-
-    .profile-card {
-      background: white;
-      border-radius: 12px;
-      padding: 25px;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.07);
-      margin-bottom: 25px;
-    }
-
-    .profile-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .profile-header h3 {
-      margin: 0;
-      color: #111827;
-    }
-
-    .edit-profile-btn {
-      text-decoration: none;
-      background: #2563eb;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 7px;
-      font-weight: bold;
-      font-size: 14px;
-    }
-
-    .edit-profile-btn:hover {
-      background: #1d4ed8;
-    }
-
-    .profile-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
-
-    .profile-item {
-      background: #f9fafb;
-      padding: 13px;
-      border-radius: 7px;
-    }
-
-    .profile-item .label {
-      display: block;
-      font-size: 12px;
-      color: #777;
-      margin-bottom: 5px;
-    }
-
-    .profile-item .value {
-      font-weight: bold;
-      color: #111827;
-      word-break: break-word;
-    }
-
-    .actions {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      gap: 15px;
-    }
-
-    .actions h3 {
-      margin: 0;
-      color: #111827;
-    }
-
-    .add-vehicle-btn {
-      text-decoration: none;
-      background: #16a34a;
-      color: white;
-      padding: 11px 17px;
-      border-radius: 7px;
-      font-weight: bold;
-      font-size: 14px;
-    }
-
-    .add-vehicle-btn:hover {
-      background: #15803d;
-    }
-
-    .vehicles-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .vehicle-card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.07);
-    }
-
-    .vehicle-image {
-      width: 100%;
-      height: 190px;
-      object-fit: cover;
-      display: block;
-      background: #e5e7eb;
-    }
-
-    .vehicle-content {
-      padding: 18px;
-    }
-
-    .vehicle-title {
-      margin: 0 0 8px;
-      font-size: 18px;
-      color: #111827;
-    }
-
-    .vehicle-price {
-      font-size: 18px;
-      font-weight: bold;
-      color: #16a34a;
-      margin-bottom: 10px;
-    }
-
-    .vehicle-info {
-      margin: 5px 0;
-      font-size: 14px;
-      color: #555;
-    }
-
-    .vehicle-info strong {
-      color: #333;
-    }
-
-    .status {
-      display: inline-block;
-      padding: 5px 9px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: bold;
-      margin-top: 8px;
-    }
-
-    .status-published {
-      background: #dcfce7;
-      color: #166534;
-    }
-
-    .status-draft {
-      background: #fef3c7;
-      color: #92400e;
-    }
-
-    .status-other {
-      background: #e5e7eb;
-      color: #374151;
-    }
-
-    .vehicle-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 15px;
-    }
-
-    .edit-btn,
-    .delete-btn {
-      flex: 1;
-      border: none;
-      padding: 10px;
-      border-radius: 7px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 13px;
-      text-align: center;
-      text-decoration: none;
-    }
-
-    .edit-btn {
-      background: #2563eb;
-      color: white;
-    }
-
-    .edit-btn:hover {
-      background: #1d4ed8;
-    }
-
-    .delete-btn {
-      background: #dc2626;
-      color: white;
-    }
-
-    .delete-btn:hover {
-      background: #b91c1c;
-    }
-
-    .loading {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      text-align: center;
-      color: #666;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.07);
-    }
-
-    .empty {
-      background: white;
-      padding: 35px;
-      border-radius: 12px;
-      text-align: center;
-      color: #666;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.07);
-    }
-
-    .empty h3 {
-      margin-top: 0;
-      color: #333;
-    }
-
-    .empty a {
-      display: inline-block;
-      margin-top: 12px;
-      background: #16a34a;
-      color: white;
-      padding: 11px 17px;
-      border-radius: 7px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .message {
-      display: none;
-      margin-bottom: 20px;
-      padding: 13px;
-      border-radius: 7px;
-      font-size: 14px;
-    }
-
-    .error {
-      display: block;
-      background: #fee2e2;
-      color: #991b1b;
-      border: 1px solid #fca5a5;
-    }
-
-    @media (max-width: 850px) {
-      .vehicles-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .header-inner {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .profile-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .profile-header {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .edit-profile-btn {
-        text-align: center;
-      }
-
-      .actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .add-vehicle-btn {
-        text-align: center;
-      }
-
-      .vehicles-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .vehicle-image {
-        height: 210px;
-      }
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="header-inner">
+    <div class="header-inner">
 
-    <div>
-      <h1>Nauza Tu Digital Motor Market</h1>
-      <p>Vendor Dashboard</p>
+        <div class="logo">
+            Nauza Tu <span>Digital Motor Market</span>
+        </div>
+
+        <div class="header-buttons">
+
+            <a href="index.html" class="home-btn">
+                Home
+            </a>
+
+            <a href="vendor-add-vehicle.html" class="add-btn">
+                + Add Vehicle
+            </a>
+
+            <button class="logout-btn" onclick="logout()">
+                Logout
+            </button>
+
+        </div>
+
     </div>
-
-    <button
-      class="logout-btn"
-      id="logoutBtn"
-    >
-      Logout
-    </button>
-
-  </div>
 </header>
 
 
-<div class="container">
+<main class="container">
 
-  <div
-    id="message"
-    class="message"
-  ></div>
+    <section class="welcome">
 
+        <h1>Vendor Dashboard</h1>
 
-  <div
-    id="loading"
-    class="loading"
-  >
-    Loading your vendor dashboard...
-  </div>
+        <p id="welcomeText">
+            Loading your account...
+        </p>
+
+    </section>
 
 
-  <div
-    id="dashboard"
-    style="display:none;"
-  >
+    <section class="profile-box">
 
-    <div class="welcome">
+        <h2>Vendor Profile</h2>
 
-      <h2>
-        Welcome, <span id="welcomeName">Vendor</span>
-      </h2>
+        <div class="profile-grid">
 
-      <p>
-        Manage your vendor profile and vehicle listings from here.
-      </p>
+            <div class="profile-item">
+                <strong>Name</strong>
+                <span id="profileName">Loading...</span>
+            </div>
 
-    </div>
+            <div class="profile-item">
+                <strong>Business</strong>
+                <span id="profileBusiness">Loading...</span>
+            </div>
 
+            <div class="profile-item">
+                <strong>Phone</strong>
+                <span id="profilePhone">Loading...</span>
+            </div>
 
-    <!-- VENDOR PROFILE -->
-
-    <div class="profile-card">
-
-      <div class="profile-header">
-
-        <h3>My Vendor Profile</h3>
-
-        <a
-          href="vendor-profile.html"
-          class="edit-profile-btn"
-        >
-          Edit Profile
-        </a>
-
-      </div>
-
-
-      <div class="profile-grid">
-
-        <div class="profile-item">
-
-          <span class="label">
-            Full Name
-          </span>
-
-          <span
-            class="value"
-            id="profileName"
-          >
-            —
-          </span>
+            <div class="profile-item">
+                <strong>Location</strong>
+                <span id="profileLocation">Loading...</span>
+            </div>
 
         </div>
 
+    </section>
 
-        <div class="profile-item">
 
-          <span class="label">
-            Login Email
-          </span>
+    <section class="stats">
 
-          <span
-            class="value"
-            id="profileEmail"
-          >
-            —
-          </span>
+        <div class="stat">
+            <span class="stat-number" id="totalCount">0</span>
+            <span class="stat-label">Total Listings</span>
+        </div>
+
+        <div class="stat">
+            <span class="stat-number" id="publishedCount">0</span>
+            <span class="stat-label">Published</span>
+        </div>
+
+        <div class="stat">
+            <span class="stat-number" id="soldCount">0</span>
+            <span class="stat-label">Sold</span>
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <div class="section-title">
+            <h2>My Vehicle Listings</h2>
+        </div>
+
+        <div id="vehicleList" class="vehicle-list">
+
+            <div class="loading">
+                Loading your vehicles...
+            </div>
 
         </div>
 
+    </section>
 
-        <div class="profile-item">
-
-          <span class="label">
-            Phone
-          </span>
-
-          <span
-            class="value"
-            id="profilePhone"
-          >
-            —
-          </span>
-
-        </div>
+</main>
 
 
-        <div class="profile-item">
+<footer>
+    © 2026 Nauza Tu Digital Motor Market
+</footer>
 
-          <span class="label">
-            WhatsApp
-          </span>
-
-          <span
-            class="value"
-            id="profileWhatsapp"
-          >
-            —
-          </span>
-
-        </div>
-
-
-        <div class="profile-item">
-
-          <span class="label">
-            Business / Dealer
-          </span>
-
-          <span
-            class="value"
-            id="profileBusiness"
-          >
-            —
-          </span>
-
-        </div>
-
-
-        <div class="profile-item">
-
-          <span class="label">
-            Location
-          </span>
-
-          <span
-            class="value"
-            id="profileLocation"
-          >
-            —
-          </span>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- VEHICLES -->
-
-    <div class="actions">
-
-      <h3>
-        My Vehicle Listings
-      </h3>
-
-      <a
-        href="vendor-add-vehicle.html"
-        class="add-vehicle-btn"
-      >
-        + Add Vehicle
-      </a>
-
-    </div>
-
-
-    <div
-      id="vehiclesGrid"
-      class="vehicles-grid"
-    ></div>
-
-  </div>
-
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-  const SUPABASE_URL =
-    "https://hoogdxegjomtsvaddkwk.supabase.co";
+const SUPABASE_URL =
+"https://hoogdxegjomtsvaddkwk.supabase.co";
 
-  const SUPABASE_KEY =
-    "sb_publishable_VEq6gUDlCthklOIgVUaDzQ_5TaqAsu8";
+const SUPABASE_KEY =
+"sb_publishable_VEq6gUDlCthklOIgVUaDzQ_5TaqAsu8";
 
-
-  const supabaseClient =
-    window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
-
-
-  const loading =
-    document.getElementById("loading");
-
-  const dashboard =
-    document.getElementById("dashboard");
-
-  const message =
-    document.getElementById("message");
-
-  const vehiclesGrid =
-    document.getElementById("vehiclesGrid");
-
-  const logoutBtn =
-    document.getElementById("logoutBtn");
+const supabaseClient =
+supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
 
 
-  let currentUser = null;
+let currentUser = null;
 
 
-  function showError(text) {
+/* =========================
+   START
+========================= */
 
-    message.textContent = text;
+document.addEventListener("DOMContentLoaded", async function(){
 
-    message.className =
-      "message error";
+    const {
+        data: { session },
+        error
+    } = await supabaseClient.auth.getSession();
 
-  }
+    if(error){
 
+        console.error(error);
 
-  function clearMessage() {
+        window.location.href = "vendor-login.html";
 
-    message.textContent = "";
-
-    message.className =
-      "message";
-
-  }
-
-
-  function formatPrice(price) {
-
-    if (
-      price === null ||
-      price === undefined ||
-      price === ""
-    ) {
-      return "Price on request";
+        return;
     }
 
-    const numericPrice =
-      Number(
-        String(price)
-          .replace(/,/g, "")
-          .replace(/[^\d.]/g, "")
-      );
+    if(!session){
 
+        window.location.href = "vendor-login.html";
 
-    if (
-      Number.isNaN(numericPrice) ||
-      numericPrice === 0
-    ) {
-      return String(price);
+        return;
     }
 
+    currentUser = session.user;
 
-    return "KES " +
-      numericPrice.toLocaleString(
-        "en-KE"
-      );
+    await loadVendorProfile();
 
-  }
+    await loadVehicles();
+
+});
 
 
-  function escapeHTML(value) {
+/* =========================
+   PROFILE
+========================= */
 
-    if (
-      value === null ||
-      value === undefined
-    ) {
-      return "";
+async function loadVendorProfile(){
+
+    const {
+        data,
+        error
+    } = await supabaseClient
+        .from("vendor_profiles")
+        .select("*")
+        .eq("id", currentUser.id)
+        .maybeSingle();
+
+    if(error){
+
+        console.error("Profile error:", error);
+
+        document.getElementById("welcomeText").textContent =
+            "Welcome to your vendor dashboard.";
+
+        return;
     }
 
-    return String(value)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+    if(!data){
 
-  }
+        document.getElementById("welcomeText").textContent =
+            "Welcome to your vendor dashboard.";
 
-
-  function getVehicleImage(vehicle) {
-
-    if (
-      vehicle.main_image &&
-      String(vehicle.main_image).trim()
-    ) {
-
-      return vehicle.main_image;
-
+        return;
     }
 
+    document.getElementById("welcomeText").textContent =
+        "Welcome, " + (data.full_name || "Vendor") + ".";
 
-    if (
-      vehicle.image &&
-      String(vehicle.image).trim()
-    ) {
+    document.getElementById("profileName").textContent =
+        data.full_name || "Not provided";
 
-      return vehicle.image;
+    document.getElementById("profileBusiness").textContent =
+        data.business_name || "Private Seller";
 
-    }
+    document.getElementById("profilePhone").textContent =
+        data.phone || "Not provided";
 
+    document.getElementById("profileLocation").textContent =
+        data.location || "Not provided";
 
-    if (
-      Array.isArray(vehicle.images) &&
-      vehicle.images.length > 0
-    ) {
-
-      return vehicle.images[0];
-
-    }
+}
 
 
-    if (
-      typeof vehicle.images === "string" &&
-      vehicle.images.trim()
-    ) {
+/* =========================
+   LOAD VEHICLES
+========================= */
 
-      try {
+async function loadVehicles(){
 
-        const parsed =
-          JSON.parse(vehicle.images);
+    const list =
+        document.getElementById("vehicleList");
 
-        if (
-          Array.isArray(parsed) &&
-          parsed.length > 0
-        ) {
+    list.innerHTML =
+        '<div class="loading">Loading your vehicles...</div>';
 
-          return parsed[0];
+    const {
+        data,
+        error
+    } = await supabaseClient
+        .from("vehicles")
+        .select("*")
+        .eq("vendor_id", currentUser.id)
+        .order("created_at", {
+            ascending:false
+        });
 
-        }
+    if(error){
 
-      } catch (error) {
+        console.error(error);
 
-        if (
-          vehicle.images.startsWith("http")
-        ) {
+        list.innerHTML =
+            '<div class="error">Could not load your vehicles.<br><br>' +
+            escapeHtml(error.message) +
+            '</div>';
 
-          return vehicle.images;
-
-        }
-
-      }
-
+        return;
     }
 
 
-    return "";
-  }
+    const vehicles = data || [];
 
 
-  function createVehicleCard(vehicle) {
+    document.getElementById("totalCount").textContent =
+        vehicles.length;
 
-    const make =
-      vehicle.make || "";
+    document.getElementById("publishedCount").textContent =
+        vehicles.filter(v =>
+            String(v.status || "").toLowerCase() === "published"
+        ).length;
 
-    const model =
-      vehicle.model || "";
+    document.getElementById("soldCount").textContent =
+        vehicles.filter(v =>
+            String(v.status || "").toLowerCase() === "sold"
+        ).length;
 
-    const year =
-      vehicle.year || "";
+
+    if(!vehicles.length){
+
+        list.innerHTML =
+            '<div class="empty">' +
+            '<h3>No vehicle listings yet</h3>' +
+            '<p style="margin-top:8px;">' +
+            'Add your first vehicle to start selling.' +
+            '</p>' +
+            '<br>' +
+            '<a href="vendor-add-vehicle.html" ' +
+            'style="display:inline-block;background:#f4b400;color:#111;text-decoration:none;padding:11px 18px;border-radius:7px;font-weight:bold;">' +
+            '+ Add Vehicle' +
+            '</a>' +
+            '</div>';
+
+        return;
+    }
+
+
+    list.innerHTML = vehicles
+        .map(createVehicleCard)
+        .join("");
+
+}
+
+
+/* =========================
+   VEHICLE CARD
+========================= */
+
+function createVehicleCard(vehicle){
 
     const title =
-      `${make} ${model} ${year}`.trim();
+        `${vehicle.year || ""} ${vehicle.make || ""} ${vehicle.model || ""}`
+        .trim();
+
+    const status =
+        String(vehicle.status || "published").toLowerCase();
+
+    const price =
+        vehicle.price
+        ? "KES " + Number(vehicle.price).toLocaleString("en-KE")
+        : "Price on request";
 
 
     const image =
-      getVehicleImage(vehicle);
+        getVehicleImage(vehicle);
 
 
-    const imageHTML =
-      image
-        ? `
-          <img
-            src="${escapeHTML(image)}"
-            alt="${escapeHTML(title)}"
-            class="vehicle-image"
-            onerror="this.style.display='none';"
-          >
-        `
-        : `
-          <div
-            class="vehicle-image"
-            style="
-              display:flex;
-              align-items:center;
-              justify-content:center;
-              color:#777;
-              font-size:14px;
-            "
-          >
-            No Image
-          </div>
-        `;
+    let badgeClass =
+        "badge-published";
 
+    let badgeText =
+        "Published";
 
-    const status =
-      vehicle.status || "published";
+    if(status === "sold"){
 
+        badgeClass = "badge-sold";
+        badgeText = "Sold";
 
-    let statusClass =
-      "status-other";
+    }else if(status === "pending"){
 
-
-    if (
-      status.toLowerCase() ===
-      "published"
-    ) {
-
-      statusClass =
-        "status-published";
-
-    } else if (
-      status.toLowerCase() ===
-      "draft"
-    ) {
-
-      statusClass =
-        "status-draft";
+        badgeClass = "badge-pending";
+        badgeText = "Pending";
 
     }
 
 
-    const location =
-      vehicle.location || "Not specified";
+    let statusAction = "";
+
+    if(status === "published"){
+
+        statusAction =
+        `<button
+            class="sold-btn"
+            onclick="markAsSold('${escapeJs(vehicle.id)}')">
+            Mark as Sold
+        </button>`;
+
+    }else if(status === "sold"){
+
+        statusAction =
+        `<button
+            class="publish-btn"
+            onclick="restoreVehicle('${escapeJs(vehicle.id)}')">
+            Publish Again
+        </button>`;
+
+    }else{
+
+        statusAction =
+        `<button
+            class="publish-btn"
+            onclick="restoreVehicle('${escapeJs(vehicle.id)}')">
+            Publish
+        </button>`;
+
+    }
 
 
-    const category =
-      vehicle.category || "Not specified";
+    const detailsLink =
+        "vehicle-details.html?id=" +
+        encodeURIComponent(
+            vehicle.listing_id || vehicle.id
+        );
 
 
-    const listingId =
-      vehicle.listing_id ||
-      vehicle.id;
+    const editLink =
+        "vendor-edit-vehicle.html?id=" +
+        encodeURIComponent(vehicle.id);
 
 
     return `
 
-      <div class="vehicle-card">
+        <article class="vehicle-card">
 
-        ${imageHTML}
-
-        <div class="vehicle-content">
-
-          <h3 class="vehicle-title">
-            ${escapeHTML(title || "Vehicle")}
-          </h3>
-
-          <div class="vehicle-price">
-            ${escapeHTML(
-              formatPrice(vehicle.price)
-            )}
-          </div>
-
-          <div class="vehicle-info">
-            <strong>Location:</strong>
-            ${escapeHTML(location)}
-          </div>
-
-          <div class="vehicle-info">
-            <strong>Category:</strong>
-            ${escapeHTML(category)}
-          </div>
-
-          ${
-            vehicle.mileage
-              ? `
-                <div class="vehicle-info">
-                  <strong>Mileage:</strong>
-                  ${escapeHTML(
-                    vehicle.mileage
-                  )}
-                </div>
-              `
-              : ""
-          }
-
-          ${
-            vehicle.transmission
-              ? `
-                <div class="vehicle-info">
-                  <strong>Transmission:</strong>
-                  ${escapeHTML(
-                    vehicle.transmission
-                  )}
-                </div>
-              `
-              : ""
-          }
-
-          <span
-            class="status ${statusClass}"
-          >
-            ${escapeHTML(status)}
-          </span>
-
-
-          <div class="vehicle-actions">
-
-            <a
-              href="vendor-edit-vehicle.html?id=${encodeURIComponent(
-                vehicle.id
-              )}"
-              class="edit-btn"
+            <img
+                class="vehicle-image"
+                src="${escapeHtml(image)}"
+                alt="${escapeHtml(title)}"
+                onerror="this.src='data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
+                    <svg xmlns="http://www.w3.org/2000/svg" width="600" height="400">
+                        <rect width="100%" height="100%" fill="#dddddd"/>
+                        <text x="50%" y="50%" dominant-baseline="middle"
+                        text-anchor="middle" fill="#666" font-size="24">
+                        No Vehicle Photo
+                        </text>
+                    </svg>
+                `)}';"
             >
-              Edit
-            </a>
+
+            <div class="vehicle-body">
+
+                <div class="vehicle-title">
+                    ${escapeHtml(title || "Vehicle")}
+                </div>
+
+                <div class="price">
+                    ${escapeHtml(price)}
+                </div>
+
+                <span class="badge ${badgeClass}">
+                    ${badgeText}
+                </span>
+
+                <div class="vehicle-info">
+
+                    <div>
+                        <strong>Listing ID:</strong>
+                        ${escapeHtml(vehicle.listing_id || vehicle.id || "-")}
+                    </div>
+
+                    <div>
+                        <strong>Location:</strong>
+                        ${escapeHtml(vehicle.location || "-")}
+                    </div>
+
+                    <div>
+                        <strong>Mileage:</strong>
+                        ${vehicle.mileage
+                            ? escapeHtml(
+                                Number(vehicle.mileage).toLocaleString()
+                              ) + " km"
+                            : "-"
+                        }
+                    </div>
+
+                    <div>
+                        <strong>Transmission:</strong>
+                        ${escapeHtml(vehicle.transmission || "-")}
+                    </div>
+
+                    <div>
+                        <strong>Fuel:</strong>
+                        ${escapeHtml(vehicle.fuel || "-")}
+                    </div>
+
+                </div>
 
 
-            <button
-              class="delete-btn"
-              onclick="deleteVehicle('${escapeHTML(vehicle.id)}')"
-            >
-              Delete
-            </button>
+                <div class="actions">
 
-          </div>
+                    <a
+                        class="details-btn"
+                        href="${detailsLink}">
+                        View
+                    </a>
 
-        </div>
+                    <a
+                        class="edit-btn"
+                        href="${editLink}">
+                        Edit
+                    </a>
 
-      </div>
+                    ${statusAction}
+
+                    <button
+                        class="delete-btn"
+                        onclick="deleteVehicle('${escapeJs(vehicle.id)}')">
+                        Delete
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
 
     `;
 
-  }
+}
 
 
-  async function loadVendorDashboard() {
+/* =========================
+   GET VEHICLE IMAGE
+========================= */
 
-    try {
+function getVehicleImage(vehicle){
 
-      clearMessage();
+    if(
+        vehicle.main_image &&
+        typeof vehicle.main_image === "string" &&
+        vehicle.main_image.startsWith("http")
+    ){
 
-
-      /*
-       * Check logged-in vendor.
-       */
-
-      const {
-        data: sessionData,
-        error: sessionError
-      } =
-        await supabaseClient.auth.getSession();
-
-
-      if (sessionError) {
-
-        throw sessionError;
-
-      }
-
-
-      if (!sessionData.session) {
-
-        window.location.href =
-          "vendor-login.html";
-
-        return;
-
-      }
-
-
-      currentUser =
-        sessionData.session.user;
-
-
-      /*
-       * Load vendor profile.
-       */
-
-      const {
-        data: profile,
-        error: profileError
-      } =
-        await supabaseClient
-          .from("vendor_profiles")
-          .select("*")
-          .eq("id", currentUser.id)
-          .maybeSingle();
-
-
-      if (profileError) {
-
-        throw profileError;
-
-      }
-
-
-      /*
-       * Display profile.
-       */
-
-      const fullName =
-        profile?.full_name ||
-        "Vendor";
-
-
-      document.getElementById(
-        "welcomeName"
-      ).textContent =
-        fullName;
-
-
-      document.getElementById(
-        "profileName"
-      ).textContent =
-        fullName;
-
-
-      document.getElementById(
-        "profileEmail"
-      ).textContent =
-        currentUser.email || "—";
-
-
-      document.getElementById(
-        "profilePhone"
-      ).textContent =
-        profile?.phone || "—";
-
-
-      document.getElementById(
-        "profileWhatsapp"
-      ).textContent =
-        profile?.whatsapp || "—";
-
-
-      document.getElementById(
-        "profileBusiness"
-      ).textContent =
-        profile?.business_name || "—";
-
-
-      document.getElementById(
-        "profileLocation"
-      ).textContent =
-        profile?.location || "—";
-
-
-      /*
-       * Load ONLY vehicles belonging
-       * to the logged-in vendor.
-       */
-
-      const {
-        data: vehicles,
-        error: vehiclesError
-      } =
-        await supabaseClient
-          .from("vehicles")
-          .select("*")
-          .eq("vendor_id", currentUser.id)
-          .order(
-            "created_at",
-            {
-              ascending: false
-            }
-          );
-
-
-      if (vehiclesError) {
-
-        throw vehiclesError;
-
-      }
-
-
-      loading.style.display =
-        "none";
-
-      dashboard.style.display =
-        "block";
-
-
-      /*
-       * No vehicles yet.
-       */
-
-      if (
-        !vehicles ||
-        vehicles.length === 0
-      ) {
-
-        vehiclesGrid.innerHTML = `
-
-          <div class="empty"
-               style="grid-column:1/-1;">
-
-            <h3>
-              You have no vehicle listings yet.
-            </h3>
-
-            <p>
-              Add your first vehicle to start
-              listing it on Nauza Tu Digital
-              Motor Market.
-            </p>
-
-            <a href="vendor-add-vehicle.html">
-              + Add Your First Vehicle
-            </a>
-
-          </div>
-
-        `;
-
-        return;
-
-      }
-
-
-      /*
-       * Display vehicles.
-       */
-
-      vehiclesGrid.innerHTML =
-        vehicles
-          .map(
-            vehicle =>
-              createVehicleCard(vehicle)
-          )
-          .join("");
-
-
-    } catch (error) {
-
-      console.error(error);
-
-      loading.style.display =
-        "none";
-
-      dashboard.style.display =
-        "block";
-
-      showError(
-        error.message ||
-        "Could not load your vendor dashboard."
-      );
+        return vehicle.main_image;
 
     }
 
-  }
+
+    let images = vehicle.images;
 
 
-  /*
-   * Delete vehicle.
-   *
-   * The vendor_id condition is important:
-   * a vendor can only delete their own vehicle.
-   */
+    if(typeof images === "string"){
 
-  async function deleteVehicle(vehicleId) {
+        try{
 
-    if (!currentUser) {
+            images = JSON.parse(images);
 
-      alert(
-        "Your login session has expired. Please log in again."
-      );
+        }catch(e){
 
-      window.location.href =
-        "vendor-login.html";
+            images = images
+                .split(",")
+                .map(x => x.trim());
 
-      return;
+        }
 
     }
 
+
+    if(Array.isArray(images)){
+
+        const found =
+            images.find(
+                x =>
+                typeof x === "string" &&
+                x.startsWith("http")
+            );
+
+        if(found){
+
+            return found;
+
+        }
+
+    }
+
+
+    return "data:image/svg+xml;charset=UTF-8," +
+        encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="600"
+                 height="400">
+                <rect width="100%" height="100%"
+                      fill="#dddddd"/>
+                <text x="50%" y="50%"
+                      dominant-baseline="middle"
+                      text-anchor="middle"
+                      fill="#666"
+                      font-size="24">
+                    No Vehicle Photo
+                </text>
+            </svg>
+        `);
+
+}
+
+
+/* =========================
+   MARK SOLD
+========================= */
+
+async function markAsSold(id){
 
     const confirmed =
-      confirm(
-        "Are you sure you want to delete this vehicle listing? This action cannot be undone."
-      );
+        confirm(
+            "Mark this vehicle as SOLD?\n\n" +
+            "It will no longer appear on the public Vehicles page."
+        );
 
+    if(!confirmed){
 
-    if (!confirmed) {
-
-      return;
-
-    }
-
-
-    try {
-
-      const {
-        error
-      } =
-        await supabaseClient
-          .from("vehicles")
-          .delete()
-          .eq("id", vehicleId)
-          .eq("vendor_id", currentUser.id);
-
-
-      if (error) {
-
-        throw error;
-
-      }
-
-
-      alert(
-        "Vehicle listing deleted successfully."
-      );
-
-
-      /*
-       * Reload dashboard.
-       */
-
-      loadVendorDashboard();
-
-
-    } catch (error) {
-
-      console.error(error);
-
-      alert(
-        error.message ||
-        "Could not delete the vehicle."
-      );
+        return;
 
     }
 
-  }
 
-
-  /*
-   * Logout.
-   */
-
-  logoutBtn.addEventListener(
-    "click",
-    async function() {
-
-      logoutBtn.disabled =
-        true;
-
-      logoutBtn.textContent =
-        "Logging out...";
-
-
-      const {
+    const {
         error
-      } =
-        await supabaseClient.auth.signOut();
+    } = await supabaseClient
+        .from("vehicles")
+        .update({
+            status:"sold"
+        })
+        .eq("id", id)
+        .eq("vendor_id", currentUser.id);
 
 
-      if (error) {
+    if(error){
+
+        alert(
+            "Could not mark vehicle as sold:\n\n" +
+            error.message
+        );
 
         console.error(error);
 
-        logoutBtn.disabled =
-          false;
+        return;
+    }
 
-        logoutBtn.textContent =
-          "Logout";
 
-        alert(
-          error.message ||
-          "Could not log out."
+    alert("Vehicle marked as SOLD.");
+
+    await loadVehicles();
+
+}
+
+
+/* =========================
+   RESTORE / PUBLISH
+========================= */
+
+async function restoreVehicle(id){
+
+    const confirmed =
+        confirm(
+            "Publish this vehicle again?"
         );
+
+    if(!confirmed){
 
         return;
 
-      }
+    }
 
 
-      window.location.href =
+    const {
+        error
+    } = await supabaseClient
+        .from("vehicles")
+        .update({
+            status:"published"
+        })
+        .eq("id", id)
+        .eq("vendor_id", currentUser.id);
+
+
+    if(error){
+
+        alert(
+            "Could not publish vehicle:\n\n" +
+            error.message
+        );
+
+        console.error(error);
+
+        return;
+    }
+
+
+    alert("Vehicle is now published.");
+
+    await loadVehicles();
+
+}
+
+
+/* =========================
+   DELETE
+========================= */
+
+async function deleteVehicle(id){
+
+    const confirmed =
+        confirm(
+            "DELETE this vehicle listing?\n\n" +
+            "This action cannot be undone."
+        );
+
+    if(!confirmed){
+
+        return;
+
+    }
+
+
+    const {
+        error
+    } = await supabaseClient
+        .from("vehicles")
+        .delete()
+        .eq("id", id)
+        .eq("vendor_id", currentUser.id);
+
+
+    if(error){
+
+        alert(
+            "Could not delete vehicle:\n\n" +
+            error.message
+        );
+
+        console.error(error);
+
+        return;
+    }
+
+
+    alert("Vehicle deleted successfully.");
+
+    await loadVehicles();
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+async function logout(){
+
+    const confirmed =
+        confirm("Are you sure you want to logout?");
+
+    if(!confirmed){
+
+        return;
+
+    }
+
+
+    await supabaseClient.auth.signOut();
+
+    window.location.href =
         "vendor-login.html";
 
-    }
-  );
+}
 
 
-  /*
-   * If the authentication state changes,
-   * keep the dashboard protected.
-   */
+/* =========================
+   ESCAPE HTML
+========================= */
 
-  supabaseClient.auth.onAuthStateChange(
-    function(event, session) {
+function escapeHtml(value){
 
-      if (
-        event === "SIGNED_OUT" ||
-        !session
-      ) {
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
-        window.location.href =
-          "vendor-login.html";
-
-      }
-
-    }
-  );
+}
 
 
-  /*
-   * Start dashboard.
-   */
+/* =========================
+   ESCAPE JS
+========================= */
 
-  loadVendorDashboard();
+function escapeJs(value){
+
+    return String(value ?? "")
+        .replace(/\\/g,"\\\\")
+        .replace(/'/g,"\\'")
+        .replace(/"/g,'\\"')
+        .replace(/\n/g,"\\n")
+        .replace(/\r/g,"\\r");
+
+}
 
 </script>
 
