@@ -4,437 +4,371 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Browse Vehicles | Nauza Tu Digital Motor Market</title>
+<title>Vehicles for Sale | Nauza Tu Digital Motor Market</title>
 
 <meta name="description"
-content="Browse vehicles for sale across Kenya on Nauza Tu Digital Motor Market. Search SUVs, sedans, pickups, vans and more.">
+      content="Browse vehicles listed for sale by private sellers and motor dealers in Kenya on Nauza Tu Digital Motor Market.">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+* {
+    box-sizing: border-box;
 }
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f5f7fa;
-    color:#1f2937;
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7f9;
+    color: #222;
 }
 
-/* HEADER */
-
-header{
-    background:#111827;
-    color:white;
-    position:sticky;
-    top:0;
-    z-index:1000;
+header {
+    background: #111827;
+    color: white;
+    padding: 17px 20px;
 }
 
-.navbar{
-    max-width:1200px;
-    margin:auto;
-    padding:15px 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
+.header-inner {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
 }
 
-.logo{
-    color:#facc15;
-    font-size:22px;
-    font-weight:bold;
-    text-decoration:none;
+.logo {
+    font-size: 21px;
+    font-weight: bold;
 }
 
-.nav-links{
-    display:flex;
-    flex-wrap:wrap;
-    gap:18px;
+nav {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
-.nav-links a{
-    color:white;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:bold;
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
 }
 
-.nav-links a:hover{
-    color:#facc15;
+nav a:hover {
+    text-decoration: underline;
 }
 
-/* HERO */
-
-.hero{
-    background:
-        linear-gradient(rgba(0,0,0,.68),rgba(0,0,0,.68)),
-        url("images/kenya-car-market.jpg") center/cover;
-
-    padding:65px 20px;
-    color:white;
-    text-align:center;
+.hero {
+    background: white;
+    padding: 35px 20px;
+    border-bottom: 1px solid #e5e7eb;
 }
 
-.hero h1{
-    font-size:42px;
-    margin-bottom:10px;
+.hero-inner {
+    max-width: 1200px;
+    margin: auto;
 }
 
-.hero p{
-    font-size:18px;
+.hero h1 {
+    margin: 0 0 10px;
+    font-size: 32px;
 }
 
-/* MAIN */
+.hero p {
+    margin: 0;
+    color: #64748b;
+    line-height: 1.6;
+}
 
-.container{
-    max-width:1200px;
-    margin:35px auto;
-    padding:0 20px;
+.container {
+    max-width: 1200px;
+    margin: 25px auto;
+    padding: 0 15px;
 }
 
 /* FILTERS */
 
-.filters{
-    background:white;
-    padding:22px;
-    border-radius:10px;
-    box-shadow:0 3px 12px rgba(0,0,0,.06);
-    margin-bottom:30px;
+.filters {
+    background: white;
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
 }
 
-.filter-grid{
-    display:grid;
-    grid-template-columns:2fr 1fr 1fr 1fr 1fr;
-    gap:12px;
+.filters-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
 }
 
-input,
-select{
-    width:100%;
-    padding:12px;
-    border:1px solid #d1d5db;
-    border-radius:7px;
-    background:white;
+.filters input,
+.filters select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    font-size: 14px;
+    background: white;
 }
 
-.category-buttons{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-top:15px;
+.clear-btn {
+    margin-top: 12px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 7px;
+    background: #e5e7eb;
+    cursor: pointer;
+    font-weight: bold;
 }
 
-.category-buttons button{
-    border:1px solid #d1d5db;
-    background:white;
-    padding:9px 14px;
-    border-radius:20px;
-    cursor:pointer;
+/* RESULTS */
+
+.results-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
 }
 
-.category-buttons button.active,
-.category-buttons button:hover{
-    background:#111827;
-    color:white;
+.results-top h2 {
+    margin: 0;
+    font-size: 21px;
 }
 
-/* HEADINGS */
-
-.featured-heading{
-    margin-bottom:20px;
-}
-
-.featured-heading h2{
-    color:#111827;
-    font-size:28px;
-}
-
-.featured-heading p{
-    color:#667085;
-}
-
-.results-info{
-    margin-bottom:20px;
-    color:#667085;
-}
-
-/* LOADING */
-
-.loading{
-    text-align:center;
-    padding:45px;
-    background:white;
-    border-radius:10px;
-    color:#667085;
-    font-size:17px;
-}
-
-.loading-spinner{
-    width:38px;
-    height:38px;
-    border:4px solid #e5e7eb;
-    border-top-color:#16a34a;
-    border-radius:50%;
-    margin:0 auto 15px;
-    animation:spin .8s linear infinite;
-}
-
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
+#resultCount {
+    color: #64748b;
+    font-size: 14px;
 }
 
 /* VEHICLE GRID */
 
-.vehicle-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:22px;
+.vehicle-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
-/* CARD */
-
-.vehicle-card{
-    background:white;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 4px 15px rgba(0,0,0,.08);
-    position:relative;
-    transition:.2s;
+.vehicle-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
 }
 
-.vehicle-card:hover{
-    transform:translateY(-4px);
+.vehicle-image {
+    width: 100%;
+    height: 220px;
+    background: #e5e7eb;
+    position: relative;
+    overflow: hidden;
 }
 
-.vehicle-image{
-    width:100%;
-    height:220px;
-    object-fit:cover;
-    display:block;
+.vehicle-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
-.featured-badge{
-    position:absolute;
-    top:12px;
-    left:12px;
-    background:#16a34a;
-    color:white;
-    padding:7px 12px;
-    border-radius:20px;
-    font-size:12px;
-    font-weight:bold;
-    box-shadow:0 2px 5px rgba(0,0,0,.2);
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    font-size: 14px;
 }
 
-.database-badge{
-    position:absolute;
-    top:12px;
-    right:12px;
-    background:#2563eb;
-    color:white;
-    padding:6px 10px;
-    border-radius:20px;
-    font-size:11px;
-    font-weight:bold;
+.featured-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #d97706;
+    color: white;
+    padding: 6px 9px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: bold;
 }
 
-.card-content{
-    padding:18px;
+.vehicle-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
-.vehicle-title{
-    font-size:21px;
-    font-weight:bold;
-    color:#111827;
-    margin-bottom:5px;
+.vehicle-title {
+    font-size: 19px;
+    font-weight: bold;
+    margin-bottom: 7px;
 }
 
-.location{
-    color:#667085;
-    font-size:14px;
-    margin-bottom:10px;
+.vehicle-year {
+    color: #64748b;
+    font-size: 14px;
 }
 
-.price{
-    color:#111827;
-    font-size:22px;
-    font-weight:bold;
-    margin-bottom:12px;
+.vehicle-price {
+    color: #166534;
+    font-size: 21px;
+    font-weight: bold;
+    margin: 12px 0;
 }
 
-.specs{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:7px;
-    font-size:13px;
-    color:#4b5563;
-    margin-bottom:15px;
+.vehicle-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    margin-bottom: 13px;
 }
 
-.promotion{
-    font-size:12px;
-    color:#15803d;
-    font-weight:bold;
-    margin-bottom:12px;
+.info-item {
+    color: #475569;
+    font-size: 13px;
 }
 
-.card-buttons{
-    display:flex;
-    gap:8px;
+.vehicle-location {
+    color: #475569;
+    font-size: 13px;
+    margin-bottom: 14px;
 }
 
-.card-buttons a{
-    flex:1;
-    text-align:center;
-    padding:10px;
-    border-radius:6px;
-    text-decoration:none;
-    font-size:13px;
-    font-weight:bold;
+.seller {
+    background: #f8fafc;
+    padding: 9px;
+    border-radius: 6px;
+    margin-bottom: 13px;
+    font-size: 13px;
+    color: #475569;
 }
 
-.view{
-    background:#111827;
-    color:white;
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: auto;
 }
 
-.contact{
-    background:#16a34a;
-    color:white;
+.details-btn,
+.enquire-btn {
+    border: none;
+    border-radius: 7px;
+    padding: 11px 8px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-/* EMPTY / ERROR */
-
-.empty{
-    text-align:center;
-    padding:50px;
-    background:white;
-    border-radius:10px;
-    grid-column:1/-1;
+.details-btn {
+    background: #111827;
+    color: white;
 }
 
-.empty h2{
-    margin-bottom:10px;
+.enquire-btn {
+    background: #16a34a;
+    color: white;
 }
 
-.empty p{
-    color:#667085;
+.details-btn:hover {
+    background: #1f2937;
 }
 
-.error-box{
-    background:#fff1f2;
-    border-left:5px solid #dc2626;
-    padding:18px;
-    margin-bottom:25px;
-    border-radius:8px;
-    color:#991b1b;
+.enquire-btn:hover {
+    background: #15803d;
 }
 
-.retry-button{
-    margin-top:15px;
-    background:#111827;
-    color:white;
-    border:none;
-    padding:10px 18px;
-    border-radius:6px;
-    cursor:pointer;
+/* LOADING */
+
+.loading {
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    padding: 35px;
+    color: #64748b;
 }
 
-/* NOTICE */
+.no-results {
+    display: none;
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    padding: 40px 20px;
+    color: #64748b;
+}
 
-.notice{
-    background:#fff8db;
-    border-left:5px solid #eab308;
-    padding:18px;
-    margin-top:35px;
-    border-radius:8px;
+.error-box {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: none;
 }
 
 /* FOOTER */
 
-footer{
-    background:#111827;
-    color:#cbd5e1;
-    margin-top:50px;
+footer {
+    margin-top: 45px;
+    background: #111827;
+    color: white;
+    padding: 25px 20px;
+    text-align: center;
 }
 
-.footer-inner{
-    max-width:1200px;
-    margin:auto;
-    padding:35px 20px;
-    display:grid;
-    grid-template-columns:2fr 1fr 1fr;
-    gap:30px;
-}
-
-.footer-column h3{
-    color:white;
-    margin-bottom:10px;
-}
-
-.footer-column a{
-    display:block;
-    color:#cbd5e1;
-    text-decoration:none;
-    margin-bottom:7px;
-    font-size:14px;
-}
-
-.footer-bottom{
-    border-top:1px solid #374151;
-    padding:18px;
-    text-align:center;
-    font-size:13px;
-}
-
-/* TABLET */
-
-@media(max-width:950px){
-
-    .filter-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .vehicle-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
+footer p {
+    margin: 5px 0;
+    font-size: 13px;
+    color: #cbd5e1;
 }
 
 /* MOBILE */
 
-@media(max-width:650px){
+@media (max-width: 950px) {
 
-    .navbar{
-        flex-direction:column;
+    .vehicle-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .nav-links{
-        justify-content:center;
+    .filters-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
-    .hero h1{
-        font-size:32px;
+    nav {
+        gap: 12px;
     }
 
-    .filter-grid{
-        grid-template-columns:1fr;
+    .hero h1 {
+        font-size: 26px;
     }
 
-    .vehicle-grid{
-        grid-template-columns:1fr;
+    .vehicle-grid {
+        grid-template-columns: 1fr;
     }
 
-    .footer-inner{
-        grid-template-columns:1fr;
+    .filters-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .vehicle-image {
+        height: 230px;
     }
 
 }
@@ -446,36 +380,37 @@ footer{
 
 <header>
 
-<div class="navbar">
+    <div class="header-inner">
 
-<a href="index.html" class="logo">
-Nauza Tu
-</a>
+        <div class="logo">
+            Nauza Tu Digital Motor Market
+        </div>
 
-<nav class="nav-links">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="vehicles.html">Vehicles</a>
+            <a href="compare.html">Compare</a>
+            <a href="contact.html">Contact</a>
+            <a href="vendor-login.html">Vendor Login</a>
+        </nav>
 
-<a href="index.html">Home</a>
-<a href="vehicles.html">Vehicles</a>
-<a href="compare.html">Compare</a>
-<a href="sell.html">Sell / Advertise</a>
-<a href="pricing.html">Pricing</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-
-</nav>
-
-</div>
+    </div>
 
 </header>
 
 
 <section class="hero">
 
-<h1>Browse Vehicles</h1>
+    <div class="hero-inner">
 
-<p>
-Find vehicles advertised by sellers across Kenya.
-</p>
+        <h1>Vehicles for Sale</h1>
+
+        <p>
+            Browse vehicles listed by private sellers and motor dealers.
+            Contact the seller directly for enquiries and availability.
+        </p>
+
+    </div>
 
 </section>
 
@@ -483,170 +418,104 @@ Find vehicles advertised by sellers across Kenya.
 <main class="container">
 
 
-<section class="filters">
+    <div class="filters">
 
-<div class="filter-grid">
+        <div class="filters-grid">
 
-<input
-type="text"
-id="search"
-placeholder="Search make, model, category or location">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search make or model">
 
-<select id="category">
+            <select id="categoryFilter">
 
-<option value="">All Categories</option>
-<option value="SUV">SUVs</option>
-<option value="Sedan">Sedans</option>
-<option value="Station Wagon">Station Wagons</option>
-<option value="Pickup">Pickups</option>
-<option value="Van">Vans</option>
-<option value="Truck">Trucks</option>
-<option value="Hatchback">Hatchbacks</option>
-<option value="Coupe">Coupes</option>
-<option value="Bus">Buses</option>
+                <option value="">All Categories</option>
 
-</select>
+                <option value="Small Car">Small Car</option>
+                <option value="Sedan">Sedan</option>
+                <option value="Hatchback">Hatchback</option>
+                <option value="SUV">SUV</option>
+                <option value="Crossover">Crossover</option>
+                <option value="Pickup">Pickup</option>
+                <option value="Van">Van</option>
+                <option value="Minibus">Minibus</option>
+                <option value="Station Wagon">Station Wagon</option>
+                <option value="Truck">Truck</option>
+                <option value="Bus">Bus</option>
+                <option value="Other">Other</option>
 
-
-<select id="minPrice">
-
-<option value="">Min Price</option>
-<option value="500000">KES 500K</option>
-<option value="1000000">KES 1M</option>
-<option value="1500000">KES 1.5M</option>
-<option value="2000000">KES 2M</option>
-<option value="3000000">KES 3M</option>
-<option value="5000000">KES 5M</option>
-
-</select>
+            </select>
 
 
-<select id="maxPrice">
+            <select id="conditionFilter">
 
-<option value="">Max Price</option>
-<option value="1000000">KES 1M</option>
-<option value="1500000">KES 1.5M</option>
-<option value="2000000">KES 2M</option>
-<option value="3000000">KES 3M</option>
-<option value="5000000">KES 5M</option>
-<option value="10000000">KES 10M</option>
+                <option value="">All Conditions</option>
 
-</select>
+                <option value="New">New</option>
+                <option value="Used">Used</option>
+                <option value="Reconditioned">
+                    Reconditioned
+                </option>
 
-
-<select id="sort">
-
-<option value="featured">Featured First</option>
-<option value="newest">Newest Year</option>
-<option value="priceLow">Price: Low to High</option>
-<option value="priceHigh">Price: High to Low</option>
-<option value="mileage">Lowest Mileage</option>
-
-</select>
-
-</div>
+            </select>
 
 
-<div class="category-buttons">
+            <input
+                type="text"
+                id="locationFilter"
+                placeholder="Location">
 
-<button class="active" data-category="">
-All Vehicles
-</button>
-
-<button data-category="SUV">
-SUVs
-</button>
-
-<button data-category="Sedan">
-Sedans
-</button>
-
-<button data-category="Station Wagon">
-Station Wagons
-</button>
-
-<button data-category="Pickup">
-Pickups
-</button>
-
-<button data-category="Van">
-Vans
-</button>
-
-<button data-category="Truck">
-Trucks
-</button>
-
-</div>
-
-</section>
+        </div>
 
 
-<div id="loadingBox" class="loading">
+        <button
+            class="clear-btn"
+            id="clearFilters">
+            Clear Filters
+        </button>
 
-<div class="loading-spinner"></div>
-
-Loading vehicles...
-
-</div>
-
-
-<div id="errorBox" style="display:none;" class="error-box">
-
-<strong>Unable to load the latest marketplace listings.</strong>
-
-<div id="errorMessage" style="margin-top:7px;"></div>
-
-<button class="retry-button" onclick="loadVehicles()">
-Try Again
-</button>
-
-</div>
+    </div>
 
 
-<section id="featuredSection" style="display:none;">
-
-<div class="featured-heading">
-
-<h2>Featured Vehicles</h2>
-
-<p>
-Promoted listings from sellers who have chosen additional visibility.
-</p>
-
-</div>
-
-<div id="featuredGrid" class="vehicle-grid"></div>
-
-</section>
+    <div
+        id="errorBox"
+        class="error-box">
+    </div>
 
 
-<section style="margin-top:40px;">
+    <div class="results-top">
 
-<div class="featured-heading">
+        <h2>Available Vehicles</h2>
 
-<h2>All Vehicles</h2>
+        <div id="resultCount"></div>
 
-<p id="resultsInfo"></p>
-
-</div>
-
-<div id="vehicleGrid" class="vehicle-grid"></div>
-
-</section>
+    </div>
 
 
-<div class="notice">
+    <div
+        id="loading"
+        class="loading">
+        Loading vehicles...
+    </div>
 
-<strong>Marketplace notice:</strong>
 
-Nauza Tu Digital Motor Market does not own or sell the
-vehicles displayed on this website. Vehicle information is
-provided by advertisers. Buyers should independently verify
-ownership, documents, condition, mileage and other details
-before making any payment or transaction.
+    <div
+        id="vehicleGrid"
+        class="vehicle-grid">
+    </div>
 
-</div>
+
+    <div
+        id="noResults"
+        class="no-results">
+
+        <h3>No vehicles found</h3>
+
+        <p>
+            Try changing your search or filter options.
+        </p>
+
+    </div>
 
 
 </main>
@@ -654,1153 +523,854 @@ before making any payment or transaction.
 
 <footer>
 
-<div class="footer-inner">
+    <p>
+        Nauza Tu Digital Motor Market
+    </p>
 
-<div class="footer-column">
-
-<h3>Nauza Tu Digital Motor Market</h3>
-
-<p>
-A Kenya-focused digital marketplace connecting vehicle
-advertisers with potential buyers.
-</p>
-
-</div>
-
-
-<div class="footer-column">
-
-<h3>Marketplace</h3>
-
-<a href="vehicles.html">Browse Vehicles</a>
-<a href="compare.html">Compare Vehicles</a>
-<a href="sell.html">Sell / Advertise</a>
-<a href="pricing.html">Advertising Packages</a>
-
-</div>
-
-
-<div class="footer-column">
-
-<h3>Information</h3>
-
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="privacy.html">Privacy Policy</a>
-<a href="terms.html">Terms & Conditions</a>
-
-</div>
-
-</div>
-
-
-<div class="footer-bottom">
-
-© <span id="year"></span>
-Nauza Tu Digital Motor Market.
-All rights reserved.
-
-</div>
+    <p>
+        A marketplace connecting vehicle sellers with buyers in Kenya.
+    </p>
 
 </footer>
 
 
-<!--
-==========================================================
-OLD STATIC VEHICLE DATA
-==========================================================
-
-This remains temporarily so the existing NT001-NT009
-listings continue appearing while the marketplace is
-being migrated to Supabase.
-
-New administrator listings come from Supabase.
-==========================================================
--->
-
-<script src="vehicles-data.js"></script>
-
-
 <script>
 
-/* ==========================================================
-   SUPABASE CONNECTION
-   ========================================================== */
+/* =========================================
+   SUPABASE
+========================================= */
 
 const SUPABASE_URL =
     "https://hoogdxegjomtsvaddkwk.supabase.co";
 
-const SUPABASE_PUBLISHABLE_KEY =
+const SUPABASE_KEY =
     "sb_publishable_VEq6gUDlCthklOIgVUaDzQ_5TaqAsu8";
 
 const supabaseClient =
     window.supabase.createClient(
         SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
+        SUPABASE_KEY
     );
 
 
-/* ==========================================================
-   PAGE ELEMENTS
-   ========================================================== */
-
-const searchInput =
-    document.getElementById("search");
-
-const categorySelect =
-    document.getElementById("category");
-
-const minPrice =
-    document.getElementById("minPrice");
-
-const maxPrice =
-    document.getElementById("maxPrice");
-
-const sortSelect =
-    document.getElementById("sort");
-
-const vehicleGrid =
-    document.getElementById("vehicleGrid");
-
-const featuredGrid =
-    document.getElementById("featuredGrid");
-
-const featuredSection =
-    document.getElementById("featuredSection");
-
-const resultsInfo =
-    document.getElementById("resultsInfo");
-
-const loadingBox =
-    document.getElementById("loadingBox");
-
-const errorBox =
-    document.getElementById("errorBox");
-
-const errorMessage =
-    document.getElementById("errorMessage");
-
-
-/* ==========================================================
-   VEHICLE DATABASE
-   ========================================================== */
+/* =========================================
+   DATA
+========================================= */
 
 let allVehicles = [];
 
 
-/* ==========================================================
-   SAFE HTML
-   ========================================================== */
+/* =========================================
+   ELEMENTS
+========================================= */
 
-function escapeHtml(value){
+const vehicleGrid =
+    document.getElementById("vehicleGrid");
 
-    if(value === null || value === undefined){
-        return "";
-    }
+const loading =
+    document.getElementById("loading");
 
-    return String(value)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+const noResults =
+    document.getElementById("noResults");
+
+const resultCount =
+    document.getElementById("resultCount");
+
+const errorBox =
+    document.getElementById("errorBox");
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const categoryFilter =
+    document.getElementById("categoryFilter");
+
+const conditionFilter =
+    document.getElementById("conditionFilter");
+
+const locationFilter =
+    document.getElementById("locationFilter");
+
+const clearFilters =
+    document.getElementById("clearFilters");
+
+
+/* =========================================
+   ESCAPE HTML
+========================================= */
+
+function escapeHtml(value) {
+
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
 
-/* ==========================================================
-   PRICE FORMAT
-   ========================================================== */
+/* =========================================
+   PARSE POSSIBLE JSON
+========================================= */
 
-function formatPrice(price){
+function parseMaybeJson(value) {
+
+    if (!value) {
+        return null;
+    }
+
+    if (typeof value === "object") {
+        return value;
+    }
+
+    if (typeof value !== "string") {
+        return value;
+    }
+
+    try {
+
+        return JSON.parse(value);
+
+    } catch {
+
+        return value;
+    }
+}
+
+
+/* =========================================
+   GET IMAGE
+========================================= */
+
+function getMainImage(vehicle) {
+
+    let image =
+        vehicle.main_image ||
+        vehicle.image ||
+        "";
+
+
+    /*
+     * If the database has a real Supabase
+     * public URL, use it directly.
+     */
+
+    if (
+        typeof image === "string" &&
+        (
+            image.startsWith("http://") ||
+            image.startsWith("https://")
+        )
+    ) {
+
+        return image;
+    }
+
+
+    /*
+     * Try images column.
+     */
+
+    const images =
+        parseMaybeJson(vehicle.images);
+
+
+    if (Array.isArray(images)) {
+
+        const first =
+            images.find(item =>
+                typeof item === "string" &&
+                item.trim() !== ""
+            );
+
+        if (first) {
+
+            if (
+                first.startsWith("http://") ||
+                first.startsWith("https://")
+            ) {
+
+                return first;
+            }
+        }
+    }
+
+
+    return "";
+}
+
+
+/* =========================================
+   PARSE SELLER
+========================================= */
+
+function getSeller(vehicle) {
+
+    let seller =
+        parseMaybeJson(vehicle.seller);
+
+
+    if (
+        seller &&
+        typeof seller === "object"
+    ) {
+
+        return seller;
+    }
+
+
+    /*
+     * Fallback in case seller data is stored
+     * differently.
+     */
+
+    return {
+
+        name: "Vehicle Seller",
+
+        phone: "",
+
+        whatsapp: "",
+
+        publicContact: false
+
+    };
+}
+
+
+/* =========================================
+   NORMALIZE WHATSAPP
+========================================= */
+
+function normalizeWhatsApp(number) {
+
+    if (!number) {
+        return "";
+    }
+
+    let value =
+        String(number)
+            .trim()
+            .replace(/[^\d+]/g, "");
+
+
+    /*
+     * Kenyan number beginning with 0:
+     * 0722910913
+     *
+     * becomes:
+     * 254722910913
+     */
+
+    if (
+        value.startsWith("0") &&
+        value.length === 10
+    ) {
+
+        value =
+            "254" + value.substring(1);
+    }
+
+
+    /*
+     * Remove leading +
+     */
+
+    if (value.startsWith("+")) {
+
+        value =
+            value.substring(1);
+    }
+
+
+    /*
+     * If the number is already 254...
+     */
+
+    return value;
+}
+
+
+/* =========================================
+   CREATE WHATSAPP LINK
+========================================= */
+
+function createWhatsAppLink(vehicle) {
+
+    const seller =
+        getSeller(vehicle);
+
+
+    /*
+     * Prefer WhatsApp number.
+     */
+
+    let whatsapp =
+        seller.whatsapp ||
+        seller.phone ||
+        "";
+
+
+    whatsapp =
+        normalizeWhatsApp(whatsapp);
+
+
+    /*
+     * No vendor contact available.
+     */
+
+    if (!whatsapp) {
+
+        return "";
+    }
+
+
+    const vehicleName =
+        `${vehicle.year || ""} ${vehicle.make || ""} ${vehicle.model || ""}`
+            .trim();
+
+
+    const listingId =
+        vehicle.listing_id ||
+        vehicle.id ||
+        "";
+
+
+    const price =
+        vehicle.price
+            ? Number(vehicle.price).toLocaleString("en-KE")
+            : "";
+
+
+    const message =
+        `Hello, I am interested in the ${vehicleName} listed on Nauza Tu Digital Motor Market.` +
+        ` Listing ID: ${listingId}.` +
+        (price ? ` Price: KES ${price}.` : "") +
+        ` Please let me know if the vehicle is still available.`;
+
+
+    return (
+        "https://wa.me/" +
+        whatsapp +
+        "?text=" +
+        encodeURIComponent(message)
+    );
+}
+
+
+/* =========================================
+   FORMAT PRICE
+========================================= */
+
+function formatPrice(price) {
+
+    if (
+        price === null ||
+        price === undefined ||
+        price === ""
+    ) {
+
+        return "Price on request";
+    }
 
     const number =
         Number(price);
 
-    if(!Number.isFinite(number)){
-        return "Price on request";
+    if (Number.isNaN(number)) {
+
+        return escapeHtml(price);
     }
 
-    return "KES " +
-        number.toLocaleString("en-KE");
-
+    return (
+        "KES " +
+        number.toLocaleString("en-KE")
+    );
 }
 
 
-/* ==========================================================
-   MILEAGE FORMAT
-   ========================================================== */
+/* =========================================
+   FORMAT MILEAGE
+========================================= */
 
-function formatMileage(mileage){
+function formatMileage(mileage) {
 
-    const number =
-        Number(mileage);
+    if (
+        mileage === null ||
+        mileage === undefined ||
+        mileage === ""
+    ) {
 
-    if(!Number.isFinite(number)){
-        return "N/A";
+        return "Mileage not specified";
     }
 
-    return number.toLocaleString("en-KE") + " KM";
-
+    return (
+        Number(mileage).toLocaleString("en-KE") +
+        " km"
+    );
 }
 
 
-/* ==========================================================
-   FEATURED CHECK
-   ========================================================== */
-
-function isFeatured(vehicle){
-
-    if(!vehicle.featured){
-        return false;
-    }
-
-    if(
-        vehicle.featuredUntil &&
-        new Date(vehicle.featuredUntil) < new Date()
-    ){
-        return false;
-    }
-
-    return true;
-}
-
-
-/* ==========================================================
-   NORMALIZE SUPABASE VEHICLE
-   ========================================================== */
-
-function normalizeSupabaseVehicle(row){
-
-    let image =
-        row.main_image || "";
-
-    let images = [];
-
-    if(Array.isArray(row.images)){
-        images = row.images;
-    }
-    else if(typeof row.images === "string"){
-
-        try{
-            const parsed =
-                JSON.parse(row.images);
-
-            if(Array.isArray(parsed)){
-                images = parsed;
-            }
-
-        }catch(error){
-
-            images = [];
-
-        }
-
-    }
-
-    if(!image && images.length){
-        image = images[0];
-    }
-
-    const featuredUntil =
-        row.featured_until || "";
-
-    return {
-
-        id:
-            row.listing_id ||
-            row.id,
-
-        databaseId:
-            row.id,
-
-        listingId:
-            row.listing_id || "",
-
-        make:
-            row.make || "",
-
-        model:
-            row.model || "",
-
-        year:
-            Number(row.year) || 0,
-
-        category:
-            row.category || "",
-
-        condition:
-            row.condition || "",
-
-        price:
-            Number(row.price) || 0,
-
-        location:
-            row.location || "",
-
-        mileage:
-            Number(row.mileage) || 0,
-
-        engine:
-            row.engine || "",
-
-        transmission:
-            row.transmission || "",
-
-        fuel:
-            row.fuel || "",
-
-        drive:
-            row.drive || "",
-
-        image:
-            image,
-
-        images:
-            images,
-
-        description:
-            row.description || "",
-
-        featured:
-            Boolean(row.featured),
-
-        promotion:
-            row.promotion || "Free Listing",
-
-        featuredUntil:
-            featuredUntil,
-
-        seller:
-            row.seller || {},
-
-        payment:
-            row.payment || {},
-
-        status:
-            row.status || "published",
-
-        createdAt:
-            row.created_at || ""
-
-    };
-
-}
-
-
-/* ==========================================================
+/* =========================================
    LOAD VEHICLES
-   ========================================================== */
+========================================= */
 
-async function loadVehicles(){
+async function loadVehicles() {
 
-    loadingBox.style.display =
-        "block";
-
-    errorBox.style.display =
-        "none";
+    loading.style.display = "block";
 
     vehicleGrid.innerHTML = "";
 
-    featuredGrid.innerHTML = "";
+    noResults.style.display = "none";
 
-    featuredSection.style.display =
-        "none";
+    errorBox.style.display = "none";
 
 
-    try{
-
-        /*
-        ------------------------------------------------------
-        LOAD PUBLISHED VEHICLES FROM SUPABASE
-        ------------------------------------------------------
-        */
-
-        const {
-            data,
-            error
-        } =
-            await supabaseClient
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
             .from("vehicles")
             .select("*")
-            .eq("status","published");
-
-
-        if(error){
-            throw error;
-        }
-
-
-        const supabaseVehicles =
-            (data || [])
-            .map(normalizeSupabaseVehicle);
-
-
-        /*
-        ------------------------------------------------------
-        KEEP EXISTING STATIC LISTINGS
-        ------------------------------------------------------
-        */
-
-        const staticVehicles =
-            Array.isArray(window.vehicles)
-            ? window.vehicles
-            : (
-                typeof vehicles !== "undefined"
-                ? vehicles
-                : []
-            );
-
-
-        /*
-        ------------------------------------------------------
-        COMBINE STATIC + SUPABASE
-        ------------------------------------------------------
-
-        If a Supabase listing has the same listing ID as
-        a static listing, the Supabase version replaces
-        the static version.
-
-        This means future database listings can gradually
-        replace the old hard-coded listings.
-        ------------------------------------------------------
-        */
-
-        const combinedMap =
-            new Map();
-
-
-        staticVehicles.forEach(vehicle => {
-
-            if(
-                vehicle &&
-                vehicle.id
-            ){
-
-                combinedMap.set(
-                    String(vehicle.id),
-                    vehicle
-                );
-
-            }
-
-        });
-
-
-        supabaseVehicles.forEach(vehicle => {
-
-            if(
-                vehicle &&
-                vehicle.id
-            ){
-
-                combinedMap.set(
-                    String(vehicle.id),
-                    vehicle
-                );
-
-            }
-
-        });
-
-
-        allVehicles =
-            Array.from(
-                combinedMap.values()
-            );
-
-
-        loadingBox.style.display =
-            "none";
-
-
-        /*
-        ------------------------------------------------------
-        DISPLAY
-        ------------------------------------------------------
-        */
-
-        filterVehicles();
-
-
-    }catch(error){
-
-        console.error(
-            "Supabase vehicle loading error:",
-            error
-        );
-
-
-        loadingBox.style.display =
-            "none";
-
-        errorBox.style.display =
-            "block";
-
-
-        errorMessage.textContent =
-            error.message ||
-            "Unknown database error.";
-
-
-        /*
-        ------------------------------------------------------
-        IMPORTANT FALLBACK
-
-        If Supabase temporarily fails, the old static
-        listings still remain available.
-        ------------------------------------------------------
-        */
-
-        const staticVehicles =
-            Array.isArray(window.vehicles)
-            ? window.vehicles
-            : (
-                typeof vehicles !== "undefined"
-                ? vehicles
-                : []
-            );
-
-
-        allVehicles =
-            Array.isArray(staticVehicles)
-            ? [...staticVehicles]
-            : [];
-
-
-        filterVehicles();
-
-    }
-
-}
-
-
-/* ==========================================================
-   CREATE VEHICLE CARD
-   ========================================================== */
-
-function createCard(vehicle){
-
-    const featured =
-        isFeatured(vehicle);
-
-
-    const image =
-        vehicle.image ||
-        (
-            Array.isArray(vehicle.images) &&
-            vehicle.images.length
-            ? vehicle.images[0]
-            : "images/suv.jpg"
-        );
-
-
-    const listingId =
-        vehicle.id || "";
-
-
-    const databaseListing =
-        vehicle.databaseId
-        ? true
-        : false;
-
-
-    return `
-
-    <article class="vehicle-card">
-
-        ${
-            featured
-            ?
-            `
-            <div class="featured-badge">
-                FEATURED
-            </div>
-            `
-            :
-            ""
-        }
-
-
-        ${
-            databaseListing
-            ?
-            `
-            <div class="database-badge">
-                VERIFIED LISTING
-            </div>
-            `
-            :
-            ""
-        }
-
-
-        <img
-            class="vehicle-image"
-            src="${escapeHtml(image)}"
-            alt="${escapeHtml(vehicle.make)} ${escapeHtml(vehicle.model)}"
-            onerror="this.src='images/suv.jpg'"
-        >
-
-
-        <div class="card-content">
-
-
-            <div class="vehicle-title">
-
-                ${escapeHtml(vehicle.make)}
-                ${escapeHtml(vehicle.model)}
-
-            </div>
-
-
-            <div class="location">
-
-                📍 ${escapeHtml(vehicle.location)}
-
-            </div>
-
-
-            <div class="price">
-
-                ${formatPrice(vehicle.price)}
-
-            </div>
-
-
-            ${
-                featured
-                ?
-                `
-                <div class="promotion">
-
-                    ${escapeHtml(
-                        vehicle.promotion ||
-                        "Featured Listing"
-                    )}
-
-                </div>
-                `
-                :
-                ""
-            }
-
-
-            <div class="specs">
-
-
-                <div>
-
-                    <strong>Year:</strong>
-                    ${escapeHtml(vehicle.year)}
-
-                </div>
-
-
-                <div>
-
-                    <strong>Category:</strong>
-                    ${escapeHtml(vehicle.category)}
-
-                </div>
-
-
-                <div>
-
-                    <strong>Mileage:</strong>
-                    ${formatMileage(vehicle.mileage)}
-
-                </div>
-
-
-                <div>
-
-                    <strong>Fuel:</strong>
-                    ${escapeHtml(vehicle.fuel || "N/A")}
-
-                </div>
-
-
-                <div>
-
-                    <strong>Transmission:</strong>
-                    ${escapeHtml(
-                        vehicle.transmission ||
-                        "N/A"
-                    )}
-
-                </div>
-
-
-                <div>
-
-                    <strong>Drive:</strong>
-                    ${escapeHtml(
-                        vehicle.drive ||
-                        "N/A"
-                    )}
-
-                </div>
-
-
-            </div>
-
-
-            <div class="card-buttons">
-
-
-                <a
-                    class="view"
-                    href="vehicle-details.html?id=${encodeURIComponent(listingId)}">
-
-                    View Details
-
-                </a>
-
-
-                <a
-                    class="contact"
-                    href="contact.html?vehicle=${encodeURIComponent(listingId)}">
-
-                    Enquire
-
-                </a>
-
-
-            </div>
-
-
-        </div>
-
-
-    </article>
-
-    `;
-
-}
-
-
-/* ==========================================================
-   GET CATEGORY FROM URL
-   ========================================================== */
-
-function getCategoryFromURL(){
-
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-    return (
-        params.get("category") ||
-        ""
-    );
-
-}
-
-
-/* ==========================================================
-   FILTER VEHICLES
-   ========================================================== */
-
-function filterVehicles(){
-
-    const search =
-        searchInput.value
-        .toLowerCase()
-        .trim();
-
-
-    const category =
-        categorySelect.value;
-
-
-    const minimum =
-        minPrice.value
-        ? Number(minPrice.value)
-        : 0;
-
-
-    const maximum =
-        maxPrice.value
-        ? Number(maxPrice.value)
-        : Infinity;
-
-
-    let filtered =
-        allVehicles.filter(
-            vehicle => {
-
-                const searchable =
-                    `
-                    ${vehicle.make}
-                    ${vehicle.model}
-                    ${vehicle.category}
-                    ${vehicle.location}
-                    ${vehicle.condition}
-                    ${vehicle.fuel}
-                    ${vehicle.transmission}
-                    `
-                    .toLowerCase();
-
-
-                const matchesSearch =
-                    searchable.includes(
-                        search
-                    );
-
-
-                const matchesCategory =
-                    !category ||
-                    vehicle.category ===
-                    category;
-
-
-                const price =
-                    Number(vehicle.price) || 0;
-
-
-                const matchesPrice =
-                    price >= minimum &&
-                    price <= maximum;
-
-
-                return (
-                    matchesSearch &&
-                    matchesCategory &&
-                    matchesPrice
-                );
-
-            }
-        );
-
-
-    sortVehicles(filtered);
-
-    render(filtered);
-
-}
-
-
-/* ==========================================================
-   SORT VEHICLES
-   ========================================================== */
-
-function sortVehicles(list){
-
-    const sort =
-        sortSelect.value;
-
-
-    if(sort === "featured"){
-
-        list.sort(
-            (a,b) => {
-
-                if(
-                    isFeatured(a) &&
-                    !isFeatured(b)
-                ){
-                    return -1;
-                }
-
-                if(
-                    !isFeatured(a) &&
-                    isFeatured(b)
-                ){
-                    return 1;
-                }
-
-
-                return (
-                    Number(b.year || 0) -
-                    Number(a.year || 0)
-                );
-
-            }
-        );
-
-    }
-
-
-    else if(sort === "newest"){
-
-        list.sort(
-            (a,b) =>
-                Number(b.year || 0) -
-                Number(a.year || 0)
-        );
-
-    }
-
-
-    else if(sort === "priceLow"){
-
-        list.sort(
-            (a,b) =>
-                Number(a.price || 0) -
-                Number(b.price || 0)
-        );
-
-    }
-
-
-    else if(sort === "priceHigh"){
-
-        list.sort(
-            (a,b) =>
-                Number(b.price || 0) -
-                Number(a.price || 0)
-        );
-
-    }
-
-
-    else if(sort === "mileage"){
-
-        list.sort(
-            (a,b) =>
-                Number(a.mileage || 0) -
-                Number(b.mileage || 0)
-        );
-
-    }
-
-}
-
-
-/* ==========================================================
-   RENDER VEHICLES
-   ========================================================== */
-
-function render(list){
-
-    const featured =
-        list.filter(
-            vehicle =>
-                isFeatured(vehicle)
-        );
-
-
-    const normal =
-        list.filter(
-            vehicle =>
-                !isFeatured(vehicle)
-        );
-
-
-    /*
-    ----------------------------------------------------------
-    FEATURED
-    ----------------------------------------------------------
-    */
-
-    if(featured.length){
-
-        featuredSection.style.display =
-            "block";
-
-
-        featuredGrid.innerHTML =
-            featured
-            .map(createCard)
-            .join("");
-
-    }
-    else{
-
-        featuredSection.style.display =
-            "none";
-
-        featuredGrid.innerHTML =
-            "";
-
-    }
-
-
-    /*
-    ----------------------------------------------------------
-    RESULT COUNT
-    ----------------------------------------------------------
-    */
-
-    resultsInfo.textContent =
-        `${list.length} vehicle${
-            list.length === 1
-            ? ""
-            : "s"
-        } found.`;
-
-
-    /*
-    ----------------------------------------------------------
-    NORMAL VEHICLES
-    ----------------------------------------------------------
-    */
-
-    if(normal.length){
-
-        vehicleGrid.innerHTML =
-            normal
-            .map(createCard)
-            .join("");
-
-    }
-    else{
-
-        vehicleGrid.innerHTML =
-            `
-
-            <div class="empty">
-
-                <h2>
-                    No vehicles found
-                </h2>
-
-                <p>
-                    Try changing your search
-                    or filters.
-                </p>
-
-            </div>
-
-            `;
-
-    }
-
-}
-
-
-/* ==========================================================
-   EVENT LISTENERS
-   ========================================================== */
-
-searchInput.addEventListener(
-    "input",
-    filterVehicles
-);
-
-
-categorySelect.addEventListener(
-    "change",
-    filterVehicles
-);
-
-
-minPrice.addEventListener(
-    "change",
-    filterVehicles
-);
-
-
-maxPrice.addEventListener(
-    "change",
-    filterVehicles
-);
-
-
-sortSelect.addEventListener(
-    "change",
-    filterVehicles
-);
-
-
-/* ==========================================================
-   CATEGORY BUTTONS
-   ========================================================== */
-
-document
-.querySelectorAll(
-    ".category-buttons button"
-)
-.forEach(button => {
-
-    button.addEventListener(
-        "click",
-        () => {
-
-            document
-            .querySelectorAll(
-                ".category-buttons button"
-            )
-            .forEach(btn => {
-
-                btn.classList.remove(
-                    "active"
-                );
-
+            .eq("status", "published")
+            .order("created_at", {
+                ascending: false
             });
 
 
-            button.classList.add(
-                "active"
-            );
+    loading.style.display = "none";
 
 
-            categorySelect.value =
-                button.dataset.category;
+    if (error) {
+
+        console.error(error);
+
+        errorBox.textContent =
+            "Unable to load vehicles: " +
+            error.message;
+
+        errorBox.style.display = "block";
+
+        return;
+    }
 
 
-            filterVehicles();
+    allVehicles =
+        Array.isArray(data)
+            ? data
+            : [];
 
-        }
+
+    renderVehicles(
+        allVehicles
     );
-
-});
-
-
-/* ==========================================================
-   HOMEPAGE / CATEGORY URL SUPPORT
-   ========================================================== */
-
-const urlCategory =
-    getCategoryFromURL();
-
-
-if(urlCategory){
-
-    categorySelect.value =
-        urlCategory;
-
-
-    document
-    .querySelectorAll(
-        ".category-buttons button"
-    )
-    .forEach(button => {
-
-        button.classList.remove(
-            "active"
-        );
-
-
-        if(
-            button.dataset.category ===
-            urlCategory
-        ){
-
-            button.classList.add(
-                "active"
-            );
-
-        }
-
-    });
-
 }
 
 
-/* ==========================================================
-   FOOTER YEAR
-   ========================================================== */
+/* =========================================
+   RENDER VEHICLES
+========================================= */
 
-document.getElementById("year")
-.textContent =
-    new Date().getFullYear();
+function renderVehicles(vehicles) {
+
+    vehicleGrid.innerHTML = "";
 
 
-/* ==========================================================
+    if (!vehicles.length) {
+
+        noResults.style.display = "block";
+
+        resultCount.textContent =
+            "0 vehicles";
+
+        return;
+    }
+
+
+    noResults.style.display = "none";
+
+
+    resultCount.textContent =
+        vehicles.length +
+        (
+            vehicles.length === 1
+                ? " vehicle"
+                : " vehicles"
+        );
+
+
+    vehicles.forEach(vehicle => {
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "vehicle-card";
+
+
+        /* IMAGE */
+
+        const imageUrl =
+            getMainImage(vehicle);
+
+
+        let imageHTML = "";
+
+
+        if (imageUrl) {
+
+            imageHTML = `
+                <img
+                    src="${escapeHtml(imageUrl)}"
+                    alt="${escapeHtml(
+                        (vehicle.make || "") +
+                        " " +
+                        (vehicle.model || "")
+                    )}"
+                    loading="lazy"
+                    onerror="this.style.display='none'; this.parentElement.querySelector('.image-placeholder').style.display='flex';"
+                >
+
+                <div
+                    class="image-placeholder"
+                    style="display:none;">
+                    Image unavailable
+                </div>
+            `;
+
+        } else {
+
+            imageHTML = `
+                <div class="image-placeholder">
+                    No photo available
+                </div>
+            `;
+        }
+
+
+        const featuredHTML =
+            vehicle.featured
+                ? `<div class="featured-label">FEATURED</div>`
+                : "";
+
+
+        /* SELLER */
+
+        const seller =
+            getSeller(vehicle);
+
+
+        const sellerName =
+            seller.name ||
+            "Vehicle Seller";
+
+
+        /* WHATSAPP */
+
+        const whatsappLink =
+            createWhatsAppLink(vehicle);
+
+
+        let enquireHTML;
+
+
+        if (
+            whatsappLink &&
+            seller.publicContact !== false
+        ) {
+
+            enquireHTML = `
+                <a
+                    class="enquire-btn"
+                    href="${escapeHtml(whatsappLink)}"
+                    target="_blank"
+                    rel="noopener">
+                    Enquire
+                </a>
+            `;
+
+        } else {
+
+            enquireHTML = `
+                <button
+                    class="enquire-btn"
+                    type="button"
+                    onclick="alert('The seller has not provided a public WhatsApp contact for this vehicle.')">
+                    Enquire
+                </button>
+            `;
+        }
+
+
+        /* DETAILS LINK */
+
+        const detailsId =
+            vehicle.listing_id ||
+            vehicle.id;
+
+
+        const detailsUrl =
+            "vehicle-details.html?id=" +
+            encodeURIComponent(detailsId);
+
+
+        card.innerHTML = `
+
+            <div class="vehicle-image">
+
+                ${imageHTML}
+
+                ${featuredHTML}
+
+            </div>
+
+
+            <div class="vehicle-content">
+
+                <div class="vehicle-title">
+
+                    ${escapeHtml(
+                        vehicle.make || ""
+                    )}
+
+                    ${escapeHtml(
+                        vehicle.model || ""
+                    )}
+
+                    <span class="vehicle-year">
+                        ${vehicle.year
+                            ? "(" +
+                              escapeHtml(vehicle.year) +
+                              ")"
+                            : ""}
+                    </span>
+
+                </div>
+
+
+                <div class="vehicle-price">
+
+                    ${formatPrice(
+                        vehicle.price
+                    )}
+
+                </div>
+
+
+                <div class="vehicle-info">
+
+                    <div class="info-item">
+                        <strong>Category:</strong>
+                        ${escapeHtml(
+                            vehicle.category || "—"
+                        )}
+                    </div>
+
+                    <div class="info-item">
+                        <strong>Condition:</strong>
+                        ${escapeHtml(
+                            vehicle.condition || "—"
+                        )}
+                    </div>
+
+                    <div class="info-item">
+                        <strong>Mileage:</strong>
+                        ${formatMileage(
+                            vehicle.mileage
+                        )}
+                    </div>
+
+                    <div class="info-item">
+                        <strong>Transmission:</strong>
+                        ${escapeHtml(
+                            vehicle.transmission || "—"
+                        )}
+                    </div>
+
+                </div>
+
+
+                <div class="vehicle-location">
+
+                    📍 ${escapeHtml(
+                        vehicle.location || "Kenya"
+                    )}
+
+                </div>
+
+
+                <div class="seller">
+
+                    <strong>Seller:</strong>
+                    ${escapeHtml(sellerName)}
+
+                </div>
+
+
+                <div class="buttons">
+
+                    <a
+                        class="details-btn"
+                        href="${detailsUrl}">
+                        Details
+                    </a>
+
+                    ${enquireHTML}
+
+                </div>
+
+            </div>
+        `;
+
+
+        vehicleGrid.appendChild(card);
+
+    });
+}
+
+
+/* =========================================
+   FILTER VEHICLES
+========================================= */
+
+function applyFilters() {
+
+    const search =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+
+    const category =
+        categoryFilter.value
+            .trim()
+            .toLowerCase();
+
+
+    const condition =
+        conditionFilter.value
+            .trim()
+            .toLowerCase();
+
+
+    const location =
+        locationFilter.value
+            .trim()
+            .toLowerCase();
+
+
+    const filtered =
+        allVehicles.filter(vehicle => {
+
+
+            const make =
+                String(vehicle.make || "")
+                    .toLowerCase();
+
+
+            const model =
+                String(vehicle.model || "")
+                    .toLowerCase();
+
+
+            const vehicleCategory =
+                String(vehicle.category || "")
+                    .toLowerCase();
+
+
+            const vehicleCondition =
+                String(vehicle.condition || "")
+                    .toLowerCase();
+
+
+            const vehicleLocation =
+                String(vehicle.location || "")
+                    .toLowerCase();
+
+
+            const searchMatch =
+                !search ||
+                make.includes(search) ||
+                model.includes(search);
+
+
+            const categoryMatch =
+                !category ||
+                vehicleCategory === category;
+
+
+            const conditionMatch =
+                !condition ||
+                vehicleCondition === condition;
+
+
+            const locationMatch =
+                !location ||
+                vehicleLocation.includes(location);
+
+
+            return (
+                searchMatch &&
+                categoryMatch &&
+                conditionMatch &&
+                locationMatch
+            );
+
+        });
+
+
+    renderVehicles(filtered);
+}
+
+
+/* =========================================
+   FILTER EVENTS
+========================================= */
+
+searchInput.addEventListener(
+    "input",
+    applyFilters
+);
+
+categoryFilter.addEventListener(
+    "change",
+    applyFilters
+);
+
+conditionFilter.addEventListener(
+    "change",
+    applyFilters
+);
+
+locationFilter.addEventListener(
+    "input",
+    applyFilters
+);
+
+
+clearFilters.addEventListener(
+    "click",
+    function() {
+
+        searchInput.value = "";
+
+        categoryFilter.value = "";
+
+        conditionFilter.value = "";
+
+        locationFilter.value = "";
+
+        renderVehicles(
+            allVehicles
+        );
+    }
+);
+
+
+/* =========================================
    START
-   ========================================================== */
+========================================= */
 
 loadVehicles();
 
