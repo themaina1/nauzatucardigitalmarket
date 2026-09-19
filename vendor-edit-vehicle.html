@@ -1,1559 +1,1729 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Vehicle | Nauza Tu Digital Motor Market</title>
 
-<title>Edit Vehicle | Nauza Tu Digital Motor Market</title>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<style>
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f5f7fa;
-    color:#1f2937;
-}
-
-header{
-    background:#111827;
-    color:white;
-}
-
-.navbar{
-    max-width:1100px;
-    margin:auto;
-    padding:16px 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
-}
-
-.logo{
-    color:#facc15;
-    font-size:22px;
-    font-weight:bold;
-    text-decoration:none;
-}
-
-.nav-links{
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
-}
-
-.nav-links a{
-    color:white;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:bold;
-}
-
-.nav-links a:hover{
-    color:#facc15;
-}
-
-.container{
-    max-width:900px;
-    margin:35px auto;
-    padding:0 20px;
-}
-
-.page-heading{
-    margin-bottom:25px;
-}
-
-.page-heading h1{
-    font-size:32px;
-    color:#111827;
-    margin-bottom:8px;
-}
-
-.page-heading p{
-    color:#667085;
-}
-
-.form-card{
-    background:white;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 4px 18px rgba(0,0,0,.08);
-}
-
-.section-title{
-    font-size:20px;
-    font-weight:bold;
-    color:#111827;
-    margin:25px 0 15px;
-    padding-bottom:8px;
-    border-bottom:1px solid #e5e7eb;
-}
-
-.section-title:first-child{
-    margin-top:0;
-}
-
-.form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:16px;
-}
-
-.form-group{
-    margin-bottom:4px;
-}
-
-.form-group.full{
-    grid-column:1/-1;
-}
-
-label{
-    display:block;
-    font-size:14px;
-    font-weight:bold;
-    margin-bottom:7px;
-    color:#374151;
-}
-
-.required{
-    color:#dc2626;
-}
-
-input,
-select,
-textarea{
-    width:100%;
-    padding:12px;
-    border:1px solid #d1d5db;
-    border-radius:7px;
-    background:white;
-    font-family:inherit;
-    font-size:15px;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-    outline:none;
-    border-color:#2563eb;
-    box-shadow:0 0 0 2px rgba(37,99,235,.1);
-}
-
-textarea{
-    min-height:120px;
-    resize:vertical;
-}
-
-.help{
-    margin-top:6px;
-    color:#6b7280;
-    font-size:12px;
-}
-
-.vehicle-id-box{
-    background:#eff6ff;
-    border:1px solid #bfdbfe;
-    padding:14px;
-    border-radius:8px;
-    margin-bottom:20px;
-    font-size:14px;
-    color:#1e3a8a;
-}
-
-.message{
-    display:none;
-    padding:15px;
-    border-radius:7px;
-    margin-bottom:20px;
-    line-height:1.5;
-}
-
-.message.success{
-    display:block;
-    background:#dcfce7;
-    color:#166534;
-    border-left:5px solid #16a34a;
-}
-
-.message.error{
-    display:block;
-    background:#fee2e2;
-    color:#991b1b;
-    border-left:5px solid #dc2626;
-}
-
-.button-row{
-    display:flex;
-    gap:12px;
-    margin-top:30px;
-}
-
-button,
-.button-link{
-    border:none;
-    padding:13px 20px;
-    border-radius:7px;
-    font-weight:bold;
-    font-size:15px;
-    cursor:pointer;
-    text-decoration:none;
-    text-align:center;
-}
-
-.save-button{
-    background:#16a34a;
-    color:white;
-    flex:1;
-}
-
-.save-button:hover{
-    background:#15803d;
-}
-
-.cancel-button{
-    background:#e5e7eb;
-    color:#111827;
-}
-
-.loading{
-    text-align:center;
-    padding:50px;
-    color:#667085;
-}
-
-.spinner{
-    width:36px;
-    height:36px;
-    border:4px solid #e5e7eb;
-    border-top-color:#16a34a;
-    border-radius:50%;
-    margin:0 auto 15px;
-    animation:spin .8s linear infinite;
-}
-
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-.hidden{
-    display:none !important;
-}
-
-footer{
-    margin-top:50px;
-    background:#111827;
-    color:#cbd5e1;
-    text-align:center;
-    padding:25px 20px;
-    font-size:13px;
-}
-
-@media(max-width:700px){
-
-    .navbar{
-        flex-direction:column;
+  <style>
+    * {
+      box-sizing: border-box;
     }
 
-    .form-grid{
-        grid-template-columns:1fr;
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      color: #222;
     }
 
-    .form-group.full{
-        grid-column:auto;
+    header {
+      background: #111827;
+      color: white;
+      padding: 18px 20px;
     }
 
-    .form-card{
-        padding:20px;
+    header .header-inner {
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
     }
 
-    .button-row{
-        flex-direction:column;
+    header h1 {
+      margin: 0;
+      font-size: 22px;
     }
 
-}
+    header p {
+      margin: 5px 0 0;
+      font-size: 13px;
+      color: #d1d5db;
+    }
 
-</style>
+    .back-btn {
+      background: white;
+      color: #111827;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 7px;
+      font-weight: bold;
+      font-size: 14px;
+      white-space: nowrap;
+    }
 
+    .container {
+      max-width: 1000px;
+      margin: 25px auto;
+      padding: 0 15px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+
+    .listing-info {
+      background: #eef6ff;
+      border-left: 5px solid #2563eb;
+      padding: 14px;
+      border-radius: 7px;
+      margin-bottom: 20px;
+      word-break: break-word;
+    }
+
+    .listing-info strong {
+      color: #1d4ed8;
+    }
+
+    .section-title {
+      margin-top: 0;
+      margin-bottom: 18px;
+      color: #111827;
+      font-size: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 7px;
+      color: #374151;
+      font-size: 14px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 7px;
+      font-size: 15px;
+      background: white;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 2px rgba(37,99,235,0.1);
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .image-help {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      padding: 12px;
+      border-radius: 7px;
+      margin-top: 8px;
+      margin-bottom: 15px;
+      font-size: 13px;
+      color: #4b5563;
+      line-height: 1.5;
+    }
+
+    .existing-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .existing-image {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #f9fafb;
+    }
+
+    .existing-image img {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .existing-image p {
+      font-size: 11px;
+      margin: 7px;
+      word-break: break-all;
+      color: #555;
+    }
+
+    .upload-box {
+      border: 2px dashed #cbd5e1;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      background: #f8fafc;
+      margin-top: 15px;
+    }
+
+    .upload-box input {
+      border: none;
+      padding: 0;
+      background: transparent;
+    }
+
+    .upload-status {
+      margin-top: 12px;
+      font-size: 14px;
+      color: #374151;
+      word-break: break-word;
+    }
+
+    .progress {
+      width: 100%;
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #2563eb;
+      transition: width 0.2s;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      border-radius: 7px;
+      padding: 13px 20px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .save-btn {
+      background: #16a34a;
+      color: white;
+      flex: 1;
+    }
+
+    .save-btn:hover {
+      background: #15803d;
+    }
+
+    .cancel-btn {
+      background: #6b7280;
+      color: white;
+    }
+
+    .cancel-btn:hover {
+      background: #4b5563;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .message {
+      display: none;
+      padding: 14px;
+      border-radius: 7px;
+      margin-bottom: 20px;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    .message.success {
+      display: block;
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #86efac;
+    }
+
+    .message.error {
+      display: block;
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fca5a5;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px 20px;
+      color: #4b5563;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 15px;
+      color: #6b7280;
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .full {
+        grid-column: auto;
+      }
+
+      header .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .back-btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .card {
+        padding: 18px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .save-btn,
+      .cancel-btn {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-
 <header>
+  <div class="header-inner">
+    <div>
+      <h1>Nauza Tu Digital Motor Market</h1>
+      <p>Edit Vehicle Advertisement</p>
+    </div>
 
-<div class="navbar">
-
-<a href="index.html" class="logo">
-Nauza Tu
-</a>
-
-<nav class="nav-links">
-
-<a href="vendor-dashboard.html">
-Dashboard
-</a>
-
-<a href="vehicles.html">
-Browse Vehicles
-</a>
-
-<a href="index.html">
-Home
-</a>
-
-</nav>
-
-</div>
-
+    <a href="vendor-dashboard.html" class="back-btn">
+      ← Back to Dashboard
+    </a>
+  </div>
 </header>
 
+<div class="container">
 
-<main class="container">
+  <div id="message" class="message"></div>
 
+  <div id="loadingBox" class="card loading">
+    <h3>Loading vehicle...</h3>
+    <p>Please wait while we retrieve your vehicle.</p>
+  </div>
 
-<div class="page-heading">
+  <div id="editArea" class="hidden">
 
-<h1>
-Edit Vehicle
-</h1>
+    <div class="card">
 
-<p>
-Update your vehicle advertisement.
-</p>
+      <div class="listing-info">
+        <strong>Listing ID:</strong>
+        <span id="listingIdDisplay">Loading...</span>
+      </div>
+
+      <h2 class="section-title">Vehicle Information</h2>
+
+      <form id="vehicleForm">
+
+        <div class="grid">
+
+          <div>
+            <label for="make">Make *</label>
+            <input type="text" id="make" required>
+          </div>
+
+          <div>
+            <label for="model">Model *</label>
+            <input type="text" id="model" required>
+          </div>
+
+          <div>
+            <label for="year">Year *</label>
+            <input type="number" id="year" min="1900" max="2100" required>
+          </div>
+
+          <div>
+            <label for="category">Category *</label>
+            <select id="category" required>
+              <option value="">Select Category</option>
+              <option value="Sedan">Sedan</option>
+              <option value="Hatchback">Hatchback</option>
+              <option value="SUV">SUV</option>
+              <option value="Crossover">Crossover</option>
+              <option value="Pickup">Pickup</option>
+              <option value="Van">Van</option>
+              <option value="Minibus">Minibus</option>
+              <option value="Station Wagon">Station Wagon</option>
+              <option value="Coupe">Coupe</option>
+              <option value="Convertible">Convertible</option>
+              <option value="Truck">Truck</option>
+              <option value="Bus">Bus</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="condition">Condition</label>
+            <select id="condition">
+              <option value="Used">Used</option>
+              <option value="New">New</option>
+              <option value="Foreign Used">Foreign Used</option>
+              <option value="Locally Used">Locally Used</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="mileage">Mileage (KM)</label>
+            <input type="number" id="mileage" min="0">
+          </div>
+
+          <div>
+            <label for="price">Price (KES) *</label>
+            <input type="number" id="price" min="0" step="1" required>
+          </div>
+
+          <div>
+            <label for="location">Location *</label>
+            <input type="text" id="location" required>
+          </div>
+
+          <div>
+            <label for="engine">Engine</label>
+            <input type="text" id="engine">
+          </div>
+
+          <div>
+            <label for="transmission">Transmission</label>
+            <select id="transmission">
+              <option value="">Select</option>
+              <option value="Automatic">Automatic</option>
+              <option value="Manual">Manual</option>
+              <option value="CVT">CVT</option>
+              <option value="AMT">AMT</option>
+              <option value="DCT">DCT</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="fuel">Fuel</label>
+            <select id="fuel">
+              <option value="">Select</option>
+              <option value="Petrol">Petrol</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="Electric">Electric</option>
+              <option value="Plug-in Hybrid">Plug-in Hybrid</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="drive">Drive</label>
+            <select id="drive">
+              <option value="">Select</option>
+              <option value="2WD">2WD</option>
+              <option value="4WD">4WD</option>
+              <option value="AWD">AWD</option>
+              <option value="FWD">FWD</option>
+              <option value="RWD">RWD</option>
+            </select>
+          </div>
+
+        </div>
+
+        <br>
+
+        <h2 class="section-title">Vehicle Images</h2>
+
+        <div>
+          <label for="mainImage">Main Image URL</label>
+          <input
+            type="url"
+            id="mainImage"
+            placeholder="https://..."
+          >
+        </div>
+
+        <div class="image-help">
+          The main image is the image shown first on your vehicle advertisement.
+          Existing images will remain unless you replace them below.
+        </div>
+
+        <div id="existingImages" class="existing-images"></div>
+
+        <div class="upload-box">
+          <strong>Add New Photos</strong>
+          <p>
+            Select one or more photos from your phone or computer.
+          </p>
+
+          <input
+            type="file"
+            id="newImages"
+            accept="image/*"
+            multiple
+          >
+
+          <div id="uploadStatus" class="upload-status"></div>
+
+          <div id="progress" class="progress">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+        </div>
+
+        <br>
+
+        <div>
+          <label for="additionalImages">
+            Additional Image URLs
+          </label>
+
+          <textarea
+            id="additionalImages"
+            placeholder="One image URL per line"
+          ></textarea>
+
+          <div class="image-help">
+            If you have additional image URLs, put one URL on each line.
+          </div>
+        </div>
+
+        <h2 class="section-title">Vehicle Description</h2>
+
+        <div>
+          <label for="description">Description</label>
+
+          <textarea
+            id="description"
+            placeholder="Describe the vehicle..."
+          ></textarea>
+        </div>
+
+        <div class="buttons">
+
+          <button
+            type="button"
+            class="cancel-btn"
+            onclick="goBack()"
+          >
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            class="save-btn"
+            id="saveButton"
+          >
+            Save Changes
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
 
 </div>
-
-
-<div id="loadingBox" class="loading">
-
-<div class="spinner"></div>
-
-Loading vehicle...
-
-</div>
-
-
-<div id="pageContent" class="hidden">
-
-
-<div id="message" class="message"></div>
-
-
-<div class="vehicle-id-box">
-
-<strong>Listing ID:</strong>
-
-<span id="listingIdDisplay">
-Loading...
-</span>
-
-</div>
-
-
-<form id="vehicleForm" class="form-card">
-
-
-<div class="section-title">
-Vehicle Information
-</div>
-
-
-<div class="form-grid">
-
-
-<div class="form-group">
-
-<label>
-Make <span class="required">*</span>
-</label>
-
-<input
-type="text"
-id="make"
-required
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Model <span class="required">*</span>
-</label>
-
-<input
-type="text"
-id="model"
-required
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Year <span class="required">*</span>
-</label>
-
-<input
-type="number"
-id="year"
-min="1950"
-max="2035"
-required
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Category <span class="required">*</span>
-</label>
-
-<select id="category" required>
-
-<option value="">
-Select category
-</option>
-
-<option value="SUV">
-SUV
-</option>
-
-<option value="Sedan">
-Sedan
-</option>
-
-<option value="Station Wagon">
-Station Wagon
-</option>
-
-<option value="Pickup">
-Pickup
-</option>
-
-<option value="Van">
-Van
-</option>
-
-<option value="Truck">
-Truck
-</option>
-
-<option value="Hatchback">
-Hatchback
-</option>
-
-<option value="Coupe">
-Coupe
-</option>
-
-<option value="Bus">
-Bus
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Condition
-</label>
-
-<select id="condition">
-
-<option value="">
-Select condition
-</option>
-
-<option value="Foreign Used">
-Foreign Used
-</option>
-
-<option value="Local Used">
-Local Used
-</option>
-
-<option value="New">
-New
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Mileage (KM)
-</label>
-
-<input
-type="number"
-id="mileage"
-min="0"
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Price (KES) <span class="required">*</span>
-</label>
-
-<input
-type="number"
-id="price"
-min="0"
-required
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Location <span class="required">*</span>
-</label>
-
-<input
-type="text"
-id="location"
-required
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Engine
-</label>
-
-<input
-type="text"
-id="engine"
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Transmission
-</label>
-
-<select id="transmission">
-
-<option value="">
-Select transmission
-</option>
-
-<option value="Automatic">
-Automatic
-</option>
-
-<option value="Manual">
-Manual
-</option>
-
-<option value="CVT">
-CVT
-</option>
-
-<option value="Semi-Automatic">
-Semi-Automatic
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Fuel
-</label>
-
-<select id="fuel">
-
-<option value="">
-Select fuel
-</option>
-
-<option value="Petrol">
-Petrol
-</option>
-
-<option value="Diesel">
-Diesel
-</option>
-
-<option value="Hybrid">
-Hybrid
-</option>
-
-<option value="Electric">
-Electric
-</option>
-
-<option value="Other">
-Other
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Drive
-</label>
-
-<select id="drive">
-
-<option value="">
-Select drive
-</option>
-
-<option value="2WD">
-2WD
-</option>
-
-<option value="4WD">
-4WD
-</option>
-
-<option value="AWD">
-AWD
-</option>
-
-</select>
-
-</div>
-
-
-</div>
-
-
-<div class="section-title">
-Vehicle Images
-</div>
-
-
-<div class="form-grid">
-
-
-<div class="form-group full">
-
-<label>
-Main Image URL <span class="required">*</span>
-</label>
-
-<input
-type="url"
-id="mainImage"
-required
->
-
-</div>
-
-
-<div class="form-group full">
-
-<label>
-Additional Image URLs
-</label>
-
-<textarea
-id="additionalImages"
-placeholder="One image URL per line"
-></textarea>
-
-<div class="help">
-Each image URL should be on its own line.
-</div>
-
-</div>
-
-
-</div>
-
-
-<div class="section-title">
-Vehicle Description
-</div>
-
-
-<div class="form-group">
-
-<label>
-Description
-</label>
-
-<textarea
-id="description"
-></textarea>
-
-</div>
-
-
-<div class="button-row">
-
-<a
-href="vendor-dashboard.html"
-class="button-link cancel-button"
->
-Cancel
-</a>
-
-
-<button
-type="submit"
-class="save-button"
-id="saveButton"
->
-Save Changes
-</button>
-
-</div>
-
-
-</form>
-
-
-</div>
-
-
-</main>
-
 
 <footer>
-
-© <span id="year"></span>
-Nauza Tu Digital Motor Market.
-All rights reserved.
-
+  © Nauza Tu Digital Motor Market. All rights reserved.
 </footer>
 
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
 
-/* ==========================================================
-   SUPABASE
-   ========================================================== */
+  /* =========================================================
+     SUPABASE
+     ========================================================= */
 
-const SUPABASE_URL =
+  const SUPABASE_URL =
     "https://hoogdxegjomtsvaddkwk.supabase.co";
 
-const SUPABASE_PUBLISHABLE_KEY =
+  const SUPABASE_KEY =
     "sb_publishable_VEq6gUDlCthklOIgVUaDzQ_5TaqAsu8";
 
-const supabaseClient =
+  const supabaseClient =
     window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
+      SUPABASE_URL,
+      SUPABASE_KEY
     );
 
 
-/* ==========================================================
-   ELEMENTS
-   ========================================================== */
+  /* =========================================================
+     GLOBAL VARIABLES
+     ========================================================= */
 
-const loadingBox =
+  let currentUser = null;
+  let currentVehicle = null;
+
+  let existingImageUrls = [];
+
+  let uploadedImageUrls = [];
+
+
+  /* =========================================================
+     GET VEHICLE ID FROM URL
+     ========================================================= */
+
+  const urlParams = new URLSearchParams(
+    window.location.search
+  );
+
+  const vehicleId = urlParams.get("id");
+
+
+  /* =========================================================
+     DOM ELEMENTS
+     ========================================================= */
+
+  const loadingBox =
     document.getElementById("loadingBox");
 
-const pageContent =
-    document.getElementById("pageContent");
+  const editArea =
+    document.getElementById("editArea");
 
-const messageBox =
+  const messageBox =
     document.getElementById("message");
 
-const vehicleForm =
+  const listingIdDisplay =
+    document.getElementById("listingIdDisplay");
+
+  const vehicleForm =
     document.getElementById("vehicleForm");
 
-const saveButton =
+  const saveButton =
     document.getElementById("saveButton");
 
+  const existingImagesBox =
+    document.getElementById("existingImages");
 
-let currentUser = null;
-let vehicleId = null;
-let originalVehicle = null;
+  const newImagesInput =
+    document.getElementById("newImages");
 
+  const uploadStatus =
+    document.getElementById("uploadStatus");
 
-/* ==========================================================
-   ESCAPE HTML
-   ========================================================== */
+  const progress =
+    document.getElementById("progress");
 
-function escapeHtml(value){
-
-    if(
-        value === null ||
-        value === undefined
-    ){
-        return "";
-    }
-
-    return String(value)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
+  const progressBar =
+    document.getElementById("progressBar");
 
 
-/* ==========================================================
-   MESSAGE
-   ========================================================== */
+  /* =========================================================
+     SHOW MESSAGE
+     ========================================================= */
 
-function showMessage(type,text){
+  function showMessage(text, type) {
+
+    messageBox.textContent = text;
 
     messageBox.className =
-        "message " + type;
+      "message " + type;
 
-    messageBox.textContent =
-        text;
-
-    messageBox.scrollIntoView({
-        behavior:"smooth",
-        block:"center"
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
     });
+  }
 
-}
+
+  function clearMessage() {
+
+    messageBox.textContent = "";
+
+    messageBox.className = "message";
+  }
 
 
-/* ==========================================================
-   GET VEHICLE ID FROM URL
-   ========================================================== */
+  /* =========================================================
+     NORMALIZE IMAGES
+     ========================================================= */
 
-function getVehicleId(){
+  function parseImages(value) {
 
-    const params =
-        new URLSearchParams(
-            window.location.search
+    if (!value) {
+      return [];
+    }
+
+    if (Array.isArray(value)) {
+      return value.filter(Boolean);
+    }
+
+    if (typeof value === "string") {
+
+      try {
+
+        const parsed =
+          JSON.parse(value);
+
+        if (Array.isArray(parsed)) {
+          return parsed.filter(Boolean);
+        }
+
+      } catch (error) {
+        // Continue below
+      }
+
+      return value
+        .split(/\r?\n/)
+        .map(x => x.trim())
+        .filter(Boolean);
+    }
+
+    return [];
+  }
+
+
+  /* =========================================================
+     GET PUBLIC IMAGE URL
+     ========================================================= */
+
+  function getImageUrl(path) {
+
+    if (!path) {
+      return "";
+    }
+
+    if (
+      path.startsWith("http://") ||
+      path.startsWith("https://") ||
+      path.startsWith("data:")
+    ) {
+      return path;
+    }
+
+    /*
+      Legacy relative image paths.
+      These are kept as-is rather than changing
+      working database values.
+    */
+
+    if (path.startsWith("/")) {
+
+      return (
+        "https://themaina1.github.io" +
+        path
+      );
+    }
+
+    return (
+      "https://themaina1.github.io/" +
+      path
+    );
+  }
+
+
+  /* =========================================================
+     DISPLAY EXISTING IMAGES
+     ========================================================= */
+
+  function displayExistingImages(images) {
+
+    existingImagesBox.innerHTML = "";
+
+    if (!images.length) {
+
+      existingImagesBox.innerHTML =
+        "<p style='color:#6b7280;'>No existing images.</p>";
+
+      return;
+    }
+
+    images.forEach((imageUrl, index) => {
+
+      const box =
+        document.createElement("div");
+
+      box.className =
+        "existing-image";
+
+      const img =
+        document.createElement("img");
+
+      img.src =
+        getImageUrl(imageUrl);
+
+      img.alt =
+        "Vehicle image " + (index + 1);
+
+      img.onerror = function() {
+
+        this.style.display = "none";
+      };
+
+      const text =
+        document.createElement("p");
+
+      text.textContent =
+        imageUrl;
+
+      box.appendChild(img);
+
+      box.appendChild(text);
+
+      existingImagesBox.appendChild(box);
+
+    });
+  }
+
+
+  /* =========================================================
+     LOAD CURRENT USER
+     ========================================================= */
+
+  async function getCurrentUser() {
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient.auth.getUser();
+
+    if (error) {
+      throw error;
+    }
+
+    if (!data || !data.user) {
+
+      window.location.href =
+        "vendor-login.html";
+
+      return null;
+    }
+
+    return data.user;
+  }
+
+
+  /* =========================================================
+     LOAD VEHICLE
+     ========================================================= */
+
+  async function loadVehicle() {
+
+    try {
+
+      clearMessage();
+
+      if (!vehicleId) {
+
+        throw new Error(
+          "No vehicle ID was supplied in the URL."
+        );
+      }
+
+
+      /* -----------------------------------------------------
+         CHECK LOGIN
+         ----------------------------------------------------- */
+
+      currentUser =
+        await getCurrentUser();
+
+      if (!currentUser) {
+        return;
+      }
+
+
+      /* -----------------------------------------------------
+         GET VEHICLE BY UUID
+         ----------------------------------------------------- */
+
+      const {
+        data: vehicle,
+        error
+      } =
+        await supabaseClient
+          .from("vehicles")
+          .select("*")
+          .eq("id", vehicleId)
+          .maybeSingle();
+
+
+      if (error) {
+
+        throw error;
+      }
+
+
+      if (!vehicle) {
+
+        throw new Error(
+          "Vehicle could not be found in the database."
+        );
+      }
+
+
+      /* -----------------------------------------------------
+         VERIFY VENDOR OWNERSHIP
+         ----------------------------------------------------- */
+
+      if (
+        vehicle.vendor_id !== currentUser.id
+      ) {
+
+        throw new Error(
+          "You are not authorized to edit this vehicle."
+        );
+      }
+
+
+      currentVehicle =
+        vehicle;
+
+
+      /* -----------------------------------------------------
+         DISPLAY LISTING ID
+         ----------------------------------------------------- */
+
+      listingIdDisplay.textContent =
+        vehicle.listing_id ||
+        vehicle.id;
+
+
+      /* -----------------------------------------------------
+         LOAD BASIC INFORMATION
+         ----------------------------------------------------- */
+
+      document.getElementById("make").value =
+        vehicle.make || "";
+
+      document.getElementById("model").value =
+        vehicle.model || "";
+
+      document.getElementById("year").value =
+        vehicle.year || "";
+
+      document.getElementById("category").value =
+        vehicle.category || "";
+
+      document.getElementById("condition").value =
+        vehicle.condition || "Used";
+
+      document.getElementById("mileage").value =
+        vehicle.mileage ?? "";
+
+      document.getElementById("price").value =
+        vehicle.price ?? "";
+
+      document.getElementById("location").value =
+        vehicle.location || "";
+
+      document.getElementById("engine").value =
+        vehicle.engine || "";
+
+      document.getElementById("transmission").value =
+        vehicle.transmission || "";
+
+      document.getElementById("fuel").value =
+        vehicle.fuel || "";
+
+      document.getElementById("drive").value =
+        vehicle.drive || "";
+
+      document.getElementById("description").value =
+        vehicle.description || "";
+
+
+      /* -----------------------------------------------------
+         LOAD IMAGES
+         ----------------------------------------------------- */
+
+      let images =
+        parseImages(vehicle.images);
+
+
+      /*
+        Make sure main_image is included.
+      */
+
+      if (
+        vehicle.main_image &&
+        !images.includes(vehicle.main_image)
+      ) {
+
+        images.unshift(
+          vehicle.main_image
+        );
+      }
+
+
+      existingImageUrls =
+        images;
+
+
+      /*
+        Main image
+      */
+
+      document.getElementById("mainImage").value =
+        vehicle.main_image || "";
+
+
+      /*
+        Additional images
+      */
+
+      const additionalImages =
+        images.filter(
+          image =>
+            image !== vehicle.main_image
         );
 
-    return params.get("id");
 
-}
+      document.getElementById(
+        "additionalImages"
+      ).value =
+        additionalImages.join("\n");
 
 
-/* ==========================================================
-   LOAD VEHICLE
-   ========================================================== */
+      displayExistingImages(
+        existingImageUrls
+      );
 
-async function loadVehicle(){
 
-    try{
+      /* -----------------------------------------------------
+         SHOW FORM
+         ----------------------------------------------------- */
+
+      loadingBox.classList.add(
+        "hidden"
+      );
+
+      editArea.classList.remove(
+        "hidden"
+      );
+
+    } catch (error) {
+
+      console.error(
+        "LOAD VEHICLE ERROR:",
+        error
+      );
+
+      loadingBox.classList.add(
+        "hidden"
+      );
+
+      showMessage(
+        "Unable to load vehicle: " +
+        (error.message || "Unknown error"),
+        "error"
+      );
+    }
+  }
+
+
+  /* =========================================================
+     UPLOAD NEW IMAGES
+     ========================================================= */
+
+  async function uploadNewImages() {
+
+    const files =
+      Array.from(
+        newImagesInput.files || []
+      );
+
+
+    if (!files.length) {
+
+      return [];
+    }
+
+
+    if (!currentUser) {
+
+      throw new Error(
+        "Your login session has expired. Please log in again."
+      );
+    }
+
+
+    const uploadedUrls = [];
+
+
+    progress.style.display =
+      "block";
+
+    progressBar.style.width =
+      "0%";
+
+
+    for (
+      let i = 0;
+      i < files.length;
+      i++
+    ) {
+
+      const file =
+        files[i];
+
+
+      /*
+        Basic image check
+      */
+
+      if (
+        !file.type.startsWith("image/")
+      ) {
+
+        throw new Error(
+          file.name +
+          " is not an image."
+        );
+      }
+
+
+      /*
+        10 MB limit
+      */
+
+      if (
+        file.size > 10 * 1024 * 1024
+      ) {
+
+        throw new Error(
+          file.name +
+          " is larger than 10 MB."
+        );
+      }
+
+
+      uploadStatus.textContent =
+        "Uploading photo " +
+        (i + 1) +
+        " of " +
+        files.length +
+        "...";
+
+
+      /*
+        Create unique file name
+      */
+
+      const extension =
+        file.name.includes(".")
+          ? file.name
+              .split(".")
+              .pop()
+              .toLowerCase()
+          : "jpg";
+
+
+      const safeListingId =
+        (
+          currentVehicle.listing_id ||
+          currentVehicle.id
+        ).replace(
+          /[^a-zA-Z0-9_-]/g,
+          "-"
+        );
+
+
+      const uniqueName =
+        Date.now() +
+        "-" +
+        Math.random()
+          .toString(36)
+          .substring(2, 10) +
+        "." +
+        extension;
+
+
+      const filePath =
+        currentUser.id +
+        "/" +
+        safeListingId +
+        "/" +
+        uniqueName;
+
+
+      /*
+        Upload
+      */
+
+      const {
+        error: uploadError
+      } =
+        await supabaseClient
+          .storage
+          .from("vehicle-images")
+          .upload(
+            filePath,
+            file,
+            {
+              cacheControl: "3600",
+              upsert: false,
+              contentType: file.type
+            }
+          );
+
+
+      if (uploadError) {
+
+        throw uploadError;
+      }
+
+
+      /*
+        Get public URL
+      */
+
+      const {
+        data: publicUrlData
+      } =
+        supabaseClient
+          .storage
+          .from("vehicle-images")
+          .getPublicUrl(
+            filePath
+          );
+
+
+      if (
+        !publicUrlData ||
+        !publicUrlData.publicUrl
+      ) {
+
+        throw new Error(
+          "Could not create public URL for " +
+          file.name
+        );
+      }
+
+
+      uploadedUrls.push(
+        publicUrlData.publicUrl
+      );
+
+
+      const percentage =
+        Math.round(
+          ((i + 1) / files.length) *
+          100
+        );
+
+
+      progressBar.style.width =
+        percentage + "%";
+    }
+
+
+    uploadStatus.textContent =
+      files.length +
+      " new photo(s) uploaded successfully.";
+
+
+    return uploadedUrls;
+  }
+
+
+  /* =========================================================
+     SAVE VEHICLE
+     ========================================================= */
+
+  vehicleForm.addEventListener(
+    "submit",
+    async function(event) {
+
+      event.preventDefault();
+
+      clearMessage();
+
+      saveButton.disabled =
+        true;
+
+      saveButton.textContent =
+        "Saving...";
+
+
+      try {
+
+        if (!currentUser) {
+
+          throw new Error(
+            "You are not logged in."
+          );
+        }
+
+
+        if (!currentVehicle) {
+
+          throw new Error(
+            "Vehicle information has not loaded."
+          );
+        }
+
+
+        /* ---------------------------------------------------
+           GET FORM VALUES
+           --------------------------------------------------- */
+
+        const make =
+          document
+            .getElementById("make")
+            .value
+            .trim();
+
+        const model =
+          document
+            .getElementById("model")
+            .value
+            .trim();
+
+        const yearValue =
+          document
+            .getElementById("year")
+            .value;
+
+        const category =
+          document
+            .getElementById("category")
+            .value;
+
+        const condition =
+          document
+            .getElementById("condition")
+            .value;
+
+        const mileageValue =
+          document
+            .getElementById("mileage")
+            .value;
+
+        const priceValue =
+          document
+            .getElementById("price")
+            .value;
+
+        const location =
+          document
+            .getElementById("location")
+            .value
+            .trim();
+
+        const engine =
+          document
+            .getElementById("engine")
+            .value
+            .trim();
+
+        const transmission =
+          document
+            .getElementById("transmission")
+            .value;
+
+        const fuel =
+          document
+            .getElementById("fuel")
+            .value;
+
+        const drive =
+          document
+            .getElementById("drive")
+            .value;
+
+        const description =
+          document
+            .getElementById("description")
+            .value
+            .trim();
+
+
+        let mainImage =
+          document
+            .getElementById("mainImage")
+            .value
+            .trim();
+
+
+        const additionalText =
+          document
+            .getElementById("additionalImages")
+            .value;
+
+
+        const manuallyEnteredImages =
+          additionalText
+            .split(/\r?\n/)
+            .map(
+              x => x.trim()
+            )
+            .filter(Boolean);
+
+
+        /* ---------------------------------------------------
+           VALIDATION
+           --------------------------------------------------- */
+
+        if (!make) {
+
+          throw new Error(
+            "Please enter the vehicle make."
+          );
+        }
+
+        if (!model) {
+
+          throw new Error(
+            "Please enter the vehicle model."
+          );
+        }
+
+        if (!yearValue) {
+
+          throw new Error(
+            "Please enter the vehicle year."
+          );
+        }
+
+        if (!category) {
+
+          throw new Error(
+            "Please select a vehicle category."
+          );
+        }
+
+        if (!priceValue) {
+
+          throw new Error(
+            "Please enter the vehicle price."
+          );
+        }
+
+        if (!location) {
+
+          throw new Error(
+            "Please enter the vehicle location."
+          );
+        }
+
+
+        /* ---------------------------------------------------
+           UPLOAD NEW PHOTOS
+           --------------------------------------------------- */
+
+        const newUploadedImages =
+          await uploadNewImages();
+
+
+        uploadedImageUrls =
+          newUploadedImages;
+
+
+        /* ---------------------------------------------------
+           BUILD FINAL IMAGE LIST
+           --------------------------------------------------- */
+
+        let finalImages = [];
+
 
         /*
-        ------------------------------------------------------
-        CHECK LOGIN
-        ------------------------------------------------------
+          Existing main image
         */
+
+        if (mainImage) {
+
+          finalImages.push(
+            mainImage
+          );
+        }
+
+
+        /*
+          Existing images
+          */
+
+        existingImageUrls.forEach(
+          image => {
+
+            if (
+              image &&
+              image !== mainImage &&
+              !finalImages.includes(image)
+            ) {
+
+              finalImages.push(
+                image
+              );
+            }
+
+          }
+        );
+
+
+        /*
+          Manually entered additional URLs
+          */
+
+        manuallyEnteredImages.forEach(
+          image => {
+
+            if (
+              image &&
+              !finalImages.includes(image)
+            ) {
+
+              finalImages.push(
+                image
+              );
+            }
+
+          }
+        );
+
+
+        /*
+          Newly uploaded images
+          */
+
+        newUploadedImages.forEach(
+          image => {
+
+            if (
+              image &&
+              !finalImages.includes(image)
+            ) {
+
+              finalImages.push(
+                image
+              );
+            }
+
+          }
+        );
+
+
+        /*
+          If there is no main image but
+          there are images, use the first one.
+        */
+
+        if (
+          !mainImage &&
+          finalImages.length > 0
+        ) {
+
+          mainImage =
+            finalImages[0];
+        }
+
+
+        /* ---------------------------------------------------
+           PREPARE UPDATE
+           --------------------------------------------------- */
+
+        const updateData = {
+
+          make: make,
+
+          model: model,
+
+          year:
+            Number(yearValue),
+
+          category:
+            category,
+
+          condition:
+            condition,
+
+          mileage:
+            mileageValue
+              ? Number(mileageValue)
+              : null,
+
+          price:
+            priceValue
+              ? Number(priceValue)
+              : null,
+
+          location:
+            location,
+
+          engine:
+            engine,
+
+          transmission:
+            transmission,
+
+          fuel:
+            fuel,
+
+          drive:
+            drive,
+
+          main_image:
+            mainImage || null,
+
+          images:
+            finalImages,
+
+          description:
+            description,
+
+          /*
+            Keep ownership attached
+            to the current vendor.
+          */
+
+          vendor_id:
+            currentUser.id
+        };
+
+
+        /* ---------------------------------------------------
+           UPDATE ONLY THIS VENDOR'S VEHICLE
+           --------------------------------------------------- */
 
         const {
-            data:sessionData,
-            error:sessionError
+          data: updatedVehicle,
+          error: updateError
         } =
-            await supabaseClient
-            .auth
-            .getSession();
-
-
-        if(sessionError){
-            throw sessionError;
-        }
-
-
-        const session =
-            sessionData.session;
-
-
-        if(!session){
-
-            window.location.href =
-                "vendor-login.html";
-
-            return;
-
-        }
-
-
-        currentUser =
-            session.user;
-
-
-        /*
-        ------------------------------------------------------
-        GET VEHICLE ID
-        ------------------------------------------------------
-        */
-
-        vehicleId =
-            getVehicleId();
-
-
-        if(!vehicleId){
-
-            throw new Error(
-                "No vehicle ID was provided."
-            );
-
-        }
-
-
-        /*
-        ------------------------------------------------------
-        IMPORTANT SECURITY CHECK
-        ------------------------------------------------------
-
-        We request the vehicle using BOTH:
-
-        1. Vehicle ID
-        2. Current vendor ID
-
-        Therefore a vendor cannot load another
-        vendor's vehicle through this page.
-        ------------------------------------------------------
-        */
-
-        const {
-            data,
-            error
-        } =
-            await supabaseClient
+          await supabaseClient
             .from("vehicles")
-            .select("*")
-            .eq("id",vehicleId)
-            .eq("vendor_id",currentUser.id)
+            .update(updateData)
+            .eq("id", currentVehicle.id)
+            .eq("vendor_id", currentUser.id)
+            .select()
             .single();
 
 
-        if(error){
+        if (updateError) {
 
-            throw new Error(
-                "Vehicle not found or you do not have permission to edit it."
-            );
-
+          throw updateError;
         }
 
 
-        originalVehicle =
-            data;
+        if (!updatedVehicle) {
 
-
-        /*
-        ------------------------------------------------------
-        DISPLAY LISTING ID
-        ------------------------------------------------------
-        */
-
-        document.getElementById(
-            "listingIdDisplay"
-        ).textContent =
-            data.listing_id ||
-            data.id;
-
-
-        /*
-        ------------------------------------------------------
-        FILL FORM
-        ------------------------------------------------------
-        */
-
-        document.getElementById("make")
-            .value =
-            data.make || "";
-
-
-        document.getElementById("model")
-            .value =
-            data.model || "";
-
-
-        document.getElementById("year")
-            .value =
-            data.year || "";
-
-
-        document.getElementById("category")
-            .value =
-            data.category || "";
-
-
-        document.getElementById("condition")
-            .value =
-            data.condition || "";
-
-
-        document.getElementById("mileage")
-            .value =
-            data.mileage || "";
-
-
-        document.getElementById("price")
-            .value =
-            data.price || "";
-
-
-        document.getElementById("location")
-            .value =
-            data.location || "";
-
-
-        document.getElementById("engine")
-            .value =
-            data.engine || "";
-
-
-        document.getElementById("transmission")
-            .value =
-            data.transmission || "";
-
-
-        document.getElementById("fuel")
-            .value =
-            data.fuel || "";
-
-
-        document.getElementById("drive")
-            .value =
-            data.drive || "";
-
-
-        document.getElementById("mainImage")
-            .value =
-            data.main_image || "";
-
-
-        /*
-        ------------------------------------------------------
-        ADDITIONAL IMAGES
-        ------------------------------------------------------
-        */
-
-        let images = [];
-
-        if(Array.isArray(data.images)){
-
-            images =
-                data.images;
-
-        }
-        else if(
-            typeof data.images === "string"
-        ){
-
-            try{
-
-                const parsed =
-                    JSON.parse(data.images);
-
-                if(Array.isArray(parsed)){
-                    images = parsed;
-                }
-
-            }catch(error){
-
-                images = [];
-
-            }
-
+          throw new Error(
+            "The vehicle was not updated. Please check that this vehicle belongs to your account."
+          );
         }
 
 
-        /*
-        Remove the main image from the
-        additional image list.
-        */
-
-        const mainImage =
-            data.main_image || "";
+        currentVehicle =
+          updatedVehicle;
 
 
-        const additionalImages =
-            images.filter(
-                image =>
-                    image &&
-                    image !== mainImage
-            );
+        /* ---------------------------------------------------
+           SUCCESS
+           --------------------------------------------------- */
 
-
-        document.getElementById(
-            "additionalImages"
-        ).value =
-            additionalImages.join("\n");
-
-
-        document.getElementById(
-            "description"
-        ).value =
-            data.description || "";
-
-
-        loadingBox.style.display =
-            "none";
-
-
-        pageContent.classList.remove(
-            "hidden"
+        showMessage(
+          "Vehicle updated successfully.",
+          "success"
         );
 
 
-    }catch(error){
+        saveButton.textContent =
+          "Saved Successfully";
+
+
+        /*
+          Give the user time to see
+          the success message, then return.
+        */
+
+        setTimeout(
+          function() {
+
+            window.location.href =
+              "vendor-dashboard.html";
+
+          },
+          1500
+        );
+
+
+      } catch (error) {
 
         console.error(
-            "Vehicle loading error:",
-            error
+          "SAVE VEHICLE ERROR:",
+          error
         );
 
 
-        loadingBox.innerHTML = `
-
-            <strong>
-            Unable to load this vehicle.
-            </strong>
-
-            <br><br>
-
-            ${escapeHtml(
-                error.message ||
-                "Unknown error."
-            )}
-
-            <br><br>
-
-            <a href="vendor-dashboard.html">
-            Return to Vendor Dashboard
-            </a>
-
-        `;
-
-    }
-
-}
-
-
-/* ==========================================================
-   SAVE CHANGES
-   ========================================================== */
-
-vehicleForm.addEventListener(
-    "submit",
-    async function(event){
-
-        event.preventDefault();
-
-
-        if(!currentUser || !vehicleId){
-
-            showMessage(
-                "error",
-                "Your vendor session or vehicle information is missing."
-            );
-
-            return;
-
-        }
+        showMessage(
+          "Unable to save vehicle: " +
+          (
+            error.message ||
+            "Unknown error"
+          ),
+          "error"
+        );
 
 
         saveButton.disabled =
-            true;
+          false;
 
         saveButton.textContent =
-            "Saving...";
-
-
-        try{
-
-            /*
-            --------------------------------------------------
-            GET FORM VALUES
-            --------------------------------------------------
-            */
-
-            const make =
-                document.getElementById("make")
-                .value
-                .trim();
-
-
-            const model =
-                document.getElementById("model")
-                .value
-                .trim();
-
-
-            const year =
-                Number(
-                    document.getElementById("year")
-                    .value
-                );
-
-
-            const category =
-                document.getElementById("category")
-                .value;
-
-
-            const condition =
-                document.getElementById("condition")
-                .value;
-
-
-            const mileageValue =
-                document.getElementById("mileage")
-                .value;
-
-
-            const mileage =
-                mileageValue
-                ? Number(mileageValue)
-                : 0;
-
-
-            const price =
-                Number(
-                    document.getElementById("price")
-                    .value
-                );
-
-
-            const location =
-                document.getElementById("location")
-                .value
-                .trim();
-
-
-            const engine =
-                document.getElementById("engine")
-                .value
-                .trim();
-
-
-            const transmission =
-                document.getElementById("transmission")
-                .value;
-
-
-            const fuel =
-                document.getElementById("fuel")
-                .value;
-
-
-            const drive =
-                document.getElementById("drive")
-                .value;
-
-
-            const mainImage =
-                document.getElementById("mainImage")
-                .value
-                .trim();
-
-
-            const description =
-                document.getElementById("description")
-                .value
-                .trim();
-
-
-            /*
-            --------------------------------------------------
-            ADDITIONAL IMAGES
-            --------------------------------------------------
-            */
-
-            const additionalText =
-                document.getElementById("additionalImages")
-                .value
-                .trim();
-
-
-            const additionalImages =
-                additionalText
-                ?
-                additionalText
-                    .split(/\r?\n/)
-                    .map(url => url.trim())
-                    .filter(url => url.length > 0)
-                :
-                [];
-
-
-            /*
-            --------------------------------------------------
-            VALIDATION
-            --------------------------------------------------
-            */
-
-            if(!make || !model){
-
-                throw new Error(
-                    "Please enter the vehicle make and model."
-                );
-
-            }
-
-
-            if(
-                !year ||
-                year < 1950 ||
-                year > 2035
-            ){
-
-                throw new Error(
-                    "Please enter a valid vehicle year."
-                );
-
-            }
-
-
-            if(!category){
-
-                throw new Error(
-                    "Please select a vehicle category."
-                );
-
-            }
-
-
-            if(
-                !price ||
-                price <= 0
-            ){
-
-                throw new Error(
-                    "Please enter a valid vehicle price."
-                );
-
-            }
-
-
-            if(!location){
-
-                throw new Error(
-                    "Please enter the vehicle location."
-                );
-
-            }
-
-
-            if(!mainImage){
-
-                throw new Error(
-                    "Please enter the main vehicle image URL."
-                );
-
-            }
-
-
-            /*
-            --------------------------------------------------
-            IMAGE ARRAY
-            --------------------------------------------------
-            */
-
-            const images =
-                [
-                    mainImage,
-                    ...additionalImages
-                ];
-
-
-            /*
-            --------------------------------------------------
-            UPDATE RECORD
-            --------------------------------------------------
-
-            vendor_id is deliberately NOT changed.
-
-            listing_id is deliberately NOT changed.
-
-            seller/payment/featured information is
-            deliberately preserved.
-            --------------------------------------------------
-            */
-
-            const updateData = {
-
-                make:
-                    make,
-
-                model:
-                    model,
-
-                year:
-                    year,
-
-                category:
-                    category,
-
-                condition:
-                    condition,
-
-                price:
-                    price,
-
-                location:
-                    location,
-
-                mileage:
-                    mileage,
-
-                engine:
-                    engine,
-
-                transmission:
-                    transmission,
-
-                fuel:
-                    fuel,
-
-                drive:
-                    drive,
-
-                main_image:
-                    mainImage,
-
-                images:
-                    images,
-
-                description:
-                    description
-
-            };
-
-
-            /*
-            --------------------------------------------------
-            UPDATE SUPABASE
-            --------------------------------------------------
-            */
-
-            const {
-                data,
-                error
-            } =
-                await supabaseClient
-                .from("vehicles")
-                .update(updateData)
-                .eq("id",vehicleId)
-                .eq("vendor_id",currentUser.id)
-                .select()
-                .single();
-
-
-            if(error){
-
-                console.error(
-                    "Vehicle update error:",
-                    error
-                );
-
-                throw error;
-
-            }
-
-
-            /*
-            --------------------------------------------------
-            SUCCESS
-            --------------------------------------------------
-            */
-
-            showMessage(
-                "success",
-                "Vehicle updated successfully."
-            );
-
-
-            setTimeout(
-                () => {
-
-                    window.location.href =
-                        "vendor-dashboard.html";
-
-                },
-                1500
-            );
-
-
-        }catch(error){
-
-            console.error(
-                error
-            );
-
-
-            showMessage(
-                "error",
-                "Could not save changes: " +
-                (
-                    error.message ||
-                    "Unknown database error."
-                )
-            );
-
-
-        }finally{
-
-            saveButton.disabled =
-                false;
-
-            saveButton.textContent =
-                "Save Changes";
-
-        }
+          "Save Changes";
+      }
 
     }
-);
+  );
 
 
-/* ==========================================================
-   FOOTER YEAR
-   ========================================================== */
+  /* =========================================================
+     CANCEL
+     ========================================================= */
 
-document.getElementById("year")
-    .textContent =
-    new Date().getFullYear();
+  function goBack() {
+
+    window.location.href =
+      "vendor-dashboard.html";
+  }
 
 
-/* ==========================================================
-   START
-   ========================================================== */
+  /* =========================================================
+     START
+     ========================================================= */
 
-loadVehicle();
+  loadVehicle();
 
 </script>
 
