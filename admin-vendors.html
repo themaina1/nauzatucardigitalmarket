@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Vendor Management | Nauza Tu Digital Motor Market</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      color: #222;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 18px 20px;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      color: #d1d5db;
+      font-size: 13px;
+    }
+
+    .back-btn,
+    .logout-btn {
+      border: none;
+      border-radius: 7px;
+      padding: 10px 15px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .back-btn {
+      background: white;
+      color: #111827;
+    }
+
+    .logout-btn {
+      background: #dc2626;
+      color: white;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 25px auto;
+      padding: 0 15px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .stat {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    }
+
+    .stat h3 {
+      margin: 0;
+      font-size: 13px;
+      color: #6b7280;
+      text-transform: uppercase;
+    }
+
+    .stat strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 28px;
+      color: #111827;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: #111827;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 7px;
+      font-size: 15px;
+      background: white;
+    }
+
+    .vendor-list {
+      display: grid;
+      gap: 15px;
+    }
+
+    .vendor {
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 18px;
+      background: #fff;
+    }
+
+    .vendor-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      align-items: flex-start;
+    }
+
+    .vendor-name {
+      font-size: 19px;
+      font-weight: bold;
+      color: #111827;
+      margin-bottom: 5px;
+    }
+
+    .business {
+      color: #2563eb;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .details {
+      color: #4b5563;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      background: #dcfce7;
+      color: #166534;
+      white-space: nowrap;
+    }
+
+    .badge.inactive {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .vehicle-count {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid #e5e7eb;
+      font-weight: bold;
+      color: #374151;
+    }
+
+    .vehicle-list {
+      margin-top: 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .vehicle-item {
+      background: #f9fafb;
+      border-radius: 7px;
+      padding: 10px 12px;
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .vehicle-name {
+      font-weight: bold;
+    }
+
+    .status {
+      font-size: 11px;
+      font-weight: bold;
+      padding: 4px 7px;
+      border-radius: 15px;
+    }
+
+    .status-published {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .status-pending {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .status-sold {
+      background: #e5e7eb;
+      color: #374151;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 35px 15px;
+      color: #6b7280;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 35px;
+      color: #6b7280;
+    }
+
+    .message {
+      display: none;
+      padding: 14px;
+      border-radius: 7px;
+      margin-bottom: 18px;
+    }
+
+    .message.error {
+      display: block;
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .message.success {
+      display: block;
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 15px;
+      color: #6b7280;
+      font-size: 13px;
+    }
+
+    @media (max-width: 800px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .controls {
+        grid-template-columns: 1fr;
+      }
+
+      .vendor-top {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .back-btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .vehicle-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <div>
+      <h1>Nauza Tu Digital Motor Market</h1>
+      <p>Administrator — Vendor Management</p>
+    </div>
+
+    <div>
+      <a href="admin.html" class="back-btn">
+        ← Admin Dashboard
+      </a>
+
+      <button class="logout-btn" onclick="logout()">
+        Logout
+      </button>
+    </div>
+
+  </div>
+</header>
+
+
+<div class="container">
+
+  <div id="message" class="message"></div>
+
+
+  <div class="stats">
+
+    <div class="stat">
+      <h3>Total Vendors</h3>
+      <strong id="totalVendors">0</strong>
+    </div>
+
+    <div class="stat">
+      <h3>Active Vendors</h3>
+      <strong id="activeVendors">0</strong>
+    </div>
+
+    <div class="stat">
+      <h3>Total Vehicles</h3>
+      <strong id="totalVehicles">0</strong>
+    </div>
+
+    <div class="stat">
+      <h3>Published Vehicles</h3>
+      <strong id="publishedVehicles">0</strong>
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>Registered Vendors</h2>
+
+    <div class="controls">
+
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search vendor, business, phone or location..."
+      >
+
+      <select id="statusFilter">
+
+        <option value="all">
+          All Vendors
+        </option>
+
+        <option value="active">
+          Active Vendors
+        </option>
+
+        <option value="inactive">
+          Inactive Vendors
+        </option>
+
+      </select>
+
+    </div>
+
+    <div id="vendorList" class="vendor-list">
+
+      <div class="loading">
+        Loading vendors...
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<footer>
+  © Nauza Tu Digital Motor Market. All rights reserved.
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+  /* =====================================================
+     SUPABASE
+     ===================================================== */
+
+  const SUPABASE_URL =
+    "https://hoogdxegjomtsvaddkwk.supabase.co";
+
+  const SUPABASE_KEY =
+    "sb_publishable_VEq6gUDlCthklOIgVUaDzQ_5TaqAsu8";
+
+  const supabaseClient =
+    window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+
+  /* =====================================================
+     VARIABLES
+     ===================================================== */
+
+  let currentUser = null;
+
+  let vendors = [];
+
+  let vehicles = [];
+
+
+  /* =====================================================
+     ELEMENTS
+     ===================================================== */
+
+  const vendorList =
+    document.getElementById("vendorList");
+
+  const searchInput =
+    document.getElementById("searchInput");
+
+  const statusFilter =
+    document.getElementById("statusFilter");
+
+
+  /* =====================================================
+     MESSAGE
+     ===================================================== */
+
+  function showMessage(text, type) {
+
+    const box =
+      document.getElementById("message");
+
+    box.textContent = text;
+
+    box.className =
+      "message " + type;
+  }
+
+
+  /* =====================================================
+     CHECK ADMIN
+     ===================================================== */
+
+  async function checkAdmin() {
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient.auth.getUser();
+
+    if (error) {
+      throw error;
+    }
+
+    if (!data || !data.user) {
+
+      window.location.href =
+        "admin.html";
+
+      return false;
+    }
+
+    currentUser =
+      data.user;
+
+
+    const {
+      data: admin,
+      error: adminError
+    } =
+      await supabaseClient
+        .from("admin_users")
+        .select("id,email,role,active")
+        .eq("id", currentUser.id)
+        .eq("role", "admin")
+        .eq("active", true)
+        .maybeSingle();
+
+
+    if (adminError) {
+      throw adminError;
+    }
+
+    if (!admin) {
+
+      document.body.innerHTML = `
+        <div style="
+          max-width:600px;
+          margin:80px auto;
+          padding:25px;
+          text-align:center;
+          font-family:Arial;
+        ">
+          <h2>Administrator Access Required</h2>
+          <p>This account is not authorized as an administrator.</p>
+          <a href="admin.html">
+            Return to Admin Login
+          </a>
+        </div>
+      `;
+
+      return false;
+    }
+
+    return true;
+  }
+
+
+  /* =====================================================
+     LOAD VENDORS
+     ===================================================== */
+
+  async function loadData() {
+
+    try {
+
+      vendorList.innerHTML =
+        `<div class="loading">
+          Loading vendors...
+        </div>`;
+
+
+      /*
+        Load vendor profiles.
+      */
+
+      const {
+        data: vendorData,
+        error: vendorError
+      } =
+        await supabaseClient
+          .from("vendor_profiles")
+          .select("*")
+          .order(
+            "created_at",
+            {
+              ascending: false
+            }
+          );
+
+
+      if (vendorError) {
+        throw vendorError;
+      }
+
+
+      vendors =
+        vendorData || [];
+
+
+      /*
+        Load all vehicles.
+
+        Admin RLS allows the administrator
+        to see all vehicles.
+      */
+
+      const {
+        data: vehicleData,
+        error: vehicleError
+      } =
+        await supabaseClient
+          .from("vehicles")
+          .select(
+            "id,listing_id,make,model,year,status,vendor_id"
+          )
+          .order(
+            "created_at",
+            {
+              ascending: false
+            }
+          );
+
+
+      if (vehicleError) {
+        throw vehicleError;
+      }
+
+
+      vehicles =
+        vehicleData || [];
+
+
+      updateStats();
+
+      renderVendors();
+
+    } catch (error) {
+
+      console.error(
+        "VENDOR LOAD ERROR:",
+        error
+      );
+
+      vendorList.innerHTML =
+        `<div class="empty">
+          Unable to load vendors.
+          <br><br>
+          ${escapeHtml(
+            error.message ||
+            "Unknown error"
+          )}
+        </div>`;
+    }
+  }
+
+
+  /* =====================================================
+     UPDATE STATISTICS
+     ===================================================== */
+
+  function updateStats() {
+
+    document.getElementById(
+      "totalVendors"
+    ).textContent =
+      vendors.length;
+
+
+    const active =
+      vendors.filter(
+        vendor =>
+          vendor.active !== false
+      ).length;
+
+
+    document.getElementById(
+      "activeVendors"
+    ).textContent =
+      active;
+
+
+    document.getElementById(
+      "totalVehicles"
+    ).textContent =
+      vehicles.length;
+
+
+    const published =
+      vehicles.filter(
+        vehicle =>
+          vehicle.status === "published"
+      ).length;
+
+
+    document.getElementById(
+      "publishedVehicles"
+    ).textContent =
+      published;
+  }
+
+
+  /* =====================================================
+     RENDER VENDORS
+     ===================================================== */
+
+  function renderVendors() {
+
+    const search =
+      searchInput.value
+        .trim()
+        .toLowerCase();
+
+
+    const filter =
+      statusFilter.value;
+
+
+    const filtered =
+      vendors.filter(
+        vendor => {
+
+          const isActive =
+            vendor.active !== false;
+
+
+          if (
+            filter === "active" &&
+            !isActive
+          ) {
+            return false;
+          }
+
+
+          if (
+            filter === "inactive" &&
+            isActive
+          ) {
+            return false;
+          }
+
+
+          const vendorVehicles =
+            vehicles.filter(
+              vehicle =>
+                vehicle.vendor_id ===
+                vendor.id
+            );
+
+
+          const searchable =
+            [
+              vendor.full_name,
+              vendor.phone,
+              vendor.whatsapp,
+              vendor.business_name,
+              vendor.location,
+              ...vendorVehicles.map(
+                v =>
+                  `${v.make || ""} ${v.model || ""} ${v.listing_id || ""}`
+              )
+            ]
+              .join(" ")
+              .toLowerCase();
+
+
+          if (
+            search &&
+            !searchable.includes(search)
+          ) {
+            return false;
+          }
+
+
+          return true;
+        }
+      );
+
+
+    if (!filtered.length) {
+
+      vendorList.innerHTML =
+        `<div class="empty">
+          No vendors found.
+        </div>`;
+
+      return;
+    }
+
+
+    vendorList.innerHTML = "";
+
+
+    filtered.forEach(
+      vendor => {
+
+        const vendorVehicles =
+          vehicles.filter(
+            vehicle =>
+              vehicle.vendor_id ===
+              vendor.id
+          );
+
+
+        const published =
+          vendorVehicles.filter(
+            vehicle =>
+              vehicle.status ===
+              "published"
+          ).length;
+
+
+        const pending =
+          vendorVehicles.filter(
+            vehicle =>
+              vehicle.status ===
+              "pending"
+          ).length;
+
+
+        const sold =
+          vendorVehicles.filter(
+            vehicle =>
+              vehicle.status ===
+              "sold"
+          ).length;
+
+
+        const active =
+          vendor.active !== false;
+
+
+        const card =
+          document.createElement(
+            "div"
+          );
+
+        card.className =
+          "vendor";
+
+
+        const top =
+          document.createElement(
+            "div"
+          );
+
+        top.className =
+          "vendor-top";
+
+
+        const information =
+          document.createElement(
+            "div"
+          );
+
+
+        const name =
+          document.createElement(
+            "div"
+          );
+
+        name.className =
+          "vendor-name";
+
+        name.textContent =
+          vendor.full_name ||
+          "Unnamed Vendor";
+
+
+        const business =
+          document.createElement(
+            "div"
+          );
+
+        business.className =
+          "business";
+
+        business.textContent =
+          vendor.business_name ||
+          "Private Seller";
+
+
+        const details =
+          document.createElement(
+            "div"
+          );
+
+        details.className =
+          "details";
+
+        details.innerHTML = `
+          <strong>Phone:</strong>
+          ${escapeHtml(
+            vendor.phone || "Not provided"
+          )}
+          <br>
+
+          <strong>WhatsApp:</strong>
+          ${escapeHtml(
+            vendor.whatsapp ||
+            "Not provided"
+          )}
+          <br>
+
+          <strong>Location:</strong>
+          ${escapeHtml(
+            vendor.location ||
+            "Not provided"
+          )}
+          <br>
+
+          <strong>Registered:</strong>
+          ${formatDate(
+            vendor.created_at
+          )}
+        `;
+
+
+        information.appendChild(
+          name
+        );
+
+        information.appendChild(
+          business
+        );
+
+        information.appendChild(
+          details
+        );
+
+
+        const badge =
+          document.createElement(
+            "span"
+          );
+
+        badge.className =
+          active
+            ? "badge"
+            : "badge inactive";
+
+        badge.textContent =
+          active
+            ? "ACTIVE"
+            : "INACTIVE";
+
+
+        top.appendChild(
+          information
+        );
+
+        top.appendChild(
+          badge
+        );
+
+
+        card.appendChild(
+          top
+        );
+
+
+        const vehicleCount =
+          document.createElement(
+            "div"
+          );
+
+        vehicleCount.className =
+          "vehicle-count";
+
+        vehicleCount.textContent =
+          `${vendorVehicles.length} vehicle(s) — ` +
+          `${published} published, ` +
+          `${pending} pending, ` +
+          `${sold} sold`;
+
+
+        card.appendChild(
+          vehicleCount
+        );
+
+
+        if (vendorVehicles.length) {
+
+          const list =
+            document.createElement(
+              "div"
+            );
+
+          list.className =
+            "vehicle-list";
+
+
+          vendorVehicles.forEach(
+            vehicle => {
+
+              const item =
+                document.createElement(
+                  "div"
+                );
+
+              item.className =
+                "vehicle-item";
+
+
+              const vehicleName =
+                document.createElement(
+                  "div"
+                );
+
+              vehicleName.className =
+                "vehicle-name";
+
+              vehicleName.textContent =
+                `${vehicle.make || ""} ` +
+                `${vehicle.model || ""} ` +
+                `${vehicle.year || ""}`;
+
+
+              const listing =
+                document.createElement(
+                  "small"
+                );
+
+              listing.style.color =
+                "#6b7280";
+
+              listing.textContent =
+                vehicle.listing_id
+                  ? `ID: ${vehicle.listing_id}`
+                  : "";
+
+
+              const left =
+                document.createElement(
+                  "div"
+                );
+
+              left.appendChild(
+                vehicleName
+              );
+
+              left.appendChild(
+                listing
+              );
+
+
+              const status =
+                document.createElement(
+                  "span"
+                );
+
+              status.className =
+                "status " +
+                getStatusClass(
+                  vehicle.status
+                );
+
+              status.textContent =
+                (
+                  vehicle.status ||
+                  "unknown"
+                ).toUpperCase();
+
+
+              item.appendChild(
+                left
+              );
+
+              item.appendChild(
+                status
+              );
+
+              list.appendChild(
+                item
+              );
+
+            }
+          );
+
+
+          card.appendChild(
+            list
+          );
+        }
+
+
+        vendorList.appendChild(
+          card
+        );
+
+      }
+    );
+  }
+
+
+  /* =====================================================
+     STATUS CLASS
+     ===================================================== */
+
+  function getStatusClass(status) {
+
+    if (
+      status === "published"
+    ) {
+      return "status-published";
+    }
+
+    if (
+      status === "pending"
+    ) {
+      return "status-pending";
+    }
+
+    if (
+      status === "sold"
+    ) {
+      return "status-sold";
+    }
+
+    return "status-sold";
+  }
+
+
+  /* =====================================================
+     ESCAPE HTML
+     ===================================================== */
+
+  function escapeHtml(value) {
+
+    if (value === null ||
+        value === undefined) {
+      return "";
+    }
+
+    return String(value)
+      .replace(
+        /&/g,
+        "&amp;"
+      )
+      .replace(
+        /</g,
+        "&lt;"
+      )
+      .replace(
+        />/g,
+        "&gt;"
+      )
+      .replace(
+        /"/g,
+        "&quot;"
+      )
+      .replace(
+        /'/g,
+        "&#039;"
+      );
+  }
+
+
+  /* =====================================================
+     DATE
+     ===================================================== */
+
+  function formatDate(dateValue) {
+
+    if (!dateValue) {
+      return "Unknown";
+    }
+
+    const date =
+      new Date(dateValue);
+
+    if (
+      Number.isNaN(
+        date.getTime()
+      )
+    ) {
+      return "Unknown";
+    }
+
+    return date.toLocaleDateString(
+      "en-KE",
+      {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+      }
+    );
+  }
+
+
+  /* =====================================================
+     SEARCH
+     ===================================================== */
+
+  searchInput.addEventListener(
+    "input",
+    renderVendors
+  );
+
+
+  statusFilter.addEventListener(
+    "change",
+    renderVendors
+  );
+
+
+  /* =====================================================
+     LOGOUT
+     ===================================================== */
+
+  async function logout() {
+
+    await supabaseClient.auth.signOut();
+
+    window.location.href =
+      "admin.html";
+  }
+
+
+  /* =====================================================
+     START
+     ===================================================== */
+
+  async function start() {
+
+    try {
+
+      const authorized =
+        await checkAdmin();
+
+      if (!authorized) {
+        return;
+      }
+
+      await loadData();
+
+    } catch (error) {
+
+      console.error(
+        error
+      );
+
+      showMessage(
+        error.message ||
+        "Unable to load administrator data.",
+        "error"
+      );
+    }
+  }
+
+
+  start();
+
+</script>
+
+</body>
+</html>
