@@ -1,1271 +1,1017 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Compare Vehicles | Nauza Tu Digital Motor Market</title>
 
-<meta name="description"
-content="Compare vehicles for sale in Kenya by price, year, mileage, engine, fuel, transmission, drive and category on Nauza Tu Digital Motor Market.">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+* {
+    box-sizing: border-box;
 }
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f5f6f8;
-    color:#222;
-    line-height:1.6;
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f5;
+    color: #222;
 }
 
-/* HEADER */
-
-header{
-    background:#111;
-    color:white;
-    padding:15px 5%;
-    position:sticky;
-    top:0;
-    z-index:1000;
+header {
+    background: #063d28;
+    color: white;
+    padding: 18px 15px;
 }
 
-.navbar{
-    max-width:1200px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
+.header-inner {
+    max-width: 1200px;
+    margin: auto;
 }
 
-.logo{
-    color:white;
-    text-decoration:none;
-    font-size:23px;
-    font-weight:bold;
+header h1 {
+    margin: 0;
+    font-size: 24px;
 }
 
-.logo span{
-    color:#e63946;
+header p {
+    margin: 6px 0 0;
+    font-size: 14px;
+    opacity: .9;
 }
 
-nav{
-    display:flex;
-    gap:18px;
-    flex-wrap:wrap;
-    justify-content:flex-end;
+nav {
+    background: #042d1e;
 }
 
-nav a{
-    color:white;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:bold;
+.nav-inner {
+    max-width: 1200px;
+    margin: auto;
+    padding: 10px 15px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
-nav a:hover{
-    color:#e63946;
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
 }
 
-/* HERO */
-
-.hero{
-    background:
-        linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
-        url("images/kenya-car-market.jpg") center/cover no-repeat;
-
-    min-height:320px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-    color:white;
-
-    padding:50px 20px;
+nav a:hover {
+    background: #075638;
 }
 
-.hero-content{
-    max-width:800px;
+.container {
+    max-width: 1200px;
+    margin: 25px auto;
+    padding: 0 15px;
 }
 
-.hero h1{
-    font-size:44px;
-    margin-bottom:12px;
+.page-title {
+    text-align: center;
+    margin-bottom: 25px;
 }
 
-.hero p{
-    font-size:18px;
+.page-title h2 {
+    color: #063d28;
+    margin-bottom: 8px;
 }
 
-/* MAIN */
-
-.container{
-    max-width:1200px;
-    margin:40px auto 60px;
-    padding:0 20px;
+.page-title p {
+    color: #666;
+    margin: 0;
 }
 
-/* SELECT AREA */
-
-.selection-box{
-    background:white;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 4px 15px rgba(0,0,0,.08);
-    margin-bottom:30px;
+.controls {
+    background: white;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    margin-bottom: 20px;
 }
 
-.selection-box h2{
-    margin-bottom:8px;
+.controls-row {
+    display: grid;
+    grid-template-columns: 1fr 180px;
+    gap: 10px;
 }
 
-.selection-box > p{
-    color:#666;
-    margin-bottom:22px;
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
 }
 
-.select-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+.vehicle-selector {
+    background: white;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    margin-bottom: 20px;
 }
 
-.select-group label{
-    display:block;
-    font-weight:bold;
-    margin-bottom:7px;
+.vehicle-selector h3 {
+    margin-top: 0;
+    color: #063d28;
 }
 
-.select-group select{
-    width:100%;
-    padding:13px;
-    border:1px solid #ddd;
-    border-radius:7px;
-    font-size:15px;
-    background:white;
+.vehicle-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
 }
 
-.select-group select:focus{
-    outline:none;
-    border-color:#e63946;
+.vehicle-option {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    background: #fafafa;
 }
 
-.compare-button{
-    margin-top:20px;
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:7px;
-    background:#e63946;
-    color:white;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
+.vehicle-option:hover {
+    border-color: #063d28;
 }
 
-.compare-button:hover{
-    background:#c92f3b;
+.vehicle-option.selected {
+    border: 2px solid #063d28;
+    background: #eef7f2;
 }
 
-/* COMPARISON */
-
-.comparison-section{
-    display:none;
-    background:white;
-    border-radius:12px;
-    box-shadow:0 4px 18px rgba(0,0,0,.08);
-    overflow:hidden;
+.vehicle-option img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 8px;
 }
 
-.comparison-section.show{
-    display:block;
+.vehicle-option h4 {
+    margin: 3px 0;
+    color: #063d28;
 }
 
-.comparison-title{
-    padding:25px;
-    border-bottom:1px solid #eee;
+.vehicle-option p {
+    margin: 4px 0;
+    font-size: 13px;
 }
 
-.comparison-title h2{
-    font-size:27px;
+.compare-actions {
+    margin: 20px 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-.comparison-title p{
-    color:#666;
-    margin-top:4px;
+button {
+    border: none;
+    border-radius: 6px;
+    padding: 11px 16px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
-/* TABLE */
-
-.table-wrapper{
-    width:100%;
-    overflow-x:auto;
+.compare-btn {
+    background: #063d28;
+    color: white;
 }
 
-.compare-table{
-    width:100%;
-    min-width:750px;
-    border-collapse:collapse;
+.clear-btn {
+    background: #c62828;
+    color: white;
 }
 
-.compare-table th,
-.compare-table td{
-    padding:15px;
-    border-bottom:1px solid #eee;
-    text-align:center;
-    vertical-align:middle;
+.compare-btn:disabled {
+    background: #aaa;
+    cursor: not-allowed;
 }
 
-.compare-table th:first-child,
-.compare-table td:first-child{
-    text-align:left;
-    background:#fafafa;
-    font-weight:bold;
-    width:180px;
+.comparison {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    overflow-x: auto;
 }
 
-.compare-table thead th{
-    background:#111;
-    color:white;
-    font-size:17px;
+.comparison table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
 }
 
-.compare-image{
-    width:170px;
-    height:120px;
-    object-fit:cover;
-    border-radius:7px;
-    display:block;
-    margin:0 auto 10px;
-    background:#ddd;
+.comparison th,
+.comparison td {
+    border-bottom: 1px solid #ddd;
+    padding: 13px;
+    text-align: left;
+    vertical-align: top;
 }
 
-.vehicle-name{
-    font-size:18px;
-    font-weight:bold;
+.comparison th {
+    background: #063d28;
+    color: white;
 }
 
-.vehicle-price{
-    color:#e63946;
-    font-size:20px;
-    font-weight:bold;
-    margin-top:4px;
+.comparison td:first-child {
+    font-weight: bold;
+    background: #f5f7f6;
+    width: 160px;
 }
 
-.highlight{
-    font-weight:bold;
+.compare-image {
+    width: 180px;
+    height: 125px;
+    object-fit: cover;
+    border-radius: 7px;
 }
 
-/* ACTIONS */
-
-.comparison-actions{
-    display:flex;
-    gap:12px;
-    padding:25px;
-    flex-wrap:wrap;
+.vehicle-title {
+    color: #063d28;
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 8px;
 }
 
-.action-btn{
-    display:inline-block;
-    padding:11px 18px;
-    border-radius:6px;
-    text-decoration:none;
-    font-weight:bold;
+.price {
+    font-weight: bold;
+    color: #b8860b;
 }
 
-.details-btn{
-    background:#111;
-    color:white;
+.view-btn {
+    display: inline-block;
+    background: #1565c0;
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 13px;
 }
 
-.details-btn:hover{
-    background:#333;
+.loading,
+.empty {
+    text-align: center;
+    padding: 30px;
+    color: #777;
 }
 
-.reset-btn{
-    background:#eee;
-    color:#222;
-    border:none;
-    cursor:pointer;
+.message {
+    display: none;
+    padding: 14px;
+    border-radius: 7px;
+    margin-bottom: 20px;
 }
 
-.reset-btn:hover{
-    background:#ddd;
+.error {
+    background: #ffebee;
+    color: #b71c1c;
 }
 
-/* EMPTY MESSAGE */
-
-.empty-message{
-    background:white;
-    padding:50px 20px;
-    text-align:center;
-    border-radius:12px;
-    box-shadow:0 4px 15px rgba(0,0,0,.07);
+.success {
+    background: #e8f5e9;
+    color: #1b5e20;
 }
 
-.empty-message h2{
-    margin-bottom:10px;
+footer {
+    margin-top: 40px;
+    background: #063d28;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+    font-size: 13px;
 }
 
-.empty-message p{
-    color:#666;
-}
+@media (max-width: 800px) {
 
-/* NOTICE */
-
-.notice{
-    margin-top:30px;
-    background:#fff8e6;
-    border-left:5px solid #f0ad00;
-    padding:20px;
-    border-radius:7px;
-}
-
-.notice h3{
-    margin-bottom:8px;
-}
-
-.notice p{
-    color:#555;
-}
-
-/* FOOTER */
-
-footer{
-    background:#111;
-    color:white;
-    padding:40px 20px 20px;
-}
-
-.footer-container{
-    max-width:1200px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:2fr 1fr 1fr;
-    gap:35px;
-}
-
-footer h3{
-    margin-bottom:12px;
-}
-
-footer p,
-footer li{
-    color:#ccc;
-    font-size:14px;
-}
-
-footer ul{
-    list-style:none;
-}
-
-footer li{
-    margin-bottom:7px;
-}
-
-footer a{
-    color:#ccc;
-    text-decoration:none;
-}
-
-footer a:hover{
-    color:white;
-}
-
-.copyright{
-    max-width:1200px;
-    margin:30px auto 0;
-    padding-top:20px;
-    border-top:1px solid #333;
-    text-align:center;
-    color:#aaa;
-    font-size:13px;
-}
-
-/* MOBILE */
-
-@media(max-width:800px){
-
-    .select-grid{
-        grid-template-columns:1fr;
+    .vehicle-list {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .footer-container{
-        grid-template-columns:1fr 1fr;
+    .controls-row {
+        grid-template-columns: 1fr;
     }
-
 }
 
-@media(max-width:600px){
+@media (max-width: 500px) {
 
-    .navbar{
-        flex-direction:column;
-        align-items:flex-start;
+    header h1 {
+        font-size: 20px;
     }
 
-    nav{
-        justify-content:flex-start;
-        gap:12px;
+    .vehicle-list {
+        grid-template-columns: 1fr;
     }
 
-    .hero h1{
-        font-size:34px;
+    .vehicle-option img {
+        height: 180px;
     }
-
-    .hero p{
-        font-size:16px;
-    }
-
-    .selection-box{
-        padding:20px;
-    }
-
-    .footer-container{
-        grid-template-columns:1fr;
-    }
-
 }
-
 </style>
-
 </head>
 
 <body>
 
-
-<!-- HEADER -->
-
 <header>
-
-<div class="navbar">
-
-<a href="index.html" class="logo">
-Nauza Tu <span>Digital Motor Market</span>
-</a>
-
-<nav>
-
-<a href="index.html">Home</a>
-
-<a href="vehicles.html">Vehicles</a>
-
-<a href="compare.html">Compare</a>
-
-<a href="sell.html">Sell Your Car</a>
-
-<a href="about.html">About</a>
-
-<a href="contact.html">Contact</a>
-
-</nav>
-
-</div>
-
+    <div class="header-inner">
+        <h1>Nauza Tu Digital Motor Market</h1>
+        <p>Compare Vehicles</p>
+    </div>
 </header>
 
+<nav>
+    <div class="nav-inner">
+        <a href="index.html">Home</a>
+        <a href="vehicles.html">Vehicles</a>
+        <a href="compare.html">Compare</a>
+        <a href="sell.html">Sell / Advertise</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
 
-<!-- HERO -->
+<div class="container">
 
-<section class="hero">
+    <div class="page-title">
+        <h2>Compare Vehicles</h2>
+        <p>Select up to 3 published vehicles to compare their specifications.</p>
+    </div>
 
-<div class="hero-content">
+    <div id="message" class="message"></div>
 
-<h1>Compare Vehicles</h1>
+    <div class="controls">
 
-<p>
-Compare vehicles listed on Nauza Tu Digital Motor Market
-before deciding which one suits your needs.
-</p>
+        <div class="controls-row">
 
-</div>
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search make, model, year, location..."
+            >
 
-</section>
+            <select id="categoryFilter">
+                <option value="all">All Categories</option>
+                <option value="SUV">SUV</option>
+                <option value="Sedan">Sedan</option>
+                <option value="Hatchback">Hatchback</option>
+                <option value="Van">Van</option>
+                <option value="Pickup">Pickup</option>
+                <option value="Land Cruiser">Land Cruiser</option>
+                <option value="Other">Other</option>
+            </select>
 
+        </div>
 
-<!-- MAIN -->
+    </div>
 
-<main class="container">
+    <div class="vehicle-selector">
 
+        <h3>Select Vehicles</h3>
 
-<!-- SELECTION -->
+        <div id="vehicleList">
+            <div class="loading">
+                Loading published vehicles...
+            </div>
+        </div>
 
-<section class="selection-box">
+        <div class="compare-actions">
 
-<h2>
-Select Vehicles to Compare
-</h2>
+            <button
+                id="compareButton"
+                class="compare-btn"
+                disabled
+                onclick="showComparison()"
+            >
+                Compare Selected Vehicles
+            </button>
 
-<p>
-Choose two different vehicles from the current marketplace listings.
-</p>
+            <button
+                class="clear-btn"
+                onclick="clearSelection()"
+            >
+                Clear Selection
+            </button>
 
+        </div>
 
-<div class="select-grid">
+    </div>
 
-
-<div class="select-group">
-
-<label for="vehicleOne">
-Vehicle 1
-</label>
-
-<select id="vehicleOne">
-
-<option value="">
--- Select Vehicle --
-</option>
-
-</select>
-
-</div>
-
-
-<div class="select-group">
-
-<label for="vehicleTwo">
-Vehicle 2
-</label>
-
-<select id="vehicleTwo">
-
-<option value="">
--- Select Vehicle --
-</option>
-
-</select>
-
-</div>
-
-
-</div>
-
-
-<button
-type="button"
-class="compare-button"
-onclick="compareVehicles()"
->
-Compare Vehicles
-</button>
-
-</section>
-
-
-<!-- EMPTY MESSAGE -->
-
-<div
-id="emptyMessage"
-class="empty-message"
->
-
-<h2>
-Choose Two Vehicles
-</h2>
-
-<p>
-Select two vehicles above to see their specifications
-side by side.
-</p>
+    <div id="comparisonContainer"></div>
 
 </div>
-
-
-<!-- COMPARISON -->
-
-<section
-id="comparisonSection"
-class="comparison-section"
->
-
-<div class="comparison-title">
-
-<h2>
-Vehicle Comparison
-</h2>
-
-<p>
-Compare the specifications below.
-</p>
-
-</div>
-
-
-<div class="table-wrapper">
-
-<table class="compare-table">
-
-<thead>
-
-<tr>
-
-<th>
-Specification
-</th>
-
-<th id="vehicleOneHeader">
-Vehicle 1
-</th>
-
-<th id="vehicleTwoHeader">
-Vehicle 2
-</th>
-
-</tr>
-
-</thead>
-
-
-<tbody>
-
-
-<tr>
-
-<td>
-Vehicle
-</td>
-
-<td id="vehicleOneImage"></td>
-
-<td id="vehicleTwoImage"></td>
-
-</tr>
-
-
-<tr>
-
-<td>
-Price
-</td>
-
-<td id="vehicleOnePrice"></td>
-
-<td id="vehicleTwoPrice"></td>
-
-</tr>
-
-
-<tr>
-
-<td>
-Year
-</td>
-
-<td id="vehicleOneYear"></td>
-
-<td id="vehicleTwoYear"></td>
-
-</tr>
-
-
-<tr>
-
-<td>
-Category
-</td>
-
-<td id="vehicleOneCategory"></td>
-
-<td id="vehicleTwoCategory"></td>
-
-</tr>
-
-
-<tr>
-
-<td>
-Mileage
-</td>
-
-<td id="vehicleOneMileage"></td>
-
-<td id="vehicleTwoMileage"></td>
-
-</tr>
-
-
-<tr>
-
-<td>
-Engine
-</td>
-
-<td id="vehicleOneEngine"></td>
-
-<td id="vehicleTwoEngine"></td>
-
-</tr>
-
-
-<tr>
-
-<td>
-Fuel
-</td>
-
-<td id="vehicleOneFuel"></td>
-
-<td id="vehicleTwoFuel"></td>
-
-</tr>
-
-
-<tr>
-
-<td>
-Transmission
-</td>
-
-<td id="vehicleOneTransmission"></td>
-
-<td id="vehicleTwoTransmission"></td>
-
-</tr>
-
-
-<tr>
-
-<td>
-Drive
-</td>
-
-<td id="vehicleOneDrive"></td>
-
-<td id="vehicleTwoDrive"></td>
-
-</tr>
-
-
-<tr>
-
-<td>
-Condition
-</td>
-
-<td id="vehicleOneCondition"></td>
-
-<td id="vehicleTwoCondition"></td>
-
-</tr>
-
-
-<tr>
-
-<td>
-Location
-</td>
-
-<td id="vehicleOneLocation"></td>
-
-<td id="vehicleTwoLocation"></td>
-
-</tr>
-
-
-<tr>
-
-<td>
-Listing ID
-</td>
-
-<td id="vehicleOneId"></td>
-
-<td id="vehicleTwoId"></td>
-
-</tr>
-
-
-</tbody>
-
-</table>
-
-</div>
-
-
-<div class="comparison-actions">
-
-<a
-id="detailsOne"
-class="action-btn details-btn"
-href="#"
->
-View Vehicle 1
-</a>
-
-<a
-id="detailsTwo"
-class="action-btn details-btn"
-href="#"
->
-View Vehicle 2
-</a>
-
-<button
-type="button"
-class="action-btn reset-btn"
-onclick="resetComparison()"
->
-Choose Different Vehicles
-</button>
-
-</div>
-
-</section>
-
-
-<!-- NOTICE -->
-
-<section class="notice">
-
-<h3>
-Marketplace Notice
-</h3>
-
-<p>
-Nauza Tu Digital Motor Market is a digital marketplace.
-We do not own the vehicles advertised on this platform.
-Vehicle information is supplied by sellers and should be
-independently verified before any purchase.
-</p>
-
-</section>
-
-</main>
-
-
-<!-- FOOTER -->
 
 <footer>
-
-<div class="footer-container">
-
-
-<div>
-
-<h3>
-Nauza Tu Digital Motor Market
-</h3>
-
-<p>
-A Kenyan digital marketplace connecting vehicle sellers
-with potential buyers.
-</p>
-
-<p style="margin-top:10px;">
-We do not own or stock the vehicles advertised.
-</p>
-
-</div>
-
-
-<div>
-
-<h3>
-Quick Links
-</h3>
-
-<ul>
-
-<li>
-<a href="index.html">Home</a>
-</li>
-
-<li>
-<a href="vehicles.html">Vehicles</a>
-</li>
-
-<li>
-<a href="compare.html">Compare Vehicles</a>
-</li>
-
-<li>
-<a href="sell.html">Sell Your Car</a>
-</li>
-
-<li>
-<a href="about.html">About Us</a>
-</li>
-
-<li>
-<a href="contact.html">Contact</a>
-</li>
-
-</ul>
-
-</div>
-
-
-<div>
-
-<h3>
-Contact Nauza Tu
-</h3>
-
-<ul>
-
-<li>
-<a href="tel:+254722910913">
-+254 722 910 913
-</a>
-</li>
-
-<li>
-<a href="tel:+254724708032">
-+254 724 708 032
-</a>
-</li>
-
-<li>
-<a href="mailto:nauzatu@gmail.com">
-nauzatu@gmail.com
-</a>
-</li>
-
-<li>
-Nairobi, Kenya
-</li>
-
-</ul>
-
-</div>
-
-</div>
-
-
-<div class="copyright">
-
-© <span id="year"></span>
-Nauza Tu Digital Motor Market.
-All Rights Reserved.
-
-</div>
-
+    © 2026 Nauza Tu Digital Motor Market
 </footer>
-
-
-<!-- VEHICLE DATABASE -->
-
-<script src="vehicles-data.js"></script>
 
 
 <script>
 
-/* FORMAT PRICE */
+const SUPABASE_URL =
+    "https://hoogdxegjomtsvaddkwk.supabase.co";
 
-function formatPrice(price){
+const SUPABASE_KEY =
+    "sb_publishable_VEq6gUDlCthklOIgVUaDzQ_5TaqAsu8";
 
-    return new Intl.NumberFormat("en-KE",{
-
-        style:"currency",
-
-        currency:"KES",
-
-        maximumFractionDigits:0
-
-    }).format(price);
-
-}
-
-
-/* FORMAT MILEAGE */
-
-function formatMileage(mileage){
-
-    return new Intl.NumberFormat("en-KE")
-        .format(mileage) + " KM";
-
-}
-
-
-/* POPULATE DROPDOWNS */
-
-const vehicleOne =
-document.getElementById("vehicleOne");
-
-const vehicleTwo =
-document.getElementById("vehicleTwo");
-
-
-vehicles.forEach(vehicle => {
-
-    const optionOne =
-    document.createElement("option");
-
-    optionOne.value =
-        vehicle.id;
-
-    optionOne.textContent =
-        `${vehicle.year} ${vehicle.make} ${vehicle.model} — ${formatPrice(vehicle.price)}`;
-
-    vehicleOne.appendChild(optionOne);
-
-
-    const optionTwo =
-    document.createElement("option");
-
-    optionTwo.value =
-        vehicle.id;
-
-    optionTwo.textContent =
-        `${vehicle.year} ${vehicle.make} ${vehicle.model} — ${formatPrice(vehicle.price)}`;
-
-    vehicleTwo.appendChild(optionTwo);
-
-});
-
-
-/* COMPARE */
-
-function compareVehicles(){
-
-    const idOne =
-        vehicleOne.value;
-
-    const idTwo =
-        vehicleTwo.value;
-
-
-    if(!idOne || !idTwo){
-
-        alert(
-            "Please select two vehicles to compare."
-        );
-
-        return;
-
-    }
-
-
-    if(idOne === idTwo){
-
-        alert(
-            "Please select two different vehicles."
-        );
-
-        return;
-
-    }
-
-
-    const firstVehicle =
-        vehicles.find(
-            vehicle => vehicle.id === idOne
-        );
-
-
-    const secondVehicle =
-        vehicles.find(
-            vehicle => vehicle.id === idTwo
-        );
-
-
-    if(!firstVehicle || !secondVehicle){
-
-        alert(
-            "The selected vehicle could not be found."
-        );
-
-        return;
-
-    }
-
-
-    fillComparison(
-        "One",
-        firstVehicle
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
     );
 
 
-    fillComparison(
-        "Two",
-        secondVehicle
-    );
+let vehicles = [];
+
+let selectedVehicles = [];
+
+
+/* ================================
+   SHOW MESSAGE
+================================ */
+
+function showMessage(message, type = "error") {
+
+    const box =
+        document.getElementById("message");
+
+    box.textContent = message;
+
+    box.className =
+        "message " + type;
+
+    box.style.display = "block";
+}
+
+
+/* ================================
+   HIDE MESSAGE
+================================ */
+
+function hideMessage() {
+
+    const box =
+        document.getElementById("message");
+
+    box.style.display = "none";
+}
+
+
+/* ================================
+   LOAD PUBLISHED VEHICLES
+================================ */
+
+async function loadVehicles() {
+
+    hideMessage();
+
+    const {
+        data,
+        error
+    } = await supabaseClient
+        .from("vehicles")
+        .select("*")
+        .eq("status", "published")
+        .order("created_at", {
+            ascending: false
+        });
+
+    if (error) {
+
+        console.error(error);
+
+        showMessage(
+            "Could not load vehicles: " +
+            error.message
+        );
+
+        document.getElementById(
+            "vehicleList"
+        ).innerHTML =
+            `<div class="empty">
+                Unable to load vehicles.
+             </div>`;
+
+        return;
+    }
+
+    vehicles = data || [];
+
+    renderVehicleList();
+}
+
+
+/* ================================
+   IMAGE
+================================ */
+
+function getImage(vehicle) {
+
+    if (
+        vehicle.main_image &&
+        vehicle.main_image.startsWith("http")
+    ) {
+
+        return vehicle.main_image;
+    }
+
+    if (
+        vehicle.main_image &&
+        vehicle.main_image.startsWith("/")
+    ) {
+
+        return vehicle.main_image;
+    }
+
+    return "https://via.placeholder.com/600x400?text=No+Vehicle+Photo";
+}
+
+
+/* ================================
+   PRICE
+================================ */
+
+function formatPrice(price) {
+
+    if (
+        price === null ||
+        price === undefined ||
+        price === ""
+    ) {
+
+        return "Price on Request";
+    }
+
+    const number = Number(price);
+
+    if (isNaN(number)) {
+
+        return price;
+    }
+
+    return "KES " +
+        number.toLocaleString();
+}
+
+
+/* ================================
+   FILTER
+================================ */
+
+function getFilteredVehicles() {
+
+    const search =
+        document.getElementById(
+            "searchInput"
+        ).value
+        .trim()
+        .toLowerCase();
+
+    const category =
+        document.getElementById(
+            "categoryFilter"
+        ).value;
+
+    return vehicles.filter(vehicle => {
+
+        if (
+            category !== "all" &&
+            vehicle.category !== category
+        ) {
+
+            return false;
+        }
+
+        if (!search) {
+
+            return true;
+        }
+
+        const text = [
+
+            vehicle.make,
+            vehicle.model,
+            vehicle.year,
+            vehicle.category,
+            vehicle.location,
+            vehicle.condition,
+            vehicle.listing_id
+
+        ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+
+        return text.includes(search);
+    });
+}
+
+
+/* ================================
+   RENDER VEHICLE LIST
+================================ */
+
+function renderVehicleList() {
+
+    const container =
+        document.getElementById(
+            "vehicleList"
+        );
+
+    const filtered =
+        getFilteredVehicles();
+
+    if (!filtered.length) {
+
+        container.innerHTML =
+            `<div class="empty">
+                No published vehicles found.
+             </div>`;
+
+        return;
+    }
+
+    container.innerHTML = `
+
+        <div class="vehicle-list">
+
+            ${filtered.map(vehicle => {
+
+                const selected =
+                    selectedVehicles.includes(
+                        vehicle.id
+                    );
+
+                const name =
+                    `${vehicle.make || ""} ${vehicle.model || ""}`.trim();
+
+                return `
+
+                    <div
+                        class="vehicle-option ${selected ? "selected" : ""}"
+                        onclick="toggleVehicle('${vehicle.id}')"
+                    >
+
+                        <img
+                            src="${getImage(vehicle)}"
+                            alt="${name}"
+                            onerror="
+                                this.src='https://via.placeholder.com/600x400?text=No+Vehicle+Photo'
+                            "
+                        >
+
+                        <h4>
+                            ${name || "Vehicle"}
+                        </h4>
+
+                        <p>
+                            <strong>Year:</strong>
+                            ${vehicle.year || "N/A"}
+                        </p>
+
+                        <p>
+                            <strong>Category:</strong>
+                            ${vehicle.category || "N/A"}
+                        </p>
+
+                        <p>
+                            <strong>Price:</strong>
+                            ${formatPrice(vehicle.price)}
+                        </p>
+
+                        <p>
+                            <strong>Location:</strong>
+                            ${vehicle.location || "N/A"}
+                        </p>
+
+                        <p>
+                            <strong>Listing ID:</strong>
+                            ${vehicle.listing_id || "N/A"}
+                        </p>
+
+                    </div>
+                `;
+
+            }).join("")}
+
+        </div>
+    `;
+
+    updateCompareButton();
+}
+
+
+/* ================================
+   SELECT VEHICLE
+================================ */
+
+function toggleVehicle(id) {
+
+    const index =
+        selectedVehicles.indexOf(id);
+
+    if (index !== -1) {
+
+        selectedVehicles.splice(
+            index,
+            1
+        );
+
+    } else {
+
+        if (selectedVehicles.length >= 3) {
+
+            showMessage(
+                "You can compare a maximum of 3 vehicles.",
+                "error"
+            );
+
+            return;
+        }
+
+        selectedVehicles.push(id);
+    }
+
+    renderVehicleList();
+}
+
+
+/* ================================
+   UPDATE BUTTON
+================================ */
+
+function updateCompareButton() {
+
+    const button =
+        document.getElementById(
+            "compareButton"
+        );
+
+    button.disabled =
+        selectedVehicles.length < 2;
+
+    button.textContent =
+        selectedVehicles.length >= 2
+            ? `Compare ${selectedVehicles.length} Vehicles`
+            : "Compare Selected Vehicles";
+}
+
+
+/* ================================
+   CLEAR
+================================ */
+
+function clearSelection() {
+
+    selectedVehicles = [];
+
+    document.getElementById(
+        "comparisonContainer"
+    ).innerHTML = "";
+
+    hideMessage();
+
+    renderVehicleList();
+}
+
+
+/* ================================
+   SHOW COMPARISON
+================================ */
+
+function showComparison() {
+
+    if (selectedVehicles.length < 2) {
+
+        showMessage(
+            "Please select at least 2 vehicles.",
+            "error"
+        );
+
+        return;
+    }
+
+    const selected =
+        vehicles.filter(vehicle =>
+            selectedVehicles.includes(
+                vehicle.id
+            )
+        );
+
+    const fields = [
+
+        ["Vehicle", "name"],
+        ["Photo", "image"],
+        ["Listing ID", "listing_id"],
+        ["Year", "year"],
+        ["Make", "make"],
+        ["Model", "model"],
+        ["Category", "category"],
+        ["Condition", "condition"],
+        ["Price", "price"],
+        ["Location", "location"],
+        ["Mileage", "mileage"],
+        ["Engine", "engine"],
+        ["Transmission", "transmission"],
+        ["Fuel", "fuel"],
+        ["Drive", "drive"],
+        ["Description", "description"]
+
+    ];
+
+    let html = `
+
+        <div class="comparison">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Specification</th>
+
+                        ${selected.map(vehicle => `
+
+                            <th>
+
+                                ${vehicle.make || ""}
+                                ${vehicle.model || ""}
+
+                                <br>
+
+                                ${vehicle.year || ""}
+
+                            </th>
+
+                        `).join("")}
+
+                    </tr>
+                </thead>
+
+                <tbody>
+    `;
+
+
+    fields.forEach(field => {
+
+        const label = field[0];
+        const key = field[1];
+
+        html += `
+            <tr>
+                <td>${label}</td>
+        `;
+
+
+        selected.forEach(vehicle => {
+
+            let value = "N/A";
+
+
+            if (key === "name") {
+
+                value =
+                    `${vehicle.make || ""} ${vehicle.model || ""}`.trim()
+                    || "Vehicle";
+            }
+
+
+            else if (key === "image") {
+
+                value = `
+
+                    <img
+                        class="compare-image"
+                        src="${getImage(vehicle)}"
+                        alt="Vehicle"
+                    >
+
+                `;
+            }
+
+
+            else if (key === "price") {
+
+                value =
+                    `<span class="price">
+                        ${formatPrice(vehicle.price)}
+                     </span>`;
+            }
+
+
+            else if (
+                vehicle[key] !== null &&
+                vehicle[key] !== undefined &&
+                vehicle[key] !== ""
+            ) {
+
+                value =
+                    escapeHtml(
+                        String(vehicle[key])
+                    );
+            }
+
+
+            html += `
+                <td>
+                    ${value}
+                </td>
+            `;
+        });
+
+
+        html += `</tr>`;
+    });
+
+
+    html += `
+
+                    <tr>
+
+                        <td>Vehicle Details</td>
+
+                        ${selected.map(vehicle => `
+
+                            <td>
+
+                                <a
+                                    class="view-btn"
+                                    href="vehicle-details.html?id=${encodeURIComponent(vehicle.listing_id || vehicle.id)}"
+                                >
+                                    View Vehicle
+                                </a>
+
+                            </td>
+
+                        `).join("")}
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+    `;
 
 
     document.getElementById(
-        "emptyMessage"
-    ).style.display = "none";
+        "comparisonContainer"
+    ).innerHTML = html;
 
 
     document.getElementById(
-        "comparisonSection"
-    ).classList.add("show");
-
-
-    document.getElementById(
-        "comparisonSection"
+        "comparisonContainer"
     ).scrollIntoView({
-        behavior:"smooth",
-        block:"start"
+        behavior: "smooth"
     });
-
 }
 
 
-/* FILL COMPARISON */
+/* ================================
+   ESCAPE HTML
+================================ */
 
-function fillComparison(number,vehicle){
+function escapeHtml(value) {
 
-    document.getElementById(
-        "vehicle" + number + "Header"
-    ).innerHTML = `
-
-        <div class="vehicle-name">
-
-            ${vehicle.make}
-            ${vehicle.model}
-
-        </div>
-
-    `;
-
-
-    document.getElementById(
-        "vehicle" + number + "Image"
-    ).innerHTML = `
-
-        <img
-
-            src="${vehicle.image}"
-
-            class="compare-image"
-
-            alt="${vehicle.year} ${vehicle.make} ${vehicle.model}"
-
-            onerror="
-                this.src='images/suv.jpg';
-            "
-
-        >
-
-        <div class="vehicle-name">
-
-            ${vehicle.year}
-            ${vehicle.make}
-            ${vehicle.model}
-
-        </div>
-
-    `;
-
-
-    document.getElementById(
-        "vehicle" + number + "Price"
-    ).textContent =
-        formatPrice(vehicle.price);
-
-
-    document.getElementById(
-        "vehicle" + number + "Year"
-    ).textContent =
-        vehicle.year;
-
-
-    document.getElementById(
-        "vehicle" + number + "Category"
-    ).textContent =
-        vehicle.category;
-
-
-    document.getElementById(
-        "vehicle" + number + "Mileage"
-    ).textContent =
-        formatMileage(vehicle.mileage);
-
-
-    document.getElementById(
-        "vehicle" + number + "Engine"
-    ).textContent =
-        vehicle.engine;
-
-
-    document.getElementById(
-        "vehicle" + number + "Fuel"
-    ).textContent =
-        vehicle.fuel;
-
-
-    document.getElementById(
-        "vehicle" + number + "Transmission"
-    ).textContent =
-        vehicle.transmission;
-
-
-    document.getElementById(
-        "vehicle" + number + "Drive"
-    ).textContent =
-        vehicle.drive;
-
-
-    document.getElementById(
-        "vehicle" + number + "Condition"
-    ).textContent =
-        vehicle.condition;
-
-
-    document.getElementById(
-        "vehicle" + number + "Location"
-    ).textContent =
-        vehicle.location;
-
-
-    document.getElementById(
-        "vehicle" + number + "Id"
-    ).textContent =
-        vehicle.id;
-
-
-    document.getElementById(
-        "details" + number
-    ).href =
-        "vehicle-details.html?id=" +
-        encodeURIComponent(vehicle.id);
-
+    return value
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
 
-/* RESET */
+/* ================================
+   SEARCH
+================================ */
 
-function resetComparison(){
-
-    vehicleOne.value = "";
-
-    vehicleTwo.value = "";
-
-
-    document.getElementById(
-        "comparisonSection"
-    ).classList.remove("show");
+document
+    .getElementById("searchInput")
+    .addEventListener(
+        "input",
+        renderVehicleList
+    );
 
 
-    document.getElementById(
-        "emptyMessage"
-    ).style.display = "block";
+document
+    .getElementById("categoryFilter")
+    .addEventListener(
+        "change",
+        renderVehicleList
+    );
 
 
-    window.scrollTo({
+/* ================================
+   START
+================================ */
 
-        top:0,
-
-        behavior:"smooth"
-
-    });
-
-}
-
-
-/* FOOTER YEAR */
-
-document.getElementById("year").textContent =
-    new Date().getFullYear();
+loadVehicles();
 
 </script>
 
