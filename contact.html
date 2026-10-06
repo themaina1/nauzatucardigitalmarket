@@ -4,481 +4,222 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Contact Nauza Tu | Digital Motor Market Kenya</title>
+<title>Send Inquiry | Nauza Tu Digital Motor Market</title>
 
 <meta name="description"
-content="Contact Nauza Tu Digital Motor Market in Kenya. Make a vehicle enquiry, ask about an advertisement, contact the marketplace, or advertise your vehicle.">
+content="Send an inquiry about a vehicle listed on Nauza Tu Digital Motor Market.">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+* {
+    box-sizing: border-box;
 }
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f4f6f8;
-    color:#222;
-    line-height:1.6;
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7f5;
+    color: #18352b;
 }
 
-header{
-    background:#111;
-    color:#fff;
-    position:sticky;
-    top:0;
-    z-index:1000;
-    box-shadow:0 2px 8px rgba(0,0,0,.25);
+/* HEADER */
+
+header {
+    background: #064d3b;
+    color: white;
+    padding: 18px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
 }
 
-.navbar{
-    max-width:1200px;
-    margin:auto;
-    padding:15px 20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
+.logo {
+    font-size: 27px;
+    font-weight: bold;
 }
 
-.logo{
-    color:#fff;
-    text-decoration:none;
-    font-size:21px;
-    font-weight:800;
-    white-space:nowrap;
+.logo span {
+    color: #31d98b;
 }
 
-.logo span{
-    color:#f4b400;
+nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
-nav{
-    display:flex;
-    flex-wrap:wrap;
-    gap:17px;
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-nav a{
-    color:#fff;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:600;
+nav a:hover {
+    color: #31d98b;
 }
 
-nav a:hover,
-nav a.active{
-    color:#f4b400;
+/* MAIN */
+
+.container {
+    width: 94%;
+    max-width: 800px;
+    margin: 40px auto;
 }
 
-
-/* HERO */
-
-.hero{
-    background:linear-gradient(135deg,#111,#292929);
-    color:#fff;
-    text-align:center;
-    padding:55px 20px;
+.page-title {
+    text-align: center;
+    margin-bottom: 25px;
 }
 
-.hero h1{
-    font-size:38px;
-    margin-bottom:10px;
+.page-title h1 {
+    color: #07543f;
+    margin-bottom: 8px;
 }
 
-.hero p{
-    max-width:720px;
-    margin:auto;
-    color:#ddd;
+.page-title p {
+    color: #61716b;
 }
 
+/* VEHICLE INFORMATION */
 
-/* CONTAINER */
-
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:35px 20px;
+.vehicle-box {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
 }
 
-
-/* INTRO */
-
-.intro{
-    background:#fff;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 3px 12px rgba(0,0,0,.08);
-    margin-bottom:25px;
+.vehicle-box h2 {
+    margin-top: 0;
+    color: #07543f;
 }
 
-.intro h2{
-    margin-bottom:10px;
+.vehicle-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    color: #586961;
 }
-
-.intro p{
-    color:#555;
-}
-
-
-/* CONTACT CARDS */
-
-.contact-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    margin-bottom:30px;
-}
-
-.contact-card{
-    background:#fff;
-    padding:25px;
-    border-radius:12px;
-    text-align:center;
-    box-shadow:0 3px 12px rgba(0,0,0,.07);
-}
-
-.contact-icon{
-    font-size:30px;
-    margin-bottom:10px;
-}
-
-.contact-card h3{
-    margin-bottom:7px;
-}
-
-.contact-card p{
-    color:#666;
-    font-size:14px;
-}
-
-.contact-card a{
-    display:inline-block;
-    margin-top:10px;
-    color:#111;
-    font-weight:800;
-    text-decoration:none;
-    word-break:break-word;
-}
-
-.contact-card a:hover{
-    color:#c58e00;
-}
-
-
-/* MAIN CONTACT AREA */
-
-.main-grid{
-    display:grid;
-    grid-template-columns:1.5fr 1fr;
-    gap:25px;
-    align-items:start;
-}
-
 
 /* FORM */
 
-.form-card{
-    background:#fff;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 3px 12px rgba(0,0,0,.08);
+.form-box {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
 }
 
-.form-card h2{
-    margin-bottom:7px;
+.form-group {
+    margin-bottom: 17px;
 }
 
-.form-description{
-    color:#666;
-    font-size:14px;
-    margin-bottom:25px;
-}
-
-.form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:17px;
-}
-
-.form-group{
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-}
-
-.form-group.full{
-    grid-column:1 / -1;
-}
-
-label{
-    font-size:13px;
-    font-weight:700;
-}
-
-.required{
-    color:#c00;
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
 }
 
 input,
-select,
-textarea{
-    width:100%;
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:7px;
-    font-family:inherit;
-    font-size:14px;
+textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccd7d2;
+    border-radius: 7px;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-textarea{
-    min-height:150px;
-    resize:vertical;
+textarea {
+    min-height: 140px;
+    resize: vertical;
 }
 
 input:focus,
-select:focus,
-textarea:focus{
-    outline:none;
-    border-color:#f4b400;
+textarea:focus {
+    outline: none;
+    border-color: #08784f;
 }
 
-.help{
-    color:#777;
-    font-size:12px;
+/* BUTTON */
+
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 7px;
+    background: #08784f;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-
-/* SUBMIT */
-
-.submit-area{
-    margin-top:22px;
+button:hover {
+    background: #065c3e;
 }
 
-.submit-button{
-    width:100%;
-    border:none;
-    background:#111;
-    color:#fff;
-    padding:14px;
-    border-radius:8px;
-    font-size:15px;
-    font-weight:800;
-    cursor:pointer;
+button:disabled {
+    background: #91a69d;
+    cursor: not-allowed;
 }
 
-.submit-button:hover{
-    background:#333;
+/* STATUS */
+
+.status {
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 7px;
+    display: none;
+    line-height: 1.5;
 }
 
-
-/* SIDEBAR */
-
-.sidebar{
-    display:flex;
-    flex-direction:column;
-    gap:18px;
+.status.error {
+    display: block;
+    background: #ffe8e8;
+    color: #a40000;
 }
 
-.info-box{
-    background:#fff;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 3px 12px rgba(0,0,0,.07);
+.status.success {
+    display: block;
+    background: #e6f7ed;
+    color: #07543f;
 }
-
-.info-box h2{
-    margin-bottom:12px;
-    font-size:20px;
-}
-
-.info-box p{
-    color:#555;
-    font-size:14px;
-}
-
-.info-box ul{
-    padding-left:20px;
-    margin-top:10px;
-}
-
-.info-box li{
-    margin:7px 0;
-    color:#555;
-    font-size:14px;
-}
-
-
-/* DIRECT CONTACT */
-
-.direct-contact{
-    background:#111;
-    color:#fff;
-}
-
-.direct-contact h2{
-    color:#fff;
-}
-
-.direct-contact p{
-    color:#ddd;
-    margin-bottom:10px;
-}
-
-.direct-link{
-    display:block;
-    color:#f4b400;
-    text-decoration:none;
-    font-weight:700;
-    margin:8px 0;
-}
-
-.direct-link:hover{
-    color:#fff;
-}
-
-
-/* WHATSAPP */
-
-.whatsapp-button{
-    display:block;
-    background:#f4b400;
-    color:#111;
-    text-align:center;
-    padding:13px;
-    border-radius:7px;
-    text-decoration:none;
-    font-weight:800;
-    margin-top:15px;
-}
-
-.whatsapp-button:hover{
-    background:#d99e00;
-}
-
-
-/* MARKETPLACE NOTICE */
-
-.notice{
-    margin-top:30px;
-    background:#fff8df;
-    border-left:5px solid #f4b400;
-    padding:22px;
-    border-radius:8px;
-}
-
-.notice h3{
-    margin-bottom:9px;
-}
-
-.notice p{
-    color:#555;
-    font-size:13px;
-    margin-bottom:8px;
-}
-
-.notice p:last-child{
-    margin-bottom:0;
-}
-
 
 /* FOOTER */
 
-footer{
-    margin-top:50px;
-    background:#111;
-    color:#bbb;
-    padding:35px 20px;
+footer {
+    background: #064d3b;
+    color: white;
+    text-align: center;
+    padding: 22px;
+    margin-top: 50px;
 }
-
-.footer-inner{
-    max-width:1200px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:2fr 1fr 1fr;
-    gap:30px;
-}
-
-footer h3{
-    color:#fff;
-    margin-bottom:10px;
-}
-
-footer p{
-    font-size:14px;
-}
-
-footer a{
-    display:block;
-    color:#bbb;
-    text-decoration:none;
-    font-size:14px;
-    margin:6px 0;
-}
-
-footer a:hover{
-    color:#f4b400;
-}
-
-.copyright{
-    border-top:1px solid #333;
-    margin-top:25px;
-    padding-top:20px;
-    text-align:center;
-    font-size:13px;
-}
-
 
 /* MOBILE */
 
-@media(max-width:850px){
+@media (max-width: 600px) {
 
-    .contact-grid{
-        grid-template-columns:1fr 1fr;
+    header {
+        flex-direction: column;
+        text-align: center;
     }
 
-    .main-grid{
-        grid-template-columns:1fr;
+    nav {
+        justify-content: center;
+        font-size: 14px;
     }
 
-    .footer-inner{
-        grid-template-columns:1fr 1fr;
+    .vehicle-info {
+        grid-template-columns: 1fr;
     }
 
-}
-
-
-@media(max-width:600px){
-
-    .navbar{
-        flex-direction:column;
-        align-items:flex-start;
-    }
-
-    .hero h1{
-        font-size:30px;
-    }
-
-    .contact-grid{
-        grid-template-columns:1fr;
-    }
-
-    .form-grid{
-        grid-template-columns:1fr;
-    }
-
-    .form-group.full{
-        grid-column:auto;
-    }
-
-    .form-card{
-        padding:20px;
-    }
-
-    .footer-inner{
-        grid-template-columns:1fr;
+    .container {
+        margin-top: 25px;
     }
 
 }
@@ -490,740 +231,620 @@ footer a:hover{
 <body>
 
 
-<!-- HEADER -->
-
 <header>
 
-<div class="navbar">
+    <div class="logo">
+        🚗 Nauza <span>Tu</span>
+    </div>
 
-<a href="index.html" class="logo">
-Nauza Tu <span>Digital Motor Market</span>
-</a>
-
-<nav>
-
-<a href="index.html">Home</a>
-
-<a href="vehicles.html">Vehicles</a>
-
-<a href="compare.html">Compare</a>
-
-<a href="sell.html">Sell / Advertise</a>
-
-<a href="about.html">About</a>
-
-<a href="contact.html" class="active">Contact</a>
-
-</nav>
-
-</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="vehicles.html">Vehicles</a>
+        <a href="compare.html">Compare</a>
+        <a href="sell.html">Sell / Advertise</a>
+        <a href="contact.html">Contact</a>
+    </nav>
 
 </header>
-
-
-
-<!-- HERO -->
-
-<section class="hero">
-
-<h1>Contact Nauza Tu</h1>
-
-<p>
-Have a question about a vehicle advertisement, want to contact the marketplace,
-or need help with an enquiry? We are here to help.
-</p>
-
-</section>
-
 
 
 <main class="container">
 
 
-<!-- INTRO -->
+    <div class="page-title">
 
-<section class="intro">
+        <h1>
+            Send Inquiry
+        </h1>
 
-<h2>How Can We Help?</h2>
+        <p>
+            Contact the seller directly about this vehicle.
+        </p>
 
-<p>
-Nauza Tu Digital Motor Market connects potential buyers with people and
-businesses advertising vehicles. If you are interested in a particular
-vehicle, please include its listing ID in your message so that we can
-identify the advertisement quickly.
-</p>
+    </div>
 
-</section>
 
+    <!-- VEHICLE DETAILS -->
 
+    <div
+        class="vehicle-box"
+        id="vehicleBox"
+    >
 
-<!-- CONTACT CARDS -->
+        <h2 id="vehicleName">
+            Loading vehicle...
+        </h2>
 
-<section class="contact-grid">
+        <div
+            class="vehicle-info"
+            id="vehicleInfo"
+        >
+        </div>
 
+    </div>
 
-<div class="contact-card">
 
-<div class="contact-icon">📞</div>
+    <!-- INQUIRY FORM -->
 
-<h3>Call Us</h3>
+    <div class="form-box">
 
-<p>
-For general marketplace enquiries.
-</p>
+        <form
+            id="inquiryForm"
+        >
 
-<a href="tel:+254722910913">
-+254 722 910 913
-</a>
+            <div class="form-group">
 
-<a href="tel:+254724708032">
-+254 724 708 032
-</a>
+                <label for="name">
+                    Your Name
+                </label>
 
-</div>
+                <input
+                    type="text"
+                    id="name"
+                    required
+                    placeholder="Enter your name"
+                >
 
+            </div>
 
 
-<div class="contact-card">
+            <div class="form-group">
 
-<div class="contact-icon">💬</div>
+                <label for="phone">
+                    Your Phone Number
+                </label>
 
-<h3>WhatsApp</h3>
+                <input
+                    type="tel"
+                    id="phone"
+                    required
+                    placeholder="e.g. 0712345678"
+                >
 
-<p>
-Send us a message through WhatsApp.
-</p>
+            </div>
 
-<a
-href="https://wa.me/254722910913?text=Hello%20Nauza%20Tu%20Digital%20Motor%20Market"
-target="_blank"
-rel="noopener"
->
-Chat on WhatsApp
-</a>
 
-</div>
+            <div class="form-group">
 
+                <label for="message">
+                    Your Inquiry
+                </label>
 
+                <textarea
+                    id="message"
+                    required
+                    placeholder="I am interested in this vehicle. Please let me know if it is still available."
+                ></textarea>
 
-<div class="contact-card">
+            </div>
 
-<div class="contact-icon">✉️</div>
 
-<h3>Email</h3>
+            <button
+                type="submit"
+                id="sendButton"
+            >
+                Send Inquiry
+            </button>
 
-<p>
-Send us a detailed marketplace enquiry.
-</p>
 
-<a href="mailto:nauzatu@gmail.com">
-nauzatu@gmail.com
-</a>
+            <div
+                id="status"
+                class="status"
+            ></div>
 
-</div>
+        </form>
 
-
-</section>
-
-
-
-<!-- MAIN AREA -->
-
-<section class="main-grid">
-
-
-<!-- FORM -->
-
-<div class="form-card">
-
-<h2>Send an Enquiry</h2>
-
-<p class="form-description">
-
-Use this form for vehicle enquiries, advertisement questions,
-seller enquiries or general marketplace communication.
-
-</p>
-
-
-<form
-action="https://formsubmit.co/nauzatu@gmail.com"
-method="POST"
->
-
-
-<input
-type="hidden"
-name="_subject"
-value="Nauza Tu Marketplace Enquiry"
->
-
-<input
-type="hidden"
-name="_next"
-value="https://themaina1.github.io/nauza-tu-digital-motor-market/thankyou.html"
->
-
-<input
-type="hidden"
-name="_captcha"
-value="false"
->
-
-
-<div class="form-grid">
-
-
-<!-- NAME -->
-
-<div class="form-group">
-
-<label>
-Your Name <span class="required">*</span>
-</label>
-
-<input
-type="text"
-name="name"
-required
-placeholder="Enter your full name"
->
-
-</div>
-
-
-
-<!-- PHONE -->
-
-<div class="form-group">
-
-<label>
-Phone Number <span class="required">*</span>
-</label>
-
-<input
-type="tel"
-name="phone"
-required
-placeholder="+254..."
->
-
-</div>
-
-
-
-<!-- EMAIL -->
-
-<div class="form-group">
-
-<label>
-Email Address <span class="required">*</span>
-</label>
-
-<input
-type="email"
-name="email"
-required
-placeholder="you@example.com"
->
-
-</div>
-
-
-
-<!-- ENQUIRY TYPE -->
-
-<div class="form-group">
-
-<label>
-Enquiry Type <span class="required">*</span>
-</label>
-
-<select
-name="enquiry_type"
-id="enquiryType"
-required
->
-
-<option value="">
-Select enquiry type
-</option>
-
-<option value="Vehicle Enquiry">
-Vehicle Enquiry
-</option>
-
-<option value="Seller / Advertiser Enquiry">
-Seller / Advertiser Enquiry
-</option>
-
-<option value="Advertisement Question">
-Advertisement Question
-</option>
-
-<option value="General Marketplace Enquiry">
-General Marketplace Enquiry
-</option>
-
-<option value="Report a Listing">
-Report a Listing
-</option>
-
-<option value="Other">
-Other
-</option>
-
-</select>
-
-</div>
-
-
-
-<!-- LISTING ID -->
-
-<div
-class="form-group"
-id="listingGroup"
->
-
-<label>
-Vehicle / Listing ID
-</label>
-
-<input
-type="text"
-name="listing_id"
-id="listingId"
-placeholder="e.g. NT001"
->
-
-<span class="help">
-If your enquiry concerns a particular vehicle, enter its listing ID.
-</span>
-
-</div>
-
-
-
-<!-- VEHICLE -->
-
-<div
-class="form-group"
-id="vehicleGroup"
->
-
-<label>
-Vehicle
-</label>
-
-<input
-type="text"
-name="vehicle_reference"
-id="vehicleReference"
-placeholder="e.g. Toyota Harrier 2019"
->
-
-</div>
-
-
-
-<!-- MESSAGE -->
-
-<div class="form-group full">
-
-<label>
-Your Message <span class="required">*</span>
-</label>
-
-<textarea
-name="message"
-id="message"
-required
-placeholder="Tell us how we can help..."
-></textarea>
-
-</div>
-
-
-</div>
-
-
-<div class="submit-area">
-
-<button
-type="submit"
-class="submit-button"
->
-Send Enquiry
-</button>
-
-</div>
-
-
-</form>
-
-</div>
-
-
-
-<!-- SIDEBAR -->
-
-<aside class="sidebar">
-
-
-<div class="info-box direct-contact">
-
-<h2>Direct Contact</h2>
-
-<p>
-For general marketplace assistance:
-</p>
-
-<a
-class="direct-link"
-href="tel:+254722910913"
->
-📞 +254 722 910 913
-</a>
-
-<a
-class="direct-link"
-href="tel:+254724708032"
->
-📞 +254 724 708 032
-</a>
-
-<a
-class="direct-link"
-href="mailto:nauzatu@gmail.com"
->
-✉️ nauzatu@gmail.com
-</a>
-
-<a
-class="whatsapp-button"
-href="https://wa.me/254722910913?text=Hello%20Nauza%20Tu%20Digital%20Motor%20Market"
-target="_blank"
-rel="noopener"
->
-Message Us on WhatsApp
-</a>
-
-</div>
-
-
-
-<div class="info-box">
-
-<h2>Interested in a Vehicle?</h2>
-
-<p>
-When contacting us about a vehicle, provide the listing ID shown
-on the vehicle's details page.
-</p>
-
-<ul>
-
-<li>Vehicle make and model</li>
-
-<li>Listing ID</li>
-
-<li>Vehicle location</li>
-
-<li>Your preferred contact method</li>
-
-<li>Your specific question</li>
-
-</ul>
-
-</div>
-
-
-
-<div class="info-box">
-
-<h2>Want to Advertise?</h2>
-
-<p>
-If you own or are authorized to advertise a vehicle, you can submit
-your vehicle through our dedicated advertising form.
-</p>
-
-<a
-href="sell.html"
-class="whatsapp-button"
->
-Advertise Your Vehicle
-</a>
-
-</div>
-
-
-</aside>
-
-
-</section>
-
-
-
-<!-- MARKETPLACE NOTICE -->
-
-<section class="notice">
-
-<h3>Important Marketplace Notice</h3>
-
-<p>
-Nauza Tu Digital Motor Market is a digital marketplace and advertising
-platform. We connect potential buyers with vehicle sellers and advertisers.
-</p>
-
-<p>
-Nauza Tu does not own the vehicles advertised on this website and is not
-the seller of those vehicles. Vehicle enquiries may be forwarded to or
-handled in connection with the respective advertiser.
-</p>
-
-<p>
-Before purchasing any vehicle, buyers should independently verify ownership,
-documentation, vehicle condition, mileage, accident history, outstanding
-obligations and other relevant details. Never send payment solely because
-a vehicle appears on this website.
-</p>
-
-</section>
-
+    </div>
 
 </main>
 
 
-
-<!-- FOOTER -->
-
 <footer>
 
-<div class="footer-inner">
-
-
-<div>
-
-<h3>Nauza Tu Digital Motor Market</h3>
-
-<p>
-A Kenyan digital marketplace helping buyers discover vehicles
-advertised by owners, sellers and dealers.
-</p>
-
-<p style="margin-top:10px;">
-Nairobi, Kenya
-</p>
-
-</div>
-
-
-
-<div>
-
-<h3>Marketplace</h3>
-
-<a href="vehicles.html">
-Browse Vehicles
-</a>
-
-<a href="compare.html">
-Compare Vehicles
-</a>
-
-<a href="sell.html">
-Sell / Advertise
-</a>
-
-<a href="contact.html">
-Contact Us
-</a>
-
-</div>
-
-
-
-<div>
-
-<h3>Information</h3>
-
-<a href="about.html">
-About Us
-</a>
-
-<a href="privacy.html">
-Privacy Policy
-</a>
-
-<a href="terms.html">
-Terms & Conditions
-</a>
-
-</div>
-
-
-</div>
-
-
-<div class="copyright">
-
-© <span id="year"></span>
-Nauza Tu Digital Motor Market.
-All rights reserved.
-
-</div>
+    © 2026 Nauza Tu Digital Motor Market
+    | Find Your Next Ride Today
 
 </footer>
 
 
-
 <script>
 
-/* ============================================
-   CURRENT YEAR
-============================================ */
+/* ==================================================
+   SUPABASE
+================================================== */
 
-document.getElementById("year").textContent =
-new Date().getFullYear();
+const SUPABASE_URL =
+    "https://hoogdxegjomtsvaddkwk.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_VEq6gUDlCthklOIgVUaDzQ_5TaqAsu8";
+
+const supabaseClient =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
 
 
-
-/* ============================================
-   READ VEHICLE FROM URL
-============================================ */
+/* ==================================================
+   GET VEHICLE ID FROM URL
+================================================== */
 
 const params =
-new URLSearchParams(window.location.search);
+    new URLSearchParams(
+        window.location.search
+    );
 
 const vehicleId =
-params.get("vehicle");
+    params.get("id");
 
 
+let currentVehicle = null;
+let seller = null;
 
-/* ============================================
-   LOAD VEHICLE INFORMATION
-============================================ */
 
-if(vehicleId){
+/* ==================================================
+   NORMALIZE WHATSAPP
+================================================== */
 
-    document.getElementById("listingId").value =
-        vehicleId;
+function normalizeWhatsApp(number) {
 
-    /*
-       If vehicles-data.js exists, attempt to
-       identify the vehicle automatically.
-    */
+    if (!number) {
+        return "";
+    }
 
-    const script =
-        document.createElement("script");
+    let value =
+        String(number)
+        .replace(/\s+/g, "")
+        .replace(/-/g, "");
 
-    script.src = "vehicles-data.js";
+    if (value.startsWith("+")) {
+        value =
+            value.substring(1);
+    }
 
-    script.onload = function(){
+    if (value.startsWith("07")) {
 
-        if(typeof vehicles !== "undefined"){
+        value =
+            "254" +
+            value.substring(1);
 
-            const vehicle =
-                vehicles.find(
-                    item => item.id === vehicleId
-                );
+    }
 
-            if(vehicle){
+    if (
+        value.startsWith("7") &&
+        value.length === 9
+    ) {
 
-                document.getElementById(
-                    "vehicleReference"
-                ).value =
-                    vehicle.make +
-                    " " +
-                    vehicle.model +
-                    " " +
-                    vehicle.year;
+        value =
+            "254" +
+            value;
 
-                document.getElementById(
-                    "message"
-                ).value =
-                    "I am interested in the " +
-                    vehicle.make +
-                    " " +
-                    vehicle.model +
-                    " (" +
-                    vehicle.year +
-                    "), Listing ID " +
-                    vehicle.id +
-                    ". Please provide information on how I can contact the seller.";
+    }
 
-            }
+    return value;
+}
+
+
+/* ==================================================
+   PARSE SELLER
+================================================== */
+
+function parseSeller(vehicle) {
+
+    if (!vehicle.seller) {
+
+        return {
+            name: "Private Seller",
+            phone: "",
+            whatsapp: ""
+        };
+
+    }
+
+    try {
+
+        if (
+            typeof vehicle.seller === "string"
+        ) {
+
+            return JSON.parse(
+                vehicle.seller
+            );
 
         }
 
-    };
-
-    document.body.appendChild(script);
-
-}
-
-
-
-/* ============================================
-   ENQUIRY TYPE
-============================================ */
-
-const enquiryType =
-document.getElementById("enquiryType");
-
-const listingGroup =
-document.getElementById("listingGroup");
-
-const vehicleGroup =
-document.getElementById("vehicleGroup");
-
-
-function updateEnquiryFields(){
-
-    const type =
-        enquiryType.value;
-
-    if(
-        type === "Vehicle Enquiry" ||
-        type === "Advertisement Question" ||
-        type === "Report a Listing"
-    ){
-
-        listingGroup.style.display =
-            "flex";
-
-        vehicleGroup.style.display =
-            "flex";
+        return vehicle.seller;
 
     }
 
-    else{
+    catch (error) {
 
-        listingGroup.style.display =
-            "none";
-
-        vehicleGroup.style.display =
-            "none";
+        return {
+            name: "Private Seller",
+            phone: "",
+            whatsapp: ""
+        };
 
     }
 
 }
 
 
-enquiryType.addEventListener(
-    "change",
-    updateEnquiryFields
+/* ==================================================
+   LOAD VEHICLE
+================================================== */
+
+async function loadVehicle() {
+
+    const nameElement =
+        document.getElementById(
+            "vehicleName"
+        );
+
+    const infoElement =
+        document.getElementById(
+            "vehicleInfo"
+        );
+
+
+    if (!vehicleId) {
+
+        nameElement.textContent =
+            "Vehicle Inquiry";
+
+        infoElement.innerHTML = `
+            <div>
+                Please open this page
+                from a vehicle listing.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    /*
+       Try listing_id first.
+    */
+
+    let result =
+        await supabaseClient
+        .from("vehicles")
+        .select("*")
+        .eq(
+            "listing_id",
+            vehicleId
+        )
+        .eq(
+            "status",
+            "published"
+        )
+        .maybeSingle();
+
+
+    /*
+       If not found, try UUID.
+    */
+
+    if (
+        result.error ||
+        !result.data
+    ) {
+
+        result =
+            await supabaseClient
+            .from("vehicles")
+            .select("*")
+            .eq(
+                "id",
+                vehicleId
+            )
+            .eq(
+                "status",
+                "published"
+            )
+            .maybeSingle();
+
+    }
+
+
+    if (
+        result.error ||
+        !result.data
+    ) {
+
+        nameElement.textContent =
+            "Vehicle Not Found";
+
+        infoElement.innerHTML = `
+            <div>
+                This vehicle listing
+                could not be found.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    currentVehicle =
+        result.data;
+
+
+    seller =
+        parseSeller(
+            currentVehicle
+        );
+
+
+    const vehicleName =
+        `${currentVehicle.make || ""} ${
+            currentVehicle.model || ""
+        }`
+        .trim();
+
+
+    nameElement.textContent =
+        vehicleName ||
+        "Vehicle";
+
+
+    infoElement.innerHTML = `
+
+        <div>
+            <strong>Listing ID:</strong>
+            ${
+                currentVehicle.listing_id ||
+                currentVehicle.id ||
+                "—"
+            }
+        </div>
+
+
+        <div>
+            <strong>Year:</strong>
+            ${
+                currentVehicle.year ||
+                "—"
+            }
+        </div>
+
+
+        <div>
+            <strong>Category:</strong>
+            ${
+                currentVehicle.category ||
+                "—"
+            }
+        </div>
+
+
+        <div>
+            <strong>Price:</strong>
+            ${
+                currentVehicle.price
+                ?
+                "KES " +
+                Number(
+                    currentVehicle.price
+                ).toLocaleString("en-KE")
+                :
+                "Price on Request"
+            }
+        </div>
+
+
+        <div>
+            <strong>Location:</strong>
+            ${
+                currentVehicle.location ||
+                "Kenya"
+            }
+        </div>
+
+
+        <div>
+            <strong>Seller:</strong>
+            ${
+                seller.name ||
+                "Private Seller"
+            }
+        </div>
+
+    `;
+
+}
+
+
+/* ==================================================
+   SEND INQUIRY
+================================================== */
+
+document
+.getElementById("inquiryForm")
+.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        const status =
+            document.getElementById(
+                "status"
+            );
+
+        const button =
+            document.getElementById(
+                "sendButton"
+            );
+
+
+        status.className =
+            "status";
+
+        status.style.display =
+            "none";
+
+
+        if (!currentVehicle) {
+
+            status.className =
+                "status error";
+
+            status.textContent =
+                "Vehicle information is not available. Please return to the vehicle listing and try again.";
+
+            return;
+
+        }
+
+
+        const name =
+            document.getElementById(
+                "name"
+            ).value.trim();
+
+
+        const phone =
+            document.getElementById(
+                "phone"
+            ).value.trim();
+
+
+        const userMessage =
+            document.getElementById(
+                "message"
+            ).value.trim();
+
+
+        const sellerNumber =
+            normalizeWhatsApp(
+                seller.whatsapp ||
+                seller.phone ||
+                currentVehicle.whatsapp ||
+                currentVehicle.phone
+            );
+
+
+        if (!sellerNumber) {
+
+            status.className =
+                "status error";
+
+            status.textContent =
+                "This seller does not currently have a WhatsApp number registered. Please use the vehicle details page to contact the seller.";
+
+            return;
+
+        }
+
+
+        const vehicleName =
+            `${currentVehicle.make || ""} ${
+                currentVehicle.model || ""
+            }`
+            .trim();
+
+
+        const listingId =
+            currentVehicle.listing_id ||
+            currentVehicle.id ||
+            "";
+
+
+        const price =
+            currentVehicle.price
+            ?
+            Number(
+                currentVehicle.price
+            ).toLocaleString(
+                "en-KE"
+            )
+            :
+            "Price on Request";
+
+
+        /*
+           Message sent directly
+           to the registered seller.
+        */
+
+        const whatsappMessage =
+
+`Hello ${seller.name || "Seller"},
+
+My name is ${name}.
+My phone number is ${phone}.
+
+I am interested in your vehicle listed on Nauza Tu Digital Motor Market.
+
+Vehicle: ${vehicleName}
+Listing ID: ${listingId}
+Price: KES ${price}
+
+My inquiry:
+${userMessage}
+
+Please let me know if the vehicle is still available.`;
+
+
+        const whatsappURL =
+            `https://wa.me/${sellerNumber}?text=${
+                encodeURIComponent(
+                    whatsappMessage
+                )
+            }`;
+
+
+        button.disabled =
+            true;
+
+        button.textContent =
+            "Opening WhatsApp...";
+
+
+        /*
+           Open WhatsApp.
+        */
+
+        window.location.href =
+            whatsappURL;
+
+    }
 );
 
 
-/* Initial state */
+/* ==================================================
+   START
+================================================== */
 
-updateEnquiryFields();
+loadVehicle();
 
 </script>
-
 
 </body>
 </html>
