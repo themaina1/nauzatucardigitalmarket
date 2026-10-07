@@ -6,13 +6,9 @@
 
 <title>Send Inquiry | Nauza Tu Digital Motor Market</title>
 
-<meta name="description"
-content="Send an inquiry about a vehicle listed on Nauza Tu Digital Motor Market.">
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-
 * {
     box-sizing: border-box;
 }
@@ -23,8 +19,6 @@ body {
     background: #f4f7f5;
     color: #18352b;
 }
-
-/* HEADER */
 
 header {
     background: #064d3b;
@@ -47,7 +41,7 @@ header {
 
 nav {
     display: flex;
-    gap: 20px;
+    gap: 18px;
     flex-wrap: wrap;
 }
 
@@ -61,12 +55,10 @@ nav a:hover {
     color: #31d98b;
 }
 
-/* MAIN */
-
 .container {
     width: 94%;
     max-width: 800px;
-    margin: 40px auto;
+    margin: 35px auto 50px;
 }
 
 .page-title {
@@ -83,35 +75,49 @@ nav a:hover {
     color: #61716b;
 }
 
-/* VEHICLE INFORMATION */
-
-.vehicle-box {
+.card {
     background: white;
     border-radius: 12px;
-    padding: 20px;
+    padding: 22px;
     margin-bottom: 20px;
     box-shadow: 0 3px 12px rgba(0,0,0,.08);
 }
 
-.vehicle-box h2 {
+.card h2 {
     margin-top: 0;
     color: #07543f;
+}
+
+.vehicle-image {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 18px;
+    display: none;
 }
 
 .vehicle-info {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    color: #586961;
+    gap: 12px;
 }
 
-/* FORM */
+.info-item {
+    padding: 10px;
+    background: #f4f7f5;
+    border-radius: 7px;
+}
 
-.form-box {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+.info-label {
+    font-size: 12px;
+    color: #718078;
+    margin-bottom: 4px;
+}
+
+.info-value {
+    font-weight: bold;
+    color: #18352b;
 }
 
 .form-group {
@@ -145,8 +151,6 @@ textarea:focus {
     border-color: #08784f;
 }
 
-/* BUTTON */
-
 button {
     width: 100%;
     padding: 15px;
@@ -168,13 +172,11 @@ button:disabled {
     cursor: not-allowed;
 }
 
-/* STATUS */
-
 .status {
-    margin-top: 18px;
+    display: none;
+    margin-top: 15px;
     padding: 14px;
     border-radius: 7px;
-    display: none;
     line-height: 1.5;
 }
 
@@ -190,17 +192,18 @@ button:disabled {
     color: #07543f;
 }
 
-/* FOOTER */
+.loading {
+    text-align: center;
+    color: #61716b;
+    padding: 15px;
+}
 
 footer {
     background: #064d3b;
     color: white;
     text-align: center;
     padding: 22px;
-    margin-top: 50px;
 }
-
-/* MOBILE */
 
 @media (max-width: 600px) {
 
@@ -221,15 +224,11 @@ footer {
     .container {
         margin-top: 25px;
     }
-
 }
-
 </style>
 </head>
 
-
 <body>
-
 
 <header>
 
@@ -250,47 +249,100 @@ footer {
 
 <main class="container">
 
-
     <div class="page-title">
-
-        <h1>
-            Send Inquiry
-        </h1>
-
-        <p>
-            Contact the seller directly about this vehicle.
-        </p>
-
+        <h1>Send Inquiry</h1>
+        <p>Contact the registered vendor directly on WhatsApp.</p>
     </div>
 
 
-    <!-- VEHICLE DETAILS -->
+    <!-- VEHICLE -->
 
-    <div
-        class="vehicle-box"
-        id="vehicleBox"
-    >
+    <div class="card">
 
-        <h2 id="vehicleName">
+        <div id="loadingVehicle" class="loading">
             Loading vehicle...
-        </h2>
+        </div>
 
-        <div
-            class="vehicle-info"
-            id="vehicleInfo"
+        <img
+            id="vehicleImage"
+            class="vehicle-image"
+            alt="Vehicle"
         >
+
+        <div id="vehicleContent" style="display:none;">
+
+            <h2 id="vehicleName"></h2>
+
+            <div class="vehicle-info">
+
+                <div class="info-item">
+                    <div class="info-label">
+                        Listing ID
+                    </div>
+                    <div
+                        class="info-value"
+                        id="listingId"
+                    ></div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">
+                        Price
+                    </div>
+                    <div
+                        class="info-value"
+                        id="vehiclePrice"
+                    ></div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">
+                        Year
+                    </div>
+                    <div
+                        class="info-value"
+                        id="vehicleYear"
+                    ></div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">
+                        Location
+                    </div>
+                    <div
+                        class="info-value"
+                        id="vehicleLocation"
+                    ></div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">
+                        Vendor
+                    </div>
+                    <div
+                        class="info-value"
+                        id="vendorName"
+                    ></div>
+                </div>
+
+            </div>
+
         </div>
 
     </div>
 
 
-    <!-- INQUIRY FORM -->
+    <!-- INQUIRY -->
 
-    <div class="form-box">
+    <div
+        class="card"
+        id="formCard"
+        style="display:none;"
+    >
 
-        <form
-            id="inquiryForm"
-        >
+        <h2>Your Inquiry</h2>
+
+        <form id="inquiryForm">
 
             <div class="form-group">
 
@@ -301,8 +353,8 @@ footer {
                 <input
                     type="text"
                     id="name"
-                    required
                     placeholder="Enter your name"
+                    required
                 >
 
             </div>
@@ -317,8 +369,8 @@ footer {
                 <input
                     type="tel"
                     id="phone"
-                    required
                     placeholder="e.g. 0712345678"
+                    required
                 >
 
             </div>
@@ -333,8 +385,7 @@ footer {
                 <textarea
                     id="message"
                     required
-                    placeholder="I am interested in this vehicle. Please let me know if it is still available."
-                ></textarea>
+                >Hello, I am interested in this vehicle. Please let me know if it is still available.</textarea>
 
             </div>
 
@@ -343,7 +394,7 @@ footer {
                 type="submit"
                 id="sendButton"
             >
-                Send Inquiry
+                Send Inquiry on WhatsApp
             </button>
 
 
@@ -360,18 +411,16 @@ footer {
 
 
 <footer>
-
     © 2026 Nauza Tu Digital Motor Market
     | Find Your Next Ride Today
-
 </footer>
 
 
 <script>
 
-/* ==================================================
+/* =========================================================
    SUPABASE
-================================================== */
+========================================================= */
 
 const SUPABASE_URL =
     "https://hoogdxegjomtsvaddkwk.supabase.co";
@@ -386,26 +435,63 @@ const supabaseClient =
     );
 
 
-/* ==================================================
-   GET VEHICLE ID FROM URL
-================================================== */
+/* =========================================================
+   PAGE VARIABLES
+========================================================= */
 
-const params =
+let currentVehicle = null;
+let currentVendor = null;
+
+
+/* =========================================================
+   GET URL PARAMETERS
+========================================================= */
+
+const urlParams =
     new URLSearchParams(
         window.location.search
     );
 
-const vehicleId =
-    params.get("id");
+const idParameter =
+    urlParams.get("id");
+
+const listingParameter =
+    urlParams.get("listing_id");
 
 
-let currentVehicle = null;
-let seller = null;
+/* =========================================================
+   FORMAT PRICE
+========================================================= */
+
+function formatPrice(price) {
+
+    if (
+        price === null ||
+        price === undefined ||
+        price === ""
+    ) {
+        return "Price on Request";
+    }
+
+    const number =
+        Number(price);
+
+    if (Number.isNaN(number)) {
+        return price;
+    }
+
+    return (
+        "KES " +
+        number.toLocaleString("en-KE")
+    );
+}
 
 
-/* ==================================================
-   NORMALIZE WHATSAPP
-================================================== */
+/* =========================================================
+   WHATSAPP NUMBER
+   Same Kenyan number normalization
+   used by the working vehicle enquiry.
+========================================================= */
 
 function normalizeWhatsApp(number) {
 
@@ -415,8 +501,11 @@ function normalizeWhatsApp(number) {
 
     let value =
         String(number)
+        .trim()
         .replace(/\s+/g, "")
-        .replace(/-/g, "");
+        .replace(/-/g, "")
+        .replace(/\(/g, "")
+        .replace(/\)/g, "");
 
     if (value.startsWith("+")) {
         value =
@@ -429,10 +518,25 @@ function normalizeWhatsApp(number) {
             "254" +
             value.substring(1);
 
-    }
+    } else if (
+        value.startsWith("01")
+    ) {
 
-    if (
+        value =
+            "254" +
+            value.substring(1);
+
+    } else if (
         value.startsWith("7") &&
+        value.length === 9
+    ) {
+
+        value =
+            "254" +
+            value;
+
+    } else if (
+        value.startsWith("1") &&
         value.length === 9
     ) {
 
@@ -446,268 +550,389 @@ function normalizeWhatsApp(number) {
 }
 
 
-/* ==================================================
-   PARSE SELLER
-================================================== */
+/* =========================================================
+   LOAD VEHICLE
+========================================================= */
 
-function parseSeller(vehicle) {
+async function loadVehicle() {
 
-    if (!vehicle.seller) {
-
-        return {
-            name: "Private Seller",
-            phone: "",
-            whatsapp: ""
-        };
-
-    }
+    const loading =
+        document.getElementById(
+            "loadingVehicle"
+        );
 
     try {
 
-        if (
-            typeof vehicle.seller === "string"
-        ) {
+        let vehicle = null;
 
-            return JSON.parse(
-                vehicle.seller
-            );
+
+        /*
+           FIRST:
+           If id is supplied, try UUID.
+        */
+
+        if (idParameter) {
+
+            let result =
+                await supabaseClient
+                .from("vehicles")
+                .select("*")
+                .eq("id", idParameter)
+                .eq("status", "published")
+                .maybeSingle();
+
+            if (
+                !result.error &&
+                result.data
+            ) {
+
+                vehicle =
+                    result.data;
+
+            }
+
+
+            /*
+               If not UUID, try listing_id.
+            */
+
+            if (!vehicle) {
+
+                result =
+                    await supabaseClient
+                    .from("vehicles")
+                    .select("*")
+                    .eq(
+                        "listing_id",
+                        idParameter
+                    )
+                    .eq(
+                        "status",
+                        "published"
+                    )
+                    .maybeSingle();
+
+                if (
+                    !result.error &&
+                    result.data
+                ) {
+
+                    vehicle =
+                        result.data;
+
+                }
+
+            }
 
         }
 
-        return vehicle.seller;
+
+        /*
+           SECOND:
+           Try listing_id parameter.
+        */
+
+        if (
+            !vehicle &&
+            listingParameter
+        ) {
+
+            const result =
+                await supabaseClient
+                .from("vehicles")
+                .select("*")
+                .eq(
+                    "listing_id",
+                    listingParameter
+                )
+                .eq(
+                    "status",
+                    "published"
+                )
+                .maybeSingle();
+
+            if (
+                !result.error &&
+                result.data
+            ) {
+
+                vehicle =
+                    result.data;
+
+            }
+
+        }
+
+
+        if (!vehicle) {
+
+            loading.innerHTML = `
+                <strong>Vehicle not found.</strong><br><br>
+                Please open the inquiry page
+                from the vehicle's Enquire button.
+            `;
+
+            return;
+
+        }
+
+
+        currentVehicle =
+            vehicle;
+
+
+        /*
+           Display vehicle.
+        */
+
+        displayVehicle(vehicle);
+
+
+        /*
+           IMPORTANT:
+           Get vendor using vendor_id.
+        */
+
+        if (
+            vehicle.vendor_id
+        ) {
+
+            const vendorResult =
+                await supabaseClient
+                .from("vendor_profiles")
+                .select(
+                    "id, full_name, phone, whatsapp, business_name"
+                )
+                .eq(
+                    "id",
+                    vehicle.vendor_id
+                )
+                .maybeSingle();
+
+
+            if (
+                !vendorResult.error &&
+                vendorResult.data
+            ) {
+
+                currentVendor =
+                    vendorResult.data;
+
+            }
+
+        }
+
+
+        /*
+           If vendor profile was not found,
+           fall back to the seller data
+           stored inside the vehicle.
+        */
+
+        if (!currentVendor) {
+
+            let sellerData =
+                vehicle.seller;
+
+
+            if (
+                typeof sellerData === "string"
+            ) {
+
+                try {
+
+                    sellerData =
+                        JSON.parse(
+                            sellerData
+                        );
+
+                } catch (e) {
+
+                    sellerData = {};
+
+                }
+
+            }
+
+
+            currentVendor = {
+
+                id: vehicle.vendor_id || null,
+
+                full_name:
+                    sellerData?.name ||
+                    "Vehicle Seller",
+
+                business_name:
+                    sellerData?.businessName ||
+                    "",
+
+                phone:
+                    sellerData?.phone ||
+                    "",
+
+                whatsapp:
+                    sellerData?.whatsapp ||
+                    ""
+
+            };
+
+        }
+
+
+        /*
+           Show form.
+        */
+
+        document.getElementById(
+            "formCard"
+        ).style.display =
+            "block";
+
+
+        loading.style.display =
+            "none";
 
     }
 
     catch (error) {
 
-        return {
-            name: "Private Seller",
-            phone: "",
-            whatsapp: ""
-        };
+        console.error(
+            "Vehicle loading error:",
+            error
+        );
+
+        loading.innerHTML = `
+            <strong>Unable to load vehicle.</strong><br><br>
+            Please go back to the vehicle listing
+            and tap Enquire again.
+        `;
 
     }
 
 }
 
 
-/* ==================================================
-   LOAD VEHICLE
-================================================== */
+/* =========================================================
+   DISPLAY VEHICLE
+========================================================= */
 
-async function loadVehicle() {
+function displayVehicle(vehicle) {
 
-    const nameElement =
-        document.getElementById(
-            "vehicleName"
-        );
-
-    const infoElement =
-        document.getElementById(
-            "vehicleInfo"
-        );
-
-
-    if (!vehicleId) {
-
-        nameElement.textContent =
-            "Vehicle Inquiry";
-
-        infoElement.innerHTML = `
-            <div>
-                Please open this page
-                from a vehicle listing.
-            </div>
-        `;
-
-        return;
-
-    }
-
-
-    /*
-       Try listing_id first.
-    */
-
-    let result =
-        await supabaseClient
-        .from("vehicles")
-        .select("*")
-        .eq(
-            "listing_id",
-            vehicleId
-        )
-        .eq(
-            "status",
-            "published"
-        )
-        .maybeSingle();
-
-
-    /*
-       If not found, try UUID.
-    */
-
-    if (
-        result.error ||
-        !result.data
-    ) {
-
-        result =
-            await supabaseClient
-            .from("vehicles")
-            .select("*")
-            .eq(
-                "id",
-                vehicleId
-            )
-            .eq(
-                "status",
-                "published"
-            )
-            .maybeSingle();
-
-    }
-
-
-    if (
-        result.error ||
-        !result.data
-    ) {
-
-        nameElement.textContent =
-            "Vehicle Not Found";
-
-        infoElement.innerHTML = `
-            <div>
-                This vehicle listing
-                could not be found.
-            </div>
-        `;
-
-        return;
-
-    }
-
-
-    currentVehicle =
-        result.data;
-
-
-    seller =
-        parseSeller(
-            currentVehicle
-        );
-
-
-    const vehicleName =
-        `${currentVehicle.make || ""} ${
-            currentVehicle.model || ""
-        }`
+    const name =
+        `${vehicle.make || ""} ${vehicle.model || ""}`
         .trim();
 
 
-    nameElement.textContent =
-        vehicleName ||
-        "Vehicle";
+    document.getElementById(
+        "vehicleName"
+    ).textContent =
+        name || "Vehicle";
 
 
-    infoElement.innerHTML = `
-
-        <div>
-            <strong>Listing ID:</strong>
-            ${
-                currentVehicle.listing_id ||
-                currentVehicle.id ||
-                "—"
-            }
-        </div>
+    document.getElementById(
+        "listingId"
+    ).textContent =
+        vehicle.listing_id ||
+        vehicle.id ||
+        "—";
 
 
-        <div>
-            <strong>Year:</strong>
-            ${
-                currentVehicle.year ||
-                "—"
-            }
-        </div>
+    document.getElementById(
+        "vehiclePrice"
+    ).textContent =
+        formatPrice(
+            vehicle.price
+        );
 
 
-        <div>
-            <strong>Category:</strong>
-            ${
-                currentVehicle.category ||
-                "—"
-            }
-        </div>
+    document.getElementById(
+        "vehicleYear"
+    ).textContent =
+        vehicle.year ||
+        "—";
 
 
-        <div>
-            <strong>Price:</strong>
-            ${
-                currentVehicle.price
-                ?
-                "KES " +
-                Number(
-                    currentVehicle.price
-                ).toLocaleString("en-KE")
-                :
-                "Price on Request"
-            }
-        </div>
+    document.getElementById(
+        "vehicleLocation"
+    ).textContent =
+        vehicle.location ||
+        "Kenya";
 
 
-        <div>
-            <strong>Location:</strong>
-            ${
-                currentVehicle.location ||
-                "Kenya"
-            }
-        </div>
+    document.getElementById(
+        "vendorName"
+    ).textContent =
+        "Registered Vendor";
 
 
-        <div>
-            <strong>Seller:</strong>
-            ${
-                seller.name ||
-                "Private Seller"
-            }
-        </div>
+    /*
+       Use main_image if available.
+    */
 
-    `;
+    if (
+        vehicle.main_image &&
+        (
+            vehicle.main_image.startsWith(
+                "http://"
+            ) ||
+            vehicle.main_image.startsWith(
+                "https://"
+            )
+        )
+    ) {
+
+        const image =
+            document.getElementById(
+                "vehicleImage"
+            );
+
+        image.src =
+            vehicle.main_image;
+
+        image.style.display =
+            "block";
+
+    }
+
+
+    document.getElementById(
+        "vehicleContent"
+    ).style.display =
+        "block";
 
 }
 
 
-/* ==================================================
+/* =========================================================
    SEND INQUIRY
-================================================== */
+========================================================= */
 
 document
 .getElementById("inquiryForm")
 .addEventListener(
     "submit",
-    function(event) {
+    async function(event) {
 
         event.preventDefault();
 
-
-        const status =
-            document.getElementById(
-                "status"
-            );
 
         const button =
             document.getElementById(
                 "sendButton"
             );
 
+        const status =
+            document.getElementById(
+                "status"
+            );
+
 
         status.className =
             "status";
 
-        status.style.display =
-            "none";
+        status.textContent =
+            "";
 
 
         if (!currentVehicle) {
@@ -716,7 +941,20 @@ document
                 "status error";
 
             status.textContent =
-                "Vehicle information is not available. Please return to the vehicle listing and try again.";
+                "Vehicle information has not loaded. Please go back and tap Enquire again.";
+
+            return;
+
+        }
+
+
+        if (!currentVendor) {
+
+            status.className =
+                "status error";
+
+            status.textContent =
+                "The registered vendor could not be found for this vehicle.";
 
             return;
 
@@ -735,28 +973,76 @@ document
             ).value.trim();
 
 
-        const userMessage =
+        const inquiry =
             document.getElementById(
                 "message"
             ).value.trim();
 
 
-        const sellerNumber =
+        /*
+           EXACT VENDOR ROUTING:
+           Prefer vendor_profiles.whatsapp,
+           then vendor_profiles.phone,
+           then stored seller details.
+        */
+
+        let vendorNumber =
+            currentVendor.whatsapp ||
+            currentVendor.phone ||
+            "";
+
+
+        /*
+           Final fallback to vehicle seller.
+        */
+
+        if (!vendorNumber) {
+
+            let sellerData =
+                currentVehicle.seller;
+
+
+            if (
+                typeof sellerData === "string"
+            ) {
+
+                try {
+
+                    sellerData =
+                        JSON.parse(
+                            sellerData
+                        );
+
+                } catch (e) {
+
+                    sellerData = {};
+
+                }
+
+            }
+
+
+            vendorNumber =
+                sellerData?.whatsapp ||
+                sellerData?.phone ||
+                "";
+
+        }
+
+
+        vendorNumber =
             normalizeWhatsApp(
-                seller.whatsapp ||
-                seller.phone ||
-                currentVehicle.whatsapp ||
-                currentVehicle.phone
+                vendorNumber
             );
 
 
-        if (!sellerNumber) {
+        if (!vendorNumber) {
 
             status.className =
                 "status error";
 
             status.textContent =
-                "This seller does not currently have a WhatsApp number registered. Please use the vehicle details page to contact the seller.";
+                "This vendor does not have a WhatsApp number registered yet.";
 
             return;
 
@@ -764,9 +1050,7 @@ document
 
 
         const vehicleName =
-            `${currentVehicle.make || ""} ${
-                currentVehicle.model || ""
-            }`
+            `${currentVehicle.make || ""} ${currentVehicle.model || ""}`
             .trim();
 
 
@@ -777,47 +1061,36 @@ document
 
 
         const price =
-            currentVehicle.price
-            ?
-            Number(
+            formatPrice(
                 currentVehicle.price
-            ).toLocaleString(
-                "en-KE"
-            )
-            :
-            "Price on Request";
+            );
 
 
         /*
-           Message sent directly
-           to the registered seller.
+           WhatsApp message.
         */
 
         const whatsappMessage =
-
-`Hello ${seller.name || "Seller"},
-
-My name is ${name}.
-My phone number is ${phone}.
-
-I am interested in your vehicle listed on Nauza Tu Digital Motor Market.
+`Hello, I am interested in the vehicle listed on Nauza Tu Digital Motor Market.
 
 Vehicle: ${vehicleName}
 Listing ID: ${listingId}
-Price: KES ${price}
+Price: ${price}
+
+My name: ${name}
+My phone: ${phone}
 
 My inquiry:
-${userMessage}
-
-Please let me know if the vehicle is still available.`;
+${inquiry}`;
 
 
         const whatsappURL =
-            `https://wa.me/${sellerNumber}?text=${
-                encodeURIComponent(
-                    whatsappMessage
-                )
-            }`;
+            "https://wa.me/" +
+            vendorNumber +
+            "?text=" +
+            encodeURIComponent(
+                whatsappMessage
+            );
 
 
         button.disabled =
@@ -828,7 +1101,7 @@ Please let me know if the vehicle is still available.`;
 
 
         /*
-           Open WhatsApp.
+           Open WhatsApp directly.
         */
 
         window.location.href =
@@ -838,9 +1111,9 @@ Please let me know if the vehicle is still available.`;
 );
 
 
-/* ==================================================
-   START
-================================================== */
+/* =========================================================
+   START PAGE
+========================================================= */
 
 loadVehicle();
 
