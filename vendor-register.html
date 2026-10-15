@@ -1,530 +1,209 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Vendor Registration | Nauza Tu Digital Motor Market</title>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f6f5;
-  color: #222;
-}
-
-header {
-  background: #063d28;
-  color: white;
-  padding: 18px;
-}
-
-.header-inner {
-  max-width: 1000px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-}
-
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.logo span {
-  color: #e7b94f;
-}
-
-.back {
-  color: white;
-  text-decoration: none;
-  border: 1px solid white;
-  padding: 8px 12px;
-  border-radius: 6px;
-}
-
-main {
-  padding: 35px 15px;
-}
-
-.card {
-  max-width: 550px;
-  margin: auto;
-  background: white;
-  padding: 28px;
-  border-radius: 12px;
-  box-shadow: 0 5px 25px rgba(0,0,0,.08);
-}
-
-h1 {
-  color: #063d28;
-  margin-top: 0;
-}
-
-.intro {
-  color: #666;
-  line-height: 1.5;
-}
-
-.section {
-  margin-top: 25px;
-  margin-bottom: 10px;
-  padding-bottom: 7px;
-  border-bottom: 1px solid #ddd;
-  color: #063d28;
-  font-weight: bold;
-}
-
-label {
-  display: block;
-  margin-top: 15px;
-  margin-bottom: 6px;
-  font-weight: bold;
-}
-
-input {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 7px;
-  font-size: 15px;
-}
-
-button {
-  width: 100%;
-  margin-top: 25px;
-  padding: 14px;
-  border: 0;
-  border-radius: 7px;
-  background: #063d28;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-button:disabled {
-  opacity: .6;
-}
-
-.message {
-  display: none;
-  margin-top: 18px;
-  padding: 12px;
-  border-radius: 7px;
-  line-height: 1.5;
-}
-
-.success {
-  background: #e8f5e9;
-  color: #1b5e20;
-}
-
-.error {
-  background: #ffebee;
-  color: #b71c1c;
-}
-
-.login {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.login a {
-  color: #063d28;
-  font-weight: bold;
-}
-
-footer {
-  margin-top: 30px;
-  padding: 18px;
-  text-align: center;
-  background: #063d28;
-  color: white;
-  font-size: 13px;
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f6f5;color:#222}
+header,footer{background:#063d28;color:white;padding:18px}
+.header-inner{max-width:1000px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:15px}
+.logo{font-size:20px;font-weight:bold}.logo span{color:#e7b94f}
+a{color:#063d28;font-weight:bold}
+.back{color:white;text-decoration:none;border:1px solid white;padding:8px 12px;border-radius:6px}
+main{padding:35px 15px}
+.card{max-width:550px;margin:auto;background:white;padding:28px;border-radius:12px;box-shadow:0 5px 25px #0001}
+h1{color:#063d28;margin-top:0}.intro{color:#666;line-height:1.5}
+.section{margin-top:25px;margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid #ddd;color:#063d28;font-weight:bold}
+label{display:block;margin-top:15px;margin-bottom:6px;font-weight:bold}
+input{width:100%;padding:12px;border:1px solid #ccc;border-radius:7px;font-size:15px}
+button{width:100%;margin-top:25px;padding:14px;border:0;border-radius:7px;background:#063d28;color:white;font-size:16px;font-weight:bold;cursor:pointer}
+button:disabled{opacity:.6}
+.message{display:none;margin-top:18px;padding:12px;border-radius:7px;line-height:1.5}
+.success{background:#e8f5e9;color:#1b5e20}
+.error{background:#ffebee;color:#b71c1c}
+.login{text-align:center;margin-top:20px}
+footer{text-align:center;font-size:13px;margin-top:30px}
+@media(max-width:600px){.header-inner{align-items:flex-start;flex-direction:column}.card{padding:22px 18px}}
 </style>
 </head>
-
 <body>
-
 <header>
   <div class="header-inner">
-
-    <div class="logo">
-      NAUZA TU <span>Digital Motor Market</span>
-    </div>
-
+    <div class="logo">NAUZA TU <span>Digital Motor Market</span></div>
     <a href="index.html" class="back">← Market</a>
-
   </div>
 </header>
 
 <main>
-
 <div class="card">
-
 <h1>Become a Vendor</h1>
-
-<p class="intro">
-Create a vendor account and list your vehicles on
-Nauza Tu Digital Motor Market.
-</p>
+<p class="intro">Create a vendor account and list your vehicles on Nauza Tu Digital Motor Market.</p>
 
 <form id="vendorForm">
-
 <div class="section">Personal Information</div>
+<label for="fullName">Full Name *</label>
+<input id="fullName" required autocomplete="name" placeholder="Your full name">
 
-<label>Full Name *</label>
-<input
-  type="text"
-  id="fullName"
-  required
-  placeholder="Your full name">
+<label for="phone">Phone Number *</label>
+<input id="phone" type="tel" required autocomplete="tel" placeholder="0712345678">
 
-<label>Phone Number *</label>
-<input
-  type="tel"
-  id="phone"
-  required
-  placeholder="0712345678">
-
-<label>WhatsApp Number</label>
-<input
-  type="tel"
-  id="whatsapp"
-  placeholder="0712345678">
+<label for="whatsapp">WhatsApp Number</label>
+<input id="whatsapp" type="tel" placeholder="0712345678">
 
 <div class="section">Business Information</div>
+<label for="businessName">Business Name</label>
+<input id="businessName" placeholder="Optional">
 
-<label>Business Name</label>
-<input
-  type="text"
-  id="businessName"
-  placeholder="Optional">
-
-<label>Location *</label>
-<input
-  type="text"
-  id="location"
-  required
-  placeholder="e.g. Nairobi">
+<label for="location">Location *</label>
+<input id="location" required placeholder="e.g. Nairobi">
 
 <div class="section">Login Details</div>
+<label for="email">Email Address *</label>
+<input id="email" type="email" required autocomplete="email" placeholder="your@email.com">
 
-<label>Email Address *</label>
-<input
-  type="email"
-  id="email"
-  required
-  placeholder="your@email.com">
+<label for="password">Password *</label>
+<input id="password" type="password" minlength="6" required autocomplete="new-password" placeholder="At least 6 characters">
 
-<label>Password *</label>
-<input
-  type="password"
-  id="password"
-  minlength="6"
-  required
-  placeholder="At least 6 characters">
+<label for="confirmPassword">Confirm Password *</label>
+<input id="confirmPassword" type="password" minlength="6" required autocomplete="new-password" placeholder="Enter password again">
 
-<label>Confirm Password *</label>
-<input
-  type="password"
-  id="confirmPassword"
-  minlength="6"
-  required
-  placeholder="Enter password again">
-
-<button type="submit" id="registerButton">
-Create Vendor Account
-</button>
-
+<button type="submit" id="registerButton">Create Vendor Account</button>
 <div id="message" class="message"></div>
-
 </form>
 
-<div class="login">
-Already registered?
-<a href="vendor-login.html">Vendor Login</a>
+<div class="login">Already registered? <a href="vendor-login.html">Vendor Login</a></div>
 </div>
-
-</div>
-
 </main>
 
-<footer>
-© 2026 Nauza Tu Digital Motor Market
-</footer>
-
+<footer>© 2026 Nauza Tu Digital Motor Market</footer>
 
 <script>
-
-/* =========================================================
-   SUPABASE
-   IMPORTANT:
-   COPY THESE TWO VALUES EXACTLY FROM YOUR WORKING
-   vehicles.html FILE.
-   ========================================================= */
-
 const SUPABASE_URL = "https://hoogdxegjomtsvaddkwk.supabase.co";
+const SUPABASE_KEY = "sb_publishable_VEq6gUDlCthklOIgVUaDzQ_5TaqAsu8";
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-const SUPABASE_PUBLISHABLE_KEY =
-"sb_publishable_VEq6gUDlCthklOIgVUaDzQ_5TaqAsu8";
-
-
-/* =========================================================
-   CREATE SUPABASE CLIENT
-   ========================================================= */
-
-const supabaseClient =
-  window.supabase.createClient(
-    SUPABASE_URL.trim(),
-    SUPABASE_PUBLISHABLE_KEY.trim()
-  );
-
-
-/* =========================================================
-   ELEMENTS
-   ========================================================= */
-
-const form =
-  document.getElementById("vendorForm");
-
-const button =
-  document.getElementById("registerButton");
-
-const message =
-  document.getElementById("message");
-
-
-/* =========================================================
-   MESSAGE
-   ========================================================= */
+const form = document.getElementById("vendorForm");
+const button = document.getElementById("registerButton");
+const message = document.getElementById("message");
+const DRAFT_KEY = "nauzatu_pending_vendor_profile";
 
 function showMessage(text, type) {
-
   message.textContent = text;
-
-  message.className =
-    "message " + type;
-
+  message.className = "message " + type;
   message.style.display = "block";
 }
 
+function getProfile() {
+  return {
+    full_name: document.getElementById("fullName").value.trim(),
+    phone: document.getElementById("phone").value.trim(),
+    whatsapp: document.getElementById("whatsapp").value.trim() || null,
+    business_name: document.getElementById("businessName").value.trim() || null,
+    location: document.getElementById("location").value.trim()
+  };
+}
 
-/* =========================================================
-   REGISTRATION
-   ========================================================= */
+async function saveProfile(user, profile) {
+  if (!user || !user.id) {
+    throw new Error("No authenticated user was found. Please log in again.");
+  }
+
+  const { data: existing, error: checkError } = await sb
+    .from("vendor_profiles")
+    .select("id")
+    .eq("id", user.id)
+    .maybeSingle();
+
+  if (checkError) throw checkError;
+
+  if (existing) {
+    const { error } = await sb
+      .from("vendor_profiles")
+      .update(profile)
+      .eq("id", user.id);
+
+    if (error) throw error;
+  } else {
+    const { error } = await sb
+      .from("vendor_profiles")
+      .insert({ id: user.id, ...profile });
+
+    if (error) throw error;
+  }
+}
 
 form.addEventListener("submit", async function(event) {
-
   event.preventDefault();
-
   message.style.display = "none";
 
-  const fullName =
-    document.getElementById("fullName").value.trim();
-
-  const phone =
-    document.getElementById("phone").value.trim();
-
-  const whatsapp =
-    document.getElementById("whatsapp").value.trim();
-
-  const businessName =
-    document.getElementById("businessName").value.trim();
-
-  const location =
-    document.getElementById("location").value.trim();
-
-  const email =
-    document.getElementById("email").value.trim();
-
-  const password =
-    document.getElementById("password").value;
-
-  const confirmPassword =
-    document.getElementById("confirmPassword").value;
-
+  const email = document.getElementById("email").value.trim().toLowerCase();
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
+  const profile = getProfile();
 
   if (password !== confirmPassword) {
-
-    showMessage(
-      "Passwords do not match.",
-      "error"
-    );
-
+    showMessage("Passwords do not match.", "error");
     return;
   }
-
 
   if (password.length < 6) {
-
-    showMessage(
-      "Password must contain at least 6 characters.",
-      "error"
-    );
-
+    showMessage("Password must contain at least 6 characters.", "error");
     return;
   }
 
-
   button.disabled = true;
-
-  button.textContent =
-    "Creating Account...";
-
+  button.textContent = "Creating Account...";
 
   try {
+    // Save only profile details, never the password.
+    // This allows completion after email confirmation.
+    localStorage.setItem(DRAFT_KEY, JSON.stringify({
+      email: email,
+      profile: profile
+    }));
 
-    /*
-     * CREATE AUTH ACCOUNT
-     */
+    const { data, error } = await sb.auth.signUp({
+      email: email,
+      password: password
+    });
 
-    const result =
-      await supabaseClient.auth.signUp({
+    if (error) throw error;
+    if (!data.user) throw new Error("Supabase did not return a user account.");
 
-        email: email,
+    if (data.session) {
+      await saveProfile(data.user, profile);
+      localStorage.removeItem(DRAFT_KEY);
 
-        password: password
-
-      });
-
-
-    console.log(
-      "Supabase signUp result:",
-      result
-    );
-
-
-    if (result.error) {
-
-      throw new Error(
-        result.error.message
-      );
-
-    }
-
-
-    if (!result.data.user) {
-
-      throw new Error(
-        "Supabase did not return a user account."
-      );
-
-    }
-
-
-    const userId =
-      result.data.user.id;
-
-
-    /*
-     * CREATE VENDOR PROFILE
-     */
-
-    const profileResult =
-      await supabaseClient
-        .from("vendor_profiles")
-        .insert({
-
-          id: userId,
-
-          full_name: fullName,
-
-          phone: phone,
-
-          whatsapp:
-            whatsapp || null,
-
-          business_name:
-            businessName || null,
-
-          location:
-            location
-
-        });
-
-
-    console.log(
-      "Vendor profile result:",
-      profileResult
-    );
-
-
-    if (profileResult.error) {
-
-      throw new Error(
-        "Account was created, but vendor profile could not be saved: "
-        +
-        profileResult.error.message
-      );
-
-    }
-
-
-    /*
-     * SUCCESS
-     */
-
-    if (result.data.session) {
-
-      showMessage(
-        "Vendor account created successfully. Redirecting...",
-        "success"
-      );
-
-      setTimeout(function() {
-
-        window.location.href =
-          "vendor-dashboard.html";
-
-      }, 1500);
-
+      showMessage("Account and vendor profile saved. Opening your dashboard...", "success");
+      setTimeout(() => {
+        window.location.href = "vendor-dashboard.html";
+      }, 1200);
     } else {
-
       showMessage(
-        "Account created successfully. Please check your email and confirm your account before logging in.",
+        "Your account has been created. Check your email and confirm your address. Then return here and log in using the same browser to finish saving your vendor profile.",
         "success"
       );
-
-      form.reset();
-
+      button.textContent = "Account Created";
+      return;
     }
-
-
   } catch (error) {
-
-    console.error(
-      "FULL REGISTRATION ERROR:",
-      error
-    );
+    console.error("Vendor registration error:", error);
 
     showMessage(
-      error.message ||
-      "Registration failed.",
+      error.message + " If your account was already created, do not register again. Log in using the same browser to complete your profile.",
       "error"
     );
-
+  } finally {
+    if (button.textContent !== "Account Created") {
+      button.disabled = false;
+      button.textContent = "Create Vendor Account";
+    }
   }
-
-
-  button.disabled = false;
-
-  button.textContent =
-    "Create Vendor Account";
-
 });
-
 </script>
-
 </body>
 </html>
